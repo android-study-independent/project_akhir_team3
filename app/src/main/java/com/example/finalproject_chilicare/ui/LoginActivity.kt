@@ -21,15 +21,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginActivities()
+//        loginActivities()
     }
 
-    private fun loginActivities() {
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
-
-        btnLogin.setOnClickListener {
-            login()
-        }
+//    private fun loginActivities() {
+//        val btnLogin = findViewById<Button>(R.id.btnLogin)
+//
+//        btnLogin.setOnClickListener {
+//            login()
+//        }
     }
 
     private fun login() {
