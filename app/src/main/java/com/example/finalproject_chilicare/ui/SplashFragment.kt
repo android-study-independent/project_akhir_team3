@@ -42,11 +42,13 @@ class SplashFragment : Fragment() {
 
         indikator.findViewById<IndicatorView>(R.id.indicator_view)
 
+        viewPage.adapter= adapter
+
         indikator.apply {
             setSliderWidth(resources.getDimension(R.dimen.space_10))
             setSliderHeight(resources.getDimension(R.dimen.space_5))
-            setSlideMode(IndicatorSlideMode.SMOOTH)
-            setIndicatorStyle(IndicatorStyle.ROUND_RECT)
+            setSlideMode(IndicatorSlideMode.WORM)
+            setIndicatorStyle(IndicatorStyle.CIRCLE)
             setupWithViewPager(viewPage)
         }
 
