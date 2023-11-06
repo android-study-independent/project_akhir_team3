@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#FFCCCCCC</color>
+    <color name="red">#FFE86969</color>
+
+    //color Button
+    <color name="button">#BF2A63</color>
+
+    //indicatior slider
+    <color name="lingkrndalam">#ECBFD0</color>
+    <color name="lingkrnluar">#99224F</color>
 </resources>
