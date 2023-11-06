@@ -27,6 +27,12 @@ class ThirdScreen : Fragment() {
 
         }
 
+        view.findViewById<Button>(R.id.BtnRegister3rdsc).setOnClickListener {
+            findNavController().navigate(R.id.action_viewPagerFragment_to_registerActivity)
+            onBoardingFinished()
+
+        }
+
         return view
     }
 

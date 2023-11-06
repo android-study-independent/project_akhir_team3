@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
 
         val email = findViewById<TextInputEditText>(R.id.etemail)
         val password = findViewById<TextInputEditText>(R.id.etpw)
+        val btnDaftar = findViewById<Button>(R.id.btndaftarsekarang)
+        btnDaftar.setOnClickListener { Intent(this,RegisterActivity::class.java).also { startActivity(it) } }
 
         initLogin()
     }
