@@ -34,11 +34,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         val req = UserRequest()
-        val txtEmail = findViewById<EditText>(R.id.txtEmail)
-        val txtPassword = findViewById<EditText>(R.id.txtPassword)
+//        val txtEmail = findViewById<EditText>(R.id.txtEmail)
+//        val txtPassword = findViewById<EditText>(R.id.txtPassword)
 
-        req.email = txtEmail.text.toString().trim()
-        req.password = txtPassword.text.toString().trim()
+//        req.email = txtEmail.text.toString().trim()
+//        req.password = txtPassword.text.toString().trim()
 
  //       val retro = Retro().getRetroClientInstance().create(Routes::class.java)
 //        retro.login(req).enqueue(object  : Callback<UserResponse>{
