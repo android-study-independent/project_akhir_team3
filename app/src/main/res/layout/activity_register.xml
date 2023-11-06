@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imgregistertv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_regist"
+        android:scaleType="centerCrop"></ImageView>
+
+    <TextView
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello ! "
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:fontFamily="@font/plusjakartasans_variablefont_wght"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mari Daftar dan\nBergabung Bersama Kami "
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:fontFamily="@font/plusjakartasans_variablefont_wght"
+        android:textColor="@color/black"/>
+
+    <View
+        android:id="@+id/viewRegist"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/style_onboarding2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"></View>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FieldRegist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="10dp">
+        <View
+            android:id="@+id/viewinptRegist"
+            android:layout_width="match_parent"
+            android:layout_height="470dp"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"></View>
+
+
+        <TextView
+            android:id="@+id/txtmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="Email"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
+            app:layout_constraintTop_toTopOf="@+id/viewinptRegist"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtlayoutinputemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/txtmail"
+            app:layout_constraintTop_toBottomOf="@id/txtmail">
+
+            <EditText
+                android:id="@+id/txinputlogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/custominputregistlogin"
+                android:hint="Masukan Email"
+                android:fontFamily="@font/plusjakartasans_variablefont_wght"
+                android:paddingLeft="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logintv"></EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:text="Password"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
+            app:layout_constraintTop_toBottomOf="@id/txtlayoutinputemail"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtlayoutinputpaswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/txtpassword"
+            app:layout_constraintTop_toBottomOf="@id/txtpassword"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/txinputpass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/custominputregistlogin"
+                android:hint="Masukan Password"
+                android:fontFamily="@font/plusjakartasans_variablefont_wght"
+                android:paddingLeft="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logintv"></EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtconpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:text="Konfirm Password"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
+            app:layout_constraintTop_toBottomOf="@id/txtlayoutinputpaswd"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtlayoutinputconpaswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/txtpassword"
+            app:layout_constraintTop_toBottomOf="@id/txtconpassword"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/txinputconpass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/custominputregistlogin"
+                android:hint="Ulangi Password Anda"
+                android:fontFamily="@font/plusjakartasans_variablefont_wght"
+                android:paddingLeft="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logintv"></EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+        <CheckBox
+            android:id="@+id/checkboxregist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputconpaswd"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Dengan mendaftar,Anda menyetujui,syarat dan ketentuan\nserta kebijakan privasi kami"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btnDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkboxregist"
+            android:text="Daftar Sekarang"
+            android:textAllCaps="false"
+            android:background="@drawable/buttonloginreg"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/btndaftar1"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/btnDaftar"
+            app:layout_constraintBottom_toBottomOf="@id/FieldRegist"
+            app:layout_constraintRight_toRightOf="@id/btndaftar2"
+            android:text="Sudah memiliki akun?"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btndaftar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/btndaftar1"
+            app:layout_constraintBottom_toBottomOf="@id/FieldRegist"
+            android:text="Daftar disini"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="#63B51C"
+            android:textSize="15sp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>
