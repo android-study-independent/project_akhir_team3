@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +29,11 @@ class RegisterActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.textInputPasswordRegister)
         val confirmPassword = findViewById<EditText>(R.id.textInputConfirmPassword)
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
+        val txtRegist = findViewById<TextView>(R.id.btndaftar2)
+
+        txtRegist.setOnClickListener { Intent(this,LoginActivity::class.java).also {
+            startActivity(it)
+        } }
 
         initAction()
     }
@@ -51,7 +57,8 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = email.text.toString()
         registerReq.password = password.text.toString()
 
-        val retro = Retro().getRetroClientInstance("http://192.168.43.94:1945/auth/").create(UserAPI::class.java)
+        //val retro = Retro().getRetroClientInstance("http://192.168.43.94:1945/auth/").create(UserAPI::class.java)
+        val retro = Retro().getRetroClientInstance("http://192.168.1.4:1945/auth/").create(UserAPI::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
