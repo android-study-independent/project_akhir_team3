@@ -62,7 +62,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/BtnRegister"
+            android:id="@+id/BtnRegister3rdsc"
             android:layout_width="380dp"
             android:layout_height="60dp"
             android:background="@drawable/buttonloginreg"
@@ -81,7 +81,7 @@
             android:background="@drawable/custmloginbtn"
             android:text="Login"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/BtnRegister"
+            app:layout_constraintBottom_toTopOf="@id/BtnRegister3rdsc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/viewscreen2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
