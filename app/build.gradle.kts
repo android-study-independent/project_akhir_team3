@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.finalproject_chilicare"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.finalproject_chilicare"
