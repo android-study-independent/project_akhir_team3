@@ -23,11 +23,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-//        val fullname = findViewById<EditText>(R.id.txtFullname)
-//        val email = findViewById<EditText>(R.id.txtEmailRegister)
-//        val password = findViewById<EditText>(R.id.txtPasswordRegister)
-//        val confirmPassword = findViewById<EditText>(R.id.txtConfirmPassword)
-//        val btnRegister = findViewById<Button>(R.id.buttonRegister)
+        val fullname = findViewById<EditText>(R.id.textInputFullname)
+        val email = findViewById<EditText>(R.id.textInputEmailRegister)
+        val password = findViewById<EditText>(R.id.textInputPasswordRegister)
+        val confirmPassword = findViewById<EditText>(R.id.textInputConfirmPassword)
+        val btnRegister = findViewById<Button>(R.id.buttonRegister)
 
         initAction()
     }
@@ -41,9 +41,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun postUser() {
-        val fullname = findViewById<EditText>(R.id.txtFullname)
-        val email = findViewById<EditText>(R.id.txtEmailRegister)
-        val password = findViewById<EditText>(R.id.txtPasswordRegister)
+        val fullname = findViewById<EditText>(R.id.textInputFullname)
+        val email = findViewById<EditText>(R.id.textInputEmailRegister)
+        val password = findViewById<EditText>(R.id.textInputPasswordRegister)
        // val confirmPassword = findViewById<EditText>(R.id.txtConfirmPassword)
 
         val registerReq = RegisterRequest()
@@ -56,10 +56,10 @@ class RegisterActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
 
-                val textStatus = findViewById<TextView>(R.id.textStatus)
-                val textMessage = findViewById<TextView>(R.id.textMessage)
-                textStatus.text = register!!.status.toString()
-                textMessage.text = register!!.message.toString()
+//                val textStatus = findViewById<TextView>(R.id.textStatus)
+//                val textMessage = findViewById<TextView>(R.id.textMessage)
+//                textStatus.text = register!!.status.toString()
+//                textMessage.text = register!!.message.toString()
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {

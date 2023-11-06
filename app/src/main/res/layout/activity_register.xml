@@ -81,12 +81,12 @@
             app:layout_constraintTop_toBottomOf="@id/txtmail">
 
             <EditText
-                android:id="@+id/txinputlogin"
+                android:id="@+id/textInputEmailRegister"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custominputregistlogin"
-                android:hint="Masukan Email"
                 android:fontFamily="@font/plusjakartasans_variablefont_wght"
+                android:hint="Masukan Email"
                 android:paddingLeft="8dp"
                 android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -107,14 +107,14 @@
             app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputemail"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtlayoutinputfullname"
+            android:id="@+id/txtInputFullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@id/txtfullname"
             app:layout_constraintTop_toBottomOf="@id/txtfullname">
 
             <EditText
-                android:id="@+id/txinputfullname"
+                android:id="@+id/textInputFullname"
                 android:layout_width="match_parent"
                 android:inputType="textPersonName"
                 android:layout_height="50dp"
@@ -138,7 +138,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
-            app:layout_constraintTop_toBottomOf="@id/txtlayoutinputfullname"/>
+            app:layout_constraintTop_toBottomOf="@id/txtInputFullname"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtlayoutinputpaswd"
@@ -149,7 +149,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/txinputpass"
+                android:id="@+id/textInputPasswordRegister"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custominputregistlogin"
@@ -183,7 +183,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/txinputconpass"
+                android:id="@+id/textInputConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custominputregistlogin"
@@ -205,7 +205,7 @@
             android:textSize="12sp"/>
 
         <Button
-            android:id="@+id/btnDaftar"
+            android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -219,7 +219,7 @@
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/btnDaftar"
+            app:layout_constraintLeft_toLeftOf="@id/buttonRegister"
             app:layout_constraintBottom_toBottomOf="@id/FieldRegist"
             app:layout_constraintRight_toRightOf="@id/btndaftar2"
             android:text="Sudah memiliki akun?"
