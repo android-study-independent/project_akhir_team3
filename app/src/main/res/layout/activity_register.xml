@@ -38,7 +38,7 @@
     <View
         android:id="@+id/viewRegist"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="600dp"
         android:layout_gravity="bottom"
         android:background="@drawable/style_onboarding2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
         <View
             android:id="@+id/viewinptRegist"
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="590dp"
             android:layout_gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
             android:id="@+id/txtmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:padding="5dp"
             android:text="Email"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
@@ -94,6 +94,40 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/txtfullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:text="Fullname"
+            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
+            app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputemail"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtlayoutinputfullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/txtfullname"
+            app:layout_constraintTop_toBottomOf="@id/txtfullname">
+
+            <EditText
+                android:id="@+id/txinputfullname"
+                android:layout_width="match_parent"
+                android:inputType="textPersonName"
+                android:layout_height="50dp"
+                android:background="@drawable/custominputregistlogin"
+                android:hint="Masukan fullname"
+                android:fontFamily="@font/plusjakartasans_variablefont_wght"
+                android:paddingLeft="8dp"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logintv"></EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
             android:id="@+id/txtpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,7 +138,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/viewinptRegist"
-            app:layout_constraintTop_toBottomOf="@id/txtlayoutinputemail"/>
+            app:layout_constraintTop_toBottomOf="@id/txtlayoutinputfullname"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txtlayoutinputpaswd"
