@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
 
         initLogin()
 //        loginActivities()
-        val email = findViewById<TextInputEditText>(R.id.etemail)
-        val password = findViewById<TextInputEditText>(R.id.etpw)
+        val email = findViewById<EditText>(R.id.textInputEmailLogin)
+        val password = findViewById<EditText>(R.id.textInputPasswordLogin)
 
         initLogin()
     }
@@ -45,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun postLogin() {
-        val email = findViewById<TextInputEditText>(R.id.etemail)
-        val password = findViewById<TextInputEditText>(R.id.etpw)
+        val email = findViewById<EditText>(R.id.textInputEmailLogin)
+        val password = findViewById<EditText>(R.id.textInputPasswordLogin)
 
         val loginReq = LoginRequest(
             requestEmail = email.text.toString(),
