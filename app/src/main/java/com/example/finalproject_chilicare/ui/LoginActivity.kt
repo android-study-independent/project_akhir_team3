@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.api.Retro
 import com.example.finalproject_chilicare.data.api.UserAPI
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
 
-        val btnDaftar = findViewById<Button>(R.id.btndaftarsekarang)
+        val btnDaftar = findViewById<TextView>(R.id.textviewdaftardisini)
         val email = findViewById<EditText>(R.id.textInputEmailLogin)
         val password = findViewById<EditText>(R.id.textInputPasswordLogin)
         val btnLogin = findViewById<Button>(R.id.btnmasuk)
