@@ -23,9 +23,9 @@
 
     <ImageView
         android:id="@+id/imageviewfarmer"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/farmer"
+        android:layout_width="300dp"
+        android:layout_height="290dp"
+        android:src="@drawable/farmer2"
         android:layout_marginTop="-20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -37,9 +37,9 @@
         android:id="@+id/textviewhai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hai Apa Kabar Hari Ini? 👋"
+        android:text="Selamat Datang Kembali👋"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/blackblue"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -52,7 +52,7 @@
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yuk, masuk dan mulai belajar lagi"
+        android:text="Mari masuk dan lanjutkan pembelajaran!"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -90,7 +90,7 @@
             android:layout_height="55dp"
             android:background="@drawable/custominputregistlogin"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
-            android:hint="Masukan Email"
+            android:hint="Masukan email anda"
             android:paddingLeft="8dp"
             android:textColor="@color/black"
             />
@@ -129,7 +129,7 @@
             android:layout_height="55dp"
             android:ems="10"
             android:background="@drawable/custominputregistlogin"
-            android:hint="Masukan Password"
+            android:hint="Masukan password anda"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:paddingLeft="8dp"
             android:textColor="@color/black"
@@ -148,7 +148,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputpaswd"
         app:layout_constraintBottom_toTopOf="@+id/btnmasuk"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         />
 
     <Button
@@ -163,23 +163,36 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviewLupaPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btndaftarsekarang"
+        app:layout_constraintBottom_toTopOf="@+id/tvbelumpunyaakun"
         android:layout_marginTop="20dp"
         />
 
-    <Button
-        android:id="@+id/btndaftarsekarang"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Daftar Sekarang"
-        android:textColor="@color/lingkrnluar"
-        android:textAllCaps="false"
+    <TextView
+        android:id="@+id/tvbelumpunyaakun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Belum Punya Akun?"
+        android:textColor="@color/secondary"
         android:textSize="16sp"
-        android:background="@drawable/btnlogin_daftar"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnmasuk"
-        android:layout_marginTop="8dp"
         />
+
+    <TextView
+        android:id="@+id/textviewdaftardisini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="Daftar Disini"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/tvbelumpunyaakun"
+        app:layout_constraintTop_toTopOf="@+id/tvbelumpunyaakun"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
