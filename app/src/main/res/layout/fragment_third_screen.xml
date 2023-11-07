@@ -54,7 +54,7 @@
             android:textAlignment="center"
             android:textSize="15sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/Btnlogin"
+            app:layout_constraintBottom_toTopOf="@id/btnLoginSplashscreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/viewtv"
             app:layout_constraintTop_toBottomOf="@+id/texttitlesc2">
@@ -62,7 +62,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/BtnRegister3rdsc"
+            android:id="@+id/btnRegisterSplashscreen"
             android:layout_width="380dp"
             android:layout_height="60dp"
             android:background="@drawable/buttonloginreg"
@@ -74,14 +74,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/viewtv" />
 
         <Button
-            android:id="@+id/Btnlogin"
+            android:id="@+id/btnLoginSplashscreen"
             android:layout_width="380dp"
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/custmloginbtn"
             android:text="Login"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/BtnRegister3rdsc"
+            app:layout_constraintBottom_toTopOf="@id/btnRegisterSplashscreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/viewscreen2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
