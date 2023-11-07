@@ -44,6 +44,7 @@
             android:layout_marginBottom="10dp"
             app:vpi_slider_checked_color="@color/lingkrndalam"
             app:vpi_slider_normal_color="@color/lingkrnluar" />
+
     </LinearLayout>
 
 

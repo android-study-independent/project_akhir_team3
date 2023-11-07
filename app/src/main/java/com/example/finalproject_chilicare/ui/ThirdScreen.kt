@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
+//import androidx.navigation.fragment.findNavController
+//import androidx.viewpager2.widget.ViewPager2
 import com.example.finalproject_chilicare.R
 
 class ThirdScreen : Fragment() {
@@ -17,15 +17,17 @@ class ThirdScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val btnLogin = view?.findViewById<Button>(R.id.btnLoginSplashscreen)
+        val btnRegister = view?.findViewById<Button>(R.id.btnRegisterSplashscreen)
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_third_screen, container, false)
 
-
-        view.findViewById<Button>(R.id.Btnlogin).setOnClickListener {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
-            onBoardingFinished()
-
-        }
+//
+//        view.findViewById<Button>(R.id.btnlogin).setOnClickListener {
+//            findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
+//            onBoardingFinished()
+//
+//        }
 
         return view
     }

@@ -57,8 +57,8 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = email.text.toString()
         registerReq.password = password.text.toString()
 
-        //val retro = Retro().getRetroClientInstance("http://192.168.43.94:1945/auth/").create(UserAPI::class.java)
-        val retro = Retro().getRetroClientInstance("http://192.168.1.4:1945/auth/").create(UserAPI::class.java)
+        val retro = Retro().getRetroClientInstance("http://192.168.43.94:1945/auth/").create(UserAPI::class.java)
+//        val retro = Retro().getRetroClientInstance("http://192.168.1.4:1945/auth/").create(UserAPI::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
@@ -73,6 +73,11 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("Failed", "Create User Failed")
             }
         })
+
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+
     }
 
 }
