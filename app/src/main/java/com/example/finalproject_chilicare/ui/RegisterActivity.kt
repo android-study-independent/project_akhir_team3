@@ -55,7 +55,6 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.password = password.text.toString()
 
         val retro = Retro().getRetroClientInstance("https://6f38-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
-//        val retro = Retro().getRetroClientInstance("http://192.168.1.4:1945/auth/").create(UserAPI::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
