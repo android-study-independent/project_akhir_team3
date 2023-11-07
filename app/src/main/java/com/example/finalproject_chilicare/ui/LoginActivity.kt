@@ -23,13 +23,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val email = findViewById<TextInputEditText>(R.id.etemail)
-        val password = findViewById<TextInputEditText>(R.id.etpw)
+//        val email = findViewById<TextInputEditText>(R.id.etemail)
+//        val password = findViewById<TextInputEditText>(R.id.etpw)
         val btnDaftar = findViewById<Button>(R.id.btndaftarsekarang)
         btnDaftar.setOnClickListener { Intent(this,RegisterActivity::class.java).also { startActivity(it) } }
 
         initLogin()
 //        loginActivities()
+        val email = findViewById<TextInputEditText>(R.id.etemail)
+        val password = findViewById<TextInputEditText>(R.id.etpw)
+
+        initLogin()
     }
 
     fun initLogin() {
@@ -38,21 +42,20 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             postLogin()
         }
-//    private fun loginActivities() {
-//        val btnLogin = findViewById<Button>(R.id.btnLogin)
-//
-//        btnLogin.setOnClickListener {
-//            login()
-//        }
     }
 
     fun postLogin() {
         val email = findViewById<TextInputEditText>(R.id.etemail)
         val password = findViewById<TextInputEditText>(R.id.etpw)
 
-        val loginReq = LoginRequest(requestEmail = email.text.toString(), requestPassword = password.text.toString())
+        val loginReq = LoginRequest(
+            requestEmail = email.text.toString(),
+            requestPassword = password.text.toString()
+        )
 
-        val retro = Retro().getRetroClientInstance("https://6f38-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
+        val retro =
+            Retro().getRetroClientInstance("http://192.168.43.94:1945/auth/")
+                .create(UserAPI::class.java)
         retro.getUser(loginReq).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
@@ -60,6 +63,12 @@ class LoginActivity : AppCompatActivity() {
                     if (loginResponse != null) {
                         val message = loginResponse.message
                         Log.d("Login", "respon body: $message")
+                        val btnLogin = findViewById<Button>(R.id.btnmasuk)
+                        btnLogin.setOnClickListener {
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     } else {
                         Log.d("Login", "respon body gaada")
                     }
@@ -73,6 +82,5 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }
