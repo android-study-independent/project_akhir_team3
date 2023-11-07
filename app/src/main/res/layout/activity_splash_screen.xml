@@ -28,27 +28,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_rawRes="@raw/duar" />
 
-    <LinearLayout
-        android:layout_gravity="bottom"
-        android:layout_marginVertical="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.zhpan.indicator.IndicatorView
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/indicator_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space_10"
-            android:layout_marginBottom="10dp"
-            app:vpi_slider_checked_color="@color/lingkrndalam"
-            app:vpi_slider_normal_color="@color/lingkrnluar" />
-    </LinearLayout>
-
-
-
-
-
 
 </FrameLayout>
