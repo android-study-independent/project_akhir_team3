@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.api.Retro
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
@@ -54,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = email.text.toString()
         registerReq.password = password.text.toString()
 
-        val retro = Retro().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
+        val retro = Network().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()

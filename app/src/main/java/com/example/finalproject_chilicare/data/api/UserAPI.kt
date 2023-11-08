@@ -11,8 +11,10 @@ import retrofit2.http.POST
 interface UserAPI {
 
     @POST("register")
-    fun createUser(@Body req: RegisterRequest) : Call<RegisterResponse>
+    fun createUser(@Body req: RegisterRequest): Call<RegisterResponse>
 
     @POST("login")
-    fun getUser(@Body req: LoginRequest) : Call<LoginResponse>
+    fun userLogin(@Body req: LoginRequest): Call<LoginResponse>
+
+
 }
