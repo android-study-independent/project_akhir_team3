@@ -11,4 +11,10 @@
     //indicatior slider
     <color name="lingkrndalam">#ECBFD0</color>
     <color name="lingkrnluar">#99224F</color>
+
+    //hint teks
+    <color name="hintteks">#8388B2</color>
+    //teksbutton
+    <color name="teksbutton">#99224F</color>
+
 </resources>

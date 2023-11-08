@@ -9,9 +9,9 @@
     <ImageView
         android:id="@+id/imgscreen2"
         android:layout_width="match_parent"
-        android:layout_height="590dp"
+        android:layout_height="600dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/tani" />
+        android:src="@drawable/screen2fix" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewtv"
@@ -22,7 +22,7 @@
         <View
             android:id="@+id/viewscreen2"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="320dp"
             android:layout_gravity="bottom"
             android:background="@drawable/style_onboarding2"
             android:backgroundTint="#F6F6F6"
@@ -35,7 +35,7 @@
             android:id="@+id/texttitlesc2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selamat Datang Di Chili Care"
+            android:text="Tanam, Panen Berkualitas"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -43,16 +43,16 @@
             app:layout_constraintRight_toRightOf="@+id/viewtv"
             app:layout_constraintStart_toStartOf="@+id/viewtv"
             app:layout_constraintTop_toTopOf="@+id/viewtv"
-            app:layout_constraintVertical_bias="0.1"></TextView>
+            app:layout_constraintVertical_bias="0.2"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:textColor="@color/hintteks"
             android:fontFamily="sans-serif"
-            android:text="Yokk Masukk dan Mulaii Belajar Bersama Kami"
+            android:text="Mari Bergabung dan Mulai Belajar Bersama Kami"
             android:textAlignment="center"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@id/Btnlogin"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,9 +65,11 @@
             android:id="@+id/BtnRegister3rdsc"
             android:layout_width="380dp"
             android:layout_height="60dp"
-            android:background="@drawable/buttonloginreg"
-            android:text="Register"
-            android:layout_marginBottom="40dp"
+            android:background="@drawable/custmloginbtn"
+            android:text="Daftr Sekarang"
+            android:textStyle="bold"
+            android:textColor="@color/teksbutton"
+            android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/viewtv"
             app:layout_constraintStart_toStartOf="@+id/viewtv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,8 +80,11 @@
             android:layout_width="380dp"
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/custmloginbtn"
-            android:text="Login"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/buttonloginreg"
+            android:text="Masuk"
+            android:textAllCaps="false"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/BtnRegister3rdsc"
             app:layout_constraintEnd_toEndOf="parent"
