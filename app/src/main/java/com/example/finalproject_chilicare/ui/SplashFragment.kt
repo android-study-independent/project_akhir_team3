@@ -17,9 +17,9 @@ import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 
 class SplashFragment : Fragment() {
-    lateinit var viewPage : ViewPager2
-    lateinit var adapter : ViewPagerAdapter
-    lateinit var indikator : IndicatorView
+    lateinit var viewPage: ViewPager2
+    lateinit var adapter: ViewPagerAdapter
+    lateinit var indikator: IndicatorView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,19 +30,18 @@ class SplashFragment : Fragment() {
 
             if (onBoardingFinished()) {
                 findNavController().navigate(R.id.action_splashFragment_to_loginActivity)
-            }
-            else{
+            } else {
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
 
-        },3000)
+        }, 3000)
         return inflater.inflate(R.layout.fragment_splash, container, false)
 
         viewPage.findViewById<ViewPager2>(R.id.viewPagerOnboarding)
 
         indikator.findViewById<IndicatorView>(R.id.indicator_view)
 
-        viewPage.adapter= adapter
+        viewPage.adapter = adapter
 
         indikator.apply {
             setSliderWidth(resources.getDimension(R.dimen.space_10))
@@ -54,6 +53,7 @@ class SplashFragment : Fragment() {
 
 
     }
+
     private fun onBoardingFinished(): Boolean {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished", false)

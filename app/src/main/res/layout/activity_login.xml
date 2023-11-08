@@ -1,101 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:id="@+id/imageviewlogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logonew"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintVertical_bias="0.02"
-        />
+        app:layout_constraintVertical_bias="0.02" />
 
     <ImageView
         android:id="@+id/imageviewfarmer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/farmer2"
+        android:layout_width="@dimen/_110sdp"
+        android:layout_height="@dimen/_120sdp"
         android:layout_marginTop="-20dp"
+        android:src="@drawable/farmer2"
+        app:layout_constraintBottom_toTopOf="@+id/textviewhai"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageviewlogo"
-        app:layout_constraintBottom_toTopOf="@+id/textviewhai"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageviewlogo" />
 
     <TextView
         android:id="@+id/textviewhai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Selamat Datang Kembali👋"
-        android:textStyle="bold"
         android:textColor="@color/blackblue"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textview2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageviewfarmer"
-        app:layout_constraintBottom_toTopOf="@+id/textview2"
-        android:layout_marginTop="10dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageviewfarmer" />
 
     <TextView
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Mari masuk dan lanjutkan pembelajaran!"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/textviewEmail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewhai"
-        app:layout_constraintBottom_toTopOf="@+id/textviewEmail"
-        android:layout_marginTop="8dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textviewhai" />
 
     <TextView
         android:id="@+id/textviewEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Email"
-        android:textStyle="bold"
         android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview2"
-        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textview2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtlayoutinputemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textviewPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewEmail"
-        app:layout_constraintBottom_toTopOf="@+id/textviewPassword"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/textviewEmail">
 
         <EditText
             android:id="@+id/textInputEmailLogin"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/_42sdp"
             android:background="@drawable/custominputregistlogin"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:hint="Masukan email anda"
-            android:textSize="14sp"
             android:paddingLeft="12dp"
             android:textColor="@color/black"
-            />
+            android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,40 +95,37 @@
         android:id="@+id/textviewPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Password"
-        android:textStyle="bold"
         android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputemail"
-        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputemail" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtlayoutinputpaswd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/textviewLupaPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviewPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textviewLupaPassword"
-        >
+        app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/textInputPasswordLogin"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:layout_height="55dp"
-            android:ems="10"
+            android:layout_height="@dimen/_42sdp"
             android:background="@drawable/custominputregistlogin"
-            android:hint="Masukan password anda"
-            android:textSize="14sp"
+            android:ems="10"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:hint="Masukan password anda"
+            android:inputType="textPassword"
             android:paddingLeft="12dp"
             android:textColor="@color/black"
-            />
+            android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,31 +133,29 @@
         android:id="@+id/textviewLupaPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Lupa Password?"
         android:textColor="@color/lingkrnluar"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputpaswd"
         app:layout_constraintBottom_toTopOf="@+id/btnmasuk"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputpaswd" />
 
     <Button
         android:id="@+id/btnmasuk"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttonloginreg"
         android:text="Masuk"
         android:textAllCaps="false"
-        android:textSize="16sp"
-        android:background="@drawable/buttonloginreg"
         android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvbelumpunyaakun"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewLupaPassword"
-        app:layout_constraintBottom_toTopOf="@+id/tvbelumpunyaakun"
-        android:layout_marginTop="20dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textviewLupaPassword" />
 
     <TextView
         android:id="@+id/tvbelumpunyaakun"
@@ -181,8 +168,7 @@
         app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnmasuk"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btnmasuk" />
 
     <TextView
         android:id="@+id/textviewdaftardisini"
@@ -194,8 +180,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@+id/tvbelumpunyaakun"
-        app:layout_constraintTop_toTopOf="@+id/tvbelumpunyaakun"
-        />
+        app:layout_constraintTop_toTopOf="@+id/tvbelumpunyaakun" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

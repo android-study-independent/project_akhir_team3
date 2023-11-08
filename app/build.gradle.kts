@@ -53,6 +53,8 @@ dependencies {
     implementation ("com.airbnb.android:lottie-compose:6.1.0")
     implementation ("com.airbnb.android:lottie:6.1.0")
 
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
+
     //sliderindicator
     implementation ("com.github.zhpanvip:viewpagerindicator:1.2.3")
 

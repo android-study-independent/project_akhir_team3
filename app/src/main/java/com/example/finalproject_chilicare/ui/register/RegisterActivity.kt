@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +12,7 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.ui.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
         val txtRegist = findViewById<TextView>(R.id.btndaftar2)
 
-        txtRegist.setOnClickListener { Intent(this,LoginActivity::class.java).also {
+        txtRegist.setOnClickListener { Intent(this, LoginActivity::class.java).also {
             startActivity(it)
         } }
 

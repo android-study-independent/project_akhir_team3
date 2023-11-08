@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.ThirdScreen">
+    tools:context=".ui.onboarding.ThirdFragment">
 
     <ImageView
         android:id="@+id/imgscreen2"

@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.onboarding
 
 import android.content.Context
 import android.os.Bundle
@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 //import androidx.navigation.fragment.findNavController
 //import androidx.viewpager2.widget.ViewPager2
 import com.example.finalproject_chilicare.R
 
-class ThirdScreen : Fragment() {
+class ThirdFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

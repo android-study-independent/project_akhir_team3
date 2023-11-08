@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.login
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -10,10 +10,13 @@ import android.widget.Toast
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
+import com.example.finalproject_chilicare.ui.HomeActivity
+import com.example.finalproject_chilicare.ui.register.RegisterActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var password: EditText
     lateinit var btnLogin: Button
 
+    lateinit var prefHeleper: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,9 +40,12 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById<EditText>(R.id.textInputPasswordLogin)
         btnLogin = findViewById<Button>(R.id.btnmasuk)
 
+        // initiate prefHelper
+        prefHeleper = PreferencesHelper.customPrefs(this)
+
         // Ini untuk melihat status login, menggunakan shared preferences
         val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+        val isLoggedIn = sharedPreferences.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
 
         if (isLoggedIn) {
             // Ini jika user sudah login, maka arahkan ke HomeActivity
@@ -89,10 +97,11 @@ class LoginActivity : AppCompatActivity() {
                                 Log.d("Login", "Loginactivity token : $token")
 
                                 // Ini simpan token di shared prefrences
-                                saveTokenInSharedPreferences(token)
+
+                                prefHeleper.edit().putString(PreferencesHelper.KEY_TOKEN, token)
+                                prefHeleper.edit().putBoolean(PreferencesHelper.KEY_IS_LOGIN, true)
 
                                 // Ini untuk mengindikasi kalo user udah login
-                                setLoggedInStatus(true)
 
                                 // Ini untuk diarahkan ke HomeActivity
                                 goToHomeActivity()
@@ -122,22 +131,6 @@ class LoginActivity : AppCompatActivity() {
                 Log.e("Login", "pesan eror: ${t.message}")
             }
         })
-    }
-
-    // Ini fungsi untuk nyimpen tokennya
-    private fun saveTokenInSharedPreferences(token: String) {
-        val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString("accessToken", token)
-        editor.apply()
-    }
-
-    // Ini fungsi untuk mengindikasi user udah login atau belum
-    private fun setLoggedInStatus(isLoggedIn: Boolean) {
-        val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", isLoggedIn)
-        editor.apply()
     }
 
     // Ini fungsi untuk menuju ke halaman Homeactivity

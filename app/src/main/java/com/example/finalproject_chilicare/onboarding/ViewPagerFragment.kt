@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.ViewPagerAdapter
-import com.example.finalproject_chilicare.ui.FirstScreen
-import com.example.finalproject_chilicare.ui.SecondScreen
-import com.example.finalproject_chilicare.ui.ThirdScreen
+import com.example.finalproject_chilicare.ui.onboarding.SecondFragment
+import com.example.finalproject_chilicare.ui.onboarding.ThirdFragment
 
 
 class ViewPagerFragment : Fragment() {
@@ -25,8 +24,8 @@ class ViewPagerFragment : Fragment() {
         val fragmentList = arrayListOf<Fragment>(
 
             //saya hapus firstscreen ya udah gakepake
-            SecondScreen(),
-            ThirdScreen()
+            SecondFragment(),
+            ThirdFragment()
         )
 
         val adapter = ViewPagerAdapter(

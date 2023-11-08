@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.onboarding
 
 import android.content.Context
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.finalproject_chilicare.R
 
 
-class SecondScreen : Fragment() {
+class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +32,8 @@ class SecondScreen : Fragment() {
 
         return view
     }
-    private fun onBoardingFinished(){
+
+    private fun onBoardingFinished() {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("Finished", true)
