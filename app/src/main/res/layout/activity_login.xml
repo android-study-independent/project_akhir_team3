@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/imageviewfarmer"
-        android:layout_width="300dp"
-        android:layout_height="290dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/farmer2"
         android:layout_marginTop="-20dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -53,11 +53,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mari masuk dan lanjutkan pembelajaran!"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textviewhai"
         app:layout_constraintBottom_toTopOf="@+id/textviewEmail"
+        android:layout_marginTop="8dp"
         />
 
     <TextView
@@ -91,7 +92,8 @@
             android:background="@drawable/custominputregistlogin"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:hint="Masukan email anda"
-            android:paddingLeft="8dp"
+            android:textSize="14sp"
+            android:paddingLeft="12dp"
             android:textColor="@color/black"
             />
 
@@ -130,8 +132,9 @@
             android:ems="10"
             android:background="@drawable/custominputregistlogin"
             android:hint="Masukan password anda"
+            android:textSize="14sp"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
-            android:paddingLeft="8dp"
+            android:paddingLeft="12dp"
             android:textColor="@color/black"
             />
 
@@ -171,7 +174,7 @@
         android:id="@+id/tvbelumpunyaakun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:text="Belum Punya Akun?"
         android:textColor="@color/secondary"
         android:textSize="16sp"
