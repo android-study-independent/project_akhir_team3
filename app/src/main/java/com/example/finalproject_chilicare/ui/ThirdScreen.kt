@@ -24,12 +24,12 @@ class ThirdScreen : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_third_screen, container, false)
 
-//
-//        view.findViewById<Button>(R.id.btnlogin).setOnClickListener {
-//            findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
-//            onBoardingFinished()
-//
-//        }
+
+        view.findViewById<Button>(R.id.btnLoginSplashscreen).setOnClickListener {
+            findNavController().navigate(R.id.action_viewPagerFragment_to_loginActivity)
+            onBoardingFinished()
+
+        }
 
         view.findViewById<Button>(R.id.btnRegisterSplashscreen).setOnClickListener {
             findNavController().navigate(R.id.action_viewPagerFragment_to_registerActivity)
