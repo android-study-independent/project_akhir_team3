@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
             requestPassword = password
         )
 
-        val retro = Retro().getRetroClientInstance("https://6f38-103-189-201-221.ngrok-free.app/auth/")
+        val retro = Retro().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/")
             .create(UserAPI::class.java)
 
         retro.getUser(loginReq).enqueue(object : Callback<LoginResponse> {
