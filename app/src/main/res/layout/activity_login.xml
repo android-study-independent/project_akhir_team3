@@ -88,13 +88,14 @@
         <EditText
             android:id="@+id/textInputEmailLogin"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="48dp"
             android:background="@drawable/custominputregistlogin"
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:hint="Masukan email anda"
             android:textSize="14sp"
             android:paddingLeft="12dp"
             android:textColor="@color/black"
+            android:onClick="clearEditTextOnClick"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +129,7 @@
             android:id="@+id/textInputPasswordLogin"
             android:layout_width="match_parent"
             android:inputType="textPassword"
-            android:layout_height="55dp"
+            android:layout_height="48dp"
             android:ems="10"
             android:background="@drawable/custominputregistlogin"
             android:hint="Masukan password anda"
@@ -136,6 +137,7 @@
             android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:paddingLeft="12dp"
             android:textColor="@color/black"
+            android:onClick="clearEditTextOnClick"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -176,7 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:text="Belum Punya Akun?"
-        android:textColor="@color/secondary"
+        android:textColor="@color/grey"
         android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintLeft_toLeftOf="parent"
