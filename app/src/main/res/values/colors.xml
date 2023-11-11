@@ -2,22 +2,34 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#FFCCCCCC</color>
-    <color name="red">#FFE86969</color>
-    <color name="blackblue">#303344</color>
-    <color name="blue">#018499</color>
-    <color name="grey">#8388B2</color>
 
+    // Design system sesuai UI / UX
 
+    // Background setiap halaman
+    <color name="BackgroundHalaman">#FFF6F6F6</color>
 
-    //color Button
-    <color name="button">#BF2A63</color>
+    // Brand
+    <color name="PrimaryBrand">#FFBF2A63</color>
+    <color name="SecondaryBrand">#FF99224F</color>
+    <color name="NeutralBrand">#FFECBFD0</color>
 
+    // Text
+    <color name="PrimaryText">#FF303344</color>
+    <color name="SecondaryText">#FF8388B2</color>
+    <color name="NeutralText">#FFFFFFFF</color>
+    <color name="SemanticText">#FFC5C5C5</color>
+
+    // Status
+    <color name="PrimaryStatus">#FF438F02</color>
+    <color name="SecondaryStatus">#FF018499</color>
+    <color name="NeutralStatus">#FFF2BA04</color>
+    <color name="SemanticStatus">#FFCE2166</color>
+
+    // Slider
     //indicatior slider
-    <color name="lingkrndalam">#ECBFD0</color>
-    <color name="lingkrnluar">#99224F</color>
+    <color name="PrimarySlider">#ECBFD0</color>
+    <color name="SecondarySlider">#99224F</color>
 
-    //hint tesk
-    <color name="hintteks">#8388B2</color>
-    <color name="teksbutton">#99224F</color>
+
+
 </resources>

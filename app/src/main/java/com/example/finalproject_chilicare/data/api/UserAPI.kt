@@ -14,5 +14,5 @@ interface UserAPI {
     fun createUser(@Body req: RegisterRequest) : Call<RegisterResponse>
 
     @POST("login")
-    fun getUser(@Body req: LoginRequest) : Call<LoginResponse>
+    fun userLogin(@Body req: LoginRequest) : Call<LoginResponse>
 }

@@ -3,12 +3,13 @@ package com.example.finalproject_chilicare.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Email
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.api.Retro
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
@@ -17,18 +18,26 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
+
+    lateinit var email: EditText
+    lateinit var namaPengguna : EditText
+    lateinit var password : EditText
+    lateinit var konfirmasiPassword : EditText
+    lateinit var btRegister : Button
+    lateinit var tvLoginDisini : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val fullname = findViewById<EditText>(R.id.textInputFullname)
-        val email = findViewById<EditText>(R.id.textInputEmailRegister)
-        val password = findViewById<EditText>(R.id.textInputPasswordRegister)
-        val confirmPassword = findViewById<EditText>(R.id.textInputConfirmPassword)
-        val btnRegister = findViewById<Button>(R.id.buttonRegister)
-        val txtRegist = findViewById<TextView>(R.id.btndaftar2)
+        email = findViewById(R.id.etEmail)
+        namaPengguna = findViewById(R.id.etNamaPengguna)
+        password = findViewById(R.id.etPassword)
+        konfirmasiPassword = findViewById(R.id.etKonfirmasiPassword)
+        btRegister = findViewById(R.id.btDaftarSekarang)
+        tvLoginDisini = findViewById(R.id.tvLoginDisini)
 
-        txtRegist.setOnClickListener { Intent(this,LoginActivity::class.java).also {
+        tvLoginDisini.setOnClickListener { Intent(this,LoginActivity::class.java).also {
             startActivity(it)
         } }
 
@@ -36,25 +45,19 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun initAction() {
-        val btnRegister = findViewById<Button>(R.id.buttonRegister)
-
-        btnRegister.setOnClickListener {
+        btRegister.setOnClickListener {
             postUser()
         }
     }
 
     fun postUser() {
-        val fullname = findViewById<EditText>(R.id.textInputFullname)
-        val email = findViewById<EditText>(R.id.textInputEmailRegister)
-        val password = findViewById<EditText>(R.id.textInputPasswordRegister)
-       // val confirmPassword = findViewById<EditText>(R.id.txtConfirmPassword)
-
         val registerReq = RegisterRequest()
-        registerReq.fullname = fullname.text.toString()
+
+        registerReq.fullname = namaPengguna.text.toString()
         registerReq.email = email.text.toString()
         registerReq.password = password.text.toString()
 
-        val retro = Retro().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
+        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
