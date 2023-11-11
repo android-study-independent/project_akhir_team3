@@ -6,71 +6,41 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.core.content.edit
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.data.PreferencesHelper
 
 class HomeActivity : AppCompatActivity() {
+
+    lateinit var btnLogout: Button
+    lateinit var sharedPreferences: SharedPreferences
+    var isLoggedIn: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Ini untuk nampilin log aja kalo homeactivity dibuka
-        Log.d("HomeActivity :", "HomeActivity : barusan dibuka nih")
+        Log.d("HomeActivity", "HomeActivity: barusan dibuka nih")
 
-        // Ini untuk penamaan variabelnya
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
+        btnLogout = findViewById(R.id.btnLogout)
+        btnLogout.setOnClickListener { doLogout() }
 
-
-        btnLogout.setOnClickListener {
-            // Ini ketika diteken, manggil fungsi performLogout
-            postLogout()
-        }
-
-        // Ini untuk mengindikasi user udah login apa belom
-        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
-
-        if (!isLoggedIn) {
-
-            // Ini jika user belom login, diarahkan ke Loginactivity
-            Intent(this, LoginActivity::class.java).also {
-                startActivity(it)
-                finish()
-            }
-
-        }
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        isLoggedIn = sharedPreferences.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
     }
 
-    private fun postLogout() {
+    private fun doLogout() {
+        Log.d("HomeActivity", "Homeactivity: Logout berhasil")
 
-        // Ini untuk nampilin log logout ajaa
-        Log.d("HomeActivity", "Homeactivity : Logout berhasil")
+        val prefHelper = PreferencesHelper.customPrefs(this)
+        prefHelper.edit {
+            remove(PreferencesHelper.KEY_TOKEN)
+            putBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
+        }
 
-        // Ini untuk menghapus tokennya
-        clearTokenFromSharedPreferences()
-
-        // Ini untuk mengindikasi kalo user udah login
-        setLoggedInStatus(false)
-
-        // Ini untuk diarahkan ke LoginActivity
         Intent(this, LoginActivity::class.java).also {
             startActivity(it)
             finish()
         }
-    }
-
-    // Ini fungsi untuk menghapus tokennya
-    private fun clearTokenFromSharedPreferences() {
-        val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.remove("accessToken")
-        editor.apply()
-    }
-
-    // Ini fungsi untuk mengindikasi user udah login atau belum
-    private fun setLoggedInStatus(isLoggedIn: Boolean) {
-        val sharedPreferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putBoolean("isLoggedIn", isLoggedIn)
-        editor.apply()
     }
 }

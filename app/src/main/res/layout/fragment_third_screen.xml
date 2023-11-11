@@ -48,7 +48,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/hintteks"
+            android:textColor="@color/SecondaryText"
             android:fontFamily="sans-serif"
             android:text="Mari Bergabung dan Mulai Belajar Bersama Kami"
             android:textAlignment="center"
@@ -68,7 +68,7 @@
             android:background="@drawable/custmloginbtn"
             android:text="Daftr Sekarang"
             android:textStyle="bold"
-            android:textColor="@color/teksbutton"
+            android:textColor="@color/PrimaryBrand"
             android:layout_marginBottom="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/viewtv"
             app:layout_constraintStart_toStartOf="@+id/viewtv"
@@ -90,7 +90,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/viewscreen2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </FrameLayout>

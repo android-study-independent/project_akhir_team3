@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/BackgroundHalaman"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LoginActivity"
     android:padding="10dp">
 
+    <!-- ILUSTRASI 1 -->
     <ImageView
-        android:id="@+id/imageviewlogo"
+        android:id="@+id/ivLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logonew"
@@ -21,183 +23,229 @@
         app:layout_constraintVertical_bias="0.02"
         />
 
+    <!-- ILUSTRASI 2 -->
     <ImageView
-        android:id="@+id/imageviewfarmer"
+        android:id="@+id/ivLogo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/farmer2"
         android:layout_marginTop="-20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageviewlogo"
-        app:layout_constraintBottom_toTopOf="@+id/textviewhai"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:layout_constraintBottom_toTopOf="@+id/tvWelcome"
         />
 
+    <!-- TEXT SELAMAT DATANG KEMBALI -->
     <TextView
-        android:id="@+id/textviewhai"
+        android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selamat Datang Kembali👋"
-        android:textStyle="bold"
-        android:textColor="@color/blackblue"
         android:textSize="18sp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textStyle="bold"
+        android:textColor="@color/PrimaryText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageviewfarmer"
-        app:layout_constraintBottom_toTopOf="@+id/textview2"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo2"
+        app:layout_constraintBottom_toTopOf="@+id/tvDescription"
         android:layout_marginTop="10dp"
         />
 
+    <!-- TEXT MARI MASUK DAN LANJUTKAN PEMBELAJARAN -->
     <TextView
-        android:id="@+id/textview2"
+        android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mari masuk dan lanjutkan pembelajaran!"
         android:textSize="14sp"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        android:textColor="@color/SecondaryText"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewhai"
-        app:layout_constraintBottom_toTopOf="@+id/textviewEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
+        app:layout_constraintBottom_toTopOf="@+id/llWadahEmail"
         android:layout_marginTop="8dp"
         />
 
-    <TextView
-        android:id="@+id/textviewEmail"
-        android:layout_width="match_parent"
+    <!-- LABEL EMAIL -->
+    <LinearLayout
+        android:id="@+id/llWadahEmail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview2"
-        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
-        android:layout_marginTop="20dp"
-        />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        app:layout_constraintBottom_toTopOf="@+id/tilEmail"
+        android:layout_marginTop="20dp">
 
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+    </LinearLayout>
+
+    <!-- TEXT INPUT EMAIL -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtlayoutinputemail"
+        android:id="@+id/tilEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewEmail"
-        app:layout_constraintBottom_toTopOf="@+id/textviewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahEmail"
+        app:layout_constraintBottom_toTopOf="@+id/llPassword"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
         >
 
         <EditText
-            android:id="@+id/textInputEmailLogin"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/custominputregistlogin"
-            android:fontFamily="@font/plusjakartasans_variablefont_wght"
             android:hint="Masukan email anda"
             android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:textColor="@color/SecondaryText"
+            android:background="@drawable/custominputregistlogin"
             android:paddingLeft="12dp"
-            android:textColor="@color/black"
-            android:onClick="clearEditTextOnClick"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textviewPassword"
-        android:layout_width="match_parent"
+    <!-- LABEL Password -->
+    <LinearLayout
+        android:id="@+id/llPassword"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputemail"
-        app:layout_constraintBottom_toTopOf="@+id/txtlayoutinputemail"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
+        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
         android:layout_marginTop="20dp"
-        />
+        >
 
+        <TextView
+            android:id="@+id/tvLabelPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+    </LinearLayout>
+
+    <!-- Text Input Password -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtlayoutinputpaswd"
+        android:id="@+id/tilPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:passwordToggleEnabled="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textviewLupaPassword"
+        app:layout_constraintTop_toBottomOf="@+id/llPassword"
+        app:layout_constraintBottom_toTopOf="@+id/tvLupaPassword"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
         >
 
         <EditText
-            android:id="@+id/textInputPasswordLogin"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
             android:layout_height="48dp"
-            android:ems="10"
-            android:background="@drawable/custominputregistlogin"
-            android:hint="Masukan password anda"
+            android:hint="Masukan email anda"
             android:textSize="14sp"
-            android:fontFamily="@font/plusjakartasans_variablefont_wght"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:textColor="@color/SecondaryText"
+            android:background="@drawable/custominputregistlogin"
             android:paddingLeft="12dp"
-            android:textColor="@color/black"
-            android:onClick="clearEditTextOnClick"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- TEXT LUPA PASSWORD -->
     <TextView
-        android:id="@+id/textviewLupaPassword"
+        android:id="@+id/tvLupaPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lupa Password?"
-        android:textColor="@color/lingkrnluar"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/plusjakartasans_medium_500"
+        android:textColor="@color/PrimaryBrand"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtlayoutinputpaswd"
-        app:layout_constraintBottom_toTopOf="@+id/btnmasuk"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+        app:layout_constraintBottom_toTopOf="@+id/btMasuk"
         android:layout_marginTop="20dp"
         />
 
+    <!-- BUTTON MASUK -->
     <Button
-        android:id="@+id/btnmasuk"
+        android:id="@+id/btMasuk"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Masuk"
+        android:textSize="14sp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textColor="@color/NeutralText"
         android:textAllCaps="false"
-        android:textSize="16sp"
         android:background="@drawable/buttonloginreg"
-        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textviewLupaPassword"
-        app:layout_constraintBottom_toTopOf="@+id/tvbelumpunyaakun"
+        app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword"
+        app:layout_constraintBottom_toTopOf="@+id/llWadahBelumPunyaAkun"
         android:layout_marginTop="20dp"
         />
 
-    <TextView
-        android:id="@+id/tvbelumpunyaakun"
+    <!-- GROUP BELUM PUNYA AKUN DAN DAFTAR DISINI  -->
+    <LinearLayout
+        android:id="@+id/llWadahBelumPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="Belum Punya Akun?"
-        android:textColor="@color/grey"
-        android:textSize="16sp"
-        app:layout_constraintHorizontal_bias="0.287"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btMasuk"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnmasuk"
-        />
-
-    <TextView
-        android:id="@+id/textviewdaftardisini"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:text="Daftar Disini"
-        android:textColor="@color/blue"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toRightOf="@+id/tvbelumpunyaakun"
-        app:layout_constraintTop_toTopOf="@+id/tvbelumpunyaakun"
-        />
-
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/tvBelumPunyaAkun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum punya akun?"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryText"
+            android:layout_marginRight="2dp"
+            />
+        <TextView
+            android:id="@+id/tvDaftarDisini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daftar disini"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryStatus"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
