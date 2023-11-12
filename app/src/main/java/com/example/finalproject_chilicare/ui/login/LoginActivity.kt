@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.login
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -14,8 +14,8 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
-import com.example.finalproject_chilicare.ui.HomeActivity
-import com.example.finalproject_chilicare.ui.RegisterActivity
+import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.register.RegisterActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

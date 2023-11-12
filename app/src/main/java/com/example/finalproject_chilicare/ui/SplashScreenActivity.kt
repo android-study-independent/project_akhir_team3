@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.onboarding.ViewPagerFragment
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

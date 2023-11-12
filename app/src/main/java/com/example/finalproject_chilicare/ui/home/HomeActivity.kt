@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.home
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.core.content.edit
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
+import com.example.finalproject_chilicare.ui.login.LoginActivity
 
 class HomeActivity : AppCompatActivity() {
 
