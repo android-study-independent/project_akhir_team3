@@ -9,6 +9,9 @@ object PreferencesHelper {
 
     const val KEY_IS_LOGIN = "is_login"
     const val KEY_TOKEN = "token"
+    const val KEY_LOGGED_IN = "onboarding_to_login"
+    const val KEY_REGIST_IN = "onboarding_to_regist"
+
 
     fun defaultPrefs(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
