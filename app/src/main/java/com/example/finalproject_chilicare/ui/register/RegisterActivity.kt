@@ -57,10 +57,10 @@ class RegisterActivity : AppCompatActivity() {
 
     fun initAction() {
         btnRegister.setOnClickListener {
-            checkEmail()
-            checkUsername()
-            checkPassword()
-            checkConfirmPassword()
+//            checkEmail()
+//            checkUsername()
+//            checkPassword()
+//            checkConfirmPassword()
 
             createNewUser()
 
@@ -69,14 +69,19 @@ class RegisterActivity : AppCompatActivity() {
 
     fun createNewUser() {
         val registerReq = RegisterRequest()
-        registerReq.fullname = inputEmailRegister.text.toString()
+        registerReq.fullname = inputUsernameRegister.text.toString()
         registerReq.email = inputEmailRegister.text.toString()
         registerReq.password = inputPasswordRegister.text.toString()
 
-        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
-        retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
+        val network = Network().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
+        network.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
+
+                val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
+                val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
+                textStatus.text = register!!.status.toString()
+                textMessage.text = register!!.message.toString()
 
 
             }
@@ -91,7 +96,6 @@ class RegisterActivity : AppCompatActivity() {
         inputEmailRegister.setOnFocusChangeListener { _, hasFocus ->  
             if(!hasFocus){
                 emailContainer.helperText = validEmail()
-
             }
         }
     }
@@ -99,11 +103,20 @@ class RegisterActivity : AppCompatActivity() {
     private fun validEmail(): String? {
         val txtEmail = inputEmailRegister.text.toString()
 
+
         if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
             return "Invalid Email Address"
         } else if (txtEmail.isEmpty()){
             return "Email must be entry"
         }
+//        else {
+//            val checkSameEmail = CheckEmail(txtEmail) { isEmailUsed ->
+//                if (isEmailUsed){
+//                    return@CheckEmail
+//                }
+//            }
+//            checkSameEmail.execute()
+//        }
         return null
     }
 
