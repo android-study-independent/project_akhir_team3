@@ -43,6 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         inputPasswordRegister = findViewById(R.id.textInputPasswordRegister)
         confirmPasswordContainer = findViewById(R.id.confirmPasswordContainer)
         inputConfirmPasswordRegister = findViewById(R.id.textInputConfirmPassword)
+        btnRegister = findViewById(R.id.buttonRegister)
 
         textToLogin = findViewById(R.id.textToLogin)
 
@@ -50,11 +51,40 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(it)
         } }
 
-        checkEmail()
-        checkUsername()
-        checkPassword()
-        checkConfirmPassword()
+
         initAction()
+    }
+
+    fun initAction() {
+        btnRegister.setOnClickListener {
+            checkEmail()
+            checkUsername()
+            checkPassword()
+            checkConfirmPassword()
+
+            createNewUser()
+
+        }
+    }
+
+    fun createNewUser() {
+        val registerReq = RegisterRequest()
+        registerReq.fullname = inputEmailRegister.text.toString()
+        registerReq.email = inputEmailRegister.text.toString()
+        registerReq.password = inputPasswordRegister.text.toString()
+
+        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
+        retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
+            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                val register = response.body()
+
+
+            }
+
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                Log.d("Failed", "Create User Failed")
+            }
+        })
     }
 
     private fun checkEmail() {
@@ -114,8 +144,8 @@ class RegisterActivity : AppCompatActivity() {
         if (!txtPassword.matches((".*[a-z].*".toRegex()))){
             return "Must 1 lower-case character"
         }
-        if (!txtPassword.matches((".*[@#-_^].*".toRegex()))){
-            return "Must 1 spesial character : @, #, -, _, ^"
+        if (!txtPassword.matches((".*[@#!_^].*".toRegex()))){
+            return "Must 1 spesial character : @, #, !, _, ^"
         }
         return null
     }
@@ -139,41 +169,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-    fun initAction() {
-        val btnRegister = findViewById<Button>(R.id.buttonRegister)
 
-        btnRegister.setOnClickListener {
-            createNewUser()
-        }
-    }
-
-    fun createNewUser() {
-        inputEmailRegister = findViewById(R.id.textInputUsername)
-        inputEmailRegister= findViewById(R.id.textInputEmailRegister)
-        inputPasswordRegister = findViewById(R.id.textInputPasswordRegister)
-
-        val registerReq = RegisterRequest()
-        registerReq.fullname = inputEmailRegister.text.toString()
-        registerReq.email = inputEmailRegister.text.toString()
-        registerReq.password = inputPasswordRegister.text.toString()
-
-        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
-        retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                val register = response.body()
-
-            }
-
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                Log.d("Failed", "Create User Failed")
-            }
-        })
-
-        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-
-    }
 
 }
 
