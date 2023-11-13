@@ -10,237 +10,321 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/logonew"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="13dp" />
+        android:layout_marginTop="9dp" />
 
     <TextView
         android:id="@+id/textWelcomeToChiliicare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selamat Datang Di ChiliCare's👋"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <!-- LABEL EMAIL -->
     <TextView
         android:id="@+id/textPreviewChiliicare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="8dp"
+        android:padding="6dp"
         android:text="Isi data diri Anda untuk mendapatkan informasi terbaru tentang tips bercocok tanam cabai. "
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textWelcomeToChiliicare"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintTop_toBottomOf="@+id/textWelcomeToChiliicare" />
 
-    <TextView
-        android:id="@+id/txtmail"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/llWadahLabelEmail"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/textPreviewChiliicare"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/emailContainer"
+        android:layout_marginTop="10dp"
+        >
 
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+    </LinearLayout>
+
+    <!-- TEXT INPUT EMAIL -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:helperTextEnabled="false"
         app:helperText="requiered"
         app:helperTextTextColor="#E60909"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtmail">
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahLabelEmail"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
+        >
         <EditText
             android:id="@+id/textInputEmailRegister"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Email@email.com"
-            android:background="@drawable/custominputregistlogin"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="12dp"
+            android:hint="Masukan email anda"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtmail"
-            android:onClick="clearEditTextOnClick"
-            />
+            android:background="@drawable/custominputregistlogin"
+            android:paddingLeft="12dp"/>
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/txtFullname"
-        android:layout_width="wrap_content"
+    <!-- LABEL NAMA PENGGUNA -->
+    <LinearLayout
+        android:id="@+id/llWadahNamaPengguna"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Nama Pengguna"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/emailContainer"
-        app:layout_constraintLeft_toLeftOf="@+id/emailContainer"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/usernameContainer"
+        android:layout_marginTop="10dp">
 
+        <TextView
+            android:id="@+id/tvNamaPengguna"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Pengguna"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+
+    </LinearLayout>
+
+    <!-- TEXT INPUT NAMA PENGGUNA -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:helperText="requiered"
         app:helperTextTextColor="#E60909"
-        app:helperTextEnabled="false"
-        app:layout_constraintLeft_toLeftOf="@id/txtFullname"
-        app:layout_constraintTop_toBottomOf="@id/txtFullname">
-
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahNamaPengguna"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
+        >
         <EditText
             android:id="@+id/textInputUsername"
             android:layout_width="match_parent"
-            android:inputType="textPersonName"
             android:layout_height="48dp"
-            android:background="@drawable/custominputregistlogin"
-            android:hint="Username"
-            android:paddingLeft="12dp"
+            android:hint="Masukan Nama Pengguna anda"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logintv"
-            android:onClick="clearEditTextOnClick"
+            android:background="@drawable/custominputregistlogin"
+            android:paddingLeft="12dp"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/txtpassword"
-        android:layout_width="wrap_content"
+    <!-- LABEL PASSWORD -->
+    <LinearLayout
+        android:id="@+id/llWadahPassword"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/passwordContainer"
-        app:layout_constraintTop_toBottomOf="@id/usernameContainer"/>
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/usernameContainer"
+        app:layout_constraintBottom_toTopOf="@id/passwordContainer"
+        android:layout_marginTop="10dp"
+        >
 
+        <TextView
+            android:id="@+id/tvLabelPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+    </LinearLayout>
+
+    <!-- TEXT INPUT PASSWORD -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:helperText="requiered"
         app:helperTextTextColor="#E60909"
-        app:helperTextEnabled="false"
-        app:layout_constraintLeft_toLeftOf="@id/txtpassword"
-        app:layout_constraintTop_toBottomOf="@id/txtpassword"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahPassword"
+        app:layout_constraintBottom_toTopOf="@+id/llWadahKonfirmasiPassword"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
+        >
 
         <EditText
             android:id="@+id/textInputPasswordRegister"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
             android:layout_height="48dp"
-            android:ems="10"
-            android:background="@drawable/custominputregistlogin"
-            android:hint="Masukan Password"
-            android:paddingLeft="12dp"
+            android:hint="Password Anda"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logintv"
-            android:onClick="clearEditTextOnClick"
+            android:background="@drawable/custominputregistlogin"
+            android:paddingLeft="12dp"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/txtconpassword"
-        android:layout_width="wrap_content"
+    <!-- LABEL KONFIRMASI PASSWORD -->
+    <LinearLayout
+        android:id="@+id/llWadahKonfirmasiPassword"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:text="Konfirm Password"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/confirmPasswordContainer"
-        app:layout_constraintTop_toBottomOf="@id/passwordContainer"/>
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer"
+        app:layout_constraintBottom_toTopOf="@+id/cbRegister"
+        android:layout_marginTop="30dp"
+        >
 
+        <TextView
+            android:id="@+id/tvKonfirmasiPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konfirmasi Password"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_medium_500"
+            android:textColor="@color/PrimaryText"
+            android:layout_marginRight="2dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*"
+            android:textColor="@color/SemanticStatus"
+            />
+    </LinearLayout>
+
+    <!-- TEXT INPUT KONFIRMASI PASSWORD -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/confirmPasswordContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:helperText="requiered"
         app:helperTextTextColor="#E60909"
-        app:helperTextEnabled="false"
-        app:layout_constraintLeft_toLeftOf="@id/txtpassword"
-        app:layout_constraintTop_toBottomOf="@id/txtconpassword"
-        app:passwordToggleEnabled="true">
-
+        app:passwordToggleEnabled="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahKonfirmasiPassword"
+        app:hintEnabled="false"
+        android:layout_marginTop="8dp"
+        >
         <EditText
             android:id="@+id/textInputConfirmPassword"
             android:layout_width="match_parent"
-            android:inputType="textPassword"
             android:layout_height="48dp"
-            android:background="@drawable/custominputregistlogin"
-            android:hint="Ulangi Password"
-            android:paddingLeft="8dp"
+            android:hint="Ulangi Password Anda"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logintv"
-            android:onClick="clearEditTextOnClick"
+            android:background="@drawable/custominputregistlogin"
+            android:paddingLeft="12dp"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- CHECKBOX -->
     <CheckBox
-        android:id="@+id/checkBoxRegister"
+        android:id="@+id/cbRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordContainer"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="Saya setuju dengan Ketentuan Layanan, Kebijakan Privasi, dan Pengaturan Pemberitahuan default dari ChilliCare."
-        android:textSize="14sp"
+        android:textSize="11sp"
+        android:fontFamily="@font/plusjakartasans_semibold_600"
         />
 
+    <!-- BUTTON REGISTER -->
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRegister"
         android:text="Daftar Sekarang"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textColor="@color/NeutralText"
         android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbRegister"
         android:background="@drawable/buttonloginreg"
         android:layout_marginTop="10dp"
         />
-
-    <TextView
-        android:id="@+id/textAskforAccount"
+    <!-- GROUP BELUM SUDAH PUNYA AKUN DAN LOGIN DISINI  -->
+    <LinearLayout
+        android:id="@+id/llWadahSudahPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="12dp"
-        android:text="Sudah punya akun?"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/buttonRegister"
-        app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
-
-    <TextView
-        android:id="@+id/textToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="124dp"
-        android:text=" Login"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
-        app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
-
-
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="15dp"
+        >
+        <TextView
+            android:id="@+id/tvSudahPunyaAkun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sudah punya akun?"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryText"
+            android:layout_marginRight="2dp"
+            />
+        <TextView
+            android:id="@+id/textToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryStatus"
+            />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
