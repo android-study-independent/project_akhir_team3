@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.onboarding.OnboardingActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagertv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <Button
+        android:id="@+id/btnloginonboarding"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/buttonloginreg"
+        android:text="Masuk"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/btndaftaronboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btndaftaronboarding"
+        android:layout_width="380dp"
+        android:layout_height="60dp"
+        android:background="@drawable/custmloginbtn"
+        android:text="Daftar Sekarang"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/SecondaryBrand"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/indicatorscrll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.60"
+        android:orientation="vertical">
+
+        <com.zhpan.indicator.IndicatorView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/indicator_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_10"
+            android:layout_marginBottom="10dp"
+            app:vpi_slider_checked_color="@color/SecondarySlider"
+            app:vpi_slider_normal_color="@color/PrimarySlider" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

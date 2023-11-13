@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.onboarding.OnboardingFragment">
+
+
+    <ImageView
+        android:id="@+id/imagetvonboarding1"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/screen1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewtv"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:layout_gravity="bottom">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/style_onboarding2"
+            android:backgroundTint="#F6F6F6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"></View>
+
+
+        <TextView
+            android:id="@+id/txttitleonboarding1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15"
+            tools:text="Selamat Datang Di Chili Care"></TextView>
+
+        <TextView
+            android:id="@+id/txtdesconboarding1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif"
+            android:textAlignment="center"
+            android:textColor="@color/SecondaryText"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="@id/viewtv"
+            app:layout_constraintLeft_toLeftOf="@+id/viewtv"
+            app:layout_constraintTop_toBottomOf="@+id/txttitleonboarding1"
+            tools:text="Chilli Care media untuk kita semua belajar \n menanam cabai dari pemula sampai dengan menghasilkan Cabai yang berkualitas."></TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

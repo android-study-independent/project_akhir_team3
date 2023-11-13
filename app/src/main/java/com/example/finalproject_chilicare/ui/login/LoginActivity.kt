@@ -15,6 +15,8 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
+import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.register.RegisterActivity
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
