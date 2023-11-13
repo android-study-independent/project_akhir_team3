@@ -12,8 +12,8 @@
     <!-- ILUSTRASI 1 -->
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         android:src="@drawable/logonew"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,8 +26,8 @@
     <!-- ILUSTRASI 2 -->
     <ImageView
         android:id="@+id/ivLogo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="200dp"
         android:src="@drawable/farmer2"
         android:layout_marginTop="-20dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -105,10 +105,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llWadahEmail"
-        app:layout_constraintBottom_toTopOf="@+id/llPassword"
         app:hintEnabled="false"
         android:layout_marginTop="8dp"
+        app:helperText="Wajib diisi"
+        app:helperTextTextColor="@color/SemanticStatus"
+        app:layout_constraintTop_toBottomOf="@+id/llWadahEmail"
+        app:layout_constraintBottom_toTopOf="@+id/llPassword"
         >
 
         <EditText
@@ -166,6 +168,8 @@
         app:layout_constraintTop_toBottomOf="@+id/llPassword"
         app:layout_constraintBottom_toTopOf="@+id/tvLupaPassword"
         app:hintEnabled="false"
+        app:helperText="wajib diisi"
+        app:helperTextTextColor="@color/SemanticStatus"
         android:layout_marginTop="8dp"
         >
 
