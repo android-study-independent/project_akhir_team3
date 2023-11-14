@@ -120,7 +120,7 @@
             android:hint="Masukan email anda"
             android:textSize="14sp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
-            android:textColor="@color/SecondaryText"
+            android:textColor="@color/PrimaryText"
             android:background="@drawable/custominputregistlogin"
             android:paddingLeft="12dp"
             />
@@ -177,10 +177,10 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Masukan email anda"
+            android:hint="Masukan password anda"
             android:textSize="14sp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
-            android:textColor="@color/SecondaryText"
+            android:textColor="@color/PrimaryText"
             android:background="@drawable/custominputregistlogin"
             android:paddingLeft="12dp"
             />
@@ -199,7 +199,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword"
         app:layout_constraintBottom_toTopOf="@+id/btMasuk"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         />
 
     <!-- BUTTON MASUK -->
@@ -217,7 +217,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword"
         app:layout_constraintBottom_toTopOf="@+id/llWadahBelumPunyaAkun"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         />
 
     <!-- GROUP BELUM PUNYA AKUN DAN DAFTAR DISINI  -->
