@@ -1,8 +1,10 @@
 package com.example.finalproject_chilicare.ui.register
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.util.Patterns
 import android.widget.Button
@@ -33,6 +35,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var inputConfirmPasswordRegister: EditText
     lateinit var btnRegister: Button
     lateinit var textToLogin: TextView
+    lateinit var CbTextRegister : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -46,6 +49,11 @@ class RegisterActivity : AppCompatActivity() {
         confirmPasswordContainer = findViewById(R.id.confirmPasswordContainer)
         inputConfirmPasswordRegister = findViewById(R.id.textInputConfirmPassword)
         btnRegister = findViewById(R.id.buttonRegister)
+        CbTextRegister = findViewById(R.id.cbRegister)
+
+        //text to link checkbox
+        CbTextRegister.movementMethod = LinkMovementMethod.getInstance()
+        CbTextRegister.setLinkTextColor(Color.BLUE)
 
         textToLogin = findViewById(R.id.textToLogin)
 
