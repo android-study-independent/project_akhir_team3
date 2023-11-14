@@ -13,6 +13,7 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -78,6 +79,21 @@ class RegisterActivity : AppCompatActivity() {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
 
+                if (response.isSuccessful){
+                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
+                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
+                    textStatus.text = register!!.status.toString()
+                    textMessage.text = register!!.message.toString()
+                    checkEmail()
+                    checkUsername()
+                    checkPassword()
+                    checkConfirmPassword()
+                    clearText()
+                    moveToHome()
+                }
+                else {
+                    Log.d("Email sama", "${register?.message}")
+                }
 
             }
 
@@ -85,6 +101,19 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("Failed", "Create User Failed")
             }
         })
+    }
+
+    private fun clearText() {
+        inputEmailRegister.text = null
+        inputUsernameRegister.text = null
+        inputPasswordRegister.text = null
+        inputConfirmPasswordRegister.text = null
+    }
+
+    private fun moveToHome(){
+        val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun checkEmail() {
@@ -99,10 +128,21 @@ class RegisterActivity : AppCompatActivity() {
     private fun validEmail(): String? {
         val txtEmail = inputEmailRegister.text.toString()
 
+
         if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
             return "Invalid Email Address"
+            inputEmailRegister.requestFocus()
         } else if (txtEmail.isEmpty()){
             return "Email must be entry"
+            inputEmailRegister.requestFocus()
+        }
+        else {
+            val checkSameEmail = CheckInputRegister(txtEmail) { isEmailUsed ->
+                if (isEmailUsed){
+                    return@CheckInputRegister
+                }
+            }
+            checkSameEmail.execute()
         }
         return null
     }
@@ -120,7 +160,9 @@ class RegisterActivity : AppCompatActivity() {
 
          if (txtUsername.isEmpty()){
             return "Username must be entry"
-        }
+             inputUsernameRegister.requestFocus()
+
+         }
         return null
     }
 
@@ -137,15 +179,19 @@ class RegisterActivity : AppCompatActivity() {
 
         if (txtPassword.length < 8){
             return "Minimum character 8"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[A-Z].*".toRegex()))){
             return "Must 1 upper-case character"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[a-z].*".toRegex()))){
             return "Must 1 lower-case character"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[@#!_^].*".toRegex()))){
             return "Must 1 spesial character : @, #, !, _, ^"
+            inputPasswordRegister.requestFocus()
         }
         return null
     }
@@ -164,6 +210,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if (txtConfirmPassword !=  txtPassword){
             return "Your confirm password not same"
+            inputConfirmPasswordRegister.requestFocus()
         }
         return null
     }
