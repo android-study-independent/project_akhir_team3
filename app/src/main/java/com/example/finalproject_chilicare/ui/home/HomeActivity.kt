@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
         btnLogout = findViewById(R.id.btnLogout)
         btnLogout.setOnClickListener { doLogout() }
         prefHelper = PreferencesHelper.customPrefs(this)
-        isLoggedIn = sharedPreferences.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
+        isLoggedIn = prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN,false)
 
     }
 

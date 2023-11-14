@@ -8,6 +8,7 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
@@ -80,16 +81,18 @@ class RegisterActivity : AppCompatActivity() {
                 val register = response.body()
 
                 if (response.isSuccessful){
-                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
-                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
-                    textStatus.text = register!!.status.toString()
-                    textMessage.text = register!!.message.toString()
+                    // Cek hasil register
+//                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
+//                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
+//                    textStatus.text = register!!.status.toString()
+//                    textMessage.text = register!!.message.toString()
                     checkEmail()
                     checkUsername()
                     checkPassword()
                     checkConfirmPassword()
                     clearText()
-                    moveToHome()
+                    Toast.makeText(this@RegisterActivity,"${register?.message}", Toast.LENGTH_SHORT).show()
+                    moveToLogin()
                 }
                 else {
                     Log.d("Email sama", "${register?.message}")
@@ -110,8 +113,8 @@ class RegisterActivity : AppCompatActivity() {
         inputConfirmPasswordRegister.text = null
     }
 
-    private fun moveToHome(){
-        val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+    private fun moveToLogin(){
+        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }
