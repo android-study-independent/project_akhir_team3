@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
 
-class CheckEmail (private val email: String, private val callback: (Boolean) -> Unit) :
+class CheckInputRegister (private val email: String, private val callback: (Boolean) -> Unit) :
     AsyncTask<Void, Void, Boolean>(){
     override fun doInBackground(vararg params: Void?): Boolean {
         val client = OkHttpClient()

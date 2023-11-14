@@ -13,11 +13,15 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.UserAPI
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -57,14 +61,33 @@ class RegisterActivity : AppCompatActivity() {
 
     fun initAction() {
         btnRegister.setOnClickListener {
-//            checkEmail()
-//            checkUsername()
-//            checkPassword()
-//            checkConfirmPassword()
-
             createNewUser()
 
+            checkEmail()
+            checkUsername()
+            checkPassword()
+            checkConfirmPassword()
+
+
         }
+    }
+
+    private fun clearText() {
+        inputEmailRegister.text = null
+        inputUsernameRegister.text = null
+        inputPasswordRegister.text = null
+        inputConfirmPasswordRegister.text = null
+    }
+
+    private fun moveToHome(){
+        val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+
+    private fun validateEmail() {
+        val email = inputEmailRegister.text.toString().trim()
     }
 
     fun createNewUser() {
@@ -73,15 +96,30 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = inputEmailRegister.text.toString()
         registerReq.password = inputPasswordRegister.text.toString()
 
-        val network = Network().getRetroClientInstance("https://35b3-103-189-201-221.ngrok-free.app/auth/").create(UserAPI::class.java)
+        val network = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
         network.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
 
-                val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
-                val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
-                textStatus.text = register!!.status.toString()
-                textMessage.text = register!!.message.toString()
+                if (response.isSuccessful){
+                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
+                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
+                    textStatus.text = register!!.status.toString()
+                    textMessage.text = register!!.message.toString()
+                    checkEmail()
+                    checkUsername()
+                    checkPassword()
+                    checkConfirmPassword()
+                    clearText()
+                    moveToHome()
+                }
+                else {
+//                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
+//                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
+//                    textStatus.text = register!!.status.toString()
+//                    textMessage.text = register!!.message.toString()
+                    Log.d("Email sama", "${register?.message}")
+                }
 
 
             }
@@ -89,7 +127,9 @@ class RegisterActivity : AppCompatActivity() {
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                 Log.d("Failed", "Create User Failed")
             }
-        })
+        }
+
+        )
     }
 
     private fun checkEmail() {
@@ -106,17 +146,19 @@ class RegisterActivity : AppCompatActivity() {
 
         if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
             return "Invalid Email Address"
+            inputEmailRegister.requestFocus()
         } else if (txtEmail.isEmpty()){
             return "Email must be entry"
+            inputEmailRegister.requestFocus()
         }
-//        else {
-//            val checkSameEmail = CheckEmail(txtEmail) { isEmailUsed ->
-//                if (isEmailUsed){
-//                    return@CheckEmail
-//                }
-//            }
-//            checkSameEmail.execute()
-//        }
+        else {
+            val checkSameEmail = CheckInputRegister(txtEmail) { isEmailUsed ->
+                if (isEmailUsed){
+                    return@CheckInputRegister
+                }
+            }
+            checkSameEmail.execute()
+        }
         return null
     }
 
@@ -133,6 +175,7 @@ class RegisterActivity : AppCompatActivity() {
 
          if (txtUsername.isEmpty()){
             return "Username must be entry"
+             inputUsernameRegister.requestFocus()
         }
         return null
     }
@@ -150,15 +193,19 @@ class RegisterActivity : AppCompatActivity() {
 
         if (txtPassword.length < 8){
             return "Minimum character 8"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[A-Z].*".toRegex()))){
             return "Must 1 upper-case character"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[a-z].*".toRegex()))){
             return "Must 1 lower-case character"
+            inputPasswordRegister.requestFocus()
         }
         if (!txtPassword.matches((".*[@#!_^].*".toRegex()))){
             return "Must 1 spesial character : @, #, !, _, ^"
+            inputPasswordRegister.requestFocus()
         }
         return null
     }
