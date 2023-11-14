@@ -16,6 +16,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var btnLogout: Button
     lateinit var sharedPreferences: SharedPreferences
     var isLoggedIn: Boolean = false
+    lateinit var prefHelper: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,15 +26,14 @@ class HomeActivity : AppCompatActivity() {
 
         btnLogout = findViewById(R.id.btnLogout)
         btnLogout.setOnClickListener { doLogout() }
-
-        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        prefHelper = PreferencesHelper.customPrefs(this)
         isLoggedIn = sharedPreferences.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
+
     }
 
     private fun doLogout() {
         Log.d("HomeActivity", "Homeactivity: Logout berhasil")
 
-        val prefHelper = PreferencesHelper.customPrefs(this)
         prefHelper.edit {
             remove(PreferencesHelper.KEY_TOKEN)
             putBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
