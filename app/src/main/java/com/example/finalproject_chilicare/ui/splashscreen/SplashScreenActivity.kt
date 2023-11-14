@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui
+package com.example.finalproject_chilicare.ui.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

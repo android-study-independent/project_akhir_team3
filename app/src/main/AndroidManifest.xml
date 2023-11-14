@@ -34,7 +34,7 @@
 
         </activity>
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="false">
         </activity>
         <activity
