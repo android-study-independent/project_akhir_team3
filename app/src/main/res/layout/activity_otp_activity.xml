@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BackgroundHalaman"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@drawable/logonew"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_marginTop="16dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivLogo2"
+        android:layout_width="110dp"
+        android:layout_height="200dp"
+        android:src="@drawable/farmer2"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvResetPassword"
+        />
+
+    <TextView
+        android:id="@+id/tvResetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:textSize="18sp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textStyle="bold"
+        android:textColor="@color/PrimaryText"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Masukkan kode OTP yang telah dikirimkan melalui de***************@gmail.com"
+        android:textSize="15sp"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        android:textColor="@color/SecondaryText"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tvResetPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llotp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+        android:layout_marginTop="50dp"
+
+        app:layout_constraintStart_toStartOf="10dp"
+        app:layout_constraintEnd_toEndOf="10dp"
+        >
+        <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otpet2Layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/otpet2"
+        android:weightSum="4"
+        />
+
+        <EditText
+            android:id="@+id/otpet1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="37dp"
+            android:background="@drawable/btnsquare"
+            android:gravity="center"
+            android:inputType="number"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="20dp"/>
+
+        <EditText
+            android:id="@+id/otpet2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="37dp"
+            android:background="@drawable/btnsquare"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/otpet1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+        <EditText
+            android:id="@+id/otpet3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="37dp"
+            android:background="@drawable/btnsquare"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/otpet2"/>
+
+        <EditText
+            android:id="@+id/otpet4"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="37dp"
+            android:background="@drawable/btnsquare"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/otpet3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnkirimotp"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/buttonloginreg"
+        android:text="Kirim  OTP"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/llotp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnkembali"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="155dp"
+        android:background="@drawable/btnkembali"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:text="Kembali"
+        android:textAllCaps="false"
+        android:textColor="@color/SecondaryBrand"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llotp"
+        />
+    <LinearLayout
+        android:id="@+id/llWadahSudahPunyaAkun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/btnkembali"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/tvTidakmenerimaemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak menerima Email?"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryText"
+            android:layout_marginRight="2dp"
+            />
+        <TextView
+            android:id="@+id/tvKirimulang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kirim Ulang"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:textColor="@color/SecondaryStatus"
+            />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
