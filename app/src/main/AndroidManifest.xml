@@ -28,11 +28,6 @@
         <activity
             android:name=".ui.home.WeatherActivity"
             android:exported="false">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.forgetPassword.NewPasswordActivity"
@@ -40,11 +35,6 @@
         <activity
             android:name=".ui.forgetPassword.OTPActivity"
             android:exported="false">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.forgetPassword.EmailActivity"
@@ -73,11 +63,6 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
         </activity>
     </application>
 
