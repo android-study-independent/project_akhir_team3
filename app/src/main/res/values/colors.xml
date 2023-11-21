@@ -30,6 +30,13 @@
     <color name="PrimarySlider">#ECBFD0</color>
     <color name="SecondarySlider">#99224F</color>
 
+    //Navbar
+    //text and icon
+    <color name="SecondaryIcntxt">#8388B2</color>
+
+    //topBackground Color
+    <color name="BrandPrimay">#BF2A63</color>
+
 
 
 </resources>
