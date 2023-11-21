@@ -3,7 +3,550 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgourndPage"
+    tools:context=".ui.home.fragment.HomeFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/top_background"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="181dp"
+                            android:layout_height="198.74dp"
+                            android:layout_marginTop="20dp"
+                            android:paddingLeft="60dp"
+                            android:src="@drawable/gradient"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                        <ImageView
+                            android:id="@+id/imgavatar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:src="@drawable/avatar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                        <TextView
+                            android:id="@+id/txtavatarname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:paddingLeft="20sp"
+                            android:text="Halo, Richard 👋🏻"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                            app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtwelcomepage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:paddingLeft="20sp"
+                            android:text="Selamat Belajar di Chilicare"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintLeft_toLeftOf="@id/txtavatarname"
+                            app:layout_constraintTop_toBottomOf="@+id/txtavatarname"></TextView>
+
+                        <ImageView
+                            android:id="@+id/imgnotification"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icn_notif"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtavatarname"
+                            app:layout_constraintLeft_toRightOf="@id/txtavatarname"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/txtavatarname"></ImageView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="370dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="150dp"
+                    app:cardCornerRadius="12dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/txtdatetime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:text="Kamis, 8 Nov 2023"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                        <ImageView
+                            android:id="@+id/imgweather"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/icn_cloudy"
+                            app:layout_constraintEnd_toEndOf="@id/txtdatetime"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdatetime"></ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Hujan ringan"
+                            android:textColor="@color/PrimaryText"
+                            app:layout_constraintEnd_toEndOf="@id/txtdatetime"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imgweather"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtcity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginEnd="20dp"
+                            android:text="Bandung"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
+                            app:layout_constraintLeft_toRightOf="@+id/txtdatetime"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                        <TextView
+                            android:id="@+id/txttemperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:text="25°C"
+                            android:textColor="@color/BrandDark"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="@+id/txtcity"
+                            app:layout_constraintRight_toRightOf="@+id/txtcity"
+                            app:layout_constraintTop_toBottomOf="@+id/txtcity"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Kelembaban 80%"
+                            android:textColor="@color/PrimaryText"
+                            app:layout_constraintLeft_toLeftOf="@id/txtcity"
+                            app:layout_constraintRight_toRightOf="@id/txtcity"
+                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"></TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/imgCuaca"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icn_weather"></ImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txtcuaca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/plusjakartasans_semibold_600"
+                        android:text="Cuaca"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"></TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/imgArtikel"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icn_news"></ImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txtArtikel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/plusjakartasans_semibold_600"
+                        android:text="Artikel"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/imgForum"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icn_forum"></ImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txtForum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/plusjakartasans_semibold_600"
+                        android:text="Forum"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="40dp">
+
+                        <ImageView
+                            android:id="@+id/imgAktivitas"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icn_activity"></ImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/txtAktivitas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/plusjakartasans_semibold_600"
+                        android:text="Aktivitas"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"></TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/artikel1"
+                    android:layout_width="370dp"
+                    android:layout_height="158dp"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/titleMenanam"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Menanam"
+                            android:textColor="@color/BrandPrimay"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                        <TextView
+                            android:id="@+id/txttitledesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:text="Tips Memilih Bibit Cabai\nYang Berkualitas"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+
+                            app:layout_constraintTop_toBottomOf="@+id/titleMenanam"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtdescmenanam"
+                            android:layout_width="180dp"
+                            android:layout_height="32dp"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani"
+                            android:textColor="@color/SecondaryText"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/txttitledesc"
+                            app:layout_constraintTop_toBottomOf="@+id/txttitledesc"></TextView>
+
+                        <ImageView
+                            android:id="@+id/imgclocklastseen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/clock"
+                            app:layout_constraintLeft_toLeftOf="@+id/titleMenanam"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdescmenanam"></ImageView>
+
+                        <TextView
+                            android:id="@+id/tvlastseen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginBottom="8.5dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="3 menit baca"
+                            android:textColor="@color/BrandPrimay"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/imgclocklastseen"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdescmenanam"></TextView>
+
+                        <ImageView
+                            android:id="@+id/tvartikel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/cabai"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/artikel2"
+                    android:layout_width="370dp"
+                    android:layout_height="158dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/artikel1">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/titleBibit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Bibit"
+                            android:textColor="@color/BrandPrimay"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtdesctitlebibit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:text="Mudah Menanam Cabe\nAgar Cepat Berbuah"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toLeftOf="@+id/titleBibit"
+                            app:layout_constraintTop_toBottomOf="@+id/titleBibit"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtdescbibit"
+                            android:layout_width="180dp"
+                            android:layout_height="32dp"
+
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Bibit yang berkualitas memiliki\nbeberapa ciri-ciri yang bisa chili-cares amati"
+                            android:textColor="@color/SecondaryText"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            app:layout_constraintLeft_toLeftOf="@+id/titleBibit"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdesctitlebibit"></TextView>
+
+                        <ImageView
+                            android:id="@+id/imgclocklastseen2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/clock"
+                            app:layout_constraintLeft_toLeftOf="@+id/titleBibit"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdescbibit"></ImageView>
+
+                        <TextView
+                            android:id="@+id/tvlastseen2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginBottom="8.5dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="5 menit baca"
+                            android:textColor="@color/BrandPrimay"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/imgclocklastseen2"
+                            app:layout_constraintTop_toBottomOf="@+id/txtdescbibit"></TextView>
+
+                        <ImageView
+                            android:id="@+id/tvartikel2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:src="@drawable/cabaiolah"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="25dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:text="Forum Hari ini"
+                    android:textColor="@color/PrimaryText"
+                    android:textSize="20sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:text="Yuk bincang-bincang di komunitas!!"
+                    android:textColor="@color/SecondaryText"
+                    android:textSize="15sp"></TextView>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_Forum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:paddingStart="25dp"
+                tools:listitem="@layout/forum_content"
+                android:paddingEnd="25dp"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

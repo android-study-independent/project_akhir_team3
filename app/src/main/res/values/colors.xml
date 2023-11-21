@@ -18,6 +18,7 @@
     <color name="SecondaryText">#FF8388B2</color>
     <color name="NeutralText">#FFFFFFFF</color>
     <color name="SemanticText">#FFC5C5C5</color>
+    <color name="BrandDark">#99224F</color>
 
     // Status
     <color name="PrimaryStatus">#FF438F02</color>
@@ -36,6 +37,10 @@
 
     //topBackground Color
     <color name="BrandPrimay">#BF2A63</color>
+
+
+    //background
+    <color name="backgourndPage">#F6F6F6</color>
 
 
 

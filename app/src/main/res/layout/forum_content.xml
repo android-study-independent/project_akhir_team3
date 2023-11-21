@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="388dp"
+        app:cardCornerRadius="16dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgavatarartikel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:src="@drawable/avatar2"></ImageView>
+            <TextView
+                android:id="@+id/textavatarnameforum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatarartikel"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+
+                android:layout_marginLeft="12dp"
+                android:textColor="@color/PrimaryText"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                tools:text="Velicha"></TextView>
+            <TextView
+                android:id="@+id/datetimeforum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/textavatarnameforum"
+                app:layout_constraintLeft_toLeftOf="@id/textavatarnameforum"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="@color/SecondaryText"
+                tools:text="10 oktober 16:00"
+                android:textSize="12sp"></TextView>
+            <TextView
+                android:id="@+id/txtdescartikelforum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/imgavatarartikel"
+                app:layout_constraintLeft_toLeftOf="@id/imgavatarartikel"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/PrimaryText"
+                tools:text="Hai berikut saya temukan satu artikel baru semoga bermanfaat untuk kalian!"></TextView>
+            <ImageView
+                android:id="@+id/imgforumartikel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txtdescartikelforum"
+                app:layout_constraintLeft_toLeftOf="@id/txtdescartikelforum"
+                android:layout_marginTop="8dp"
+                tools:src="@drawable/img_olahtanah"></ImageView>
+            <ImageView
+                android:id="@+id/imgheartforum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/imgforumartikel"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/icn_heart"></ImageView>
+            <ImageView
+                android:id="@+id/imgcommentforum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/imgforumartikel"
+                app:layout_constraintLeft_toRightOf="@+id/imgheartforum"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/icn_comment"></ImageView>
+            <TextView
+                android:id="@+id/tvcomment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/imgcommentforum"
+                app:layout_constraintLeft_toRightOf="@id/imgcommentforum"
+                app:layout_constraintBottom_toBottomOf="@id/imgcommentforum"
+                android:layout_marginLeft="5dp"
+                tools:text="1"
+                android:fontFamily="@font/plusjakartasans_reguler_400"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.FinalProject_Chilicare" parent="Base.Theme.FinalProject_Chilicare" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="background">@drawable/stylebottom_navbar</item>
+    </style>
 </resources>
