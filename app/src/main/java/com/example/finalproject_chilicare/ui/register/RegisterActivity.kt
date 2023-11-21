@@ -61,6 +61,10 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(it)
         } }
 
+        emailContainer.helperText = null
+        usernameContainer.helperText = null
+        passwordContainer.helperText = null
+        confirmPasswordContainer.helperText = null
 
         initAction()
     }
@@ -103,7 +107,8 @@ class RegisterActivity : AppCompatActivity() {
                     moveToLogin()
                 }
                 else {
-                    Log.d("Email sama", "${register?.message}")
+                    Log.d("Email sama", "${register?.status}")
+                    Toast.makeText(this@RegisterActivity,"${register?.message}", Toast.LENGTH_SHORT).show()
                 }
 
             }
@@ -137,8 +142,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validEmail(): String? {
-        val txtEmail = inputEmailRegister.text.toString()
 
+        val txtEmail = inputEmailRegister.text.toString()
 
         if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
             return "Invalid Email Address"
@@ -167,6 +172,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validUsername(): String? {
+
         val txtUsername = inputUsernameRegister.text.toString()
 
          if (txtUsername.isEmpty()){
@@ -186,6 +192,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validPassword(): String? {
+
         val txtPassword = inputPasswordRegister.text.toString()
 
         if (txtPassword.length < 8){
@@ -216,6 +223,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validConfirmPassword(): String? {
+
         val txtPassword = inputPasswordRegister.text.toString()
         val txtConfirmPassword = inputConfirmPasswordRegister.text.toString()
 
