@@ -12,4 +12,51 @@
     </string>
 
 
+    <!-- Forum Data -->
+
+    //name
+    <string-array name="data_name">
+        <item>Joko</item>
+        <item>Alam</item>
+        <item>Veilcha</item>
+        <item>Udin</item>
+
+    </string-array>
+
+    //dateteime
+    <string-array name="data_datetime">
+        <item>12 Nov 2023/15:00</item>
+        <item>13 Jan 2023/16:00</item>
+        <item>14 Aug 2023/17:00</item>
+        <item>18 Oct 2023/19:00</item>
+
+
+        //Desc
+    </string-array>
+    <string-array name="data_desc">
+        <item>Pembuatan lahan yang baik merupakan sebuah langkah nyata dalam mencpai keberhasilan</item>
+        <item>Jangan lupa keberhasilan berawal dari sebuah mimpi yang kau bangun</item>
+        <item>Perlu diketahui dalam pengolahan sawah itu perlu kerja keras yang sangat keras</item>
+        <item>Ganteng doang ga cukup kamu harus berusaha keras untuk menyenangkan diri dan pasanganmu</item>
+
+    </string-array>
+
+    <integer-array name="data_avatar">
+        <item>@drawable/avatar</item>
+        <item>@drawable/avatar2</item>
+        <item>@drawable/avatar3</item>
+        <item>@drawable/avatar4</item>
+    </integer-array>
+
+    <integer-array name="data_image">
+        <item>@drawable/img_olahtanah</item>
+        <item>@drawable/img_olahtanah</item>
+        <item>@drawable/img_olahtanah</item>
+        <item>@drawable/img_olahtanah</item>
+
+    </integer-array>
+
+    <!-- Forum Data -->
+
+
 </resources>

@@ -4,19 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context=".ui.home.HomeActivity">
 
-    <Button
-        android:id="@+id/btnLogout"
+    <FrameLayout
+        android:id="@+id/FrameDisplay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:background="@drawable/custombtnlogin"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/buttonNavbar"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@color/white"
+        app:itemIconSize="28dp"
+        app:itemIconTint="@color/color_item_bottomnav"
+        app:itemTextColor="@color/color_item_bottomnav"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemActiveIndicatorStyle="@drawable/stylebottom_navbar"
+        app:menu="@menu/navbar_menu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+<!--    <Button-->
+<!--        android:id="@+id/btnLogout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Logout"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:background="@drawable/custombtnlogin"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
