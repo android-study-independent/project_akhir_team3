@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.article.DetailArticleActivity"
+    android:background="#F6F6F6">
+
+    <ImageView
+        android:id="@+id/ivKembali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvArtikel"
+        android:layout_width="0dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:paddingLeft="25dp"
+        android:text="Artikel"
+        android:textColor="#303344"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivKembali"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivKembali"
+        app:layout_constraintTop_toTopOf="@+id/ivKembali"
+        />
+
+    <ImageView
+        android:id="@+id/ivArticle"
+        android:layout_width="340dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_article"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivKembali"
+        app:layout_constraintTop_toBottomOf="@+id/ivKembali"
+        />
+
+    <View
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/bg_border_article"
+        app:layout_constraintLeft_toLeftOf="@+id/ivArticle"
+        app:layout_constraintRight_toRightOf="@+id/ivArticle"
+        app:layout_constraintTop_toBottomOf="@+id/ivArticle"
+        android:layout_marginLeft="5dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tvTanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        android:text="18 November 2023"
+        android:textColor="#8388B2"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/ivArticle"
+        app:layout_constraintTop_toBottomOf="@+id/ivArticle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <TextView
+        android:id="@+id/tvWaktu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        android:text="13:00"
+        android:textSize="12sp"
+        android:textColor="#8388B2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/tvTanggal"
+        app:layout_constraintTop_toTopOf="@+id/tvTanggal"
+        />
+
+    <TextView
+        android:id="@+id/tvTab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_article"
+        android:text="Menanam"
+        android:padding="4dp"
+        android:textAllCaps="false"
+        android:textColor="@color/SecondaryBrand"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTanggal"
+        app:layout_constraintStart_toStartOf="@+id/tvTanggal"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/tvJudulartikel"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:text="Judul Artikel"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#303344"
+        app:layout_constraintTop_toBottomOf="@+id/tvTab"
+        app:layout_constraintStart_toStartOf="@+id/tvTab"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <TextView
+        android:id="@+id/tvDecArticle"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi"
+        android:textColor="#8388B2"
+        android:textSize="14sp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        app:layout_constraintTop_toBottomOf="@+id/tvJudulartikel"
+        app:layout_constraintLeft_toLeftOf="@+id/tvJudulartikel"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plusjakartasans_reguler_400"
+        android:text="Sumber :"
+        android:textColor="#8388B2"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDecArticle"
+        app:layout_constraintStart_toStartOf="@+id/tvDecArticle"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvLink"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:text="link"
+        android:textSize="14sp"
+        android:textColor="#018499"
+        app:layout_constraintTop_toBottomOf="@+id/tvSumber"
+        app:layout_constraintStart_toStartOf="@id/tvSumber"
+        android:layout_marginTop="3dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

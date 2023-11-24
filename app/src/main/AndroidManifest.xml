@@ -23,19 +23,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.article.DetailArticleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.NavbarActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.WeatherActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".ui.forgetPassword.NewPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ui.forgetPassword.OTPActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".ui.forgetPassword.EmailActivity"
             android:exported="false" />
@@ -62,8 +63,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
