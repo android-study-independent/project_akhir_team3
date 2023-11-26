@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="8dp"
+    android:layout_marginBottom="12dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:id="@+id/relativeCity"
+            android:background="@color/PrimaryBrand"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textCity"
+                android:text="Jakarta"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="12dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_location_on_24"
+                android:layout_toRightOf="@id/textCity"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/imageLocation"/>
+
+            <TextView
+                android:layout_below="@id/textCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuhu1"
+                android:text="20°"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/garisMiringLine1"
+                android:text="/"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_below="@id/textCity"
+                android:layout_toRightOf="@id/textSuhu1"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSuhu2"
+                android:text="35°"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_below="@id/textCity"
+                android:layout_toRightOf="@id/garisMiringLine1"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35°"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="18dp"/>
+
+
+
+
+
+        </RelativeLayout>
+        
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
