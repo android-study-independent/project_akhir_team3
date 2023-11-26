@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.api.UserAPI
+import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
 import com.example.finalproject_chilicare.ui.home.HomeActivity
@@ -121,7 +121,7 @@ class LoginActivity : AppCompatActivity() {
             val loginReq = LoginRequest(requestEmail = enteredEmail, requestPassword = enteredPassword)
 
             val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/")
-                .create(UserAPI::class.java)
+                .create(ApiInterface::class.java)
 
             retro.userLogin(loginReq).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {

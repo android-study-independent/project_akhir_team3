@@ -13,10 +13,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.api.UserAPI
+import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
-import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -87,7 +86,7 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = inputEmailRegister.text.toString()
         registerReq.password = inputPasswordRegister.text.toString()
 
-        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(UserAPI::class.java)
+        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(ApiInterface::class.java)
         retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 val register = response.body()
