@@ -59,4 +59,6 @@
     <!-- Forum Data -->
 
 
+    <!-- untuk keperluan halaman detail artikel biar bisa di scroll -->
+    <string name="appbar_scrolling_view_behavior">androidx.appbar.appbar_scrolling_view_behavior</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui.home.article.card
+package com.example.finalproject_chilicare.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.data.response.CardResponse
 import java.util.Locale
 
-class CardAdapter(private var dataList: ArrayList<CardClass>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
+class CardAdapter(private var dataList: ArrayList<CardResponse>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
 
-    private var filteredList: ArrayList<CardClass> = ArrayList()
+    private var filteredList: ArrayList<CardResponse> = ArrayList()
+
+    // 1. untuk keperluan article detail
+    var onItemClick: ((CardResponse) -> Unit)? = null
 
     init {
         filteredList.addAll(dataList)
@@ -21,7 +25,7 @@ class CardAdapter(private var dataList: ArrayList<CardClass>) : RecyclerView.Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_article, parent, false)
-        return CardAdapter.CardViewHolder(itemView)
+        return CardViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
@@ -32,6 +36,12 @@ class CardAdapter(private var dataList: ArrayList<CardClass>) : RecyclerView.Ada
         holder.rvDescription.text = currentItem.dataDescription
         holder.rvDurasibaca.text = currentItem.dataDurasibaca
         holder.rvImage.setImageResource(currentItem.dataImage)
+
+        // 2. untuk keperluan article detail
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(currentItem)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -49,7 +59,7 @@ class CardAdapter(private var dataList: ArrayList<CardClass>) : RecyclerView.Ada
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filteredResults = ArrayList<CardClass>()
+                val filteredResults = ArrayList<CardResponse>()
                 if (constraint.isNullOrBlank()) {
                     filteredResults.addAll(dataList)
                 } else {
@@ -68,14 +78,14 @@ class CardAdapter(private var dataList: ArrayList<CardClass>) : RecyclerView.Ada
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredList.clear()
-                filteredList.addAll(results?.values as ArrayList<CardClass>)
+                filteredList.addAll(results?.values as ArrayList<CardResponse>)
                 notifyDataSetChanged()
             }
         }
     }
 
     // Fungsi tambahan untuk mengatur filteredList
-    fun setFilteredList(list: ArrayList<CardClass>) {
+    fun setFilteredList(list: ArrayList<CardResponse>) {
         filteredList.clear()
         filteredList.addAll(list)
         notifyDataSetChanged()
