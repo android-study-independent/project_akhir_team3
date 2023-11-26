@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission
@@ -23,6 +24,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.SearchPopularCityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.SearchCityActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.article.DetailArticleActivity"
             android:exported="false" />
         <activity
@@ -30,7 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.WeatherActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ui.forgetPassword.NewPasswordActivity"
             android:exported="false" />
@@ -63,7 +70,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,4 +1,7 @@
+package com.example.finalproject_chilicare.ui.home.article
+
 import android.content.Intent
+
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView

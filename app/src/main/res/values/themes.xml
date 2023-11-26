@@ -3,6 +3,7 @@
     <style name="Base.Theme.FinalProject_Chilicare" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="Theme.FinalProject_Chilicare" parent="Base.Theme.FinalProject_Chilicare" />

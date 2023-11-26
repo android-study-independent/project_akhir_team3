@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="14dp"
+    android:layout_margin="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/textWaktuSekarang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sekarang"
+        android:textSize="12sp"
+        android:textColor="@color/PrimaryBrand"
+        android:textStyle="bold"
+        android:layout_marginLeft="6dp"/>
+
+
+    <FrameLayout
+        android:id="@+id/frameSuhuSekarang"
+        android:layout_below="@id/textWaktuSekarang"
+        android:layout_width="42dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/border_cuaca"
+        android:backgroundTint="@color/PrimaryBrand"
+        tools:ignore="NotSibling" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relativeSuhuSekarang">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/berawan"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4dp"
+                android:id="@+id/iconSuhuSekarang"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35°"
+                android:layout_below="@+id/iconSuhuSekarang"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_marginTop="3dp"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+
+
+
+
+</RelativeLayout>
