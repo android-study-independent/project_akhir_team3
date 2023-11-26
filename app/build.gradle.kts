@@ -77,8 +77,8 @@ dependencies {
     debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
     releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
-    implementation("io.reactive.rxjava3:rxjava:3.0.2")
-    implementation("io.reactive.rxjava3:rxandroid:3.0.2")
+//    implementation("io.reactive.rxjava3:rxjava:3.0.2")
+//    implementation("io.reactive.rxjava3:rxandroid:3.0.2")
     implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.66.4")
