@@ -3,6 +3,9 @@ package com.example.finalproject_chilicare.data
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.login.LoginActivity
+import com.example.finalproject_chilicare.ui.onboarding.OnboardingActivity
 
 object PreferencesHelper {
     private const val PREF_NAME = "chilicare_preference"
@@ -16,7 +19,13 @@ object PreferencesHelper {
     fun defaultPrefs(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 
-    fun customPrefs(context: Context, name: String = PREF_NAME): SharedPreferences =
+    fun customPrefs(context: LoginActivity, name: String = PREF_NAME): SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customPrefsHome(context: HomeActivity, name: String = PREF_NAME): SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customPrefOnboarding(context: OnboardingActivity, name: String = PREF_NAME): SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {

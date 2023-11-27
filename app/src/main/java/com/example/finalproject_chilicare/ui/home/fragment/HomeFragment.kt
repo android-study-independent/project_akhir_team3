@@ -1,21 +1,47 @@
 package com.example.finalproject_chilicare.ui.home.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.ForumAdapter
+import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.dataclass.ForumData
+import com.example.finalproject_chilicare.ui.home.ArticleActivity
+import com.example.finalproject_chilicare.ui.home.WeatherActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
-    private val  listforum = ArrayList<ForumData>()
-    private lateinit var  recylerView : RecyclerView
-    private lateinit var forumadapter : ForumAdapter
+    private val listforum = ArrayList<ForumData>()
+    private lateinit var recylerView: RecyclerView
+    private lateinit var forumadapter: ForumAdapter
+    private lateinit var cityname: TextView
+    private lateinit var temp: TextView
+    private lateinit var humidity: TextView
+    private lateinit var weatherdesc: TextView
+    private lateinit var date: TextView
+
+
+    lateinit var buttonCuaca: CardView
+    lateinit var buttonArtikel: CardView
+    lateinit var buttonForum: CardView
+    lateinit var buttonAktivitas: CardView
+    lateinit var cardbutton: CardView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +54,94 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recylerView= view.findViewById(R.id.rv_Forum)
+        recylerView = view.findViewById(R.id.rv_Forum)
         recylerView.setHasFixedSize(true)
 
         forumadapter = ForumAdapter(listforum)
         recylerView.adapter = forumadapter
         listforum.addAll(getListForum())
-        recylerView.layoutManager= LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+        recylerView.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+        cityname = view.findViewById<TextView>(R.id.txtcity)
+        temp = view.findViewById<TextView>(R.id.txttemperature)
+        humidity = view.findViewById<TextView>(R.id.txthumidity)
+        weatherdesc = view.findViewById<TextView>(R.id.txtweatherdesc)
+//        date = view.findViewById(R.id.txtdatetime)
+
+
+        buttonCuaca = view.findViewById(R.id.btnCuaca)
+        buttonArtikel = view.findViewById(R.id.btnArtikel)
+        buttonForum = view.findViewById(R.id.btnForum)
+        buttonAktivitas = view.findViewById(R.id.btnAktivitas)
+        cardbutton = view.findViewById(R.id.btnCardWeather)
+
+        //button ke activity Cuaca
+        buttonCuaca.setOnClickListener {
+            val intent = Intent(activity, WeatherActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+        //button ke activity artikel
+        buttonArtikel.setOnClickListener {
+            val intent = Intent(activity, ArticleActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        //button card weather dari beranda
+        cardbutton.setOnClickListener {
+            val intent = Intent(activity, WeatherActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        /*   <<<<  AMBIL DATA DARI API WEATHER  >>>  */
+        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/")
+            .create(ApiInterface::class.java)
+
+        val lat = "-7.424278"
+        val lon = "109.239639"
+
+        retro.getWeather(lat, lon).enqueue(object : Callback<CurrentWeather> {
+            override fun onResponse(
+                call: Call<CurrentWeather>,
+                response: Response<CurrentWeather>
+            ) {
+                if (response.isSuccessful) {
+
+                    Log.d(
+                        "weatherRespn",
+                        "weatherData: ${response.body()?.currentWeather?.city.toString()}"
+                    )
+
+                    cityname.text = response.body()?.currentWeather?.city.toString()
+                    temp.text = response.body()?.currentWeather?.temperature.toString() + "°C"
+                    humidity.text =
+                        "Humidity " + response.body()?.currentWeather?.humidity.toString() + " %"
+                    weatherdesc.text =
+                        response.body()?.currentWeather?.weatherDescription.toString()
+//                    date.text = response.body()?.forecast?.forEach {
+//                        date.text = it.date.toString()
+//                    }.toString()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "data kosong",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
+                Toast.makeText(requireContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+    /*   <<<<  AMBIL DATA DARI API WEATHER  >>>  */
+
 
     private fun getListForum(): ArrayList<ForumData> {
         val dataavatar = resources.obtainTypedArray(R.array.data_avatar)

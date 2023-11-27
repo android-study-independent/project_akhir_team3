@@ -14,21 +14,30 @@ import retrofit2.http.Query
 interface ApiInterface {
 
     @POST("register")
-    fun createUser(@Body req: RegisterRequest) : Call<RegisterResponse>
+    fun createUser(@Body req: RegisterRequest): Call<RegisterResponse>
 
     @POST("login")
-    fun userLogin(@Body req: LoginRequest) : Call<LoginResponse>
+    fun userLogin(@Body req: LoginRequest): Call<LoginResponse>
 
     @GET("weather")
-    fun getCurrentWeatherData(
+    fun getWeather(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String
+    ): Call<CurrentWeather>
+
+
+    @GET("weather")
+    fun  getCurrentWeatherData(
         @Query("api_key") apiKey: String,
         @Query("lat") lat: String,
         @Query("lon") lon: String
     ) : Call<CurrentWeather>
 
     @GET("weather")
-    fun getCityWeatherData(
-        @Query("lon") lon: String,
-        @Query("lat") lat: String
-    ):Call<CurrentWeather>
+    fun  getCityWeatherData(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String
+    ) : Call<CurrentWeather>
+
+
 }

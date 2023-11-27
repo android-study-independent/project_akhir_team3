@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgourndPage"
     tools:context=".ui.home.fragment.HomeFragment">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -76,24 +77,26 @@
 
                         <ImageView
                             android:id="@+id/imgnotification"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
                             android:layout_marginLeft="10dp"
-                            android:scaleType="fitXY"
+                            android:layout_marginTop="5dp"
                             android:src="@drawable/icn_notif"
                             app:layout_constraintBottom_toBottomOf="@+id/txtavatarname"
                             app:layout_constraintLeft_toRightOf="@id/txtavatarname"
                             app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/txtavatarname"></ImageView>
+                            app:layout_constraintTop_toTopOf="@id/imgavatar"></ImageView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnCardWeather"
                     android:layout_width="370dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="150dp"
                     app:cardCornerRadius="12dp">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -117,18 +120,19 @@
                             android:id="@+id/imgweather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="53dp"
+                            android:layout_marginTop="45dp"
                             android:src="@drawable/icn_cloudy"
-                            app:layout_constraintEnd_toEndOf="@id/txtdatetime"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtdatetime"></ImageView>
+                            app:layout_constraintTop_toTopOf="parent"></ImageView>
 
                         <TextView
+                            android:id="@+id/txtweatherdesc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
-                            android:text="Hujan ringan"
+                            tools:text="Hujan ringan"
                             android:textColor="@color/PrimaryText"
                             app:layout_constraintEnd_toEndOf="@id/txtdatetime"
                             app:layout_constraintStart_toStartOf="parent"
@@ -139,14 +143,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="35dp"
-                            android:layout_marginEnd="20dp"
-                            android:text="Bandung"
+                            android:layout_marginEnd="50dp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
                             android:textColor="@color/PrimaryText"
                             android:textSize="18sp"
-                            android:fontFamily="@font/plusjakartasans_semibold_600"
-                            app:layout_constraintLeft_toRightOf="@+id/txtdatetime"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></TextView>
+                            app:layout_constraintEnd_toEndOf="parent"
+
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Bandung"></TextView>
 
                         <TextView
                             android:id="@+id/txttemperature"
@@ -154,24 +158,38 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:text="25°C"
                             android:textColor="@color/BrandDark"
                             android:textSize="20dp"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toLeftOf="@+id/txtcity"
                             app:layout_constraintRight_toRightOf="@+id/txtcity"
-                            app:layout_constraintTop_toBottomOf="@+id/txtcity"></TextView>
+                            app:layout_constraintTop_toBottomOf="@+id/txtcity"
+                            tools:text="25°C"></TextView>
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/txtkelembapan"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="12dp"-->
+<!--                            android:fontFamily="@font/plusjakartasans_reguler_400"-->
+<!--                            android:textColor="@color/PrimaryText"-->
+<!--                            app:layout_constraintRight_toLeftOf="@+id/txthumidity"-->
+<!--                            android:layout_marginEnd="5dp"-->
+<!--                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"-->
+<!--                            android:text="Kelembapan"></TextView>-->
 
                         <TextView
+                            android:id="@+id/txthumidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
-                            android:text="Kelembaban 80%"
                             android:textColor="@color/PrimaryText"
+
                             app:layout_constraintLeft_toLeftOf="@id/txtcity"
                             app:layout_constraintRight_toRightOf="@id/txtcity"
-                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"></TextView>
+                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"
+                            tools:text="Kelembapan 80%"></TextView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -194,6 +212,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnCuaca"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
@@ -227,6 +246,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnArtikel"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
@@ -259,6 +279,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnForum"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
@@ -291,6 +312,7 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/btnAktivitas"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:layout_gravity="center"
@@ -368,8 +390,8 @@
                             android:layout_height="32dp"
                             android:layout_marginTop="8dp"
                             android:ellipsize="end"
-                            android:maxLines="2"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:maxLines="2"
                             android:text="Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani"
                             android:textColor="@color/SecondaryText"
                             android:textSize="12sp"
@@ -460,13 +482,13 @@
                             android:layout_height="32dp"
 
                             android:layout_marginTop="8dp"
+                            android:ellipsize="end"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:maxLines="2"
                             android:text="Bibit yang berkualitas memiliki\nbeberapa ciri-ciri yang bisa chili-cares amati"
                             android:textColor="@color/SecondaryText"
                             android:textSize="12sp"
                             android:textStyle="bold"
-                            android:ellipsize="end"
-                            android:maxLines="2"
                             app:layout_constraintLeft_toLeftOf="@+id/titleBibit"
                             app:layout_constraintTop_toBottomOf="@+id/txtdesctitlebibit"></TextView>
 
@@ -542,8 +564,8 @@
                 android:layout_marginTop="10dp"
                 android:clipToPadding="false"
                 android:paddingStart="25dp"
-                tools:listitem="@layout/forum_content"
-                android:paddingEnd="25dp"></androidx.recyclerview.widget.RecyclerView>
+                android:paddingEnd="25dp"
+                tools:listitem="@layout/forum_content"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
     </ScrollView>
