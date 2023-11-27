@@ -3,11 +3,8 @@ package com.example.finalproject_chilicare.ui.home
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.health.connect.datatypes.ExerciseRoute
 import android.location.Location
 import android.location.LocationManager
-import android.media.audiofx.Equalizer.Settings
-import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,17 +21,14 @@ import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.databinding.ActivityWeatherBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.math.RoundingMode
-import java.net.URL
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Date
-import kotlin.math.roundToInt
 
 class WeatherActivity : AppCompatActivity() {
     lateinit var binding:ActivityWeatherBinding

@@ -1,6 +1,6 @@
 package com.example.finalproject_chilicare.data.api
 
-import com.example.finalproject_chilicare.data.response.GetWeatherResponse
+import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface UserAPI {
+interface ApiInterface {
 
     @POST("register")
     fun createUser(@Body req: RegisterRequest): Call<RegisterResponse>
@@ -23,7 +23,20 @@ interface UserAPI {
     fun getWeather(
         @Query("lat") lat: String,
         @Query("lon") lon: String
-    ): Call<GetWeatherResponse>
+    ): Call<CurrentWeather>
+
+    @GET("weather")
+    fun  getCurrentWeatherData(
+        @Query("api_key") apiKey: String,
+        @Query("lat") lat: String,
+        @Query("lon") lon: String
+    ) : Call<CurrentWeather>
+
+    @GET("weather")
+    fun  getCityWeatherData(
+        @Query("lat") lat: String,
+        @Query("lon") lon: String
+    ) : Call<CurrentWeather>
 
 
 }

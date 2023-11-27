@@ -90,6 +90,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnCardWeather"
                     android:layout_width="370dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
