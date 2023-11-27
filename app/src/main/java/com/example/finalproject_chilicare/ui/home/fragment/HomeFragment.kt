@@ -90,6 +90,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+
         //button card weather dari beranda
         cardbutton.setOnClickListener {
             val intent = Intent(activity, WeatherActivity::class.java)

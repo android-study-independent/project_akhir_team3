@@ -25,6 +25,7 @@ interface ApiInterface {
         @Query("lon") lon: String
     ): Call<CurrentWeather>
 
+
     @GET("weather")
     fun  getCurrentWeatherData(
         @Query("api_key") apiKey: String,

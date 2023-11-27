@@ -23,6 +23,7 @@ import com.google.android.gms.location.LocationServices
 
 class SplashScreenActivity : AppCompatActivity() {
 
+
     private lateinit var mfusedlocation: FusedLocationProviderClient
     private var myRequestCode = 1010
     private lateinit var locationCallback: LocationCallback
