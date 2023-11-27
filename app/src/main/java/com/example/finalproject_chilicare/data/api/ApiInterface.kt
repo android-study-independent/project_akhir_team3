@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.data.api
 
+import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
@@ -18,16 +19,16 @@ interface ApiInterface {
     @POST("login")
     fun userLogin(@Body req: LoginRequest) : Call<LoginResponse>
 
-    @GET("weather?")
-    fun getCurrentWeather(
-        @Query("api_key") apiKey : String,
+    @GET("weather")
+    fun getCurrentWeatherData(
+        @Query("api_key") apiKey: String,
         @Query("lat") lat: String,
         @Query("lon") lon: String
-    )
+    ) : Call<CurrentWeather>
 
-    @GET("weather?")
-    fun getWeatherByCity(
-        @Query("q") city : String,
-        @Query("lon") lon: String
-    )
+    @GET("weather")
+    fun getCityWeatherData(
+        @Query("lon") lon: String,
+        @Query("lat") lat: String
+    ):Call<CurrentWeather>
 }

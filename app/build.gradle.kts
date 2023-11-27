@@ -3,9 +3,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
-//kapt {
-//    correctErrorTypes = true
-//}
+kapt {
+    correctErrorTypes = true
+}
 
 android {
     namespace = "com.example.finalproject_chilicare"
@@ -21,9 +21,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildFeatures {
-        viewBinding = true
-    }
 
     buildTypes {
         release {
@@ -42,6 +39,12 @@ android {
         jvmTarget = "1.8"
     }
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
+
 
 }
 
@@ -54,6 +57,7 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -77,6 +81,8 @@ dependencies {
     debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
     releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
+    implementation ("com.google.android.gms:play-services-location:21.0.0")
+//    implementation ("com.android.databinding:compiler:3.5.1")
 //    implementation("io.reactive.rxjava3:rxjava:3.0.2")
 //    implementation("io.reactive.rxjava3:rxandroid:3.0.2")
 //    implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
