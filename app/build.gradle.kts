@@ -56,6 +56,10 @@ dependencies {
     implementation ("com.airbnb.android:epoxy:5.1.3")
     kapt("com.airbnb.android:epoxy-processor:5.1.3")
 
+    //gmsplay service
+    implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
 
     //lottie animation
     implementation ("com.airbnb.android:lottie-compose:6.1.0")

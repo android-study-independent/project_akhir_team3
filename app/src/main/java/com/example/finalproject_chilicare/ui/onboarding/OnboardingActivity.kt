@@ -60,7 +60,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
 
         // Inisialisasi Shared Preferences
-        prefHelper = PreferencesHelper.customPrefs(this)
+        prefHelper = PreferencesHelper.customPrefOnboarding(this)
 
         if (isLoggedIn()) {
             redirectToLogin()
