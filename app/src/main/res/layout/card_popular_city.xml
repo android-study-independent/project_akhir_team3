@@ -3,37 +3,26 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="8dp"
-    android:layout_marginBottom="8dp">
+    app:cardCornerRadius="10dp"
+    android:layout_marginBottom="10dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="85dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="4dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="23dp"
-            android:id="@+id/relativePopularCity"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        >
 
             <TextView
-                android:id="@+id/textCity"
-                android:layout_centerHorizontal="true"
+                android:id="@+id/titleCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:text="Semarang"
-                android:background="#FFFFFF"
+                android:textSize="12sp"
+                android:textColor="@color/PrimaryText"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:padding="10dp"
                 />
-
-        </RelativeLayout>
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

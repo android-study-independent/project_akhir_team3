@@ -12,7 +12,7 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.response.CardResponse
 import java.util.Locale
 
-class CardAdapter(private var dataList: ArrayList<CardResponse>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
+class CardAdapter(private var dataList: MutableList<CardResponse>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
 
     private var filteredList: ArrayList<CardResponse> = ArrayList()
 
