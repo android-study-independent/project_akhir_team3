@@ -35,8 +35,8 @@ interface ApiInterface {
 
     @GET("weather")
     fun  getCityWeatherData(
-        @Query("lat") lat: String,
-        @Query("lon") lon: String
+        @Query("q") q:String,
+        @Query("APPID") appid:String
     ) : Call<CurrentWeather>
 
 

@@ -69,6 +69,8 @@
         android:layout_marginLeft="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPopularCity"
+        tools:listitem="@layout/card_popular_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textKotaPopular"
