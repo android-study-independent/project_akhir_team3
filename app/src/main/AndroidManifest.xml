@@ -24,7 +24,13 @@
         tools:targetApi="31">
         <activity
             android:name=".ui.home.SearchPopularCityActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.home.SearchCityActivity"
             android:exported="false" />
@@ -33,7 +39,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.ArticleActivity"
-            android:exported="true">
+            android:exported="false">
 
         </activity>
         <activity
@@ -67,11 +73,11 @@
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ui.MainActivity"

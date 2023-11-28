@@ -62,6 +62,187 @@
     <!-- untuk keperluan halaman detail artikel biar bisa di scroll -->
     <string name="appbar_scrolling_view_behavior">androidx.appbar.appbar_scrolling_view_behavior</string>
 
+    <string-array
+        name="tab_titles"
+        >
+        <item>Menanam</item>
+        <item>Bibit</item>
+        <item>Hama</item>
+        <item>Tanah</item>
+        <item>Pestisida</item>
+    </string-array>
+
+    <string-array
+        name="card_titles"
+        >
+        <item>Menanam</item>
+        <item>Bibit</item>
+        <item>Hama</item>
+        <item>Pestisida</item>
+        <item>Menanam</item>
+        <item>Menanam</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+    </string-array>
+
+    <string-array
+        name="card_subtitles"
+        >
+        <item>Mudah Menanam Cabe Agar Cepat Berbuah</item>
+        <item>Tips Memilih Bibit Cabai Yang Berkualitas</item>
+        <item>Cegah Hama Pada Tanaman Cabai Anda!</item>
+        <item>Membuat Pestisida Alami Tanaman Cabai</item>
+        <item>Cara Mudah Menanam Cabai di Pot</item>
+        <item>Teknik Budidaya Cabai Rawit</item>
+        <item>Teknik Budidaya Cabai Rawit</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+    </string-array>
+
+    <string-array
+        name="card_descriptions"
+        >
+        <item>Semakin banyak kegiatan seru di tengah kesibukan, salah satunya bertani</item>
+        <item>Bibit yang berkualitas memiliki beberapa ciri-ciri yang bisa chili-cares amati</item>
+        <item>Hama dapat menyebabkan gagal panen pada tanaman cabai Anda.</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+        <item>Cabai rawit atau cabai kecil (Capsicum frutescens) termasuk dalam famili Solanaceae dan merupakan tanaman berumur panjang (menahun)</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+        <item>Meningkatnya kesadaran masyarakat akan efek samping menggunakan pestisida kimiawi</item>
+    </string-array>
+
+    <string-array
+        name="card_durations"
+        >
+        <item>3 menit baca</item>
+        <item>5 menit baca</item>
+        <item>4 menit baca</item>
+        <item>5 menit baca</item>
+        <item>5 menit baca</item>
+        <item>10 menit dibaca</item>
+        <item>10 menit dibaca</item>
+        <item>10 menit dibaca</item>
+        <item>10 menit dibaca</item>
+        <item>10 menit dibaca</item>
+    </string-array>
+
+    <integer-array
+        name="card_images"
+        >
+        <item>@drawable/gambar_1</item>
+        <item>@drawable/gambar_2</item>
+        <item>@drawable/gambar_3</item>
+        <item>@drawable/gambar_4</item>
+        <item>@drawable/gambar_5</item>
+        <item>@drawable/gambar_6</item>
+        <item>@drawable/gambar_7</item>
+        <item>@drawable/gambar_8</item>
+        <item>@drawable/gambar_9</item>
+        <item>@drawable/gambar_10</item>
+    </integer-array>
+
+    <integer-array
+        name="dataImageDetails"
+        >
+        <item>@drawable/gambar_1</item>
+        <item>@drawable/gambar_2</item>
+        <item>@drawable/gambar_3</item>
+        <item>@drawable/gambar_4</item>
+        <item>@drawable/gambar_5</item>
+        <item>@drawable/gambar_6</item>
+        <item>@drawable/gambar_7</item>
+        <item>@drawable/gambar_8</item>
+        <item>@drawable/gambar_9</item>
+        <item>@drawable/gambar_10</item>
+    </integer-array>
+
+    <string-array
+        name="dataTanggalDetails"
+        >
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+        <item>19 Januari 2021</item>
+    </string-array>
+
+    <string-array
+        name="dataWaktuDetails"
+        >
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+        <item>19:00 WIB</item>
+    </string-array>
+
+    <string-array
+        name="dataTitleDetails"
+        >
+        <item>Mudah Menanam Cabe Agar Cepat Berbuah</item>
+        <item>Tips Memilih Bibit Cabai Yang Berkualitas</item>
+        <item>Cegah Hama Pada Tanaman Cabai Anda!</item>
+        <item>Membuat Pestisida Alami Tanaman Cabai</item>
+        <item>Cara Mudah Menanam Cabai di Pot</item>
+        <item>Teknik Budidaya Cabai Rawit</item>
+        <item>Teknik Budidaya Cabai Rawit</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+        <item>Membuat pestisida alami tanaman cabai</item>
+    </string-array>
+
+    <string-array
+        name="dataSubtitleDetails"
+        >
+        <item>Menanam</item>
+        <item>Bibit</item>
+        <item>Hama</item>
+        <item>Pestisida</item>
+        <item>Menanam</item>
+        <item>Menanam</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+        <item>Petisida</item>
+    </string-array>
+
+    <string-array
+        name="dataWebViewDetails"
+        >
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+    </string-array>
+
+
+
+
+
+
     //cardTitleList
     <string-array name="card_title_list">
         <item>Menanam</item>
