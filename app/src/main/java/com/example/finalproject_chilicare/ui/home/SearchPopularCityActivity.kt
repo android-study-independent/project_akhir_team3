@@ -2,27 +2,55 @@ package com.example.finalproject_chilicare.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.PopularCityAdapter
-import com.example.finalproject_chilicare.data.models.CurrentWeatherDetails
+import com.example.finalproject_chilicare.data.response.PopularCityResponse
 
 class SearchPopularCityActivity : AppCompatActivity() {
 
-    private lateinit var adapter:PopularCityAdapter
-    private var listUpcoming = mutableListOf<CurrentWeatherDetails>()
+    private lateinit var rv_CariKota: RecyclerView
+
+    private lateinit var dataKota : ArrayList<PopularCityResponse>
+
+    lateinit var titleList: Array<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_popular_city)
 
-        val rvPopularCity = findViewById<RecyclerView>(R.id.rvPopularCity)
-        rvPopularCity.layoutManager = LinearLayoutManager(this)
-        adapter = PopularCityAdapter(listUpcoming)
-        rvPopularCity.adapter = adapter
+        titleList = arrayOf(
+            "Semarang",
+            "Surabaya",
+            "Jakarta",
+            "Yogyakarta",
+            "Sleman",
+            "Semarang",
+            "Malang",
+            "Kediri",
+            "Surabaya",
+            "Jakarta",
+            "Yogyakarta",
+            "Sleman",
+            "Sidoarjo",
+            "Tanggerang"
+        )
 
+        rv_CariKota = findViewById(R.id.rv_CariKota)
+        rv_CariKota.layoutManager = GridLayoutManager(this, 4)
+        rv_CariKota.setHasFixedSize(true)
 
+        dataKota = ArrayList()
+        getData()
     }
 
-
+    private fun getData() {
+        for (i in titleList.indices) {
+            val data = PopularCityResponse(titleList[i])
+            dataKota.add(data)
+        }
+        rv_CariKota.adapter = PopularCityAdapter(dataKota)
+    }
 }
