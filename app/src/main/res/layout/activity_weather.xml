@@ -31,6 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/btnAddCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -467,37 +468,30 @@
                     android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textRamalan"
                     android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textRamalan"
+                    android:layout_toRightOf="@id/textHariCuaca1"
                     android:id="@+id/textKondisiCuaca1"/>
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/suhu1Baris1"
+                    android:id="@+id/textSuhu1"
                     android:text="20°"
                     android:layout_below="@+id/textRamalan"
-                    android:layout_toRightOf="@id/textKondisiCuaca1"
                     android:layout_marginTop="28dp"
-                    android:layout_marginLeft="86dp"/>
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/garisMiringLine1"
-                    android:text="/"
-                    android:layout_below="@+id/textRamalan"
-                    android:layout_toRightOf="@id/suhu1Baris1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/suhu2Baris1"
-                    android:text="35°"
-                    android:layout_below="@+id/textRamalan"
-                    android:layout_toRightOf="@id/garisMiringLine1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -511,42 +505,34 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besok, Berawan"
+                    android:text="Besok"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/textKondisiCuaca1"
+                    android:layout_below="@+id/textHariCuaca1"
                     android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textKondisiCuaca1"
+                    android:layout_toRightOf="@id/textHariCuaca2"
                     android:id="@+id/textKondisiCuaca2"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/suhu1Baris2"
+                    android:id="@+id/textSuhu2"
                     android:text="16°"
-                    android:layout_below="@+id/suhu1Baris1"
-                    android:layout_toRightOf="@id/textKondisiCuaca1"
+                    android:layout_below="@+id/textSuhu1"
                     android:layout_marginTop="28dp"
-                    android:layout_marginLeft="86dp"/>
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/garisMiringLine2"
-                    android:text="/"
-                    android:layout_below="@+id/garisMiringLine1"
-                    android:layout_toRightOf="@id/suhu1Baris1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/suhu2Baris2"
-                    android:text="34°"
-                    android:layout_below="@+id/suhu2Baris1"
-                    android:layout_toRightOf="@id/garisMiringLine1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -560,42 +546,33 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besok, Berawan"
+                    android:text="Besok"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/textKondisiCuaca2"
+                    android:layout_below="@+id/textHariCuaca2"
                     android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textKondisiCuaca2"
+                    android:layout_toRightOf="@id/textHariCuaca2"
                     android:id="@+id/textKondisiCuaca3"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/suhu1Baris3"
+                    android:id="@+id/textSuhu3"
                     android:text="16°"
-                    android:layout_below="@+id/suhu1Baris2"
-                    android:layout_toRightOf="@id/textKondisiCuaca1"
+                    android:layout_below="@+id/textSuhu2"
                     android:layout_marginTop="28dp"
-                    android:layout_marginLeft="86dp"/>
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/garisMiringLine3"
-                    android:text="/"
-                    android:layout_below="@+id/garisMiringLine2"
-                    android:layout_toRightOf="@id/suhu1Baris1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/suhu2Baris3"
-                    android:text="34°"
-                    android:layout_below="@+id/suhu2Baris2"
-                    android:layout_toRightOf="@id/garisMiringLine1"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="2dp"/>
 
                 <Button
                     android:id="@+id/buttonLihatSelengkapnya"
@@ -607,7 +584,7 @@
                     android:textColor="@color/NeutralText"
                     android:textAllCaps="false"
                     android:background="@drawable/buttonloginreg"
-                    android:layout_below="@+id/textKondisiCuaca3"
+                    android:layout_below="@+id/textHariCuaca3"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="22dp"
                     />

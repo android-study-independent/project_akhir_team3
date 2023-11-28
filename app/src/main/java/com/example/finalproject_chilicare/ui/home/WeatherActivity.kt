@@ -9,6 +9,8 @@ import android.location.LocationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -32,15 +34,14 @@ import java.time.ZoneId
 import java.util.Date
 
 class WeatherActivity : AppCompatActivity() {
-    lateinit var binding:ActivityWeatherBinding
+    lateinit var binding: ActivityWeatherBinding
+    lateinit var btnAdd : ImageView
 
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private var isLocationPermissionGranted = false
     private val LOCATION_REQUEST_CODE = 101
-//    val lon: Double = 106.845
-//    val lat : Double = -6.213
     val api_key: String = "0289d34d4ef9cbab143b0cea686697fa"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +49,7 @@ class WeatherActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_weather)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
+        btnAdd = findViewById(R.id.btnAddCity)
 
         permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
             isLocationPermissionGranted = permission[android.Manifest.permission.ACCESS_FINE_LOCATION] ?: isLocationPermissionGranted
@@ -57,11 +59,11 @@ class WeatherActivity : AppCompatActivity() {
 
         getCurrentLocation()
 
-        askPermission()
-//        weatherTask().execute()
+        btnAdd.setOnClickListener {
 
-
-
+            val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }
@@ -76,17 +78,14 @@ class WeatherActivity : AppCompatActivity() {
                     this,
                     android.Manifest.permission.ACCESS_FINE_LOCATION
 
-
                 )!=PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.ACCESS_COARSE_LOCATION
+
                 ) != PackageManager.PERMISSION_GRANTED
                     ){
-
                     requestLocationPermissions()
-
                     return
-
                 }
 
                 fusedLocationProviderClient.lastLocation
@@ -98,38 +97,19 @@ class WeatherActivity : AppCompatActivity() {
                             checkCurrentLocation(
                                 location.latitude.toString(),
                                 location.longitude.toString()
-
                             )
-
-
                         }
-
                     }
-
-
             }
 
             else {
-
                 val intent = Intent (android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
-
-
-
             }
-
-
-
-
         }
-
         else {
-
             requestLocationPermissions()
-
-
         }
-
     }
 
     private fun requestLocationPermissions() {
@@ -150,8 +130,6 @@ class WeatherActivity : AppCompatActivity() {
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-
-
     }
 
     private fun isCheckPermissions() : Boolean {
@@ -164,17 +142,11 @@ class WeatherActivity : AppCompatActivity() {
             android.Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED){
 
-
             return  true
 
         }
 
         return false
-
-
-
-
-
     }
 
     override fun onRequestPermissionsResult(
@@ -192,15 +164,13 @@ class WeatherActivity : AppCompatActivity() {
         }
         else {
 
-
         }
-
 
     }
 
     private fun getCityWeather(city : String) {
 
-        NetworkWeather.getApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
+        NetworkWeather.getCityApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
             object : Callback<CurrentWeather> {
                 override fun onResponse(
                     call: Call<CurrentWeather>,
@@ -214,15 +184,9 @@ class WeatherActivity : AppCompatActivity() {
 
                         }
 
-
-
                     } else {
 
-
                         Toast.makeText(this@WeatherActivity, "No city found",Toast.LENGTH_SHORT).show()
-
-
-
                     }
                 }
 
@@ -249,13 +213,11 @@ class WeatherActivity : AppCompatActivity() {
 
                     }
 
-
                 }
 
                 override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
                     TODO("Not yet implemented")
                 }
-
 
             })
 
@@ -286,11 +248,81 @@ class WeatherActivity : AppCompatActivity() {
             textSuhuKetiga.text = (body.hourlyweather[2].temperature.toString())
             textWaktuKeempat.text = (body.hourlyweather[3].time)
             textSuhuKeempat.text = (body.hourlyweather[3].temperature.toString())
-//            textWaktuKelima.text = (body.hourlyweather[4].time)
-//            textSuhuKelima.text = (body.hourlyweather[4].temperature.toString())
+
+
+            textHariCuaca1.text = (body.forecast[0].date)
+            textHariCuaca2.text = (body.forecast[1].date)
+            textHariCuaca3.text = (body.forecast[2].date)
+            textKondisiCuaca1.text = (body.forecast[0].weatherDescription)
+            textKondisiCuaca2.text = (body.forecast[1].weatherDescription)
+            textKondisiCuaca3.text = (body.forecast[2].weatherDescription)
+            textSuhu1.text = (body.forecast[0].temperature.toString())+ "°"
+            textSuhu2.text = (body.forecast[1].temperature.toString())+ "°"
+            textSuhu3.text = (body.forecast[2].temperature.toString())+ "°"
+
+
 
         }
 
+        updateTodayIconWeather(body.currentWeather.weatherDescription)
+        for (i in 0 until minOf(4, body.hourlyweather.size)) {
+            updateHourlyIconWeather(body.hourlyweather[i].weatherDescription)
+        }
+        for (i in 0 until minOf(5, body.hourlyweather.size)) {
+            updateNextDayIconWeather(body.forecast[i].weatherDescription)
+        }
+
+    }
+
+    private fun updateHourlyIconWeather(weatherDescription: String) {
+
+        binding.apply {
+
+            if (weatherDescription == "moderate rain") {
+
+                iconSuhuSekarang.setImageResource(R.drawable.berawan)
+                iconSuhuJam11.setImageResource(R.drawable.hujan)
+                iconSuhuJam12.setImageResource(R.drawable.hujan)
+                iconSuhuJam13.setImageResource(R.drawable.berawan)
+
+            }
+
+
+        }
+
+    }
+
+    private fun updateNextDayIconWeather(weatherDescription: String) {
+
+        binding.apply {
+
+            if (weatherDescription == "light rain") {
+
+
+                iconCuaca1.setImageResource(R.drawable.hujan)
+                iconCuaca2.setImageResource(R.drawable.hujan)
+                iconCuaca3.setImageResource(R.drawable.hujan)
+
+            }
+
+
+        }
+
+
+    }
+
+
+    private fun updateTodayIconWeather(weatherDescription: String) {
+            binding.apply {
+
+                if (weatherDescription == "moderate rain") {
+
+                    iconSuhu.setImageResource(R.drawable.sun)
+
+                }
+
+
+            }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -317,73 +349,5 @@ class WeatherActivity : AppCompatActivity() {
         return intTemp.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//    inner class weatherTask(): AsyncTask<String, Void, String>() {
-//
-//        override fun onPreExecute() {
-//            super.onPreExecute()
-//
-//
-//        }
-//
-//        override fun doInBackground(vararg params: String?): String {
-//            var response: String?
-//
-//            try{
-//                response = URL("http://195.35.32.179:8003/weather?lat$lat&lon=$lon")
-//                    .readText(Charsets.UTF_8)
-//            }
-//            catch (e: Exception) {
-//                response = null
-//            }
-//            return response.toString()
-//        }
-//
-//        override fun onPostExecute(result: String?) {
-//            super.onPostExecute(result)
-//
-//            val jsonObj = JSONObject(result)
-//
-//
-//
-//
-//        }
-//
-//    }
-
-
-    private fun askPermission() {
-        isLocationPermissionGranted = ContextCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
-
-        val askPermission : MutableList<String> = ArrayList()
-
-        if (!isLocationPermissionGranted) {
-            askPermission.add(android.Manifest.permission.ACCESS_FINE_LOCATION)
-        }
-
-        if (askPermission.isNotEmpty()) {
-            permissionLauncher.launch(askPermission.toTypedArray())
-        }
-
-
-
-    }
 }
+
