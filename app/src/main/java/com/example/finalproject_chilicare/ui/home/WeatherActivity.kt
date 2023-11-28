@@ -285,6 +285,8 @@ class WeatherActivity : AppCompatActivity() {
                 iconSuhuJam12.setImageResource(R.drawable.hujan)
                 iconSuhuJam13.setImageResource(R.drawable.berawan)
 
+
+
             }
 
 
