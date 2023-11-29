@@ -68,27 +68,55 @@ class DetailArticleActivity : AppCompatActivity() {
 
         tvWebView = findViewById(R.id.tvWebView)
         val htmlText = """
-            <html>
-            <body>
-                <p style="text-align: justify; font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-                    Dengan banyaknya nutrisi yang terkandung dalam cabai didukung dengan maraknya makanan pedas sebagai bisnis di bidang makanan dan jajanan pedas yang berdampak kepada para petani cabai. Ingin tanaman cabai Anda cepat berbuah? Simak beberapa cara berikut ini.
-                </p>
-                <ol style="font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-                    <li>Pilih benih cabai berkualitas</li>
-                    <li>Keluarkan biji cabai dari nuahnya</li>
-                    <li>Jemur biji cabai</li>
-                    <li>Seleksi biji cabai</li>
-                    <li>Mulai penyemaian</li>
-                    <li>Pindahkan ke media tanam</li>
-                    <li>Mulai perawatan tanaman cabai</li>
+         
+                <p>Dengan banyaknya <strong>nutrisi </strong>yang terkandung dalam cabai didukung dengan maraknya makanan pedas sebagai bisnis di bidang makanan dan jajanan pedas yang berdampak kepada para petani cabai. Ingin tanaman cabai Anda cepat berbuah? Simak <strong>beberapa </strong>cara berikut ini.</p>
+
+                <p>&nbsp;</p>
+
+                <ol>
+                	<li>test</li>
+                	<li>tets</li>
+                	<li>teste</li>
+                	<li>stete</li>
+                	<li>tehsa</li>
                 </ol>
-                <p style="text-align: justify; font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-                    Itulah informasi mengenai mudah menanam cabai agar cepat berbuah.
-                    <br/><br/>
-                    Sumber: <a href="https://ketahananpangan.semarangkota.go.id/v3/portal/page/artikel/7-Cara-Mudah-Menanam-Cabe-Agar-Cepat-Berbuah">https://ketahananpangan.semarangkota.go.id/v3/portal/page/artikel/7-Cara-Mudah-Menanam-Cabe-Agar-Cepat-Berbuah</a>
-                </p>
-            </body>
-            </html>
+
+                <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                <p>&nbsp;</p>
+
+                <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only<em> five centuries, but also the leap into electronic typesetting, remaining essentially unch</em>anged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                <p>&nbsp;</p>
+
+                <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry.<u> Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essential</u>ly unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+                <p>&nbsp;</p>
+
+                <p>😁</p>
+
+                <p>&nbsp;</p>
+
+                <table border="1" cellpadding="1" cellspacing="1" style="width:500px">
+                	<tbody>
+                		<tr>
+                			<td>test</td>
+                			<td>aaouaoe</td>
+                		</tr>
+                		<tr>
+                			<td>oeuao</td>
+                			<td>oaeuaoe</td>
+                		</tr>
+                		<tr>
+                			<td>aoeuaoe</td>
+                			<td>oeu</td>
+                		</tr>
+                	</tbody>
+                </table>
+
+                <p>&nbsp;</p>
+
+          
         """.trimIndent()
 
         tvWebView.settings.javaScriptEnabled = true

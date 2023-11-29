@@ -4,58 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.SearchPopularCityActivity"
-    android:paddingHorizontal="16dp"
     android:background="@color/BackgroundHalaman"
-    >
+    android:paddingHorizontal="16dp"
+    tools:context=".ui.home.SearchPopularCityActivity">
 
     <ImageView
+        android:id="@+id/iconBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:id="@+id/iconBack"
         android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textKelolaKota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cari Kota"
-        app:layout_constraintLeft_toRightOf="@+id/iconBack"
-        app:layout_constraintTop_toTopOf="@+id/iconBack"
-        app:layout_constraintBottom_toBottomOf="@+id/iconBack"
         android:layout_marginLeft="24dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
         android:fontFamily="@font/plusjakartasans_bold_700"
-        />
+        android:text="Cari Kota"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconBack"
+        app:layout_constraintLeft_toRightOf="@+id/iconBack"
+        app:layout_constraintTop_toTopOf="@+id/iconBack" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilCariArtikel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textKelolaKota"
         app:hintEnabled="false"
-        android:layout_alignParentStart="true">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textKelolaKota">
 
         <EditText
             android:id="@+id/etCariArtikel"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Masukkan Lokasi"
-            android:textSize="14sp"
-            android:fontFamily="@font/plusjakartasans_reguler_400"
-            android:textColor="@color/SecondaryText"
             android:background="@drawable/custominputregistlogin"
-            android:paddingLeft="12dp"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="8dp"
-            />
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:hint="Masukkan Lokasi"
+            android:paddingLeft="12dp"
+            android:textColor="@color/SecondaryText"
+            android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,22 +59,28 @@
         android:id="@+id/textKotaPopular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilCariArtikel"
-        android:text="Kota Popular"
-        android:textSize="16sp"
-        android:fontFamily="@font/plusjakartasans_bold_700"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:text="Kota Popular"
         android:textColor="@color/black"
-        />
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilCariArtikel" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_CariKota"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textKotaPopular"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="16dp"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textKotaPopular" />
+
+    <Button
+        android:id="@+id/btnOke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="oke"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_CariKota" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

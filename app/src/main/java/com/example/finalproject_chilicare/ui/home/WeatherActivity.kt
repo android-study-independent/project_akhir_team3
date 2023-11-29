@@ -1,6 +1,7 @@
 package com.example.finalproject_chilicare.ui.home
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -63,9 +64,23 @@ class WeatherActivity : AppCompatActivity() {
         getCurrentLocation()
 
         btnAdd.setOnClickListener {
-
+// start activity for result
             val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 123)
+        }
+
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 123) {
+                val selectedCity = data?.getStringExtra("selectedCity") ?: ""
+                Log.d("debug_activityresult", "get selected city $selectedCity")
+                getCityWeather(selectedCity)
+            }
         }
 
 
