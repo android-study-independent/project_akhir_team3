@@ -42,10 +42,8 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
-
-
-
 }
 
 dependencies {
@@ -58,35 +56,35 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-     implementation("androidx.databinding:databinding-runtime:8.1.4")
+    implementation("androidx.databinding:databinding-runtime:8.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //epoxy
-    implementation ("com.airbnb.android:epoxy:5.1.3")
+    implementation("com.airbnb.android:epoxy:5.1.3")
 //    kapt("com.airbnb.android:epoxy-processor:5.1.3")
 
     //gmsplay service
-    implementation ("com.google.android.gms:play-services-location:21.0.1")
-    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 
 
     //lottie animation
-    implementation ("com.airbnb.android:lottie-compose:6.1.0")
-    implementation ("com.airbnb.android:lottie:6.1.0")
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+    implementation("com.airbnb.android:lottie:6.1.0")
 
     //sliderindicator
-    implementation ("com.github.zhpanvip:viewpagerindicator:1.2.3")
+    implementation("com.github.zhpanvip:viewpagerindicator:1.2.3")
 
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.google.code.gson:gson:2.10.1")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
-    debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
-    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
-    implementation ("com.google.android.gms:play-services-location:21.0.0")
+    implementation("com.google.android.gms:play-services-location:21.0.0")
 //    implementation ("com.android.databinding:compiler:3.5.1")
 //    implementation("io.reactive.rxjava3:rxjava:3.0.2")
 //    implementation("io.reactive.rxjava3:rxandroid:3.0.2")

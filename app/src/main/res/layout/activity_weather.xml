@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:background="#F6F6F6">
 
+
         <ImageView
             android:id="@+id/btnBackInWeather"
             android:layout_width="24dp"
@@ -52,64 +53,75 @@
             app:layout_constraintTop_toBottomOf="@id/textLocation">
 
             <RelativeLayout
+                android:id="@+id/relativeSuhu"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/relativeSuhu">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textSuhu"
-                    android:layout_width="113sp"
-                    android:layout_height="81sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp"
-                    android:text="35°"
+                    android:layout_marginTop="28dp"
                     android:textColor="@color/PrimaryBrand"
-                    android:textSize="30sp" />
+                    android:textSize="52sp"
+                    tools:text="35°" />
 
                 <androidx.constraintlayout.utils.widget.ImageFilterView
                     android:id="@+id/iconSuhu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/sun"
-                    android:layout_marginTop="8dp"
                     android:layout_below="@+id/textSuhu"
-                    android:layout_marginLeft="12dp"/>
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/sun" />
 
                 <TextView
                     android:id="@+id/kondisiSuhu"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Cerah"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="14dp"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:layout_below="@id/textSuhu"
-                    android:layout_toRightOf="@id/iconSuhu"
-                    android:layout_marginLeft="2dp"/>
-
-                <TextView
-                    android:id="@+id/ringkasanHarian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="66dp"
+                    android:layout_below="@id/textSuhu"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="18dp"
-                    android:layout_marginRight="52dp"
-                    android:text="Ringkasan Harian"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/descStatusCuaca"
-                    android:layout_width="167dp"
-                    android:layout_height="wrap_content"
-                    android:text="Hari ini cerah, Yuk berikan pupuk dan vitamin serta pantau kelembaban tanaman Anda!"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/ringkasanHarian"
+                    android:layout_toRightOf="@id/iconSuhu"
+                    android:gravity="center"
                     android:textAlignment="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="14dp"/>
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:text="scattered clouds" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/textSuhu"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ringkasanHarian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="22dp"
+                        android:text="Ringkasan Harian"
+                        android:textColor="#FF000000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/descStatusCuaca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ringkasanHarian"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        tools:text="Hari ini cerah, Yuk berikan pupuk dan vitamin serta pantau kelembaban tanaman Anda!" />
+
+
+                </LinearLayout>
+
             </RelativeLayout>
         </FrameLayout>
 
@@ -119,9 +131,9 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="22dp"
+            android:layout_marginTop="130dp"
             android:background="@drawable/border_weather"
             android:backgroundTint="#FFFFFF"
-            android:layout_marginTop="130dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
 
@@ -164,66 +176,33 @@
             </RelativeLayout>
         </FrameLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/frameCuacaPerJam"
             android:layout_width="324dp"
             android:layout_height="93dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/frameKelembapan"
-            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.513"
-            tools:layout_editor_absoluteX="58dp">
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
+            app:layout_constraintVertical_bias="0.513">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:id="@+id/relativeWaktuCuacaPerJam">
+            <!--            suhu sekarang-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textWaktuSekarang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="6dp"
                     android:text="Sekarang"
-                    android:textSize="12sp"
                     android:textColor="@color/PrimaryBrand"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="6dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKedua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:00"
                     android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuSekarang"
-                    android:layout_marginLeft="55dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKetiga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:00"
-                    android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuKedua"
-                    android:layout_marginLeft="55dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKeempat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="13:00"
-                    android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuKetiga"
-                    android:layout_marginLeft="55dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="22dp"
-                android:id="@+id/relativeSuhuPerJam">
+                    android:textStyle="bold" />
 
                 <FrameLayout
                     android:id="@+id/frameSuhuSekarang"
@@ -231,156 +210,365 @@
                     android:layout_height="67dp"
                     android:layout_below="@+id/textWaktuSekarang"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/border_cuaca"
                     android:backgroundTint="@color/PrimaryBrand"
-                    tools:ignore="NotSibling" >
+                    tools:ignore="NotSibling">
 
                     <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuSekarang">
+                        android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iconSuhuSekarang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuSekarang"/>
+                            android:src="@drawable/berawan" />
 
                         <TextView
                             android:id="@+id/textSuhuSekarang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="35°"
                             android:layout_below="@+id/iconSuhuSekarang"
                             android:layout_centerHorizontal="true"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="3dp"/>
+                            android:layout_marginTop="3dp"
+                            android:text="35°"
+                            android:textColor="@color/white" />
                     </RelativeLayout>
                 </FrameLayout>
+
+            </LinearLayout>
+
+            <!--            waktu 11-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textWaktuKedua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_toRightOf="@id/textWaktuSekarang"
+                    android:text="11:00"
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:id="@+id/frameSuhuJam11"
                     android:layout_width="42dp"
                     android:layout_height="67dp"
                     android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="57dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/frameSuhuSekarang"
                     android:background="@drawable/border_cuaca"
                     android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuSekarang"
-                    tools:ignore="NotSibling" >
+                    tools:ignore="NotSibling">
 
                     <RelativeLayout
+                        android:id="@+id/relativeSuhuJam11"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam11">
+                        android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iconSuhuJam11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam11"/>
+                            android:src="@drawable/berawan" />
 
                         <TextView
                             android:id="@+id/textSuhuKedua"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:textStyle="bold"
                             android:layout_below="@+id/iconSuhuJam11"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
+                            android:layout_marginTop="3dp"
+                            android:text="35°"
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textWaktuKetiga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_toRightOf="@id/textWaktuKedua"
+                    android:text="12:00"
+                    android:textSize="12sp" />
 
                 <FrameLayout
                     android:id="@+id/frameSuhuJam12"
                     android:layout_width="42dp"
                     android:layout_height="67dp"
                     android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="46dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/frameSuhuJam11"
                     android:background="@drawable/border_cuaca"
                     android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuJam11"
-                    tools:ignore="NotSibling" >
+                    tools:ignore="NotSibling">
 
                     <RelativeLayout
+                        android:id="@+id/relativeSuhuJam12"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam12">
+                        android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/iconSuhuJam12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam12"/>
+                            android:src="@drawable/berawan" />
 
                         <TextView
                             android:id="@+id/textSuhuKetiga"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:textStyle="bold"
                             android:layout_below="@+id/iconSuhuJam12"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
-                    </RelativeLayout>
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameSuhuJam13"
-                    android:layout_width="42dp"
-                    android:layout_height="67dp"
-                    android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="43dp"
-                    android:background="@drawable/border_cuaca"
-                    android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuJam12"
-                    tools:ignore="NotSibling" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam13">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam13"/>
-
-                        <TextView
-                            android:id="@+id/textSuhuKeempat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
                             android:text="35°"
-                            android:textStyle="bold"
-                            android:layout_below="@+id/iconSuhuJam13"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </FrameLayout>
 
-            </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/frameCuacaPerJam"-->
+        <!--            android:layout_width="324dp"-->
+        <!--            android:layout_height="93dp"-->
+        <!--            app:layout_constraintBottom_toTopOf="@id/frameKelembapan"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"-->
+        <!--            app:layout_constraintVertical_bias="0.513"-->
+        <!--           >-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/relativeWaktuCuacaPerJam"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="16dp">-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textWaktuSekarang"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="6dp"-->
+        <!--                    android:text="Sekarang"-->
+        <!--                    android:textColor="@color/PrimaryBrand"-->
+        <!--                    android:textSize="12sp"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textWaktuKedua"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="55dp"-->
+        <!--                    android:layout_toRightOf="@id/textWaktuSekarang"-->
+        <!--                    android:text="11:00"-->
+        <!--                    android:textSize="12sp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textWaktuKetiga"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="55dp"-->
+        <!--                    android:layout_toRightOf="@id/textWaktuKedua"-->
+        <!--                    android:text="12:00"-->
+        <!--                    android:textSize="12sp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textWaktuKeempat"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginLeft="55dp"-->
+        <!--                    android:layout_toRightOf="@id/textWaktuKetiga"-->
+        <!--                    android:text="13:00"-->
+        <!--                    android:textSize="12sp" />-->
+
+        <!--            </RelativeLayout>-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/relativeSuhuPerJam"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="70dp"-->
+        <!--                android:layout_marginTop="22dp">-->
+
+        <!--                <FrameLayout-->
+        <!--                    android:id="@+id/frameSuhuSekarang"-->
+        <!--                    android:layout_width="42dp"-->
+        <!--                    android:layout_height="67dp"-->
+        <!--                    android:layout_below="@+id/textWaktuSekarang"-->
+        <!--                    android:layout_marginLeft="8dp"-->
+        <!--                    android:background="@drawable/border_cuaca"-->
+        <!--                    android:backgroundTint="@color/PrimaryBrand"-->
+        <!--                    tools:ignore="NotSibling">-->
+
+        <!--                    <RelativeLayout-->
+        <!--                        android:id="@+id/relativeSuhuSekarang"-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="match_parent">-->
+
+        <!--                        <ImageView-->
+        <!--                            android:id="@+id/iconSuhuSekarang"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="4dp"-->
+        <!--                            android:src="@drawable/berawan" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/textSuhuSekarang"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_below="@+id/iconSuhuSekarang"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="3dp"-->
+        <!--                            android:text="35°"-->
+        <!--                            android:textColor="@color/white" />-->
+        <!--                    </RelativeLayout>-->
+        <!--                </FrameLayout>-->
+
+        <!--                <FrameLayout-->
+        <!--                    android:id="@+id/frameSuhuJam11"-->
+        <!--                    android:layout_width="42dp"-->
+        <!--                    android:layout_height="67dp"-->
+        <!--                    android:layout_below="@+id/textWaktuSekarang"-->
+        <!--                    android:layout_marginLeft="57dp"-->
+        <!--                    android:layout_toRightOf="@id/frameSuhuSekarang"-->
+        <!--                    android:background="@drawable/border_cuaca"-->
+        <!--                    android:backgroundTint="#FFFFFF"-->
+        <!--                    tools:ignore="NotSibling">-->
+
+        <!--                    <RelativeLayout-->
+        <!--                        android:id="@+id/relativeSuhuJam11"-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="match_parent">-->
+
+        <!--                        <ImageView-->
+        <!--                            android:id="@+id/iconSuhuJam11"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="4dp"-->
+        <!--                            android:src="@drawable/berawan" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/textSuhuKedua"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_below="@+id/iconSuhuJam11"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="3dp"-->
+        <!--                            android:text="35°"-->
+        <!--                            android:textStyle="bold" />-->
+        <!--                    </RelativeLayout>-->
+        <!--                </FrameLayout>-->
+
+        <!--                <FrameLayout-->
+        <!--                    android:id="@+id/frameSuhuJam12"-->
+        <!--                    android:layout_width="42dp"-->
+        <!--                    android:layout_height="67dp"-->
+        <!--                    android:layout_below="@+id/textWaktuSekarang"-->
+        <!--                    android:layout_marginLeft="46dp"-->
+        <!--                    android:layout_toRightOf="@id/frameSuhuJam11"-->
+        <!--                    android:background="@drawable/border_cuaca"-->
+        <!--                    android:backgroundTint="#FFFFFF"-->
+        <!--                    tools:ignore="NotSibling">-->
+
+        <!--                    <RelativeLayout-->
+        <!--                        android:id="@+id/relativeSuhuJam12"-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="match_parent">-->
+
+        <!--                        <ImageView-->
+        <!--                            android:id="@+id/iconSuhuJam12"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="4dp"-->
+        <!--                            android:src="@drawable/berawan" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/textSuhuKetiga"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_below="@+id/iconSuhuJam12"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="3dp"-->
+        <!--                            android:text="35°"-->
+        <!--                            android:textStyle="bold" />-->
+        <!--                    </RelativeLayout>-->
+        <!--                </FrameLayout>-->
+
+        <!--                <FrameLayout-->
+        <!--                    android:id="@+id/frameSuhuJam13"-->
+        <!--                    android:layout_width="42dp"-->
+        <!--                    android:layout_height="67dp"-->
+        <!--                    android:layout_below="@+id/textWaktuSekarang"-->
+        <!--                    android:layout_marginLeft="43dp"-->
+        <!--                    android:layout_toRightOf="@id/frameSuhuJam12"-->
+        <!--                    android:background="@drawable/border_cuaca"-->
+        <!--                    android:backgroundTint="#FFFFFF"-->
+        <!--                    tools:ignore="NotSibling">-->
+
+        <!--                    <RelativeLayout-->
+        <!--                        android:id="@+id/relativeSuhuJam13"-->
+        <!--                        android:layout_width="match_parent"-->
+        <!--                        android:layout_height="match_parent">-->
+
+        <!--                        <ImageView-->
+        <!--                            android:id="@+id/iconSuhuJam13"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="4dp"-->
+        <!--                            android:src="@drawable/berawan" />-->
+
+        <!--                        <TextView-->
+        <!--                            android:id="@+id/textSuhuKeempat"-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_below="@+id/iconSuhuJam13"-->
+        <!--                            android:layout_centerHorizontal="true"-->
+        <!--                            android:layout_marginTop="3dp"-->
+        <!--                            android:text="35°"-->
+        <!--                            android:textStyle="bold" />-->
+        <!--                    </RelativeLayout>-->
+        <!--                </FrameLayout>-->
+
+        <!--            </RelativeLayout>-->
 
 
-        </FrameLayout>
+        <!--        </FrameLayout>-->
 
         <FrameLayout
             android:id="@+id/frameKecepatanAngin"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_marginTop="130dp"
             android:layout_marginRight="22dp"
             android:background="@drawable/border_weather"
             android:backgroundTint="#FFFFFF"
-            android:layout_marginTop="130dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
 
@@ -393,8 +581,8 @@
                     android:id="@+id/textKecepatanAngin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
                     android:drawableStart="@drawable/angin"
                     android:drawablePadding="4dp"
                     android:text="Angin"
@@ -405,12 +593,12 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textKecepatanAngin"
-                    android:layout_marginTop="6dp"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginTop="6dp"
                     android:text="2.1\nm/s"
-                    android:textStyle="bold"
                     android:textColor="@color/PrimaryBrand"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textArahAngin"
@@ -418,8 +606,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nilaiKecepatanAngin"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/space_10"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="@dimen/space_10"
                     android:text="Barat"
                     android:textSize="14sp" />
             </RelativeLayout>
@@ -437,169 +625,171 @@
             app:layout_constraintTop_toBottomOf="@id/frameKelembapan">
 
             <RelativeLayout
+                android:id="@+id/relativeRamalanCuaca"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/relativeRamalanCuaca">
+                android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textRamalan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ramalan 5 hari kedepan"
-                    android:layout_marginTop="12dp"
                     android:layout_marginLeft="12dp"
-                    android:textSize="12sp"
-                    android:id="@+id/textRamalan"/>
+                    android:layout_marginTop="12dp"
+                    android:text="Ramalan 5 hari kedepan"
+                    android:textSize="12sp" />
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/sun"
                     android:id="@+id/iconCuaca1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/textRamalan"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginLeft="12dp"/>
+                    android:src="@drawable/sun" />
 
                 <TextView
+                    android:id="@+id/textHariCuaca1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari ini"
-                    android:layout_marginTop="28dp"
+                    android:layout_below="@+id/textRamalan"
                     android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/textRamalan"
+                    android:layout_marginTop="28dp"
                     android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca1"/>
+                    android:text="Hari ini" />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari ini"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="6dp"
                     android:layout_below="@+id/textRamalan"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="28dp"
                     android:layout_toRightOf="@id/textHariCuaca1"
-                    android:id="@+id/textKondisiCuaca1"/>
+                    android:text="Hari ini" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/textSuhu1"
-                    android:text="20°"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/textRamalan"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
-                    android:layout_alignParentRight="true"/>
-
+                    android:text="20°" />
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/berawan"
                     android:id="@+id/iconCuaca2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/iconCuaca1"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginTop="14dp"
-                    android:layout_marginLeft="12dp"/>
+                    android:src="@drawable/berawan" />
 
                 <TextView
+                    android:id="@+id/textHariCuaca2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besok"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textHariCuaca1"
-                    android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca2"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hari ini"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="28dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_below="@+id/textKondisiCuaca1"
-                    android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca2"/>
+                    android:layout_toRightOf="@id/iconCuaca1"
+                    android:text="Besok" />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/textKondisiCuaca1"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_toRightOf="@id/textHariCuaca2"
+                    android:text="Hari ini" />
+
+                <TextView
                     android:id="@+id/textSuhu2"
-                    android:text="16°"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/textSuhu1"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
-                    android:layout_alignParentRight="true"/>
-
+                    android:text="16°" />
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/berawan"
                     android:id="@+id/iconCuaca3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/iconCuaca2"
+                    android:layout_marginLeft="12dp"
                     android:layout_marginTop="14dp"
-                    android:layout_marginLeft="12dp"/>
+                    android:src="@drawable/berawan" />
 
                 <TextView
+                    android:id="@+id/textHariCuaca3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besok"
-                    android:layout_marginTop="28dp"
-                    android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textHariCuaca2"
-                    android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca3"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hari ini"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="28dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_below="@+id/textKondisiCuaca2"
-                    android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca3"/>
+                    android:layout_toRightOf="@id/iconCuaca1"
+                    android:text="Besok" />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/textKondisiCuaca2"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_toRightOf="@id/textHariCuaca2"
+                    android:text="Hari ini" />
+
+                <TextView
                     android:id="@+id/textSuhu3"
-                    android:text="16°"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/textSuhu2"
+                    android:layout_alignParentRight="true"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
-                    android:layout_alignParentRight="true"/>
+                    android:text="16°" />
 
 
                 <Button
                     android:id="@+id/buttonLihatSelengkapnya"
                     android:layout_width="296dp"
                     android:layout_height="44dp"
-                    android:text="Lihat Selengkapnya"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:textColor="@color/NeutralText"
-                    android:textAllCaps="false"
-                    android:background="@drawable/buttonloginreg"
                     android:layout_below="@+id/textHariCuaca3"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="22dp"
-                    />
+                    android:background="@drawable/buttonloginreg"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:text="Lihat Selengkapnya"
+                    android:textAllCaps="false"
+                    android:textColor="@color/NeutralText"
+                    android:textSize="14sp" />
 
 
             </RelativeLayout>
         </FrameLayout>
 
-
+        <ProgressBar
+            android:id="@+id/loadingIndicator"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </layout>

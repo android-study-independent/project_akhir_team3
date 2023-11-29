@@ -7,16 +7,16 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.api.NetworkWeather
@@ -32,30 +32,33 @@ import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Date
+import kotlin.math.roundToInt
 
 class WeatherActivity : AppCompatActivity() {
     lateinit var binding: ActivityWeatherBinding
-    lateinit var btnAdd : ImageView
+    lateinit var btnAdd: ImageView
 
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private var isLocationPermissionGranted = false
     private val LOCATION_REQUEST_CODE = 101
-    val api_key: String = "0289d34d4ef9cbab143b0cea686697fa"
+    private val api_key: String = "0289d34d4ef9cbab143b0cea686697fa"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_weather)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
         btnAdd = findViewById(R.id.btnAddCity)
 
-        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
-            isLocationPermissionGranted = permission[android.Manifest.permission.ACCESS_FINE_LOCATION] ?: isLocationPermissionGranted
-        }
+        permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
+                isLocationPermissionGranted =
+                    permission[android.Manifest.permission.ACCESS_FINE_LOCATION]
+                        ?: isLocationPermissionGranted
+            }
 
-        fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         getCurrentLocation()
 
@@ -69,21 +72,22 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun getCurrentLocation() {
+        Log.d("debug_location", "get current location")
 
-        if (isCheckPermissions()){
+        if (isCheckPermissions()) {
 
             if (isCheckLocationEnabled()) {
 
                 if (ActivityCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION
+                        this,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION
 
-                )!=PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                        this,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
 
-                ) != PackageManager.PERMISSION_GRANTED
-                    ){
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
                     requestLocationPermissions()
                     return
                 }
@@ -100,14 +104,11 @@ class WeatherActivity : AppCompatActivity() {
                             )
                         }
                     }
-            }
-
-            else {
-                val intent = Intent (android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+            } else {
+                val intent = Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
-        }
-        else {
+        } else {
             requestLocationPermissions()
         }
     }
@@ -116,33 +117,36 @@ class WeatherActivity : AppCompatActivity() {
 
         ActivityCompat.requestPermissions(
             this,
-            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                android.Manifest.permission.ACCESS_FINE_LOCATION),
+            arrayOf(
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ),
             LOCATION_REQUEST_CODE
         )
 
     }
 
-    private fun isCheckLocationEnabled() : Boolean{
+    private fun isCheckLocationEnabled(): Boolean {
 
-        val locationManager : LocationManager = getSystemService(Context.LOCATION_SERVICE)
-        as LocationManager
+        val locationManager: LocationManager = getSystemService(Context.LOCATION_SERVICE)
+                as LocationManager
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
 
-    private fun isCheckPermissions() : Boolean {
+    private fun isCheckPermissions(): Boolean {
 
         if (ActivityCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED){
+                this,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
 
-            return  true
+            return true
 
         }
 
@@ -156,19 +160,26 @@ class WeatherActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == LOCATION_REQUEST_CODE){
+        if (requestCode == LOCATION_REQUEST_CODE) {
 
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
 
                 getCurrentLocation()
-        }
-        else {
+        } else {
 
         }
 
     }
 
-    private fun getCityWeather(city : String) {
+    private fun showLoading(state: Boolean) {
+        if (state) {
+            binding.loadingIndicator.visibility = View.VISIBLE
+        } else {
+            binding.loadingIndicator.visibility = View.GONE
+        }
+    }
+
+    private fun getCityWeather(city: String) {
 
         NetworkWeather.getCityApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
             object : Callback<CurrentWeather> {
@@ -186,7 +197,8 @@ class WeatherActivity : AppCompatActivity() {
 
                     } else {
 
-                        Toast.makeText(this@WeatherActivity, "No city found",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@WeatherActivity, "No city found", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 
@@ -199,16 +211,18 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
-    private fun checkCurrentLocation (latitude : String, longtitude: String) {
+    private fun checkCurrentLocation(latitude: String, longtitude: String) {
 
-        NetworkWeather.getApiInterface()?.getCurrentWeatherData(api_key, latitude, longtitude)
-            ?.enqueue(object : Callback<CurrentWeather>{
+        showLoading(true)
+
+        NetworkWeather.getApiInterface()?.getCurrentWeatherData(latitude, longtitude)
+            ?.enqueue(object : Callback<CurrentWeather> {
                 override fun onResponse(
                     call: Call<CurrentWeather>,
                     response: Response<CurrentWeather>
                 ) {
                     response.body()?.let {
-
+                        showLoading(false)
                         setData(it)
 
                     }
@@ -216,7 +230,8 @@ class WeatherActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.e("error", "errornya adalah ${t.localizedMessage}")
+                    showLoading(false)
                 }
 
             })
@@ -231,23 +246,26 @@ class WeatherActivity : AppCompatActivity() {
 
 
             textLocation.text = body.currentWeather.city
-            textSuhu.text = body.currentWeather.temperature.toString() + "°"
+            textSuhu.text = body.currentWeather.temperature.roundToInt().toString() + "°"
             kondisiSuhu.text = body.currentWeather.weatherDescription
             descStatusCuaca.text = body.currentWeather.status
             nilaiKelembapan.text = body.currentWeather.humidity.toString() + "%"
-            textTitikEmbun.text = "Titik embun saat ini " +body.currentWeather.dewPoint
+            textTitikEmbun.text = "Titik embun saat ini " + body.currentWeather.dewPoint
             nilaiKecepatanAngin.text = body.currentWeather.windSpeed
             textArahAngin.text = body.currentWeather.windDirection
 
 
             textWaktuSekarang.text = (body.hourlyweather[0].time)
-            textSuhuSekarang.text = (body.hourlyweather[0].temperature.toString())
+            textSuhuSekarang.text =
+                (body.hourlyweather[0].temperature.roundToInt().toString() + getAsciicodeDerajat())
             textWaktuKedua.text = (body.hourlyweather[1].time)
-            textSuhuKedua.text = (body.hourlyweather[1].temperature.toString())
+            textSuhuKedua.text =
+                (body.hourlyweather[1].temperature.roundToInt().toString() + getAsciicodeDerajat())
             textWaktuKetiga.text = (body.hourlyweather[2].time)
-            textSuhuKetiga.text = (body.hourlyweather[2].temperature.toString())
-            textWaktuKeempat.text = (body.hourlyweather[3].time)
-            textSuhuKeempat.text = (body.hourlyweather[3].temperature.toString())
+            textSuhuKetiga.text =
+                (body.hourlyweather[2].temperature.roundToInt().toString() + getAsciicodeDerajat())
+//            textWaktuKeempat.text = (body.hourlyweather[3].time)
+//            textSuhuKeempat.text = (body.hourlyweather[3].temperature.roundToInt().toString())
 
 
             textHariCuaca1.text = (body.forecast[0].date)
@@ -256,10 +274,9 @@ class WeatherActivity : AppCompatActivity() {
             textKondisiCuaca1.text = (body.forecast[0].weatherDescription)
             textKondisiCuaca2.text = (body.forecast[1].weatherDescription)
             textKondisiCuaca3.text = (body.forecast[2].weatherDescription)
-            textSuhu1.text = (body.forecast[0].temperature.toString())+ "°"
-            textSuhu2.text = (body.forecast[1].temperature.toString())+ "°"
-            textSuhu3.text = (body.forecast[2].temperature.toString())+ "°"
-
+            textSuhu1.text = (body.forecast[0].temperature.toString()) + "°"
+            textSuhu2.text = (body.forecast[1].temperature.toString()) + "°"
+            textSuhu3.text = (body.forecast[2].temperature.toString()) + "°"
 
 
         }
@@ -274,6 +291,10 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
+    private fun getAsciicodeDerajat(): String {
+        return "\u00B0 C"
+    }
+
     private fun updateHourlyIconWeather(weatherDescription: String) {
 
         binding.apply {
@@ -283,8 +304,7 @@ class WeatherActivity : AppCompatActivity() {
                 iconSuhuSekarang.setImageResource(R.drawable.berawan)
                 iconSuhuJam11.setImageResource(R.drawable.hujan)
                 iconSuhuJam12.setImageResource(R.drawable.hujan)
-                iconSuhuJam13.setImageResource(R.drawable.berawan)
-
+//                iconSuhuJam13.setImageResource(R.drawable.berawan)
 
 
             }
@@ -315,22 +335,22 @@ class WeatherActivity : AppCompatActivity() {
 
 
     private fun updateTodayIconWeather(weatherDescription: String) {
-            binding.apply {
+        binding.apply {
 
-                if (weatherDescription == "moderate rain") {
+            if (weatherDescription == "moderate rain") {
 
-                    iconSuhu.setImageResource(R.drawable.sun)
-
-                }
-
+                iconSuhu.setImageResource(R.drawable.sun)
 
             }
+
+
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun ts2td(ts:Long):String{
+    private fun ts2td(ts: Long): String {
 
-        val localTime=ts.let {
+        val localTime = ts.let {
 
             Instant.ofEpochSecond(it)
                 .atZone(ZoneId.systemDefault())
@@ -342,11 +362,11 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
-    private fun k2c(t:Double):Double{
+    private fun k2c(t: Double): Double {
 
-        var intTemp=t
+        var intTemp = t
 
-        intTemp=intTemp.minus(273)
+        intTemp = intTemp.minus(273)
 
         return intTemp.toBigDecimal().setScale(1, RoundingMode.UP).toDouble()
     }

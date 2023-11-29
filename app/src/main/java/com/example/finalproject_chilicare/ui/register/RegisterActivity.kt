@@ -2,7 +2,6 @@ package com.example.finalproject_chilicare.ui.register
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.util.Log
@@ -11,9 +10,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
 import com.example.finalproject_chilicare.ui.login.LoginActivity
@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var inputConfirmPasswordRegister: EditText
     lateinit var btnRegister: Button
     lateinit var textToLogin: TextView
-    lateinit var CbTextRegister : TextView
+    lateinit var CbTextRegister: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -56,9 +56,11 @@ class RegisterActivity : AppCompatActivity() {
 
         textToLogin = findViewById(R.id.textToLogin)
 
-        textToLogin.setOnClickListener { Intent(this, LoginActivity::class.java).also {
-            startActivity(it)
-        } }
+        textToLogin.setOnClickListener {
+            Intent(this, LoginActivity::class.java).also {
+                startActivity(it)
+            }
+        }
 
         emailContainer.helperText = null
         usernameContainer.helperText = null
@@ -86,12 +88,15 @@ class RegisterActivity : AppCompatActivity() {
         registerReq.email = inputEmailRegister.text.toString()
         registerReq.password = inputPasswordRegister.text.toString()
 
-        val retro = Network().getRetroClientInstance("http://195.35.32.179:8003/auth/").create(ApiInterface::class.java)
-        retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse>{
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        retro.createUser(registerReq).enqueue(object : Callback<RegisterResponse> {
+            override fun onResponse(
+                call: Call<RegisterResponse>,
+                response: Response<RegisterResponse>
+            ) {
                 val register = response.body()
 
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     // Cek hasil register
 //                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
 //                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
@@ -102,12 +107,19 @@ class RegisterActivity : AppCompatActivity() {
                     checkPassword()
                     checkConfirmPassword()
                     clearText()
-                    Toast.makeText(this@RegisterActivity,"${register?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "${register?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     moveToLogin()
-                }
-                else {
+                } else {
                     Log.d("Email sama", "${register?.status}")
-                    Toast.makeText(this@RegisterActivity,"${register?.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "${register?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
 
             }
@@ -125,15 +137,15 @@ class RegisterActivity : AppCompatActivity() {
         inputConfirmPasswordRegister.text = null
     }
 
-    private fun moveToLogin(){
+    private fun moveToLogin() {
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }
 
     private fun checkEmail() {
-        inputEmailRegister.setOnFocusChangeListener { _, hasFocus ->  
-            if(!hasFocus){
+        inputEmailRegister.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
                 emailContainer.helperText = validEmail()
 
             }
@@ -144,16 +156,15 @@ class RegisterActivity : AppCompatActivity() {
 
         val txtEmail = inputEmailRegister.text.toString()
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
             return "Invalid Email Address"
             inputEmailRegister.requestFocus()
-        } else if (txtEmail.isEmpty()){
+        } else if (txtEmail.isEmpty()) {
             return "Email must be entry"
             inputEmailRegister.requestFocus()
-        }
-        else {
+        } else {
             val checkSameEmail = CheckInputRegister(txtEmail) { isEmailUsed ->
-                if (isEmailUsed){
+                if (isEmailUsed) {
                     return@CheckInputRegister
                 }
             }
@@ -164,7 +175,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkUsername() {
         inputUsernameRegister.setOnFocusChangeListener { _, hasFocus ->
-            if(!hasFocus){
+            if (!hasFocus) {
                 usernameContainer.helperText = validUsername()
             }
         }
@@ -174,17 +185,17 @@ class RegisterActivity : AppCompatActivity() {
 
         val txtUsername = inputUsernameRegister.text.toString()
 
-         if (txtUsername.isEmpty()){
+        if (txtUsername.isEmpty()) {
             return "Username must be entry"
-             inputUsernameRegister.requestFocus()
+            inputUsernameRegister.requestFocus()
 
-         }
+        }
         return null
     }
 
     private fun checkPassword() {
         inputPasswordRegister.setOnFocusChangeListener { _, hasFocus ->
-            if(!hasFocus){
+            if (!hasFocus) {
                 passwordContainer.helperText = validPassword()
             }
         }
@@ -194,19 +205,19 @@ class RegisterActivity : AppCompatActivity() {
 
         val txtPassword = inputPasswordRegister.text.toString()
 
-        if (txtPassword.length < 8){
+        if (txtPassword.length < 8) {
             return "Minimum character 8"
             inputPasswordRegister.requestFocus()
         }
-        if (!txtPassword.matches((".*[A-Z].*".toRegex()))){
+        if (!txtPassword.matches((".*[A-Z].*".toRegex()))) {
             return "Must 1 upper-case character"
             inputPasswordRegister.requestFocus()
         }
-        if (!txtPassword.matches((".*[a-z].*".toRegex()))){
+        if (!txtPassword.matches((".*[a-z].*".toRegex()))) {
             return "Must 1 lower-case character"
             inputPasswordRegister.requestFocus()
         }
-        if (!txtPassword.matches((".*[@#!_^].*".toRegex()))){
+        if (!txtPassword.matches((".*[@#!_^].*".toRegex()))) {
             return "Must 1 spesial character : @, #, !, _, ^"
             inputPasswordRegister.requestFocus()
         }
@@ -215,7 +226,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun checkConfirmPassword() {
         inputConfirmPasswordRegister.setOnFocusChangeListener { _, hasFocus ->
-            if(!hasFocus){
+            if (!hasFocus) {
                 confirmPasswordContainer.helperText = validConfirmPassword()
             }
         }
@@ -226,14 +237,12 @@ class RegisterActivity : AppCompatActivity() {
         val txtPassword = inputPasswordRegister.text.toString()
         val txtConfirmPassword = inputConfirmPasswordRegister.text.toString()
 
-        if (txtConfirmPassword !=  txtPassword){
+        if (txtConfirmPassword != txtPassword) {
             return "Your confirm password not same"
             inputConfirmPasswordRegister.requestFocus()
         }
         return null
     }
-
-
 
 
 }
