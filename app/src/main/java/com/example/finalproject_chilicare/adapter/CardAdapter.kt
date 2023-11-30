@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,85 +10,65 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.CardResponse
+import com.example.finalproject_chilicare.data.response.CardArtikelResponse
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import java.util.Locale
 
-class CardAdapter(private var dataList: MutableList<CardResponse>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>(), Filterable {
+class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : RecyclerView.Adapter<CardAdapter.CardArtikelHolder>() {
 
-    private var filteredList: ArrayList<CardResponse> = ArrayList()
 
-    // 1. untuk keperluan article detail
-    var onItemClick: ((CardResponse) -> Unit)? = null
-
-    init {
-        filteredList.addAll(dataList)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardArtikelHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.card_article, parent, false)
+        return CardArtikelHolder(view)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.card_article, parent, false)
-        return CardViewHolder(itemView)
-    }
-
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        val currentItem = filteredList[position]
-
-        holder.rvTitle.text = currentItem.dataTitle
-        holder.rvSubtitle.text = currentItem.dataSubtitle
-        holder.rvDescription.text = currentItem.dataDescription
-        holder.rvDurasibaca.text = currentItem.dataDurasibaca
-        holder.rvImage.setImageResource(currentItem.dataImage)
-
-        // 2. untuk keperluan article detail
-        holder.itemView.setOnClickListener{
-            onItemClick?.invoke(currentItem)
-        }
-
+    override fun onBindViewHolder(holder: CardArtikelHolder, position: Int) {
+        holder.bindView(listArtikel[position])
     }
 
     override fun getItemCount(): Int {
-        return filteredList.size
+        return listArtikel.size
     }
 
-    class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val rvTitle: TextView = itemView.findViewById(R.id.tv_title)
-        val rvSubtitle: TextView = itemView.findViewById(R.id.tv_subtitle)
-        val rvDescription: TextView = itemView.findViewById(R.id.tv_description)
-        val rvDurasibaca: TextView = itemView.findViewById(R.id.tv_KeteranganDibaca)
-        val rvImage: ImageView = itemView.findViewById(R.id.iv_Gambar)
-    }
+    inner class CardArtikelHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filteredResults = ArrayList<CardResponse>()
-                if (constraint.isNullOrBlank()) {
-                    filteredResults.addAll(dataList)
-                } else {
-                    val filterPattern = constraint.toString().lowercase(Locale.ROOT).trim()
-                    for (item in dataList) {
-                        if (item.dataTitle.lowercase(Locale.ROOT).contains(filterPattern)) {
-                            filteredResults.add(item)
-                        }
+        fun bindView(artikel: CardArtikelResponse){
+
+            // inisiasi view nya
+            val category = view.findViewById<TextView>(R.id.tv_title)
+            val title = view.findViewById<TextView>(R.id.tv_subtitle)
+            val desc = view.findViewById<TextView>(R.id.tv_description)
+            val readTime = view.findViewById<TextView>(R.id.tv_KeteranganDibaca)
+            val cover = view.findViewById<ImageView>(R.id.iv_Gambar)
+
+            category.text = artikel.category
+            title.text = artikel.title
+            desc.text = artikel.desc
+            readTime.text = artikel.readTime
+
+
+            val path = buildCoverPath(artikel.coverPath)
+
+            Picasso.get()
+                .load(path)
+                .into(cover, object : Callback {
+                    override fun onSuccess() {
+                        Log.d("Picasso", "Image loaded successfully")
                     }
-                }
-                val results = FilterResults()
-                results.values = filteredResults
-                return results
-            }
 
-            @Suppress("UNCHECKED_CAST")
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filteredList.clear()
-                filteredList.addAll(results?.values as ArrayList<CardResponse>)
-                notifyDataSetChanged()
-            }
+                    override fun onError(e: Exception?) {
+                        Log.e("Picasso", "Error loading image: ${e?.message}")
+                    }
+                })
+
         }
+
+        private fun buildCoverPath(coverPath: String?): String {
+            return coverPath ?: ""
+        }
+
     }
 
-    // Fungsi tambahan untuk mengatur filteredList
-    fun setFilteredList(list: ArrayList<CardResponse>) {
-        filteredList.clear()
-        filteredList.addAll(list)
-        notifyDataSetChanged()
-    }
 }

@@ -2,7 +2,7 @@ package com.example.finalproject_chilicare.utils
 
 import android.util.Log
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.CardResponse
+import com.example.finalproject_chilicare.data.response.CardArtikelResponse
 import com.example.finalproject_chilicare.data.response.TabResponse
 
 object DummyDataArtikel {
@@ -151,53 +151,53 @@ object DummyDataArtikel {
         return tabResponses
     }
 
-    fun getDummyCardResponses(): List<CardResponse> {
-        val cardResponses = mutableListOf<CardResponse>()
-        for (i in cardImageList.indices) {
-            if (i < cardTitleList.size &&
-                i < cardSubtitleList.size &&
-                i < cardDescriptionList.size &&
-                i < cardDurasibacaList.size &&
-                i < dataImageDetails.size &&
-                i < dataTanggalDetails.size &&
-                i < dataWaktuDetails.size &&
-                i < dataTitleDetails.size &&
-                i < dataSubtitleDetails.size &&
-                i < dataWebViewDetails.size
-            ) {
-                val card = CardResponse(
-                    cardTitleList[i],
-                    cardSubtitleList[i],
-                    cardDescriptionList[i],
-                    cardDurasibacaList[i],
-                    cardImageList[i],
-                    dataImageDetails[i],
-                    dataTanggalDetails[i],
-                    dataWaktuDetails[i],
-                    dataTitleDetails[i],
-                    dataSubtitleDetails[i],
-                    dataWebViewDetails[i]
-                )
-                cardResponses.add(card)
-            } else {
-                Log.e(
-                    "DummyDataUtil",
-                    "Index out of bounds: i=$i, " +
-                            "cardTitleList.size=${cardTitleList.size}, " +
-                            "cardSubtitleList.size=${cardSubtitleList.size}, " +
-                            "cardDescriptionList.size=${cardDescriptionList.size}, " +
-                            "cardDurasibacaList.size=${cardDurasibacaList.size}, " +
-                            "dataImageDetails.size=${dataImageDetails.size}, " +
-                            "dataTanggalDetails.size=${dataTanggalDetails.size}, " +
-                            "dataWaktuDetails.size=${dataWaktuDetails.size}, " +
-                            "dataTitleDetails.size=${dataTitleDetails.size}, " +
-                            "dataSubtitleDetails.size=${dataSubtitleDetails.size}, " +
-                            "dataWebViewDetails.size=${dataWebViewDetails.size}"
-                )
-            }
-        }
-        return cardResponses
-    }
+//    fun getDummyCardResponses(): List<CardArtikelResponse> {
+//        val cardArtikelRespons = mutableListOf<CardArtikelResponse>()
+//        for (i in cardImageList.indices) {
+//            if (i < cardTitleList.size &&
+//                i < cardSubtitleList.size &&
+//                i < cardDescriptionList.size &&
+//                i < cardDurasibacaList.size &&
+//                i < dataImageDetails.size &&
+//                i < dataTanggalDetails.size &&
+//                i < dataWaktuDetails.size &&
+//                i < dataTitleDetails.size &&
+//                i < dataSubtitleDetails.size &&
+//                i < dataWebViewDetails.size
+//            ) {
+//                val card = CardArtikelResponse(
+//                    cardTitleList[i],
+//                    cardSubtitleList[i],
+//                    cardDescriptionList[i],
+//                    cardDurasibacaList[i],
+//                    cardImageList[i],
+//                    dataImageDetails[i],
+//                    dataTanggalDetails[i],
+//                    dataWaktuDetails[i],
+//                    dataTitleDetails[i],
+//                    dataSubtitleDetails[i],
+//                    dataWebViewDetails[i]
+//                )
+//                cardArtikelRespons.add(card)
+//            } else {
+//                Log.e(
+//                    "DummyDataUtil",
+//                    "Index out of bounds: i=$i, " +
+//                            "cardTitleList.size=${cardTitleList.size}, " +
+//                            "cardSubtitleList.size=${cardSubtitleList.size}, " +
+//                            "cardDescriptionList.size=${cardDescriptionList.size}, " +
+//                            "cardDurasibacaList.size=${cardDurasibacaList.size}, " +
+//                            "dataImageDetails.size=${dataImageDetails.size}, " +
+//                            "dataTanggalDetails.size=${dataTanggalDetails.size}, " +
+//                            "dataWaktuDetails.size=${dataWaktuDetails.size}, " +
+//                            "dataTitleDetails.size=${dataTitleDetails.size}, " +
+//                            "dataSubtitleDetails.size=${dataSubtitleDetails.size}, " +
+//                            "dataWebViewDetails.size=${dataWebViewDetails.size}"
+//                )
+//            }
+//        }
+//        return cardArtikelRespons
+//    }
 
 
 }

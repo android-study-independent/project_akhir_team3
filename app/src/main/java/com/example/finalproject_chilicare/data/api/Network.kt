@@ -1,20 +1,29 @@
 package com.example.finalproject_chilicare.data.api
 
 import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Network {
 
-    fun getRetroClientInstance(url: String): Retrofit{
+    private val baseUrl = "http://195.35.32.179:8003/"
+
+    fun getRetroClientInstance(): Retrofit {
         val gson = GsonBuilder().setLenient().create()
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
 
         // create retrofit
         return Retrofit.Builder()
-            .baseUrl(url)
-      //      .baseUrl("http://192.168.43.94:1945/auth")
-          //  .client(client)
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient)
             .build()
     }
 
