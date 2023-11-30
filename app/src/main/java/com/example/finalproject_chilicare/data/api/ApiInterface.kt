@@ -1,6 +1,7 @@
 package com.example.finalproject_chilicare.data.api
 
 import com.example.finalproject_chilicare.data.models.CurrentWeather
+import com.example.finalproject_chilicare.data.response.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.LoginRequest
 import com.example.finalproject_chilicare.data.response.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
@@ -39,5 +40,7 @@ interface ApiInterface {
         @Query("APPID") appid: String
     ): Call<CurrentWeather>
 
+    @GET("artikel/all_artikel")
+    suspend fun getAllArtikel(): CardAllArtikelResponse
 
 }
