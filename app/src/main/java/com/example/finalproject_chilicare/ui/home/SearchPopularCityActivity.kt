@@ -1,7 +1,10 @@
 package com.example.finalproject_chilicare.ui.home
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,11 +19,13 @@ class SearchPopularCityActivity : AppCompatActivity() {
     private lateinit var dataKota : ArrayList<PopularCityResponse>
 
     lateinit var titleList: Array<String>
+    lateinit var btnLocation : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_popular_city)
 
+        btnLocation = findViewById(R.id.btnLocation)
         titleList = arrayOf(
             "Semarang",
             "Surabaya",
@@ -38,9 +43,16 @@ class SearchPopularCityActivity : AppCompatActivity() {
             "Tanggerang"
         )
 
-        rv_CariKota = findViewById(R.id.rv_CariKota)
+        rv_CariKota = findViewById(R.id.rvCariKota)
         rv_CariKota.layoutManager = GridLayoutManager(this, 4)
         rv_CariKota.setHasFixedSize(true)
+
+        btnLocation.setOnClickListener {
+            val intent = Intent()
+            intent.putExtra("selectedCity", "Jakarta")
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
 
         dataKota = ArrayList()
         getData()

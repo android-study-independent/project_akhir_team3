@@ -66,18 +66,19 @@
                     android:textColor="@color/PrimaryBrand"
                     android:textSize="30sp" />
 
-                <androidx.constraintlayout.utils.widget.ImageFilterView
+                <ImageView
                     android:id="@+id/iconSuhu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/sun"
                     android:layout_marginTop="8dp"
                     android:layout_below="@+id/textSuhu"
-                    android:layout_marginLeft="12dp"/>
+                    android:layout_marginLeft="52dp"/>
 
                 <TextView
                     android:id="@+id/kondisiSuhu"
-                    android:layout_width="100dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:text="Cerah"
                     android:textSize="12sp"
@@ -164,214 +165,228 @@
             </RelativeLayout>
         </FrameLayout>
 
-        <FrameLayout
-            android:id="@+id/frameCuacaPerJam"
-            android:layout_width="324dp"
-            android:layout_height="93dp"
+        <!--        <FrameLayout-->
+<!--            android:id="@+id/frameCuacaPerJam"-->
+<!--            android:layout_width="324dp"-->
+<!--            android:layout_height="93dp"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/frameKelembapan"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.513"-->
+<!--            tools:layout_editor_absoluteX="58dp">-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="16dp"-->
+<!--                android:id="@+id/relativeWaktuCuacaPerJam">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textWaktuSekarang"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Sekarang"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="@color/PrimaryBrand"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:layout_marginLeft="6dp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textWaktuKedua"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="11:00"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:layout_toRightOf="@id/textWaktuSekarang"-->
+<!--                    android:layout_marginLeft="55dp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textWaktuKetiga"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="12:00"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:layout_toRightOf="@id/textWaktuKedua"-->
+<!--                    android:layout_marginLeft="55dp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textWaktuKeempat"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="13:00"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:layout_toRightOf="@id/textWaktuKetiga"-->
+<!--                    android:layout_marginLeft="55dp"/>-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_marginTop="22dp"-->
+<!--                android:id="@+id/relativeSuhuPerJam">-->
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/frameSuhuSekarang"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="67dp"-->
+<!--                    android:layout_below="@+id/textWaktuSekarang"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:background="@drawable/border_cuaca"-->
+<!--                    android:backgroundTint="@color/PrimaryBrand"-->
+<!--                    tools:ignore="NotSibling" >-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:id="@+id/relativeSuhuSekarang">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/berawan"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="4dp"-->
+<!--                            android:id="@+id/iconSuhuSekarang"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textSuhuSekarang"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="35°"-->
+<!--                            android:layout_below="@+id/iconSuhuSekarang"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:layout_marginTop="3dp"/>-->
+<!--                    </RelativeLayout>-->
+<!--                </FrameLayout>-->
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/frameSuhuJam11"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="67dp"-->
+<!--                    android:layout_below="@+id/textWaktuSekarang"-->
+<!--                    android:layout_marginLeft="57dp"-->
+<!--                    android:background="@drawable/border_cuaca"-->
+<!--                    android:backgroundTint="#FFFFFF"-->
+<!--                    android:layout_toRightOf="@id/frameSuhuSekarang"-->
+<!--                    tools:ignore="NotSibling" >-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:id="@+id/relativeSuhuJam11">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/berawan"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="4dp"-->
+<!--                            android:id="@+id/iconSuhuJam11"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textSuhuKedua"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="35°"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_below="@+id/iconSuhuJam11"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="3dp"/>-->
+<!--                    </RelativeLayout>-->
+<!--                </FrameLayout>-->
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/frameSuhuJam12"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="67dp"-->
+<!--                    android:layout_below="@+id/textWaktuSekarang"-->
+<!--                    android:layout_marginLeft="46dp"-->
+<!--                    android:background="@drawable/border_cuaca"-->
+<!--                    android:backgroundTint="#FFFFFF"-->
+<!--                    android:layout_toRightOf="@id/frameSuhuJam11"-->
+<!--                    tools:ignore="NotSibling" >-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:id="@+id/relativeSuhuJam12">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/berawan"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="4dp"-->
+<!--                            android:id="@+id/iconSuhuJam12"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textSuhuKetiga"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="35°"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_below="@+id/iconSuhuJam12"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="3dp"/>-->
+<!--                    </RelativeLayout>-->
+<!--                </FrameLayout>-->
+
+<!--                <FrameLayout-->
+<!--                    android:id="@+id/frameSuhuJam13"-->
+<!--                    android:layout_width="42dp"-->
+<!--                    android:layout_height="67dp"-->
+<!--                    android:layout_below="@+id/textWaktuSekarang"-->
+<!--                    android:layout_marginLeft="43dp"-->
+<!--                    android:background="@drawable/border_cuaca"-->
+<!--                    android:backgroundTint="#FFFFFF"-->
+<!--                    android:layout_toRightOf="@id/frameSuhuJam12"-->
+<!--                    tools:ignore="NotSibling" >-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:id="@+id/relativeSuhuJam13">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/berawan"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="4dp"-->
+<!--                            android:id="@+id/iconSuhuJam13"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textSuhuKeempat"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="35°"-->
+<!--                            android:textStyle="bold"-->
+<!--                            android:layout_below="@+id/iconSuhuJam13"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_marginTop="3dp"/>-->
+<!--                    </RelativeLayout>-->
+<!--                </FrameLayout>-->
+
+<!--            </RelativeLayout>-->
+
+
+<!--        </FrameLayout>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHourlyWeather"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="328dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="14dp"
+            android:clipToPadding="false"
             app:layout_constraintBottom_toTopOf="@id/frameKelembapan"
-            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="0.513"
-            tools:layout_editor_absoluteX="58dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="16dp"
-                android:id="@+id/relativeWaktuCuacaPerJam">
-
-                <TextView
-                    android:id="@+id/textWaktuSekarang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sekarang"
-                    android:textSize="12sp"
-                    android:textColor="@color/PrimaryBrand"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="6dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKedua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:00"
-                    android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuSekarang"
-                    android:layout_marginLeft="55dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKetiga"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:00"
-                    android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuKedua"
-                    android:layout_marginLeft="55dp"/>
-
-                <TextView
-                    android:id="@+id/textWaktuKeempat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="13:00"
-                    android:textSize="12sp"
-                    android:layout_toRightOf="@id/textWaktuKetiga"
-                    android:layout_marginLeft="55dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="22dp"
-                android:id="@+id/relativeSuhuPerJam">
-
-                <FrameLayout
-                    android:id="@+id/frameSuhuSekarang"
-                    android:layout_width="42dp"
-                    android:layout_height="67dp"
-                    android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="8dp"
-                    android:background="@drawable/border_cuaca"
-                    android:backgroundTint="@color/PrimaryBrand"
-                    tools:ignore="NotSibling" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuSekarang">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuSekarang"/>
-
-                        <TextView
-                            android:id="@+id/textSuhuSekarang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:layout_below="@+id/iconSuhuSekarang"
-                            android:layout_centerHorizontal="true"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="3dp"/>
-                    </RelativeLayout>
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameSuhuJam11"
-                    android:layout_width="42dp"
-                    android:layout_height="67dp"
-                    android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="57dp"
-                    android:background="@drawable/border_cuaca"
-                    android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuSekarang"
-                    tools:ignore="NotSibling" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam11">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam11"/>
-
-                        <TextView
-                            android:id="@+id/textSuhuKedua"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:textStyle="bold"
-                            android:layout_below="@+id/iconSuhuJam11"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
-                    </RelativeLayout>
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameSuhuJam12"
-                    android:layout_width="42dp"
-                    android:layout_height="67dp"
-                    android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="46dp"
-                    android:background="@drawable/border_cuaca"
-                    android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuJam11"
-                    tools:ignore="NotSibling" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam12">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam12"/>
-
-                        <TextView
-                            android:id="@+id/textSuhuKetiga"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:textStyle="bold"
-                            android:layout_below="@+id/iconSuhuJam12"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
-                    </RelativeLayout>
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/frameSuhuJam13"
-                    android:layout_width="42dp"
-                    android:layout_height="67dp"
-                    android:layout_below="@+id/textWaktuSekarang"
-                    android:layout_marginLeft="43dp"
-                    android:background="@drawable/border_cuaca"
-                    android:backgroundTint="#FFFFFF"
-                    android:layout_toRightOf="@id/frameSuhuJam12"
-                    tools:ignore="NotSibling" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/relativeSuhuJam13">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/berawan"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="4dp"
-                            android:id="@+id/iconSuhuJam13"/>
-
-                        <TextView
-                            android:id="@+id/textSuhuKeempat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="35°"
-                            android:textStyle="bold"
-                            android:layout_below="@+id/iconSuhuJam13"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="3dp"/>
-                    </RelativeLayout>
-                </FrameLayout>
-
-            </RelativeLayout>
-
-
-        </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/card_hourly_weather" />
 
         <FrameLayout
             android:id="@+id/frameKecepatanAngin"
