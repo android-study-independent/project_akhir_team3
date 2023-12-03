@@ -58,7 +58,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-     implementation("androidx.databinding:databinding-runtime:8.1.4")
+    implementation("androidx.databinding:databinding-runtime:8.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -76,12 +76,14 @@ dependencies {
     implementation ("com.airbnb.android:lottie-compose:6.1.0")
     implementation ("com.airbnb.android:lottie:6.1.0")
 
-
-    //Glide
-    implementation("com.github.bumptech.glide:glide:4.15.1")
-
     //sliderindicator
     implementation ("com.github.zhpanvip:viewpagerindicator:1.2.3")
+
+    // picasso
+    implementation ("com.squareup.picasso:picasso:2.8")
+
+    // lifecycle scope coroutine
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
