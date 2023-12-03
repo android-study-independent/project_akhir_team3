@@ -1,0 +1,172 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.LmsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
+                <!--WARN -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/top_background"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ivlms"
+                            android:layout_width="181dp"
+                            android:layout_height="198.74dp"
+                            android:layout_marginTop="20dp"
+                            android:paddingLeft="60dp"
+                            android:src="@drawable/gradient"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/gl_Guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.90"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvLms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yuk mulai belajar!  💪"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:textColor="@color/white"
+                            android:paddingLeft="21dp"
+                            android:layout_marginTop="90dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            />
+
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilCariLms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            app:hintEnabled="false"
+                            app:layout_constraintStart_toEndOf="@+id/tvLms"
+                            app:layout_constraintTop_toTopOf="@+id/tvLms"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            >
+
+                            <EditText
+                                android:id="@+id/etCariMateri"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:hint="Cari materi"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/plusjakartasans_reguler_400"
+                                android:textColor="@color/SecondaryText"
+                                android:background="@drawable/custominputregistlogin"
+                                android:paddingLeft="12dp"
+                                android:drawableStart="@drawable/ic_search"
+                                android:drawablePadding="8dp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnProses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#BF2A63"
+                        android:background="@drawable/button_lms"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:text="Proses"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tilCariArtikel"
+                        app:layout_constraintStart_toEndOf="@+id/btnSelesai"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnSelesai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/button_lms"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:text="Selesai"
+                        android:textAllCaps="false"
+                        android:textColor="#8388B2"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/tilCariLms"
+                        app:layout_constraintTop_toBottomOf="@+id/ivlms" />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/tv_Lanjut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lanjutkan proses belajar mu!"
+                android:textSize="16sp"
+                android:textColor="@color/PrimaryText"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/rv_tabArticle"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cardLms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
