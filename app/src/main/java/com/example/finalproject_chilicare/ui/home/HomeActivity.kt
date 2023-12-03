@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.ui.favorite.fragment.FavoriteFragment
-import com.example.finalproject_chilicare.ui.home.fragment.HomeFragment
-import com.example.finalproject_chilicare.ui.lms.fragment.LmsFragment
+import com.example.finalproject_chilicare.ui.lms.LmsFragment
 import com.example.finalproject_chilicare.ui.login.LoginActivity
-import com.example.finalproject_chilicare.ui.profile.fragment.ProfileFragment
+import com.example.finalproject_chilicare.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -25,7 +24,6 @@ class HomeActivity : AppCompatActivity() {
     lateinit var prefHelper: SharedPreferences
 
     private lateinit var buttonNav: BottomNavigationView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -90,4 +88,5 @@ class HomeActivity : AppCompatActivity() {
     private fun displayFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.FrameDisplay, fragment).commit()
     }
+
 }

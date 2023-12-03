@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui.lms.fragment
+package com.example.finalproject_chilicare.ui.lms
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
     //INVALID LOGIN
     private fun checkEmail() {
         loginEmail.setOnFocusChangeListener { _, hasFocus ->
-            val textInputLayout = findViewById<TextInputLayout>(R.id.tilEmail)
+            val textInputLayout = findViewById<TextInputLayout>(R.id.emailLoginContainer)
             if (!hasFocus) {
                 textInputLayout.helperText = invalidEmail()
             }
@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkPassword() {
         loginPassword.setOnFocusChangeListener { _, hasFocus ->
-            val textInputLayout = findViewById<TextInputLayout>(R.id.tilPassword)
+            val textInputLayout = findViewById<TextInputLayout>(R.id.passwordLoginContainer)
             if (!hasFocus) {
                 textInputLayout.helperText = invalidPassword()
             }
