@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -22,6 +22,15 @@
         android:theme="@style/Theme.FinalProject_Chilicare"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.home.DetailLMSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.MateriLMSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.LmsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.home.SearchPopularCityActivity"
             android:exported="true">
@@ -39,19 +48,18 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.ArticleActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.home.NavbarActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.WeatherActivity"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
         <activity
@@ -59,7 +67,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.forgetPassword.OTPActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".ui.forgetPassword.EmailActivity"
             android:exported="false" />
@@ -68,10 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
@@ -81,11 +86,13 @@
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".ui.MainActivity"
