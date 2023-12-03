@@ -368,6 +368,36 @@
         <item>Membuat pestisida alami tanaman cabai</item>
     </string-array>
 
+    <string-array name="waktuCuaca">
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+        <item>18:00</item>
+    </string-array>
+
+    <string-array name="iconCuaca">
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+        <item>@drawable/sun</item>
+    </string-array>
+
+    <string-array name="suhuPerJam">
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+        <item>30</item>
+    </string-array>
+
 </resources>
 
 

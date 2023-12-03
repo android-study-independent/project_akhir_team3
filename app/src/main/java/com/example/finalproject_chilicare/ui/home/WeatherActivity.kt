@@ -1,6 +1,7 @@
 package com.example.finalproject_chilicare.ui.home
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -17,11 +18,16 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.adapter.HourlyWeatherAdapter
 import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.CurrentWeather
+import com.example.finalproject_chilicare.data.models.Hourlyweather
 import com.example.finalproject_chilicare.databinding.ActivityWeatherBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -38,13 +44,17 @@ import java.util.Date
 class WeatherActivity : AppCompatActivity() {
     lateinit var binding: ActivityWeatherBinding
     lateinit var btnAdd : ImageView
+    lateinit var iconSuhuWeather : ImageView
 
+    private var listHourlyWeather = mutableListOf<Hourlyweather>()
+    private lateinit var adapter : HourlyWeatherAdapter
+    private lateinit var rvHourlyWeather: RecyclerView
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     private var isLocationPermissionGranted = false
     private val LOCATION_REQUEST_CODE = 101
-    val api_key: String = "0289d34d4ef9cbab143b0cea686697fa"
+    private val api_key: String = "cbbf40f3774c6530de41deeff9c54f3c"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +63,29 @@ class WeatherActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
         btnAdd = findViewById(R.id.btnAddCity)
 
-        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
-            isLocationPermissionGranted = permission[android.Manifest.permission.ACCESS_FINE_LOCATION] ?: isLocationPermissionGranted
-        }
+        adapter = HourlyWeatherAdapter(listHourlyWeather)
+        listHourlyWeather.addAll(getWeatherHourly())
 
-        fusedLocationProviderClient=LocationServices.getFusedLocationProviderClient(this)
+        rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
+        rvHourlyWeather.setHasFixedSize(true)
+
+        rvHourlyWeather.adapter = adapter
+        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+
+        iconSuhuWeather = findViewById(R.id.iconSuhu)
+
+
+
+
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+        permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
+                isLocationPermissionGranted =
+                    permission[android.Manifest.permission.ACCESS_FINE_LOCATION]
+                        ?: isLocationPermissionGranted
+            }
 
         getCurrentLocation()
 
@@ -65,12 +93,39 @@ class WeatherActivity : AppCompatActivity() {
 
             val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
             startActivity(intent)
+            startActivityForResult(intent, 123)
         }
+
+//        val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
+//        startActivity(intent)
+
 
 
     }
 
-    private fun getCurrentLocation() {
+    private fun getWeatherHourly() : ArrayList<Hourlyweather> {
+
+        val waktuCuaca = resources.getStringArray(R.array.waktuCuaca)
+        val iconCuaca = resources.obtainTypedArray(R.array.iconCuaca)
+        val suhuCuaca = resources.getStringArray(R.array.suhuPerJam)
+        val listHourly = ArrayList<Hourlyweather>()
+
+        for (i in waktuCuaca.indices) {
+            val cuaca = Hourlyweather(
+
+                waktuCuaca[i], iconCuaca.getResourceId(i, -1), suhuCuaca[i]
+            )
+            listHourly.add(cuaca)
+
+
+
+        }
+        return listHourly
+
+
+    }
+
+        private fun getCurrentLocation() {
 
         if (isCheckPermissions()){
 
@@ -242,14 +297,21 @@ class WeatherActivity : AppCompatActivity() {
             textArahAngin.text = body.currentWeather.windDirection
 
 
-            textWaktuSekarang.text = (body.hourlyweather[0].time)
-            textSuhuSekarang.text = (body.hourlyweather[0].temperature.toString())
-            textWaktuKedua.text = (body.hourlyweather[1].time)
-            textSuhuKedua.text = (body.hourlyweather[1].temperature.toString())
-            textWaktuKetiga.text = (body.hourlyweather[2].time)
-            textSuhuKetiga.text = (body.hourlyweather[2].temperature.toString())
-            textWaktuKeempat.text = (body.hourlyweather[3].time)
-            textSuhuKeempat.text = (body.hourlyweather[3].temperature.toString())
+//            textWaktuSekarang.text = (body.hourlyweather[0].time)
+//            textSuhuSekarang.text = (body.hourlyweather[0].temperature.toString())
+//            textWaktuKedua.text = (body.hourlyweather[1].time)
+//            textSuhuKedua.text = (body.hourlyweather[1].temperature.toString())
+//            textWaktuKetiga.text = (body.hourlyweather[2].time)
+//            textSuhuKetiga.text = (body.hourlyweather[2].temperature.toString())
+//            textWaktuKeempat.text = (body.hourlyweather[3].time)
+//            textSuhuKeempat.text = (body.hourlyweather[3].temperature.toString())
+
+//            adapter = HourlyWeatherAdapter(listHourlyWeather)
+////            rvHourlyWeather.text = findViewById(R.id.rvHourlyWeather)
+//            rvHourlyWeather.setHasFixedSize(true)
+//
+//            rvHourlyWeather.adapter = adapter
+//            rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
 
             textHariCuaca1.text = (body.forecast[0].date)
@@ -270,13 +332,13 @@ class WeatherActivity : AppCompatActivity() {
 
         }
 
-        updateTodayIconWeather(body.currentWeather.weatherDescription)
-        for (i in 0 until minOf(4, body.hourlyweather.size)) {
-            updateHourlyIconWeather(body.hourlyweather[i].weatherDescription)
-        }
-        for (i in 0 until minOf(5, body.hourlyweather.size)) {
-            updateNextDayIconWeather(body.forecast[i].weatherDescription)
-        }
+//        updateTodayIconWeather(body.currentWeather.weatherDescription)
+//        for (i in 0 until minOf(4, body.hourlyweather.size)) {
+//            updateHourlyIconWeather(body.hourlyweather[i].weatherDescription)
+//        }
+//        for (i in 0 until minOf(5, body.hourlyweather.size)) {
+//            updateNextDayIconWeather(body.forecast[i].weatherDescription)
+//        }
 
     }
 
@@ -290,10 +352,10 @@ class WeatherActivity : AppCompatActivity() {
 
             if (weatherDescription == "moderate rain") {
 
-                iconSuhuSekarang.setImageResource(R.drawable.berawan)
-                iconSuhuJam11.setImageResource(R.drawable.hujan)
-                iconSuhuJam12.setImageResource(R.drawable.hujan)
-                iconSuhuJam13.setImageResource(R.drawable.berawan)
+//                iconSuhuSekarang.setImageResource(R.drawable.berawan)
+//                iconSuhuJam11.setImageResource(R.drawable.hujan)
+//                iconSuhuJam12.setImageResource(R.drawable.hujan)
+//                iconSuhuJam13.setImageResource(R.drawable.berawan)
 
 
 
@@ -348,6 +410,7 @@ class WeatherActivity : AppCompatActivity() {
         }
 
         return localTime.toString()
+
 
     }
 

@@ -4,26 +4,26 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardCornerRadius="14dp"
-    android:layout_margin="12dp"
+    android:layout_margin="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/textWaktuSekarang"
+        android:id="@+id/textHourlyWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sekarang"
         android:textSize="12sp"
-        android:textColor="@color/PrimaryBrand"
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_marginLeft="6dp"/>
 
 
     <FrameLayout
         android:id="@+id/frameSuhuSekarang"
-        android:layout_below="@id/textWaktuSekarang"
+        android:layout_below="@id/textHourlyWeather"
         android:layout_width="42dp"
         android:layout_height="67dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/border_cuaca"
         android:backgroundTint="@color/PrimaryBrand"
         tools:ignore="NotSibling" >
@@ -39,13 +39,14 @@
                 android:src="@drawable/berawan"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="4dp"
-                android:id="@+id/iconSuhuSekarang"/>
+                android:id="@+id/iconCardSuhu"/>
 
             <TextView
+                android:id="@+id/textCardSuhu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="35°"
-                android:layout_below="@+id/iconSuhuSekarang"
+                android:layout_below="@+id/iconCardSuhu"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
                 android:layout_marginTop="3dp"/>
