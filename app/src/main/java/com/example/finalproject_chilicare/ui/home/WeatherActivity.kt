@@ -9,6 +9,7 @@ import android.location.LocationManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
@@ -24,6 +25,7 @@ import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.databinding.ActivityWeatherBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -201,7 +203,7 @@ class WeatherActivity : AppCompatActivity() {
 
     private fun checkCurrentLocation (latitude : String, longtitude: String) {
 
-        NetworkWeather.getApiInterface()?.getCurrentWeatherData(api_key, latitude, longtitude)
+        NetworkWeather.getApiInterface()?.getCurrentWeatherData(latitude, longtitude)
             ?.enqueue(object : Callback<CurrentWeather>{
                 override fun onResponse(
                     call: Call<CurrentWeather>,
@@ -260,6 +262,10 @@ class WeatherActivity : AppCompatActivity() {
             textSuhu2.text = (body.forecast[1].temperature.toString())+ "°"
             textSuhu3.text = (body.forecast[2].temperature.toString())+ "°"
 
+            val path = buildIconPath(body.currentWeather.icon)
+            Picasso.get().load(path).into(iconSuhu)
+            Log.d("iconweather",path)
+
 
 
         }
@@ -272,6 +278,10 @@ class WeatherActivity : AppCompatActivity() {
             updateNextDayIconWeather(body.forecast[i].weatherDescription)
         }
 
+    }
+
+    private fun buildIconPath(icon: String?): String {
+        return icon?:""
     }
 
     private fun updateHourlyIconWeather(weatherDescription: String) {
@@ -338,7 +348,6 @@ class WeatherActivity : AppCompatActivity() {
         }
 
         return localTime.toString()
-
 
     }
 

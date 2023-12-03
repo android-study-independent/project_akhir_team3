@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgourndPage"
-    tools:context=".ui.home.fragment.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,16 +51,29 @@
                             app:layout_constraintTop_toTopOf="parent"></ImageView>
 
                         <TextView
-                            android:id="@+id/txtavatarname"
+                            android:id="@+id/txthalo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/plusjakartasans_bold_700"
                             android:paddingLeft="20sp"
-                            android:text="Halo, Richard 👋🏻"
+                            android:text="Halo"
                             android:textColor="@color/white"
                             android:textSize="18sp"
                             android:textStyle="bold"
                             app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                            app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
+
+                        <TextView
+                            android:id="@+id/txtavatarname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_bold_700"
+                            android:layout_marginLeft="5dp"
+                            android:text="Richard 👋🏻"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintLeft_toRightOf="@+id/txthalo"
                             app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
 
                         <TextView
@@ -72,7 +85,7 @@
                             android:text="Selamat Belajar di Chilicare"
                             android:textColor="@color/white"
                             android:textSize="12sp"
-                            app:layout_constraintLeft_toLeftOf="@id/txtavatarname"
+                            app:layout_constraintLeft_toLeftOf="@id/txthalo"
                             app:layout_constraintTop_toBottomOf="@+id/txtavatarname"></TextView>
 
                         <ImageView
@@ -95,6 +108,7 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="150dp"
+                    android:background="@color/grey"
                     app:cardCornerRadius="12dp">
 
 
@@ -104,12 +118,13 @@
 
                         <TextView
                             android:id="@+id/txtdatetime"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
+                            android:paddingLeft="30dp"
                             android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:text="Kamis, 8 Nov 2023"
+                            tools:text="12/1/2023"
                             android:textColor="@color/PrimaryText"
                             android:textSize="18sp"
                             android:textStyle="bold"
@@ -120,17 +135,18 @@
                             android:id="@+id/imgweather"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="53dp"
+                            android:layout_marginLeft="40dp"
                             android:layout_marginTop="45dp"
-                            android:src="@drawable/icn_cloudy"
+                            tools:src="@drawable/icn_cloudy"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"></ImageView>
 
                         <TextView
                             android:id="@+id/txtweatherdesc"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="2dp"
+                            android:paddingLeft="40dp"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
                             tools:text="Hujan ringan"
                             android:textColor="@color/PrimaryText"

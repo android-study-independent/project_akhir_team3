@@ -38,7 +38,7 @@ class SearchPopularCityActivity : AppCompatActivity() {
             "Tanggerang"
         )
 
-        rv_CariKota = findViewById(R.id.rv_CariKota)
+        rv_CariKota = findViewById(R.id.rv_Carikota)
         rv_CariKota.layoutManager = GridLayoutManager(this, 4)
         rv_CariKota.setHasFixedSize(true)
 

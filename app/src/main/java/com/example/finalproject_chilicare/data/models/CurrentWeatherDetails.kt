@@ -10,5 +10,6 @@ data class CurrentWeatherDetails(
     val temperature: Double,
     val weatherDescription: String,
     val windDirection: String,
-    val windSpeed: String
+    val windSpeed: String,
+    val icon : String
 )
