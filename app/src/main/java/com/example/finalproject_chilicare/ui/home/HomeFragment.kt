@@ -297,7 +297,6 @@ class HomeFragment : Fragment() {
             Log.d("iconweather",path)
 
             /* <<<<< CARD FROM ARTIKEL >>>>> */
-
         }
 
     }

@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity() {
         loginEmail.setText("Lita@gmail.com")
         loginPassword.setText("Litaimut1!")
 
-
         prefHelper = PreferencesHelper.customPrefs(this)
 
         // Check login status

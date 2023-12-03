@@ -349,7 +349,6 @@ class WeatherActivity : AppCompatActivity() {
 
         return localTime.toString()
 
-
     }
 
     private fun k2c(t:Double):Double{

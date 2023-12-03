@@ -33,6 +33,7 @@ interface ApiInterface {
         @Query("lon") lon: String
     ): Call<CurrentWeather>
 
+
     @GET("weather")
     fun getCityWeatherData(
         @Query("q") q: String,
