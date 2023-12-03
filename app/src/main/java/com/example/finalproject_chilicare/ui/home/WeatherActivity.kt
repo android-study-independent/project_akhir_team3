@@ -67,6 +67,8 @@ class WeatherActivity : AppCompatActivity() {
         listHourlyWeather.addAll(getWeatherHourly())
 
         rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
+
+
         rvHourlyWeather.setHasFixedSize(true)
 
         rvHourlyWeather.adapter = adapter
