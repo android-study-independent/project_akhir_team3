@@ -15,7 +15,6 @@ import com.example.finalproject_chilicare.adapter.CardAdapter
 import com.example.finalproject_chilicare.data.response.CardResponse
 import com.example.finalproject_chilicare.adapter.TabAdapter
 import com.example.finalproject_chilicare.data.response.TabResponse
-import com.example.finalproject_chilicare.ui.home.fragment.HomeFragment
 import com.example.finalproject_chilicare.utils.DummyDataArtikel
 
 class ArticleActivity : AppCompatActivity() {
