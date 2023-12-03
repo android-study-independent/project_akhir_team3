@@ -19,7 +19,6 @@ import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.ForumAdapter
 import com.example.finalproject_chilicare.data.api.NetworkWeather
