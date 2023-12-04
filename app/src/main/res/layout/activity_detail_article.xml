@@ -87,30 +87,18 @@
                     android:paddingVertical="16dp"
                     >
 
-                    <TextView
-                        android:id="@+id/tvTanggal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/plusjakartasans_reguler_400"
-                        android:text="18 November 2023"
-                        android:textSize="12sp"
-                        android:textColor="@color/SecondaryText"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+
 
                     <TextView
-                        android:id="@+id/tvWaktu"
+                        android:id="@+id/tv_KeteranganDibaca"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/plusjakartasans_reguler_400"
-                        android:text="13:00"
+                        android:text="30 menit telah dibaca"
                         android:textSize="12sp"
-                        android:layout_marginStart="10dp"
-                        android:textColor="@color/SecondaryText"
-                        app:layout_constraintLeft_toRightOf="@+id/tvTanggal"
-                        app:layout_constraintTop_toTopOf="@+id/tvTanggal"
-                        app:layout_constraintBottom_toBottomOf="@+id/tvTanggal"
+                        android:fontFamily="@font/plusjakartasans_reguler_400"
+                        android:textColor="@color/BrandPrimay"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
                         />
 
                     <TextView
@@ -122,7 +110,7 @@
                         android:textColor="@color/PrimaryText"
                         android:fontFamily="@font/plusjakartasans_bold_700"
                         android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/tvTanggal"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_KeteranganDibaca"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:paddingRight="50dp"
                         android:maxLines="2"
@@ -144,6 +132,7 @@
                         />
 
 
+
                     <WebView
                         android:id="@+id/tvWebView"
                         android:layout_width="match_parent"
@@ -153,6 +142,39 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tvWebView"
+                        android:layout_marginTop="16dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/tvSumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="16sp"
+                            android:text="Sumber :"
+                            />
+
+                        <TextView
+                            android:id="@+id/tvSumberLink"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="@color/SecondaryStatus"
+                            android:text="https://chat.openai.com/c/9f180875-4389-426f-94e8-1328e9b7b4da"
+                            android:textSize="14sp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@+id/tvSumber"
+                            android:layout_marginStart="8dp"
+                            android:textAlignment="textStart"
+                            />
+                    </RelativeLayout>
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

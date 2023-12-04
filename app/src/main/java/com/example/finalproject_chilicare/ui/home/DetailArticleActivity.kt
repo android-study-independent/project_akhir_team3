@@ -14,13 +14,14 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.CardAdapter
 import com.example.finalproject_chilicare.data.response.CardArtikelResponse
 import com.example.finalproject_chilicare.utils.DummyDataArtikel
+import com.squareup.picasso.Picasso
 
 class DetailArticleActivity : AppCompatActivity() {
 
     private lateinit var rvCardArticle: RecyclerView
-    private lateinit var cardAdapter: CardAdapter
 
-    private lateinit var cardArtikelRespons: ArrayList<CardArtikelResponse>
+    lateinit var cardAdapter: CardAdapter
+    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>()
 
     private lateinit var tvWebView: WebView
     private lateinit var ivKembali: ImageView
@@ -29,91 +30,100 @@ class DetailArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_article)
 
-//        // Menginisialisasi view
-//        ivKembali = findViewById(R.id.ivKembali)
-//        tvWebView = findViewById(R.id.tvWebView)
-//        rvCardArticle = findViewById(R.id.rv_cardArticle2)
-//
-//        // Set listener untuk tombol kembali
-//        ivKembali.setOnClickListener {
-//            Intent(this, ArticleActivity::class.java).also {
-//                startActivity(it)
-//            }
-//        }
-//
-//        // Mendapatkan data dari intent
-//        val getData = intent.getParcelableExtra<CardArtikelResponse>("android")
-//        if (getData != null) {
-//            // Menetapkan data ke view
-//            val dataImageDetails: ImageView = findViewById(R.id.ivArticle)
-//            val dataTanggalDetails: TextView = findViewById(R.id.tvTanggal)
-//            val dataWaktuDetails: TextView = findViewById(R.id.tvWaktu)
-//            val dataTitleDetails: TextView = findViewById(R.id.tvJudulartikel)
-//            val dataSubtitleDetails: TextView = findViewById(R.id.tvTab)
-//            val dataWebViewDetails: WebView = findViewById(R.id.tvWebView)
-//
-//            // Menetapkan data ke view
-//            dataImageDetails.setImageResource(getData.dataImageDetails)
-//            dataTanggalDetails.text = getData.dataTanggalDetails
-//            dataWaktuDetails.text = getData.dataWaktuDetails
-//            dataTitleDetails.text = getData.dataTitleDetails
-//            dataSubtitleDetails.text = getData.dataSubtitleDetails
-//            dataWebViewDetails.loadData(getData.dataWebViewDetails, "text/html", "utf-8")
-//
-//            // Memuat data HTML ke WebView
-//            tvWebView.settings.javaScriptEnabled = true
-//            tvWebView.webViewClient = WebViewClient()
-//            tvWebView.loadDataWithBaseURL(null, getData.dataWebViewDetails, "text/html", "UTF-8", null)
-//        }
-//
-//        tvWebView = findViewById(R.id.tvWebView)
-//        val htmlText = """
-//            <html>
-//            <body>
-//                <p style="text-align: justify; font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-//                    Dengan banyaknya nutrisi yang terkandung dalam cabai didukung dengan maraknya makanan pedas sebagai bisnis di bidang makanan dan jajanan pedas yang berdampak kepada para petani cabai. Ingin tanaman cabai Anda cepat berbuah? Simak beberapa cara berikut ini.
-//                </p>
-//                <ol style="font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-//                    <li>Pilih benih cabai berkualitas</li>
-//                    <li>Keluarkan biji cabai dari nuahnya</li>
-//                    <li>Jemur biji cabai</li>
-//                    <li>Seleksi biji cabai</li>
-//                    <li>Mulai penyemaian</li>
-//                    <li>Pindahkan ke media tanam</li>
-//                    <li>Mulai perawatan tanaman cabai</li>
-//                </ol>
-//                <p style="text-align: justify; font-family: @font/plusjakartasans_reguler_400; font-size: 14px; color: @color/SecondaryText;">
-//                    Itulah informasi mengenai mudah menanam cabai agar cepat berbuah.
-//                    <br/><br/>
-//                    Sumber: <a href="https://ketahananpangan.semarangkota.go.id/v3/portal/page/artikel/7-Cara-Mudah-Menanam-Cabe-Agar-Cepat-Berbuah">https://ketahananpangan.semarangkota.go.id/v3/portal/page/artikel/7-Cara-Mudah-Menanam-Cabe-Agar-Cepat-Berbuah</a>
-//                </p>
-//            </body>
-//            </html>
-//        """.trimIndent()
-//
-//        tvWebView.settings.javaScriptEnabled = true
-//        tvWebView.webViewClient = WebViewClient()
-//        tvWebView.loadDataWithBaseURL(null, htmlText, "text/html", "UTF-8", null)
-//
-//
-//
-//        val cardArtikelRespons: MutableList<CardArtikelResponse> = DummyDataArtikel.getDummyCardResponses().toMutableList()
-//
-//        val filteredCardResponses = cardArtikelRespons.take(2).toMutableList()
-//
-//
-//        // Inisialisasi dan atur adapter CardAdapter untuk RecyclerView card
-//        cardAdapter = CardAdapter(filteredCardResponses)
-//        rvCardArticle.layoutManager = LinearLayoutManager(this)
-//        rvCardArticle.setHasFixedSize(true)
-//        rvCardArticle.adapter = cardAdapter
-//
-//        // Menangani klik item di RecyclerView card
-//        cardAdapter.onItemClick = {
-//            Log.d("ArticleActivity", "Clicked item: $it")
-//            val intent = Intent(this, DetailArticleActivity::class.java)
-//            intent.putExtra("android", it)
-//            startActivity(intent)
-//        }
+
+
+        ivKembali = findViewById(R.id.ivKembali)
+        tvWebView = findViewById(R.id.tvWebView)
+
+
+
+        ivKembali.setOnClickListener {
+            Intent(this, ArticleActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+
+        val getData = intent.getParcelableArrayListExtra<CardArtikelResponse>("articles")
+        if (getData != null && getData.isNotEmpty()) {
+            val firstArticle = getData[0]
+
+            // Menetapkan data ke view
+            val category: TextView = findViewById(R.id.tvTab)
+            val title: TextView = findViewById(R.id.tvJudulartikel)
+            val readTime: TextView = findViewById(R.id.tv_KeteranganDibaca)
+            val cover: ImageView = findViewById(R.id.ivArticle)
+            val content: WebView = findViewById(R.id.tvWebView)
+            val source: TextView = findViewById(R.id.tvSumberLink)
+
+            // Menetapkan data ke view berdasarkan firstArticle
+            category.text = firstArticle.category
+            title.text = firstArticle.title
+            readTime.text = firstArticle.readTime
+            Picasso.get().load(firstArticle.coverPath).into(cover)
+            firstArticle.content?.let { content.loadData(it, "text/html", "utf-8") }
+            source.text = firstArticle.source
+
+            // Memuat data HTML ke WebView
+            content.settings.javaScriptEnabled = true
+            content.webViewClient = WebViewClient()
+            firstArticle.content?.let {
+                content.loadDataWithBaseURL(
+                    null,
+                    it, "text/html", "UTF-8", null
+                )
+            }
+
+            // Menambahkan styling pada WebView
+            val styledContent = """
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: @font/plusjakartasans_regular_400;
+                    font-size: 16px;
+                    color: #333333;
+                    line-height: 1.6;
+                }
+                p {
+                    text-align: justify;
+                    margin-bottom: 10px;
+                }
+                ol {
+                    padding-left: 20px;
+                    margin-bottom: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <p>${firstArticle.desc ?: ""}</p>
+            ${firstArticle.content ?: ""}
+        </body>
+        </html>
+    """.trimIndent()
+
+            tvWebView.settings.javaScriptEnabled = true
+            tvWebView.webViewClient = WebViewClient()
+            tvWebView.loadDataWithBaseURL(null, styledContent, "text/html", "UTF-8", null)
+        }
+        Log.d("DetailArticleActivity", "Received data: $getData")
+
+
+
+        Log.d("DetailArticleActivity", "Received data: $getData")
+
+        rvCardArticle = findViewById(R.id.rv_cardArticle2)
+        rvCardArticle.layoutManager = LinearLayoutManager(this)
+        cardAdapter = CardAdapter(cardArtikelResponse)
+        rvCardArticle.adapter = cardAdapter
+
+        val articleList = intent.getParcelableArrayListExtra<CardArtikelResponse>("articles")
+        if (articleList != null) {
+            cardArtikelResponse.addAll(articleList)
+        }
+
+
     }
+
+
 }

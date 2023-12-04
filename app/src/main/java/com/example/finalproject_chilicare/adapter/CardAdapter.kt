@@ -15,8 +15,10 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
-class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : RecyclerView.Adapter<CardAdapter.CardArtikelHolder>() {
+class CardAdapter(private var listArtikel: List<CardArtikelResponse>) : RecyclerView.Adapter<CardAdapter.CardArtikelHolder>() {
 
+    // Deklarasikan variabel onItemClick di dalam CardAdapter
+    var onItemClick: ((CardArtikelResponse) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardArtikelHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,16 +28,30 @@ class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : Recycler
 
     override fun onBindViewHolder(holder: CardArtikelHolder, position: Int) {
         holder.bindView(listArtikel[position])
+
+        // Set listener untuk menanggapi klik pada item
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(listArtikel[position])
+        }
     }
 
     override fun getItemCount(): Int {
         return listArtikel.size
     }
 
+    fun updateData(newData: List<CardArtikelResponse>) {
+        listArtikel = newData
+        notifyDataSetChanged()
+    }
+
+    fun searchByCategory(query: String) {
+        val filteredList = listArtikel.filter { it.category?.contains(query, ignoreCase = true) == true }
+        updateData(filteredList)
+    }
+
     inner class CardArtikelHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindView(artikel: CardArtikelResponse){
-
+        fun bindView(artikel: CardArtikelResponse) {
             // inisiasi view nya
             val category = view.findViewById<TextView>(R.id.tv_title)
             val title = view.findViewById<TextView>(R.id.tv_subtitle)
@@ -47,7 +63,6 @@ class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : Recycler
             title.text = artikel.title
             desc.text = artikel.desc
             readTime.text = artikel.readTime
-
 
             val path = buildCoverPath(artikel.coverPath)
 
@@ -62,13 +77,10 @@ class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : Recycler
                         Log.e("Picasso", "Error loading image: ${e?.message}")
                     }
                 })
-
         }
 
         private fun buildCoverPath(coverPath: String?): String {
             return coverPath ?: ""
         }
-
     }
-
 }
