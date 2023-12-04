@@ -15,7 +15,7 @@ data class CardArtikelResponse(
     @SerializedName("cover")
     val coverPath: String?,
     @SerializedName("category")
-    val category: String?,
+    val category: String,
     @SerializedName("read_time")
     val readTime: String?,
     @SerializedName("source")
@@ -27,7 +27,7 @@ data class CardArtikelResponse(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
+        parcel.readString()!!,
         parcel.readString(),
         parcel.readString(),
     ) {

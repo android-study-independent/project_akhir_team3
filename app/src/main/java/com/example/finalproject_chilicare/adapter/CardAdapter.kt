@@ -15,7 +15,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.util.Locale
 
-class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : RecyclerView.Adapter<CardAdapter.CardArtikelHolder>() {
+class CardAdapter(private var listArtikel: List<CardArtikelResponse>) : RecyclerView.Adapter<CardAdapter.CardArtikelHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardArtikelHolder {
@@ -32,7 +32,13 @@ class CardAdapter(private val listArtikel: List<CardArtikelResponse>) : Recycler
         return listArtikel.size
     }
 
+    fun updateData(newData: List<CardArtikelResponse>) {
+        listArtikel = newData
+        notifyDataSetChanged()
+    }
+
     inner class CardArtikelHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+
 
         fun bindView(artikel: CardArtikelResponse){
 
