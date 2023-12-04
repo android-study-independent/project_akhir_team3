@@ -297,15 +297,6 @@ class WeatherActivity : AppCompatActivity() {
             textArahAngin.text = body.currentWeather.windDirection
 
 
-//            textWaktuSekarang.text = (body.hourlyweather[0].time)
-//            textSuhuSekarang.text = (body.hourlyweather[0].temperature.toString())
-//            textWaktuKedua.text = (body.hourlyweather[1].time)
-//            textSuhuKedua.text = (body.hourlyweather[1].temperature.toString())
-//            textWaktuKetiga.text = (body.hourlyweather[2].time)
-//            textSuhuKetiga.text = (body.hourlyweather[2].temperature.toString())
-//            textWaktuKeempat.text = (body.hourlyweather[3].time)
-//            textSuhuKeempat.text = (body.hourlyweather[3].temperature.toString())
-
 //            adapter = HourlyWeatherAdapter(listHourlyWeather)
 ////            rvHourlyWeather.text = findViewById(R.id.rvHourlyWeather)
 //            rvHourlyWeather.setHasFixedSize(true)
@@ -314,31 +305,31 @@ class WeatherActivity : AppCompatActivity() {
 //            rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
 
-            textHariCuaca1.text = (body.forecast[0].date)
-            textHariCuaca2.text = (body.forecast[1].date)
-            textHariCuaca3.text = (body.forecast[2].date)
-            textKondisiCuaca1.text = (body.forecast[0].weatherDescription)
-            textKondisiCuaca2.text = (body.forecast[1].weatherDescription)
-            textKondisiCuaca3.text = (body.forecast[2].weatherDescription)
-            textSuhu1.text = (body.forecast[0].temperature.toString())+ "°"
-            textSuhu2.text = (body.forecast[1].temperature.toString())+ "°"
-            textSuhu3.text = (body.forecast[2].temperature.toString())+ "°"
+            textHariCuaca1.text = (body.forecast[1].date)
+            textHariCuaca2.text = (body.forecast[2].date)
+            textHariCuaca3.text = (body.forecast[3].date)
+            textKondisiCuaca1.text = (body.forecast[1].weatherDescription)
+            textKondisiCuaca2.text = (body.forecast[2].weatherDescription)
+            textKondisiCuaca3.text = (body.forecast[3].weatherDescription)
+            textSuhu1.text = (body.forecast[1].temperature.toString())+ "°"
+            textSuhu2.text = (body.forecast[2].temperature.toString())+ "°"
+            textSuhu3.text = (body.forecast[3].temperature.toString())+ "°"
 
             val path = buildIconPath(body.currentWeather.icon)
             Picasso.get().load(path).into(iconSuhu)
             Log.d("iconweather",path)
 
+            val cuaca1 = buildIconPath(body.forecast[1].icon)
+            val cuaca2 = buildIconPath(body.forecast[2].icon)
+            val cuaca3 = buildIconPath(body.forecast[3].icon)
+
+            Picasso.get().load(cuaca1).into(iconCuaca1)
+            Picasso.get().load(cuaca2).into(iconCuaca2)
+            Picasso.get().load(cuaca3).into(iconCuaca3)
 
 
         }
 
-//        updateTodayIconWeather(body.currentWeather.weatherDescription)
-//        for (i in 0 until minOf(4, body.hourlyweather.size)) {
-//            updateHourlyIconWeather(body.hourlyweather[i].weatherDescription)
-//        }
-//        for (i in 0 until minOf(5, body.hourlyweather.size)) {
-//            updateNextDayIconWeather(body.forecast[i].weatherDescription)
-//        }
 
     }
 
@@ -346,58 +337,6 @@ class WeatherActivity : AppCompatActivity() {
         return icon?:""
     }
 
-    private fun updateHourlyIconWeather(weatherDescription: String) {
-
-        binding.apply {
-
-            if (weatherDescription == "moderate rain") {
-
-//                iconSuhuSekarang.setImageResource(R.drawable.berawan)
-//                iconSuhuJam11.setImageResource(R.drawable.hujan)
-//                iconSuhuJam12.setImageResource(R.drawable.hujan)
-//                iconSuhuJam13.setImageResource(R.drawable.berawan)
-
-
-
-            }
-
-
-        }
-
-    }
-
-    private fun updateNextDayIconWeather(weatherDescription: String) {
-
-        binding.apply {
-
-            if (weatherDescription == "light rain") {
-
-
-                iconCuaca1.setImageResource(R.drawable.hujan)
-                iconCuaca2.setImageResource(R.drawable.hujan)
-                iconCuaca3.setImageResource(R.drawable.hujan)
-
-            }
-
-
-        }
-
-
-    }
-
-
-    private fun updateTodayIconWeather(weatherDescription: String) {
-            binding.apply {
-
-                if (weatherDescription == "moderate rain") {
-
-                    iconSuhu.setImageResource(R.drawable.sun)
-
-                }
-
-
-            }
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun ts2td(ts:Long):String{
