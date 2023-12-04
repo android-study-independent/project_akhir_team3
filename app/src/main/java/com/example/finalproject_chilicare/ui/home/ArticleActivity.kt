@@ -22,15 +22,14 @@ import kotlinx.coroutines.launch
 
 
 class ArticleActivity : AppCompatActivity(), OnTabClickListener {
-    private lateinit var rvTabArticle: RecyclerView
-    private lateinit var rvCardArticle: RecyclerView
 
-    private lateinit var tabResponses: ArrayList<TabResponse>
-    private var cardArtikelResponse =  mutableListOf<CardArtikelResponse>()
-
+    lateinit var ivBack: ImageView
     lateinit var etCariArtikel: EditText
     lateinit var cardAdapter: CardAdapter
-    lateinit var ivBack: ImageView
+    private lateinit var rvTabArticle: RecyclerView
+    private lateinit var rvCardArticle: RecyclerView
+    private lateinit var tabResponses: ArrayList<TabResponse>
+    private var cardArtikelResponse =  mutableListOf<CardArtikelResponse>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,10 +51,8 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
             val query = text.toString().trim()
 
             if (query.isEmpty()) {
-                // Jika teks kosong, tampilkan semua data
                 cardAdapter.updateData(cardArtikelResponse)
             } else {
-                // Jika ada teks, lakukan pencarian berdasarkan kategori
                 cardAdapter.searchByCategory(query)
             }
         }
@@ -74,8 +71,6 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
         cardAdapter = CardAdapter(cardArtikelResponse)
         rvCardArticle.adapter = cardAdapter
 
-
-
         // LIFECYCLE SCOPE
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
@@ -84,9 +79,6 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
                 Log.d("debug", "hasilnya : $it")
                 cardArtikelResponse.add(it)
             }
-
-            // LOG TAB RESPONSE
-            Log.d("debug", "TAB RESPONSE : ${cardArtikelResponse.map { it.category }}")
 
             // RECYCLERVIEW TAB
             tabResponses.addAll(cardArtikelResponse
@@ -99,22 +91,22 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
             rvTabArticle.adapter?.notifyDataSetChanged()
         }
 
-
-        cardAdapter.onItemClick = { articles ->
-            Log.d("ArticleActivity", "Clicked item: $articles")
+        // UNTUK MENUJU KE DETAIL ARTICLE
+        cardAdapter.onItemClick = {
+            Log.d("ArticleActivity", "Clicked item: $it")
             val intent = Intent(this, DetailArticleActivity::class.java)
-            val twoArticles = cardArtikelResponse.take(2)
-            intent.putParcelableArrayListExtra("articles", ArrayList(twoArticles))
+            intent.putExtra("articles", it)
+            intent.putParcelableArrayListExtra("articleList", ArrayList(cardArtikelResponse)) // ini untuk rv_cardArticle2
             startActivity(intent)
         }
+
     }
 
     // FUNGSI UNTUK KETIKA TAB ARTIKEL DI KLIK
     override fun onTabClick(category: String) {
-        // Filter cardArtikelResponse berdasarkan kategori yang diklik
         val filteredArticles = cardArtikelResponse.filter { it.category == category }
 
-        // Perbarui adapter RecyclerView card dengan data yang difilter
         cardAdapter.updateData(filteredArticles)
     }
+
 }
