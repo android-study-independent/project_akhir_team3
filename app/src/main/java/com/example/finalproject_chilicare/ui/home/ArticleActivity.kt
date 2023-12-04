@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +47,19 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
             }
         }
 
+        // SEARCH BAR ETARTIKEL
+        etCariArtikel.addTextChangedListener { text ->
+            val query = text.toString().trim()
+
+            if (query.isEmpty()) {
+                // Jika teks kosong, tampilkan semua data
+                cardAdapter.updateData(cardArtikelResponse)
+            } else {
+                // Jika ada teks, lakukan pencarian berdasarkan kategori
+                cardAdapter.searchByCategory(query)
+            }
+        }
+
         // TAB ARTIKEL
         rvTabArticle = findViewById(R.id.rv_tabArticle)
         rvTabArticle.layoutManager =
@@ -60,7 +74,6 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
         cardAdapter = CardAdapter(cardArtikelResponse)
         rvCardArticle.adapter = cardAdapter
 
-
         // LIFECYCLE SCOPE
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
@@ -70,7 +83,7 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
                 cardArtikelResponse.add(it)
             }
 
-            // Tambahkan log untuk memeriksa data
+            // LOG TAB RESPONSE
             Log.d("debug", "TAB RESPONSE : ${cardArtikelResponse.map { it.category }}")
 
             // RECYCLERVIEW TAB
@@ -79,13 +92,13 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
                 .distinctBy { it.category }
                 .map { TabResponse(it.category!!) })
 
-
+            // UPDATE RECYCLERVIEW NYA
             cardAdapter.notifyDataSetChanged()
             rvTabArticle.adapter?.notifyDataSetChanged()
         }
-
     }
 
+    // FUNGSI UNTUK KETIKA TAB ARTIKEL DI KLIK
     override fun onTabClick(category: String) {
         // Filter cardArtikelResponse berdasarkan kategori yang diklik
         val filteredArticles = cardArtikelResponse.filter { it.category == category }
@@ -93,6 +106,4 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
         // Perbarui adapter RecyclerView card dengan data yang difilter
         cardAdapter.updateData(filteredArticles)
     }
-
-
 }

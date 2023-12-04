@@ -37,6 +37,12 @@ class CardAdapter(private var listArtikel: List<CardArtikelResponse>) : Recycler
         notifyDataSetChanged()
     }
 
+    fun searchByCategory(query: String) {
+        val filteredList = listArtikel.filter { it.category?.contains(query, ignoreCase = true) == true }
+        updateData(filteredList)
+    }
+
+
     inner class CardArtikelHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
 
