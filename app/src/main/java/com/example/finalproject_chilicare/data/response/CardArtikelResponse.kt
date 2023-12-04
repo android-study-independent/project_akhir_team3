@@ -5,7 +5,6 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class CardArtikelResponse(
-
     @SerializedName("title")
     val title: String?,
     @SerializedName("desc")
@@ -21,7 +20,9 @@ data class CardArtikelResponse(
     @SerializedName("source")
     val source: String?,
 
-) : Parcelable {
+
+
+    ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -30,8 +31,10 @@ data class CardArtikelResponse(
         parcel.readString()!!,
         parcel.readString(),
         parcel.readString(),
+        // DETAILS ARTIKEL
     ) {
     }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
         parcel.writeString(desc)
@@ -40,6 +43,7 @@ data class CardArtikelResponse(
         parcel.writeString(category)
         parcel.writeString(readTime)
         parcel.writeString(source)
+        // DETAILS ARTIKEL
     }
 
     override fun describeContents(): Int {

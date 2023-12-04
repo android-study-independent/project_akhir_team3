@@ -74,6 +74,8 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
         cardAdapter = CardAdapter(cardArtikelResponse)
         rvCardArticle.adapter = cardAdapter
 
+
+
         // LIFECYCLE SCOPE
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
@@ -95,6 +97,15 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
             // UPDATE RECYCLERVIEW NYA
             cardAdapter.notifyDataSetChanged()
             rvTabArticle.adapter?.notifyDataSetChanged()
+        }
+
+
+        cardAdapter.onItemClick = { articles ->
+            Log.d("ArticleActivity", "Clicked item: $articles")
+            val intent = Intent(this, DetailArticleActivity::class.java)
+            val twoArticles = cardArtikelResponse.take(2)
+            intent.putParcelableArrayListExtra("articles", ArrayList(twoArticles))
+            startActivity(intent)
         }
     }
 

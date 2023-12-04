@@ -33,13 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.ArticleActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ui.home.NavbarActivity"
             android:exported="false" />
@@ -69,12 +63,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.MainActivity"
