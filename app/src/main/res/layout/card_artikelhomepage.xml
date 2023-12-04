@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="10dp"
+    android:layout_marginBottom="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleMenanam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:text="Menanam"
+            android:textColor="@color/BrandPrimay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TextView>
+
+        <TextView
+            android:id="@+id/txttitledesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/plusjakartasans_bold_700"
+            android:text="Tips Memilih Bibit Cabai\nYang Berkualitas"
+            android:textColor="@color/PrimaryText"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            app:layout_constraintTop_toBottomOf="@+id/titleMenanam"></TextView>
+
+        <TextView
+            android:id="@+id/txtdescmenanam"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:maxLines="2"
+            android:text="Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani"
+            android:textColor="@color/SecondaryText"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txttitledesc"
+            app:layout_constraintTop_toBottomOf="@+id/txttitledesc"></TextView>
+
+        <ImageView
+            android:id="@+id/imgclocklastseen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/clock"
+            app:layout_constraintLeft_toLeftOf="@+id/titleMenanam"
+            app:layout_constraintTop_toBottomOf="@+id/txtdescmenanam"></ImageView>
+
+        <TextView
+            android:id="@+id/tvlastseen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8.5dp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:text="3 menit baca"
+            android:textColor="@color/BrandPrimay"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/imgclocklastseen"
+            app:layout_constraintTop_toBottomOf="@+id/txtdescmenanam"></TextView>
+
+        <ImageView
+            android:id="@+id/tvartikel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/cabai"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

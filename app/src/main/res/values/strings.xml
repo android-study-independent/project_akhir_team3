@@ -370,6 +370,36 @@
         <item>30</item>
     </string-array>
 
+    <string-array name="category">
+        <item>menanam</item>
+        <item>bibit</item>
+    </string-array>
+
+    <string-array name="title">
+        <item>Tips Memilih Bibit Cabai\nYang Berkualitas</item>
+        <item>Tips Memilih Bibit Cabai\nYang Berkualitas</item>
+    </string-array>
+
+    <string-array name="descartikel">
+        <item>Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani</item>
+        <item>Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani</item>
+    </string-array>
+
+<!--  <integer-array name="clock">-->
+<!--      <item>@drawable/clock</item>-->
+<!--      <item>@drawable/clock</item>-->
+<!--  </integer-array>-->
+
+    <string-array name="lastsen">
+        <item> 3 menit baca</item>
+        <item> 3 menit baca</item>
+    </string-array>
+
+<string-array name="cover">
+    <item>@drawable/cabai</item>
+    <item>@drawable/cabai</item>
+</string-array>
+
 </resources>
 
 

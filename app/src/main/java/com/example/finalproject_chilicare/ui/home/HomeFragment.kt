@@ -17,17 +17,24 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.adapter.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
+import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.CurrentWeather
+import com.example.finalproject_chilicare.data.response.CardArtikelResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
+import com.example.finalproject_chilicare.dataclass.HomeArtikel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,8 +43,11 @@ import kotlin.math.roundToInt
 
 class HomeFragment : Fragment() {
     private val listforum = ArrayList<ForumData>()
+    private val listartikel = ArrayList<HomeArtikel>()
     private lateinit var recylerView: RecyclerView
+    private lateinit var rvartikelrecylerview : RecyclerView
     private lateinit var forumadapter: ForumAdapter
+    private lateinit var artikeladapter: CardHomeArtikelAdapter
     private lateinit var cityname: TextView
     private lateinit var temp: TextView
     private lateinit var humidity: TextView
@@ -56,6 +66,7 @@ class HomeFragment : Fragment() {
 
 //    private lateinit var binding: FragmentHomeBinding
 
+    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -87,14 +98,43 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //rv card forum
         recylerView = view.findViewById(R.id.rv_Forum)
         recylerView.setHasFixedSize(true)
-
         forumadapter = ForumAdapter(listforum)
         recylerView.adapter = forumadapter
         listforum.addAll(getListForum())
         recylerView.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+
+        //rv card artikel
+        rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
+        rvartikelrecylerview.layoutManager = LinearLayoutManager(requireContext())
+        rvartikelrecylerview.setHasFixedSize(true)
+        artikeladapter = CardHomeArtikelAdapter(listartikel)
+        rvartikelrecylerview.adapter = artikeladapter
+        listartikel.addAll(getListArtikel())
+//
+        //lifecycle
+        lifecycleScope.launch {
+            val result = Network().getRetroClientInstance()
+                .create(ApiInterface::class.java).getAllArtikel()
+            result.data.map {
+                Log.d("cardhome","Artikel Response : ${cardArtikelResponse.map { it.category }}" )
+
+
+                //update data nya
+                artikeladapter.notifyDataSetChanged()
+            }
+
+            //action clik
+
+
+        }
+
+
+
 
         cityname = view.findViewById<TextView>(R.id.txtcity)
         temp = view.findViewById<TextView>(R.id.txttemperature)
@@ -102,14 +142,10 @@ class HomeFragment : Fragment() {
         weatherdesc = view.findViewById<TextView>(R.id.txtweatherdesc)
         date = view.findViewById(R.id.txtdatetime)
         image = view.findViewById(R.id.imgweather)
-        cardtitle1 = view.findViewById(R.id.titleMenanam)
-        cardtitledesc1 = view.findViewById(R.id.txttitledesc)
-        carddesc1 = view.findViewById(R.id.txtdescmenanam)
-        cardlastseen1 = view.findViewById(R.id.tvlastseen)
-        cardtitle2 = view.findViewById(R.id.titleBibit)
-        cardtitledesc2 = view.findViewById(R.id.txtdesctitlebibit)
-        carddesc2 = view.findViewById(R.id.txtdescbibit)
-        cardlastseen2 = view.findViewById(R.id.tvlastseen2)
+//        cardtitle1 = view.findViewById(R.id.titleMenanam)
+//        cardtitledesc1 = view.findViewById(R.id.txttitledesc)
+//        carddesc1 = view.findViewById(R.id.txtdescmenanam)
+//        cardlastseen1 = view.findViewById(R.id.tvlastseen)
 
 
         buttonCuaca = view.findViewById(R.id.btnCuaca)
@@ -322,6 +358,23 @@ class HomeFragment : Fragment() {
 
         return listforum
 
+    }
+
+    private fun getListArtikel():ArrayList<HomeArtikel>{
+        val category = resources.getStringArray(R.array.category)
+        val title = resources.getStringArray(R.array.title)
+        val desc = resources.getStringArray(R.array.descartikel)
+        val readtime = resources.getStringArray(R.array.lastsen)
+        val cover = resources.obtainTypedArray(R.array.cover)
+        val listartikel = ArrayList<HomeArtikel>()
+        for (i in category.indices) {
+            val tani = HomeArtikel(
+                category[i],title[i],desc[i],readtime[i],
+                cover.getResourceId(i,-1)
+            )
+            listartikel.add(tani)
+        }
+        return listartikel
     }
 
 
