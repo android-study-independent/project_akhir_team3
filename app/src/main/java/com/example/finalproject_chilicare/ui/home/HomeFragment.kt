@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.adapter.CardAdapter
 import com.example.finalproject_chilicare.adapter.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
 import com.example.finalproject_chilicare.data.api.ApiInterface
@@ -39,6 +40,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
@@ -66,7 +68,11 @@ class HomeFragment : Fragment() {
 
 //    private lateinit var binding: FragmentHomeBinding
 
-    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>()
+//    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
+    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
+    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>() // ini buat datanya
+
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -108,30 +114,41 @@ class HomeFragment : Fragment() {
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
 
-        //rv card artikel
+        // Inisialisasi adapter terlebih dahulu
+        cardAdapter = CardAdapter(cardArtikelResponse)
+
+        // MENDAPATKAN DATA MENGGUNAKAN KATA KUNCI ARTICLELIST DARI HALAMAN ARTIKEL ACTIVITY
+        val articleList = requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList")
+
+        // Log untuk memeriksa apakah artikelList tidak null dan berisi data
+        Log.d("MyTag", "articleList: $articleList")
+
+        // Mengatur adapter untuk RecyclerView
         rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
-        rvartikelrecylerview.layoutManager = LinearLayoutManager(requireContext())
-        rvartikelrecylerview.setHasFixedSize(true)
-        artikeladapter = CardHomeArtikelAdapter(listartikel)
-        rvartikelrecylerview.adapter = artikeladapter
-        listartikel.addAll(getListArtikel())
-//
-        //lifecycle
-        lifecycleScope.launch {
-            val result = Network().getRetroClientInstance()
-                .create(ApiInterface::class.java).getAllArtikel()
-            result.data.map {
-                Log.d("cardhome","Artikel Response : ${cardArtikelResponse.map { it.category }}" )
+        rvartikelrecylerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        cardAdapter = CardAdapter(requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList") ?: emptyList())
+        rvartikelrecylerview.adapter = cardAdapter
 
+        // PENERAPAN UNTUK MENGAMBIL DATANYA
+        if (articleList != null && articleList.isNotEmpty()) {
+            val randomIndices = List(2) { Random.nextInt(articleList.size) }
+            val randomArticles = randomIndices.map { articleList[it] }
 
-                //update data nya
-                artikeladapter.notifyDataSetChanged()
+            cardAdapter?.updateData(randomArticles)
+
+            cardAdapter?.onItemClick = { selectedArticle ->
+                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
+                intent.putExtra("articles", selectedArticle)
+                intent.putParcelableArrayListExtra("articleList", articleList)
+                startActivity(intent)
             }
-
-            //action clik
-
-
+        } else {
+            Log.d("MyTag", "articleList is empty or null")
         }
+
+
+
+
 
 
 

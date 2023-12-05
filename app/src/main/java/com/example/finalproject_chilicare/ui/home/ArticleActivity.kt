@@ -91,7 +91,7 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
             rvTabArticle.adapter?.notifyDataSetChanged()
         }
 
-        // UNTUK MENUJU KE DETAIL ARTICLE
+        // UNTUK MENUJU KE DETAIL
         cardAdapter.onItemClick = {
             Log.d("ArticleActivity", "Clicked item: $it")
             val intent = Intent(this, DetailArticleActivity::class.java)
