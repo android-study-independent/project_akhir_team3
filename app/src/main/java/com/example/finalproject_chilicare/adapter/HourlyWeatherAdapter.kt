@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.models.Hourlyweather
+import com.squareup.picasso.Picasso
 
 
 class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>) : RecyclerView.Adapter<HourlyWeatherAdapter.HourlyWeatherHolder> () {
@@ -20,15 +22,14 @@ class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>)
             val textSuhuHourlyWeather = view.findViewById<TextView>(R.id.textCardSuhu)
 
 
-//            textHourlyWeather.text = hourly.time
-//            textSuhuHourlyWeather.text = hourly.temperature.toString()
+            textHourlyWeather.text = hourly.time
+            textSuhuHourlyWeather.text = hourly.temperature.toString()
+
+            val path = buildIconTemperature(hourly.icon)
+            Picasso.get().load(path).into(iconHourlyWeather)
+            Log.d("iconweather",path)
 
         }
-
-
-
-
-
 
     }
 
@@ -51,7 +52,7 @@ class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>)
         return hourlyWeatherList.size
     }
 
-//    private fun buildIconTemperature(iconTemperature: String?): String {
-//        return "https://image.tmdb.org/t/p/w500/$iconTemperature"
-//    }
+    private fun buildIconTemperature(iconTemperature: String?): String {
+        return iconTemperature ?: ""
+    }
 }

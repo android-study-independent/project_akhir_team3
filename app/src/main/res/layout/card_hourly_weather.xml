@@ -34,11 +34,11 @@
             android:id="@+id/relativeSuhuSekarang">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
                 android:src="@drawable/berawan"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:id="@+id/iconCardSuhu"/>
 
             <TextView
@@ -46,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="35°"
+                android:textSize="12sp"
                 android:layout_below="@+id/iconCardSuhu"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/white"
