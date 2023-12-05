@@ -400,6 +400,34 @@
     <item>@drawable/cabai</item>
 </string-array>
 
+    <string-array name="datelms">
+        <item> 3 november 2023</item>
+        <item> 3 november 2023</item>
+        <item> 3 november 2023</item>
+    </string-array>
+
+    <string-array name="titlelms">
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+    </string-array>
+
+
+    <string-array name="desclms">
+        <item> apakah anda mengetahui jika benih membutuhkan perawatan yang extra</item>
+        <item> apakah anda mengetahui jika benih membutuhkan perawatan yang extra</item>
+        <item> apakah anda mengetahui jika benih membutuhkan perawatan yang extra</item>
+    </string-array>
+
+    <integer name="progress">10</integer>
+
+    <integer-array name="coverlms">
+        <item>@drawable/lmsartikel1</item>
+        <item>@drawable/lmsartikel1</item>
+        <item>@drawable/lmsartikel1</item>
+    </integer-array>
+
+
 </resources>
 
 

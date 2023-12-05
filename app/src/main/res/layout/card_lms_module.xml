@@ -15,15 +15,14 @@
         >
 
         <ImageView
-            android:id="@+id/iv_Gambar"
-            android:layout_width="375dp"
-            android:layout_height="130dp"
+            android:id="@+id/iv_GambarLMS"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
             android:padding="8dp"
-            android:layout_marginRight="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tv_Tanggal"
-            android:background="@drawable/img_lms"
+            android:background="@drawable/lmsartikel1"
             />
 
         <TextView
@@ -37,7 +36,7 @@
             android:paddingRight="16dp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/iv_Gambar"
+            app:layout_constraintTop_toBottomOf="@+id/iv_GambarLMS"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
@@ -45,9 +44,9 @@
             android:id="@+id/tv_JudulBesar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:text="Merawat Benih Agar Tetap Sehat"
             android:textSize="18sp"
+            android:layout_marginTop="10dp"
             android:paddingLeft="35dp"
             android:paddingRight="16dp"
             android:fontFamily="@font/plusjakartasans_bold_700"
@@ -71,9 +70,23 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_JudulBesar"
             app:layout_constraintStart_toEndOf="@+id/tv_JudulBesar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="20dp"
+
             />
+
+        <ProgressBar
+            android:layout_marginTop="18dp"
+            android:paddingBottom="3dp"
+            android:id="@+id/pb_lms"
+            android:layout_marginLeft="35dp"
+            android:paddingRight="16dp"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_DescSingkat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/cutom_progressbar"></ProgressBar>
 
 
 

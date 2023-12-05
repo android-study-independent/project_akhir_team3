@@ -394,7 +394,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
-                    android:paddingStart="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingStart="0dp"
                     tools:listitem="@layout/forum_content"></androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
