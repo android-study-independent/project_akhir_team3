@@ -63,14 +63,14 @@ class WeatherActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
         btnAdd = findViewById(R.id.btnAddCity)
 
-        adapter = HourlyWeatherAdapter(listHourlyWeather)
-        listHourlyWeather.addAll(getWeatherHourly())
-
-        rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
-        rvHourlyWeather.setHasFixedSize(true)
-
-        rvHourlyWeather.adapter = adapter
-        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+//        adapter = HourlyWeatherAdapter(listHourlyWeather)
+//        //listHourlyWeather.addAll(getWeatherHourly())
+//
+//        rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
+//        rvHourlyWeather.setHasFixedSize(true)
+//
+//        rvHourlyWeather.adapter = adapter
+//        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
         iconSuhuWeather = findViewById(R.id.iconSuhu)
 
@@ -103,27 +103,6 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
-    private fun getWeatherHourly() : ArrayList<Hourlyweather> {
-
-        val waktuCuaca = resources.getStringArray(R.array.waktuCuaca)
-        val iconCuaca = resources.obtainTypedArray(R.array.iconCuaca)
-        val suhuCuaca = resources.getStringArray(R.array.suhuPerJam)
-        val listHourly = ArrayList<Hourlyweather>()
-
-        for (i in waktuCuaca.indices) {
-            val cuaca = Hourlyweather(
-
-                waktuCuaca[i], iconCuaca.getResourceId(i, -1), suhuCuaca[i]
-            )
-            listHourly.add(cuaca)
-
-
-
-        }
-        return listHourly
-
-
-    }
 
         private fun getCurrentLocation() {
 
@@ -227,7 +206,7 @@ class WeatherActivity : AppCompatActivity() {
 
     private fun getCityWeather(city : String) {
 
-        NetworkWeather.getCityApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
+        NetworkWeather.getApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
             object : Callback<CurrentWeather> {
                 override fun onResponse(
                     call: Call<CurrentWeather>,
@@ -297,12 +276,20 @@ class WeatherActivity : AppCompatActivity() {
             textArahAngin.text = body.currentWeather.windDirection
 
 
-//            adapter = HourlyWeatherAdapter(listHourlyWeather)
-////            rvHourlyWeather.text = findViewById(R.id.rvHourlyWeather)
-//            rvHourlyWeather.setHasFixedSize(true)
-//
-//            rvHourlyWeather.adapter = adapter
-//            rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+            adapter = HourlyWeatherAdapter(body.hourlyweather)
+            val rvHourlyWeather = binding.rvHourlyWeather
+            rvHourlyWeather.layoutManager = LinearLayoutManager(this@WeatherActivity, RecyclerView.HORIZONTAL, false)
+            rvHourlyWeather.setHasFixedSize(true)
+
+            rvHourlyWeather.adapter = adapter
+
+
+            Log.d("Debug", "Recyler view berhasil -> ${adapter}")
+
+
+            adapter.notifyDataSetChanged()
+
+
 
 
             textHariCuaca1.text = (body.forecast[1].date)
