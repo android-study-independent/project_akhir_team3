@@ -49,7 +49,16 @@ class CardAdapter(private var listArtikel: List<CardArtikelResponse>) : Recycler
         updateData(filteredList)
     }
 
+
+
     inner class CardArtikelHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+
+        init {
+            // Set listener untuk menanggapi klik pada item
+            view.setOnClickListener {
+                onItemClick?.invoke(listArtikel[adapterPosition])
+            }
+        }
 
         fun bindView(artikel: CardArtikelResponse) {
             // inisiasi view nya
