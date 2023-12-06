@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui.home
+package com.example.finalproject_chilicare.ui.home.article
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.adapter.CardAdapter
-import com.example.finalproject_chilicare.data.response.CardArtikelResponse
+import com.example.finalproject_chilicare.adapter.article.CardAdapter
+import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.squareup.picasso.Picasso
 import kotlin.random.Random
 

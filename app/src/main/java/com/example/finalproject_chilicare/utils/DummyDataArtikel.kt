@@ -1,9 +1,7 @@
 package com.example.finalproject_chilicare.utils
 
-import android.util.Log
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.CardArtikelResponse
-import com.example.finalproject_chilicare.data.response.TabResponse
+import com.example.finalproject_chilicare.data.response.article.TabResponse
 
 object DummyDataArtikel {
 

@@ -1,6 +1,5 @@
-package com.example.finalproject_chilicare.adapter
+package com.example.finalproject_chilicare.adapter.article
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.CardArtikelResponse
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 
 class CardHomeArtikelAdapter (private val listArtikelHome: List<HomeArtikel>) : RecyclerView.Adapter<CardHomeArtikelAdapter.ArtikelHomeHolder>() {
 

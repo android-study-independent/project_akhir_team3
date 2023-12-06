@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.data.response
+package com.example.finalproject_chilicare.data.response.login
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

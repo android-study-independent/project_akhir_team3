@@ -13,8 +13,8 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.response.LoginRequest
-import com.example.finalproject_chilicare.data.response.LoginResponse
+import com.example.finalproject_chilicare.data.response.login.LoginRequest
+import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.register.RegisterActivity
 import com.google.android.material.textfield.TextInputLayout

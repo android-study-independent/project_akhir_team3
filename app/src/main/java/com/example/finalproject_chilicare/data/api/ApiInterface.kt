@@ -1,9 +1,9 @@
 package com.example.finalproject_chilicare.data.api
 
 import com.example.finalproject_chilicare.data.models.CurrentWeather
-import com.example.finalproject_chilicare.data.response.CardAllArtikelResponse
-import com.example.finalproject_chilicare.data.response.LoginRequest
-import com.example.finalproject_chilicare.data.response.LoginResponse
+import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
+import com.example.finalproject_chilicare.data.response.login.LoginRequest
+import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
 import retrofit2.Call
