@@ -1,14 +1,376 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:background="#F6F6F6"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:background="@drawable/top_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivBackground"
+                android:layout_width="181dp"
+                android:layout_height="198.74dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="60dp"
+                android:src="@drawable/gradient"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="68dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_marginLeft="134dp"
+                android:layout_marginRight="143dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBack"
+                app:layout_constraintStart_toEndOf="@+id/ivBack"
+                app:layout_constraintTop_toTopOf="@+id/ivBack"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardProfile"
+        android:layout_width="358dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/bg_profile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/avatar"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvAvatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plusjakartasans_semibold_600"
+                android:layout_marginLeft="8dp"
+                android:text="Richard"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+
+            <ImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/img_edit"
+                android:layout_marginLeft="170dp"
+                app:layout_constraintLeft_toRightOf="@+id/tvAvatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+
+            <TextView
+                android:id="@+id/tvSureName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="Richard  Madden"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+
+            <TextView
+                android:id="@+id/tvJoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="bergabung sejak 1 November 2023"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardUbahPassword"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_profile"
+        app:layout_constraintTop_toBottomOf="@id/CardProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivKey"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/img_key"
+                />
+
+            <ImageView
+                android:id="@+id/ivPinkBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/ivKey"
+                android:layout_marginLeft="270dp"
+                android:src="@drawable/img_pink_back"
+                />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ivKey"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:textStyle="bold"
+                android:text="Ubah Password"
+                android:textSize="14sp"
+                android:textColor="#303344"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardNotifikasi"
+        android:layout_width="358dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/bg_profile"
+        app:layout_constraintTop_toBottomOf="@id/CardUbahPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:padding="8dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivNotif"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/img_notif_profile"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivPinkBack2"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/ivNotif"
+                    android:layout_marginLeft="270dp"
+                    android:src="@drawable/img_pink_back"
+                    />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivNotif"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:text="Notifikasi"
+                    android:textSize="14sp"
+                    android:textColor="#303344"
+                    />
+            </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardPengaturan"
+        android:layout_width="358dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/bg_profile"
+        app:layout_constraintTop_toBottomOf="@id/CardNotifikasi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:padding="8dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivPengaturan"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/img_shield"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivPinkBack3"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/ivPengaturan"
+                    android:layout_marginLeft="270dp"
+                    android:src="@drawable/img_pink_back"
+                    />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivPengaturan"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:text="Pengaturan Keamanan"
+                    android:textSize="14sp"
+                    android:textColor="#303344"
+                    />
+            </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardBantuan"
+        android:layout_width="358dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/bg_profile"
+        app:layout_constraintTop_toBottomOf="@id/CardPengaturan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:padding="8dp"
+                >
+
+                <ImageView
+                    android:id="@+id/ivBantuan"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/img_help"
+                    />
+
+                <ImageView
+                    android:id="@+id/ivPinkBack4"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@id/ivBantuan"
+                    android:layout_marginLeft="270dp"
+                    android:src="@drawable/img_pink_back"
+                    />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivBantuan"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:text="Bantuan"
+                    android:textSize="14sp"
+                    android:textColor="#303344"
+                    />
+            </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnKeluar"
+        android:layout_width="358dp"
+        android:layout_height="54dp"
+        android:background="@drawable/button"
+        android:text="Keluar"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="16dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="131dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/CardBantuan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvVersi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Versi 1.0"
+        android:textColor="#8388B2"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/btnKeluar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
