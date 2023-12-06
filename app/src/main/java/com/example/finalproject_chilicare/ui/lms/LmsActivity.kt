@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui.home
+package com.example.finalproject_chilicare.ui.lms
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

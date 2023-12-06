@@ -45,6 +45,7 @@ class WeatherActivity : AppCompatActivity() {
     lateinit var binding: ActivityWeatherBinding
     lateinit var btnAdd : ImageView
     lateinit var iconSuhuWeather : ImageView
+    lateinit var btnback : ImageView
 
     private var listHourlyWeather = mutableListOf<Hourlyweather>()
     private lateinit var adapter : HourlyWeatherAdapter
@@ -73,6 +74,13 @@ class WeatherActivity : AppCompatActivity() {
 //        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
 
         iconSuhuWeather = findViewById(R.id.iconSuhu)
+        btnback = findViewById(R.id.btnBackInWeather)
+
+
+        // button back to home
+        btnback.setOnClickListener { Intent(this,HomeActivity::class.java).also {
+            startActivity(it)
+        } }
 
 
 
