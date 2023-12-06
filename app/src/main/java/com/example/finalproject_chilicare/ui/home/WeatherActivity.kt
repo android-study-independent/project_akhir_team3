@@ -76,6 +76,7 @@ class WeatherActivity : AppCompatActivity() {
         iconSuhuWeather = findViewById(R.id.iconSuhu)
         btnback = findViewById(R.id.btnBackInWeather)
 
+
         // button back to home
         btnback.setOnClickListener { Intent(this,HomeActivity::class.java).also {
             startActivity(it)

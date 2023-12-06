@@ -16,6 +16,7 @@ class AktivitasActivity : AppCompatActivity() {
 
         buttonBack = findViewById(R.id.ivBacklms)
 
+        // button back to home
         buttonBack.setOnClickListener { Intent(this,HomeActivity::class.java).also {
             startActivity(it)
         } }

@@ -198,7 +198,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-
         // button card artikel
         cardAdapter.onItemClick = {
             Log.d("Homefragment" ,"klik item  ${it}")
@@ -207,8 +206,6 @@ class HomeFragment : Fragment() {
             intent.putParcelableArrayListExtra("articleList", ArrayList(cardArtikelResponse))
             startActivity(intent)
         }
-
-
 
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
