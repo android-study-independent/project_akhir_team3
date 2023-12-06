@@ -17,25 +17,24 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.adapter.CardAdapter
-import com.example.finalproject_chilicare.adapter.CardHomeArtikelAdapter
+import com.example.finalproject_chilicare.adapter.article.CardAdapter
+import com.example.finalproject_chilicare.adapter.article.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
-import com.example.finalproject_chilicare.data.api.ApiInterface
-import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.CurrentWeather
-import com.example.finalproject_chilicare.data.response.CardArtikelResponse
+import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
+import com.example.finalproject_chilicare.ui.home.article.ArticleActivity
+import com.example.finalproject_chilicare.ui.home.article.DetailArticleActivity
+import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -185,6 +184,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        //button ke activity forum
+        buttonForum.setOnClickListener {
+            val intent = Intent(activity, ForumActivity::class.java)
+            startActivity(intent)
+        }
 
         //button card weather dari beranda
         cardbutton.setOnClickListener {

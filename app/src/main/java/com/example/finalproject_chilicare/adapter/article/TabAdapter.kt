@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.adapter
+package com.example.finalproject_chilicare.adapter.article
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.TabResponse
+import com.example.finalproject_chilicare.data.response.article.TabResponse
 import com.example.finalproject_chilicare.utils.OnTabClickListener
 
 class TabAdapter(private val dataList: ArrayList<TabResponse>, private val listener: OnTabClickListener) : RecyclerView.Adapter<TabAdapter.TabViewHolder>() {

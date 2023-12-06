@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.ui.home
+package com.example.finalproject_chilicare.ui.home.article
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +11,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.adapter.CardAdapter
-import com.example.finalproject_chilicare.data.response.CardArtikelResponse
-import com.example.finalproject_chilicare.adapter.TabAdapter
+import com.example.finalproject_chilicare.adapter.article.CardAdapter
+import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
+import com.example.finalproject_chilicare.adapter.article.TabAdapter
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.response.TabResponse
+import com.example.finalproject_chilicare.data.response.article.TabResponse
+import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.utils.OnTabClickListener
 import kotlinx.coroutines.launch
 

@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -23,16 +23,28 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.home.forum.DetailPostForumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.forum.EditPostForumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.forum.NewPostForumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.home.forum.ForumActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.SearchPopularCityActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.SearchCityActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.DetailArticleActivity"
+            android:name=".ui.home.article.DetailArticleActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.ArticleActivity"
+            android:name=".ui.home.article.ArticleActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.NavbarActivity"
@@ -54,7 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />

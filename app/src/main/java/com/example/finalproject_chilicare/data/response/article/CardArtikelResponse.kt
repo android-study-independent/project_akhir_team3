@@ -1,4 +1,4 @@
-package com.example.finalproject_chilicare.data.response
+package com.example.finalproject_chilicare.data.response.article
 
 import android.os.Parcel
 import android.os.Parcelable

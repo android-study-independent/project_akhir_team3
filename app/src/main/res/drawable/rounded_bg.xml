@@ -1,7 +1,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Bentuk dasar dengan sudut bulat -->
-    <item>
+    <item
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp">
         <shape android:shape="rectangle">
             <corners android:radius="20dp" />
             <solid android:color="#F6F6F6F6" />
@@ -11,9 +15,12 @@
     <!-- Ikon di tengah -->
     <item android:gravity="center">
         <bitmap
-            android:src="@drawable/ic_logo_loading"
             android:gravity="center"
-            />
+            android:insetLeft="10dp"
+            android:insetTop="30dp"
+            android:insetRight="10dp"
+            android:insetBottom="30dp"
+            android:src="@drawable/ic_logo_loading" />
     </item>
 
 </layer-list>
