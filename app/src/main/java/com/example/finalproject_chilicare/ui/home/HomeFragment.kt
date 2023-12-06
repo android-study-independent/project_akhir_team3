@@ -39,38 +39,28 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.create
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
     private val listforum = ArrayList<ForumData>()
-    private val listartikel = ArrayList<HomeArtikel>()
+    private val listartikel = ArrayList<CardArtikelResponse>()
     private lateinit var recylerView: RecyclerView
     private lateinit var rvartikelrecylerview : RecyclerView
     private lateinit var forumadapter: ForumAdapter
-    private lateinit var artikeladapter: CardHomeArtikelAdapter
     private lateinit var cityname: TextView
     private lateinit var temp: TextView
     private lateinit var humidity: TextView
     private lateinit var weatherdesc: TextView
     private lateinit var date: TextView
     private lateinit var image: ImageView
-    private lateinit var cardtitle1: TextView
-    private lateinit var cardtitledesc1: TextView
-    private lateinit var carddesc1: TextView
-    private lateinit var cardlastseen1: TextView
-    private lateinit var cardtitle2: TextView
-    private lateinit var cardtitledesc2: TextView
-    private lateinit var carddesc2: TextView
-    private lateinit var cardlastseen2: TextView
 
 
-//    private lateinit var binding: FragmentHomeBinding
-
-//    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
-    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
-    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>() // ini buat datanya
+    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
+    private var cardArtikelResponse = (mutableListOf <CardArtikelResponse>())// ini buat datanya
 
 
     private var _binding: FragmentHomeBinding? = null
@@ -113,44 +103,48 @@ class HomeFragment : Fragment() {
         recylerView.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-
-        // Inisialisasi adapter terlebih dahulu
-        cardAdapter = CardAdapter(cardArtikelResponse)
-
         // MENDAPATKAN DATA MENGGUNAKAN KATA KUNCI ARTICLELIST DARI HALAMAN ARTIKEL ACTIVITY
         val articleList = requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList")
 
         // Log untuk memeriksa apakah artikelList tidak null dan berisi data
         Log.d("MyTag", "articleList: $articleList")
 
-        // Mengatur adapter untuk RecyclerView
-        rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
-        rvartikelrecylerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        cardAdapter = CardAdapter(requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList") ?: emptyList())
-        rvartikelrecylerview.adapter = cardAdapter
 
-        // PENERAPAN UNTUK MENGAMBIL DATANYA
-        if (articleList != null && articleList.isNotEmpty()) {
-            val randomIndices = List(2) { Random.nextInt(articleList.size) }
-            val randomArticles = randomIndices.map { articleList[it] }
+        // Mengatur adapter untuk artikel RecyclerView
+        cardAdapter = CardAdapter(cardArtikelResponse)
+//        cardAdapter = CardAdapter(requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList") ?: emptyList())
 
-            cardAdapter?.updateData(randomArticles)
+        Log.d("home","recylerview artikel berhasil ${cardAdapter}")
+        binding.rvCardhomeartikel.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvCardhomeartikel.adapter = cardAdapter
 
-            cardAdapter?.onItemClick = { selectedArticle ->
-                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
-                intent.putExtra("articles", selectedArticle)
-                intent.putParcelableArrayListExtra("articleList", articleList)
-                startActivity(intent)
+        lifecycleScope.launch {
+            val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllArtikel()
+            result.data.map {
+                Log.d("home","hasil get api artikel ${it}")
+                cardArtikelResponse.add(it)
+                binding.rvCardhomeartikel.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                binding.rvCardhomeartikel.adapter = cardAdapter
             }
-        } else {
-            Log.d("MyTag", "articleList is empty or null")
         }
 
 
-
-
-
-
+//        // PENERAPAN UNTUK MENGAMBIL DATANYA
+//        if (articleList != null && articleList.size >= 2) {
+//            val randomIndices = List(2) { Random.nextInt(articleList.size) }
+//            val randomArticles = randomIndices.map { articleList[it] }
+//
+//            cardAdapter.updateData(randomArticles)
+//
+//            cardAdapter.onItemClick = { selectedArticle ->
+//                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
+//                intent.putExtra("articles", selectedArticle)
+//                intent.putParcelableArrayListExtra("articleList", ArrayList(articleList))
+//                startActivity(intent)
+//            }
+//        } else {
+//            Log.d("MyTag", "eror articleList is empty or null")
+//        }
 
 
         cityname = view.findViewById<TextView>(R.id.txtcity)
@@ -185,6 +179,12 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        //button ke activity Aktivitas
+        buttonAktivitas.setOnClickListener {
+            val intent = Intent(activity,AktivitasActivity::class.java)
+            startActivity(intent)
+        }
+
 
         //button card weather dari beranda
         cardbutton.setOnClickListener {
@@ -194,7 +194,16 @@ class HomeFragment : Fragment() {
 
 
         // button card artikel
-        
+        cardAdapter.onItemClick = {
+            Log.d("Homefragment" ,"klik item  ${it}")
+            val intent = Intent(activity, DetailArticleActivity::class.java)
+            intent.putExtra("articles",it)
+            intent.putParcelableArrayListExtra("articleList", ArrayList(cardArtikelResponse))
+            startActivity(intent)
+        }
+
+
+
 
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
@@ -377,22 +386,22 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun getListArtikel():ArrayList<HomeArtikel>{
-        val category = resources.getStringArray(R.array.category)
-        val title = resources.getStringArray(R.array.title)
-        val desc = resources.getStringArray(R.array.descartikel)
-        val readtime = resources.getStringArray(R.array.lastsen)
-        val cover = resources.obtainTypedArray(R.array.cover)
-        val listartikel = ArrayList<HomeArtikel>()
-        for (i in category.indices) {
-            val tani = HomeArtikel(
-                category[i],title[i],desc[i],readtime[i],
-                cover.getResourceId(i,-1)
-            )
-            listartikel.add(tani)
-        }
-        return listartikel
-    }
+//    private fun getListArtikel():ArrayList<HomeArtikel>{
+//        val category = resources.getStringArray(R.array.category)
+//        val title = resources.getStringArray(R.array.title)
+//        val desc = resources.getStringArray(R.array.descartikel)
+//        val readtime = resources.getStringArray(R.array.lastsen)
+//        val cover = resources.obtainTypedArray(R.array.cover)
+//        val listartikel = ArrayList<HomeArtikel>()
+//        for (i in category.indices) {
+//            val tani = HomeArtikel(
+//                category[i],title[i],desc[i],readtime[i],
+//                cover.getResourceId(i,-1)
+//            )
+//            listartikel.add(tani)
+//        }
+//        return listartikel
+//    }
 
 
 }

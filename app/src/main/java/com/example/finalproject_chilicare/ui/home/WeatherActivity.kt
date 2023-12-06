@@ -58,25 +58,10 @@ class WeatherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_weather)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
         btnAdd = findViewById(R.id.btnAddCity)
 
-//        adapter = HourlyWeatherAdapter(listHourlyWeather)
-//        //listHourlyWeather.addAll(getWeatherHourly())
-//
-//        rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
-//        rvHourlyWeather.setHasFixedSize(true)
-//
-//        rvHourlyWeather.adapter = adapter
-//        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-
         iconSuhuWeather = findViewById(R.id.iconSuhu)
-
-
-
-
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -96,20 +81,30 @@ class WeatherActivity : AppCompatActivity() {
             startActivityForResult(intent, 123)
         }
 
-//        val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
-//        startActivity(intent)
-
-
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 123) {
+                val selectedCity = data?.getStringExtra("selectedCity") ?: ""
+                Log.d("debug_activityresult", "get selected city $selectedCity")
+                getCityWeather(selectedCity)
+            }
+        }
+
+
+    }
         private fun getCurrentLocation() {
 
+            //Check Permission dulu
         if (isCheckPermissions()){
-
+            //Untuk mengecek lokasi sudah diaktifkan atau belum
+            Log.d("weather","userpunya permission location ")
             if (isCheckLocationEnabled()) {
-
+            Log.d("weather","user location enable true")
                 if (ActivityCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -120,6 +115,7 @@ class WeatherActivity : AppCompatActivity() {
 
                 ) != PackageManager.PERMISSION_GRANTED
                     ){
+                    Log.d("weather","user tidak punya permission location lakukan request permission")
                     requestLocationPermissions()
                     return
                 }
@@ -130,7 +126,9 @@ class WeatherActivity : AppCompatActivity() {
 
                             currentLocation = location
 
+                            Log.d("weatheractivity","getCurrentLocation succes ${currentLocation.latitude}" )
                             checkCurrentLocation(
+
                                 location.latitude.toString(),
                                 location.longitude.toString()
                             )
@@ -193,10 +191,13 @@ class WeatherActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == LOCATION_REQUEST_CODE){
+            Log.d("weather","onrequest permission callback code ${LOCATION_REQUEST_CODE}")
 
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 getCurrentLocation()
+            }
+
+
         }
         else {
 
@@ -236,6 +237,7 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun checkCurrentLocation (latitude : String, longtitude: String) {
+        Log.d("weather","ambil data current location dari backend ${latitude}, ${longtitude}")
 
         NetworkWeather.getApiInterface()?.getCurrentWeatherData(latitude, longtitude)
             ?.enqueue(object : Callback<CurrentWeather>{
@@ -252,7 +254,7 @@ class WeatherActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.e("weather","eror check current location ${t.localizedMessage}")
                 }
 
             })
@@ -304,7 +306,7 @@ class WeatherActivity : AppCompatActivity() {
 
             val path = buildIconPath(body.currentWeather.icon)
             Picasso.get().load(path).into(iconSuhu)
-            Log.d("iconweather",path)
+            Log.d("iconweather","url: $path")
 
             val cuaca1 = buildIconPath(body.forecast[1].icon)
             val cuaca2 = buildIconPath(body.forecast[2].icon)

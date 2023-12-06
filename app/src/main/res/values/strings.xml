@@ -385,20 +385,20 @@
         <item>Semakin banyak kegiatan seru\ndi tengah kesibukan, salah satunya bertani</item>
     </string-array>
 
-<!--  <integer-array name="clock">-->
-<!--      <item>@drawable/clock</item>-->
-<!--      <item>@drawable/clock</item>-->
-<!--  </integer-array>-->
+    <!--  <integer-array name="clock">-->
+    <!--      <item>@drawable/clock</item>-->
+    <!--      <item>@drawable/clock</item>-->
+    <!--  </integer-array>-->
 
     <string-array name="lastsen">
         <item> 3 menit baca</item>
         <item> 3 menit baca</item>
     </string-array>
 
-<string-array name="cover">
-    <item>@drawable/cabai</item>
-    <item>@drawable/cabai</item>
-</string-array>
+    <string-array name="cover">
+        <item>@drawable/cabai</item>
+        <item>@drawable/cabai</item>
+    </string-array>
 
     <string-array name="datelms">
         <item> 3 november 2023</item>

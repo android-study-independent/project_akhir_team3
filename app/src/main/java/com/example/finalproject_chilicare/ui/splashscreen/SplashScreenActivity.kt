@@ -23,7 +23,6 @@ import com.google.android.gms.location.LocationServices
 
 class SplashScreenActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
