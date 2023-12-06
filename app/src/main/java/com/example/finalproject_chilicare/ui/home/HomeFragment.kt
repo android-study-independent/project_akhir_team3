@@ -17,24 +17,29 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.article.CardAdapter
 import com.example.finalproject_chilicare.adapter.article.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
+import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
+import com.example.finalproject_chilicare.ui.home.aktivitas.AktivitasActivity
 import com.example.finalproject_chilicare.ui.home.article.ArticleActivity
 import com.example.finalproject_chilicare.ui.home.article.DetailArticleActivity
 import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -55,21 +60,13 @@ class HomeFragment : Fragment() {
     private lateinit var weatherdesc: TextView
     private lateinit var date: TextView
     private lateinit var image: ImageView
-    private lateinit var cardtitle1: TextView
-    private lateinit var cardtitledesc1: TextView
-    private lateinit var carddesc1: TextView
-    private lateinit var cardlastseen1: TextView
-    private lateinit var cardtitle2: TextView
-    private lateinit var cardtitledesc2: TextView
-    private lateinit var carddesc2: TextView
-    private lateinit var cardlastseen2: TextView
 
 
 //    private lateinit var binding: FragmentHomeBinding
 
-//    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
-    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
-    private var cardArtikelResponse = mutableListOf<CardArtikelResponse>() // ini buat datanya
+    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
+//    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
+    private var cardArtikelResponse = (mutableListOf<CardArtikelResponse>()) // ini buat datanya
 
 
     private var _binding: FragmentHomeBinding? = null
@@ -122,34 +119,38 @@ class HomeFragment : Fragment() {
         // Log untuk memeriksa apakah artikelList tidak null dan berisi data
         Log.d("MyTag", "articleList: $articleList")
 
-        // Mengatur adapter untuk RecyclerView
-        rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
-        rvartikelrecylerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        cardAdapter = CardAdapter(requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList") ?: emptyList())
+//        // Mengatur adapter untuk RecyclerView
+       rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
         rvartikelrecylerview.adapter = cardAdapter
 
-        // PENERAPAN UNTUK MENGAMBIL DATANYA
-        if (articleList != null && articleList.isNotEmpty()) {
-            val randomIndices = List(2) { Random.nextInt(articleList.size) }
-            val randomArticles = randomIndices.map { articleList[it] }
-
-            cardAdapter?.updateData(randomArticles)
-
-            cardAdapter?.onItemClick = { selectedArticle ->
-                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
-                intent.putExtra("articles", selectedArticle)
-                intent.putParcelableArrayListExtra("articleList", articleList)
-                startActivity(intent)
+        lifecycleScope.launch {
+            val result = Network().getRetroClientInstance()
+                .create(ApiInterface::class.java).getAllArtikel()
+            result.data.map {
+                Log.d("Home","hasil data ${it}")
+                cardArtikelResponse.add(it)
+                binding.rvCardhomeartikel.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                binding.rvCardhomeartikel.adapter = cardAdapter
             }
-        } else {
-            Log.d("MyTag", "articleList is empty or null")
+
         }
 
-
-
-
-
-
+//        // PENERAPAN UNTUK MENGAMBIL DATANYA
+//        if (articleList != null && articleList.isNotEmpty()) {
+//            val randomIndices = List(2) { Random.nextInt(articleList.size) }
+//            val randomArticles = randomIndices.map { articleList[it] }
+//
+//            cardAdapter.updateData(randomArticles)
+//
+//            cardAdapter.onItemClick = { selectedArticle ->
+//                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
+//                intent.putExtra("articles", selectedArticle)
+//                intent.putParcelableArrayListExtra("articleList", articleList)
+//                startActivity(intent)
+//            }
+//        } else {
+//            Log.d("MyTag", "articleList is empty or null")
+//        }
 
 
         cityname = view.findViewById<TextView>(R.id.txtcity)
@@ -158,10 +159,6 @@ class HomeFragment : Fragment() {
         weatherdesc = view.findViewById<TextView>(R.id.txtweatherdesc)
         date = view.findViewById(R.id.txtdatetime)
         image = view.findViewById(R.id.imgweather)
-//        cardtitle1 = view.findViewById(R.id.titleMenanam)
-//        cardtitledesc1 = view.findViewById(R.id.txttitledesc)
-//        carddesc1 = view.findViewById(R.id.txtdescmenanam)
-//        cardlastseen1 = view.findViewById(R.id.tvlastseen)
 
 
         buttonCuaca = view.findViewById(R.id.btnCuaca)
@@ -176,7 +173,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
 
         }
-
 
         //button ke activity artikel
         buttonArtikel.setOnClickListener {
@@ -196,9 +192,23 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        //button ke activity aktivitas
+        buttonAktivitas.setOnClickListener {
+            val intent = Intent(activity, AktivitasActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // button card artikel
-        
+        cardAdapter.onItemClick = {
+            Log.d("Homefragment" ,"klik item  ${it}")
+            val intent = Intent(activity, DetailArticleActivity::class.java)
+            intent.putExtra("articles",it)
+            intent.putParcelableArrayListExtra("articleList", ArrayList(cardArtikelResponse))
+            startActivity(intent)
+        }
+
+
 
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permission ->
