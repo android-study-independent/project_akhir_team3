@@ -32,6 +32,7 @@ import com.example.finalproject_chilicare.data.response.article.CardArtikelRespo
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
+import com.example.finalproject_chilicare.ui.NotificationActivity
 import com.example.finalproject_chilicare.ui.home.aktivitas.AktivitasActivity
 import com.example.finalproject_chilicare.ui.home.article.ArticleActivity
 import com.example.finalproject_chilicare.ui.home.article.DetailArticleActivity
@@ -78,6 +79,8 @@ class HomeFragment : Fragment() {
     lateinit var buttonForum: CardView
     lateinit var buttonAktivitas: CardView
     lateinit var cardbutton: CardView
+
+    lateinit var buttonNotification: ImageView
 
 
     private lateinit var currentLocation: Location
@@ -166,6 +169,13 @@ class HomeFragment : Fragment() {
         buttonForum = view.findViewById(R.id.btnForum)
         buttonAktivitas = view.findViewById(R.id.btnAktivitas)
         cardbutton = view.findViewById(R.id.btnCardWeather)
+        buttonNotification = view.findViewById(R.id.imgnotification)
+
+        //button ke activity Notification
+        buttonNotification.setOnClickListener {
+            val intent = Intent(requireContext(), NotificationActivity::class.java)
+            startActivity(intent)
+        }
 
         //button ke activity Cuaca
         buttonCuaca.setOnClickListener {
