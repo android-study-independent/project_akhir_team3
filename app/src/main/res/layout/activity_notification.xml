@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.NotificationActivity"
+    android:background="#F6F6F6"
+    >
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:background="@drawable/top_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:layout_marginStart="31dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Notifikasi"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginLeft="115dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBack"
+                app:layout_constraintStart_toEndOf="@+id/ivBack"
+                app:layout_constraintTop_toTopOf="@+id/ivBack"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvHariIni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:text="Hari ini"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        />
+    <LinearLayout
+        android:id="@+id/llComment1"
+        android:layout_width="348dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="175dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_toni"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bro Toni"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+
+            <TextView
+                android:id="@+id/tvComment1"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_semibold_600"
+                android:text="Menyukai komentar komentar Anda:"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvComment1"
+                app:layout_constraintTop_toTopOf="@id/tvComment1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@Bro Toni"
+                android:textColor="#018499"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="43sp"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Terima Kasih"
+                android:textColor="#303344"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="100sp"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+            <TextView
+                android:layout_width="199dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="banyak kak"
+                android:textSize="12sp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="46dp"
+                android:textColor="#303344"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+
+            <TextView
+                android:id="@+id/tvJam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="1 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                app:layout_constraintTop_toTopOf="@id/imgavatar"
+                />
+            <TextView
+                android:id="@+id/tvBalas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balas"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="#303344"
+                app:layout_constraintLeft_toRightOf="@id/tvJam"
+                app:layout_constraintTop_toTopOf="@id/tvJam"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="17dp"
+                />
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llComment2"
+        android:layout_width="348dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="275dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_lip"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser2"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bu Iip"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar2"
+                app:layout_constraintTop_toTopOf="@id/imgavatar2"
+                />
+
+            <TextView
+                android:id="@+id/tvComment2"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_semibold_600"
+                android:text="Menyukai komentar komentar Anda:"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar2"
+                app:layout_constraintTop_toTopOf="@id/imgavatar2"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvComment2"
+                app:layout_constraintTop_toTopOf="@id/tvComment2"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@ Anin"
+                android:textColor="#018499"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="44sp"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar2"
+                app:layout_constraintTop_toTopOf="@id/imgavatar2"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alhamdulillah ya kak"
+                android:textColor="#303344"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="85sp"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar2"
+                app:layout_constraintTop_toTopOf="@id/imgavatar2"
+                />
+
+            <TextView
+                android:id="@+id/tvJam2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="2 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar2"
+                app:layout_constraintTop_toTopOf="@id/imgavatar2"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balas"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="#303344"
+                app:layout_constraintLeft_toRightOf="@id/tvJam2"
+                app:layout_constraintTop_toTopOf="@id/tvJam2"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="17dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llComment3"
+        android:layout_width="348dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="375dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_toni"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser3"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bro Toni"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar3"
+                app:layout_constraintTop_toTopOf="@id/imgavatar3"
+                />
+
+            <TextView
+                android:id="@+id/tvComment3"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_semibold_600"
+                android:text="Menyukai postingan Anda"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar3"
+                app:layout_constraintTop_toTopOf="@id/imgavatar3"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvUser3"
+                app:layout_constraintTop_toTopOf="@id/tvUser3"
+
+                />
+            <TextView
+                android:id="@+id/tvJam3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="6 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar3"
+                app:layout_constraintTop_toTopOf="@id/imgavatar3"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llComment4"
+        android:layout_width="348dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="445dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_toni"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_comment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser4"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bro Toni"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar4"
+                app:layout_constraintTop_toTopOf="@id/imgavatar4"
+                />
+
+            <TextView
+                android:id="@+id/tvComment4"
+                android:layout_width="199dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="Memberi komentar pada postingan Anda: Kok bisa banyak bangett hasilnyaa, keren!"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar4"
+                app:layout_constraintTop_toTopOf="@id/imgavatar4"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvComment4"
+                app:layout_constraintTop_toTopOf="@id/tvComment4"
+                />
+
+            <TextView
+                android:id="@+id/tvJam4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="67dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="6 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar4"
+                app:layout_constraintTop_toTopOf="@id/imgavatar4"
+                />
+            <TextView
+                android:id="@+id/tvBalas4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balas"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="#303344"
+                app:layout_constraintLeft_toRightOf="@id/tvJam4"
+                app:layout_constraintTop_toTopOf="@id/tvJam4"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="17dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llComment5"
+        android:layout_width="348dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="545dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar5"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_lip"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_like"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser5"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bu Iip"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar5"
+                app:layout_constraintTop_toTopOf="@id/imgavatar5"
+                />
+
+            <TextView
+                android:id="@+id/tvComment5"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_semibold_600"
+                android:text="Menyukai postingan Anda"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar5"
+                app:layout_constraintTop_toTopOf="@id/imgavatar5"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvUser5"
+                app:layout_constraintTop_toTopOf="@id/tvUser5"
+
+                />
+            <TextView
+                android:id="@+id/tvJam5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="6 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar5"
+                app:layout_constraintTop_toTopOf="@id/imgavatar5"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llComment6"
+        android:layout_width="348dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="615dp"
+        android:background="#F6F6F6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgavatar6"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/img_profile_lip"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_comment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="37dp"
+                />
+
+            <TextView
+                android:id="@+id/tvUser6"
+                android:layout_width="199dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Bro Toni"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar6"
+                app:layout_constraintTop_toTopOf="@id/imgavatar6"
+                />
+
+            <TextView
+                android:id="@+id/tvComment6"
+                android:layout_width="199dp"
+                android:layout_height="47dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="Memberi komentar pada postingan Anda: Kok bisa banyak bangett hasilnyaa, keren!"
+                android:textColor="#303344"
+                android:textSize="12sp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar6"
+                app:layout_constraintTop_toTopOf="@id/imgavatar6"
+                />
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@drawable/img_notification"
+                app:layout_constraintLeft_toRightOf="@id/tvComment6"
+                app:layout_constraintTop_toTopOf="@id/tvComment6"
+                />
+
+            <TextView
+                android:id="@+id/tvJam6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="67dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:text="6 jam yang lalu"
+                android:textColor="#8388B2"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imgavatar6"
+                app:layout_constraintTop_toTopOf="@id/imgavatar6"
+                />
+            <TextView
+                android:id="@+id/tvBalas6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balas"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="#303344"
+                app:layout_constraintLeft_toRightOf="@id/tvJam6"
+                app:layout_constraintTop_toTopOf="@id/tvJam6"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="17dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
