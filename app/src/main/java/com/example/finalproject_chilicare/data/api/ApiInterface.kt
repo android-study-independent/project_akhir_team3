@@ -6,6 +6,7 @@ import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -42,5 +43,8 @@ interface ApiInterface {
 
     @GET("artikel/all_artikel")
     suspend fun getAllArtikel(): CardAllArtikelResponse
+
+    @GET("lms/all_modul")
+    suspend fun getAllLms() : CardAllLmsResponse
 
 }

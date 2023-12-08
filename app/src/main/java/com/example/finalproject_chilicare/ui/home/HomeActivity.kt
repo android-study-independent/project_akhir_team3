@@ -10,7 +10,7 @@ import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
-import com.example.finalproject_chilicare.ui.favorite.fragment.FavoriteFragment
+import com.example.finalproject_chilicare.ui.favorite.FavoriteFragment
 import com.example.finalproject_chilicare.ui.lms.LmsFragment
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.example.finalproject_chilicare.ui.profile.ProfileFragment

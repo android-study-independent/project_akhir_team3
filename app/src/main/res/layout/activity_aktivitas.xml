@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivBacklms"
+                android:id="@+id/ivBackaktivitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -50,7 +50,7 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toRightOf="@+id/ivBacklms"
+                app:layout_constraintLeft_toRightOf="@+id/ivBackaktivitas"
                 app:layout_constraintTop_toTopOf="@id/ivBackground" />
 
             <TextView

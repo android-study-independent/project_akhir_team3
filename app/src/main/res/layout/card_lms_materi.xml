@@ -28,11 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/custom_checkbox"
-            android:layout_marginLeft="280dp"
-            android:padding="16dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_GambarMateriLms"
             app:layout_constraintBottom_toBottomOf="@+id/iv_GambarMateriLms"
-            app:layout_constraintStart_toEndOf="@+id/iv_GambarMateriLms"
+
             />
 
         <TextView

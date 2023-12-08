@@ -1,28 +1,37 @@
 package com.example.finalproject_chilicare.ui.lms
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.adapter.CardLmsModulAdapter
+import com.example.finalproject_chilicare.adapter.lms.CardLmsModulAdapter
+import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.dataclass.ListModulArtikel
+import com.example.finalproject_chilicare.ui.home.HomeActivity
+import kotlinx.coroutines.launch
 
 class LmsFragment : Fragment() {
-    private val listlms = ArrayList<ListModulArtikel>()
+
 
     private lateinit var rvcardModul : RecyclerView
-    private lateinit var lmsadapter : CardLmsModulAdapter
-    private lateinit var date : TextView
-    private lateinit var title : TextView
-    private lateinit var desc : TextView
-    private lateinit var cover : ImageView
+    private lateinit var cardlmsadapter : CardLmsModulAdapter
+    lateinit var btnback : ImageView
+//    private lateinit var date : TextView
+//    private lateinit var title : TextView
+//    private lateinit var desc : TextView
+//    private lateinit var cover : ImageView
+    private var cardlistlms = mutableListOf<CardLmsResponse>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,30 +49,56 @@ class LmsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btnback = view.findViewById(R.id.ivBacklms)
+
+        //button back home
+        btnback.setOnClickListener { Intent(activity,HomeActivity::class.java).also {
+            startActivity(it)
+        } }
+
         //rv card lms
         rvcardModul = view.findViewById(R.id.rv_cardLms)
-        rvcardModul.setHasFixedSize(true)
-        lmsadapter = CardLmsModulAdapter(listlms)
-        rvcardModul.adapter = lmsadapter
-        listlms.addAll(getListLms())
         rvcardModul.layoutManager = LinearLayoutManager(requireContext())
+        cardlmsadapter = CardLmsModulAdapter(cardlistlms)
+        rvcardModul.adapter = cardlmsadapter
+
+
+        //Get data API LIFECYCLE
+        lifecycleScope.launch {
+            val result = Network().getRetroClientInstance()
+                .create(ApiInterface::class.java).getAllLms()
+            result.data
+                .map {
+                    Log.d("Lms","hasi GET API -> ${it}")
+                    cardlistlms.add(it)
+                }
+            //update data recylerview
+            cardlmsadapter.notifyDataSetChanged()
+        }
+
+        // Uuntuk pindah halaman detail LMS
+        cardlmsadapter.clicklmsModul ={
+            Log.d("lms","klik hasil ${it}")
+            val intent = Intent(activity, DetailLMSActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    private fun getListLms(): ArrayList<ListModulArtikel>{
-        val date = resources.getStringArray(R.array.datelms)
-        val title = resources.getStringArray(R.array.titlelms)
-        val desc = resources.getStringArray(R.array.desclms)
-        val cover = resources.obtainTypedArray(R.array.coverlms)
-        val progress = resources.getInteger(R.integer.progress)
-        val listlms = ArrayList<ListModulArtikel>()
-        for (i in date.indices) {
-            val lms = ListModulArtikel(
-                date[i],title[i],desc[i],cover.getResourceId(i,-1),
-            )
-            listlms.add(lms)
-        }
-        return listlms
-    }
+//    private fun getListLms(): ArrayList<CardLmsResponse>{
+//        val date = resources.getStringArray(R.array.datelms)
+//        val title = resources.getStringArray(R.array.titlelms)
+//        val desc = resources.getStringArray(R.array.desclms)
+//        val cover = resources.obtainTypedArray(R.array.coverlms)
+//        val progress = resources.getInteger(R.integer.progress)
+//        val listlms = ArrayList<ListModulArtikel>()
+//        for (i in date.indices) {
+//            val lms = ListModulArtikel(
+//                date[i],title[i],desc[i],cover.getResourceId(i,-1),
+//            )
+//            listlms.add(lms)
+//        }
+//        return listlms
+//    }
 
 
 
