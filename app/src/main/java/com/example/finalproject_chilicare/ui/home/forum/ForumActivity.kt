@@ -44,10 +44,6 @@ class ForumActivity : AppCompatActivity() {
     lateinit var ivShareList: Array<Int>
     lateinit var tvShareList: Array<String>
 
-//    companion object {
-//        lateinit var apiInterface : ApiInterface
-//            private set
-//    }
 
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"

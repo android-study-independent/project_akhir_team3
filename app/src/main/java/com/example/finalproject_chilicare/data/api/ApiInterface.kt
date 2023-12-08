@@ -52,4 +52,6 @@ interface ApiInterface {
     @GET("forum/semua_postingan")
     fun getAllForum(token: String?): AllForumResponse
 
+
+
 }
