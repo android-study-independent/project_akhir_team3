@@ -14,7 +14,6 @@ import com.example.finalproject_chilicare.dataclass.ListModulArtikel
 
 class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerView.Adapter<CardLmsModulAdapter.cardLmsViewHolder>() {
 
-
     var clicklmsModul : ((CardLmsResponse) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardLmsViewHolder {
@@ -35,7 +34,6 @@ class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerV
         }
 
     }
-
     fun updateData(dataNew : List<CardLmsResponse>) {
         listLms = dataNew
         notifyDataSetChanged()
