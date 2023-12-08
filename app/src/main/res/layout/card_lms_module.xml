@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tv_Tanggal"
-            android:background="@drawable/lmsartikel1"
+            android:background="@drawable/rounded_bg"
             />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginTop="15dp"
             android:text="10 November 2023"
             android:textSize="14sp"
-            android:paddingLeft="35dp"
+            android:paddingLeft="15dp"
             android:paddingRight="16dp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="@color/black"
@@ -47,7 +47,7 @@
             android:text="Merawat Benih Agar Tetap Sehat"
             android:textSize="18sp"
             android:layout_marginTop="10dp"
-            android:paddingLeft="35dp"
+            android:paddingLeft="15dp"
             android:paddingRight="16dp"
             android:fontFamily="@font/plusjakartasans_bold_700"
             android:textColor="@color/black"
@@ -63,7 +63,7 @@
             android:layout_marginTop="8dp"
             android:text="Apakah Anda mengetahu jika benih membutuhkan perawatan yang ekstra? Yap..."
             android:textSize="17sp"
-            android:paddingLeft="35dp"
+            android:paddingLeft="15dp"
             android:paddingRight="16dp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textColor="#8388B2"
@@ -73,20 +73,49 @@
 
             />
 
-        <ProgressBar
-            android:layout_marginTop="18dp"
-            android:paddingBottom="3dp"
-            android:id="@+id/pb_lms"
-            android:layout_marginLeft="35dp"
-            android:paddingRight="16dp"
-            android:layout_width="300dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_DescSingkat"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:progressDrawable="@drawable/cutom_progressbar"></ProgressBar>
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@+id/tv_DescSingkat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:layout_marginTop="18dp"
+                android:paddingBottom="3dp"
+                android:id="@+id/pb_lms"
+                android:layout_marginLeft="15dp"
+                android:layout_width="300dp"
+                android:paddingRight="30dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_DescSingkat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/cutom_progressbar"></ProgressBar>
+
+            <FrameLayout
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/avatar2"></ImageView>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user2"
+                    android:layout_marginLeft="10dp"></ImageView>
+                <ImageView
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user3"></ImageView>
+
+            </FrameLayout>
+
+        </LinearLayout>
 
 
 
