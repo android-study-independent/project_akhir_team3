@@ -3,6 +3,7 @@ package com.example.finalproject_chilicare.ui.login
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -141,6 +142,7 @@ class LoginActivity : AppCompatActivity() {
                         response.body()?.data?.token?.let { token ->
                             if (token.isNotEmpty()) {
                                 saveLoginData(token)
+                                Log.d("Token", "Token -> $token")
                                 navigateToHome()
                             }
                         }

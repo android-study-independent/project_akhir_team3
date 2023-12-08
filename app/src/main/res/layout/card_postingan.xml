@@ -72,14 +72,14 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
             android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:justificationMode="inter_word"
             android:text="Hallo teman teman online saya, disini saya akan sedikit melakukan sharing hasil dari panen cabai pertama saya, setelah saya belajar dari LMS"
             android:textColor="@color/PrimaryText"
             android:textSize="14sp"
-            android:justificationMode="inter_word"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlHeading"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/rlHeading" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/GambarPostingan"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDescPostingan">
 
             <ImageView
-                android:id="@+id/iv_Gambar"
+                android:id="@+id/ivGambarPostingan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_bg" />

@@ -97,11 +97,6 @@ class RegisterActivity : AppCompatActivity() {
                 val register = response.body()
 
                 if (response.isSuccessful) {
-                    // Cek hasil register
-//                    val textStatus = findViewById<TextView>(R.id.textWelcomeToChiliicare)
-//                    val textMessage = findViewById<TextView>(R.id.textPreviewChiliicare)
-//                    textStatus.text = register!!.status.toString()
-//                    textMessage.text = register!!.message.toString()
                     checkEmail()
                     checkUsername()
                     checkPassword()
@@ -170,7 +165,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             checkSameEmail.execute()
         }
-        return null
+        return return false.toString()
     }
 
     private fun checkUsername() {
@@ -190,7 +185,7 @@ class RegisterActivity : AppCompatActivity() {
             inputUsernameRegister.requestFocus()
 
         }
-        return null
+        return return false.toString()
     }
 
     private fun checkPassword() {
@@ -221,7 +216,7 @@ class RegisterActivity : AppCompatActivity() {
             return "Must 1 spesial character : @, #, !, _, ^"
             inputPasswordRegister.requestFocus()
         }
-        return null
+        return false.toString()
     }
 
     private fun checkConfirmPassword() {
@@ -241,7 +236,7 @@ class RegisterActivity : AppCompatActivity() {
             return "Your confirm password not same"
             inputConfirmPasswordRegister.requestFocus()
         }
-        return null
+        return false.toString()
     }
 
 
