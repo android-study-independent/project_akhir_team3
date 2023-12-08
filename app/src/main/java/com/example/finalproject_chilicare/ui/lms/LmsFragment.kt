@@ -84,22 +84,6 @@ class LmsFragment : Fragment() {
         }
     }
 
-//    private fun getListLms(): ArrayList<CardLmsResponse>{
-//        val date = resources.getStringArray(R.array.datelms)
-//        val title = resources.getStringArray(R.array.titlelms)
-//        val desc = resources.getStringArray(R.array.desclms)
-//        val cover = resources.obtainTypedArray(R.array.coverlms)
-//        val progress = resources.getInteger(R.integer.progress)
-//        val listlms = ArrayList<ListModulArtikel>()
-//        for (i in date.indices) {
-//            val lms = ListModulArtikel(
-//                date[i],title[i],desc[i],cover.getResourceId(i,-1),
-//            )
-//            listlms.add(lms)
-//        }
-//        return listlms
-//    }
-
 
 
 }
