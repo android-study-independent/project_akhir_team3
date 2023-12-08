@@ -29,9 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ForumActivity : AppCompatActivity() {
     lateinit var adapterForum: MainForumAdapter
     private lateinit var rvPostingan : RecyclerView
-    private var allItemResponse = mutableListOf<AllForumItem>()
-
-
+//    private var allItemResponse = mutableListOf<AllForumItem>()
     lateinit var bindingForum : ActivityForumBinding
     private lateinit var dataList: ArrayList<ForumResponse>
 //    lateinit var avatarList: Array<Int>
@@ -81,7 +79,7 @@ class ForumActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum(
-                getToken()
+//                getToken()
             )
 
             result.allForumItem.map {
