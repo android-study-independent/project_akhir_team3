@@ -28,6 +28,7 @@
                     android:background="@drawable/top_background"
                     android:orientation="vertical">
 
+
                         <ImageView
                             android:layout_width="181dp"
                             android:layout_height="198.74dp"
