@@ -11,4 +11,5 @@ data class ListMateriLMS(
     val shortDesc : String?,
     @SerializedName("judul_materi")
     val judulMateri : String
+
 )

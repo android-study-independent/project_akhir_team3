@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.data.api
 
+import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
