@@ -21,11 +21,11 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Response
+//import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//@AndroidEntryPoint
+
 class ForumActivity : AppCompatActivity() {
     lateinit var adapterForum: MainForumAdapter
     private lateinit var rvPostingan : RecyclerView
@@ -34,18 +34,18 @@ class ForumActivity : AppCompatActivity() {
 
     lateinit var bindingForum : ActivityForumBinding
     private lateinit var dataList: ArrayList<ForumResponse>
-    lateinit var avatarList: Array<Int>
-    lateinit var nicknameList: Array<String>
-    lateinit var dateList: Array<String>
-    lateinit var moreList: Array<Int>
-    lateinit var descList: Array<String>
-    lateinit var imageList: Array<Int>
-    lateinit var ivLikeList: Array<Int>
-    lateinit var tvLikeList: Array<String>
-    lateinit var ivCommentList: Array<Int>
-    lateinit var tvCommentList: Array<String>
-    lateinit var ivShareList: Array<Int>
-    lateinit var tvShareList: Array<String>
+//    lateinit var avatarList: Array<Int>
+//    lateinit var nicknameList: Array<String>
+//    lateinit var dateList: Array<String>
+//    lateinit var moreList: Array<Int>
+//    lateinit var descList: Array<String>
+//    lateinit var imageList: Array<Int>
+//    lateinit var ivLikeList: Array<Int>
+//    lateinit var tvLikeList: Array<String>
+//    lateinit var ivCommentList: Array<Int>
+//    lateinit var tvCommentList: Array<String>
+//    lateinit var ivShareList: Array<Int>
+//    lateinit var tvShareList: Array<String>
 
 //    companion object {
 //        lateinit var apiInterface : ApiInterface
