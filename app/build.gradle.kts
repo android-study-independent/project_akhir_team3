@@ -46,6 +46,7 @@ android {
 
 
 
+
 }
 
 dependencies {
@@ -93,13 +94,18 @@ dependencies {
     releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
 
     implementation ("com.google.android.gms:play-services-location:21.0.0")
-//    implementation ("com.android.databinding:compiler:3.5.1")
-//    implementation("io.reactive.rxjava3:rxjava:3.0.2")
-//    implementation("io.reactive.rxjava3:rxandroid:3.0.2")
-//    implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.66.4")
-//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-//    kapt ("com.android.databinding:compiler:3.4.0")
+    implementation ("com.google.dagger:dagger:2.46.1")
+
+
+    implementation ("com.google.dagger:hilt-android:2.49")
+    kapt ("com.google.dagger:hilt-compiler:2.49")
+
+    // For instrumentation tests
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.49")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.49")
+
+    // For local unit tests
+    testImplementation ("com.google.dagger:hilt-android-testing:2.49")
+    kaptTest ("com.google.dagger:hilt-compiler:2.49")
+
 }

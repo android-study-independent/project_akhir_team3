@@ -177,6 +177,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:inputType="textPassword"
             android:hint="Masukan password anda"
             android:textSize="14sp"
             android:fontFamily="@font/plusjakartasans_reguler_400"

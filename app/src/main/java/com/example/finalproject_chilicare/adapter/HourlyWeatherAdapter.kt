@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso
 
 
 class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>) : RecyclerView.Adapter<HourlyWeatherAdapter.HourlyWeatherHolder> () {
+
+
     inner class HourlyWeatherHolder (private val view : View) : RecyclerView.ViewHolder(view){
 
         fun bindView (hourly : Hourlyweather) {
@@ -43,7 +45,6 @@ class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>)
     }
 
     override fun onBindViewHolder(holder: HourlyWeatherAdapter.HourlyWeatherHolder, position: Int) {
-//        val itemHourlyWeather = hourlyWeatherList[position]
         holder.bindView(hourlyWeatherList[position])
 
     }

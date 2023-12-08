@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.example.finalproject_chilicare.ui.onboarding.OnboardingActivity
 
@@ -12,6 +13,7 @@ object PreferencesHelper {
 
     const val KEY_IS_LOGIN = "is_login"
     const val KEY_TOKEN = "token"
+    const val KEY_TOKEN_FILE = "prefs_token_file"
     const val KEY_LOGGED_IN = "onboarding_to_login"
     const val KEY_REGIST_IN = "onboarding_to_regist"
 
@@ -28,11 +30,16 @@ object PreferencesHelper {
     fun customPrefOnboarding(context: OnboardingActivity, name: String = PREF_NAME): SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
+    fun customPrefForum (context: ForumActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
         val editor = this.edit()
         operation(editor)
         editor.apply()
     }
+
+
 
     /**
      * puts a value for the given [key].

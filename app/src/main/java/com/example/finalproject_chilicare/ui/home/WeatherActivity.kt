@@ -29,6 +29,7 @@ import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.Hourlyweather
 import com.example.finalproject_chilicare.databinding.ActivityWeatherBinding
+import com.example.finalproject_chilicare.ui.home.forum.NewPostForumActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
@@ -44,6 +45,7 @@ import java.util.Date
 class WeatherActivity : AppCompatActivity() {
     lateinit var binding: ActivityWeatherBinding
     lateinit var btnAdd : ImageView
+    lateinit var btnBack : ImageView
     lateinit var iconSuhuWeather : ImageView
 
     private var listHourlyWeather = mutableListOf<Hourlyweather>()
@@ -62,15 +64,7 @@ class WeatherActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
         btnAdd = findViewById(R.id.btnAddCity)
-
-//        adapter = HourlyWeatherAdapter(listHourlyWeather)
-//        //listHourlyWeather.addAll(getWeatherHourly())
-//
-//        rvHourlyWeather = findViewById(R.id.rvHourlyWeather)
-//        rvHourlyWeather.setHasFixedSize(true)
-//
-//        rvHourlyWeather.adapter = adapter
-//        rvHourlyWeather.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        btnBack = findViewById(R.id.btnBackInWeather)
 
         iconSuhuWeather = findViewById(R.id.iconSuhu)
 
@@ -96,8 +90,13 @@ class WeatherActivity : AppCompatActivity() {
             startActivityForResult(intent, 123)
         }
 
-//        val intent = Intent(this@WeatherActivity, SearchPopularCityActivity::class.java)
-//        startActivity(intent)
+        btnBack.setOnClickListener {
+            Intent(this, HomeActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+
 
 
 
@@ -252,7 +251,7 @@ class WeatherActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<CurrentWeather>, t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
 
             })

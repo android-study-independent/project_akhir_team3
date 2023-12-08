@@ -1,10 +1,13 @@
 package com.example.finalproject_chilicare.data.api
 
 import com.google.gson.GsonBuilder
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
 class Network {
 
@@ -26,6 +29,20 @@ class Network {
             .client(okHttpClient)
             .build()
     }
+
+//    @Singleton
+//    @Provides
+//    fun provideOkhttpClient (headerInterceptor: HeaderInterceptor) : OkHttpClient{
+//        return OkHttpClient().newBuilder().addInterceptor(headerInterceptor).build()
+//    }
+//
+//    @Singleton
+//    @Provides
+//    fun provideForumAPI (retrofit: Retrofit.Builder, okHttpClient: OkHttpClient) : ApiInterface {
+//
+//        return retrofit.client(okHttpClient).build().create(ApiInterface::class.java)
+//    }
+
 
 
 }
