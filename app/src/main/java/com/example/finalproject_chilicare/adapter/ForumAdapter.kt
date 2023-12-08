@@ -13,6 +13,7 @@ class ForumAdapter(private val forumList: List<ForumData>) : RecyclerView.Adapte
 
     class ForumViewHolder(itemview : View) : RecyclerView.ViewHolder(itemview){
         val avatar =itemview.findViewById<ImageView>(R.id.imgavatarartikel)
+
         val profilename= itemview.findViewById<TextView>(R.id.textavatarnameforum)
         val date = itemview.findViewById<TextView>(R.id.datetimeforum)
         val description= itemview.findViewById<TextView>(R.id.txtdescartikelforum)

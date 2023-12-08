@@ -9,8 +9,10 @@ import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
 import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -50,6 +52,8 @@ interface ApiInterface {
 
    // @Headers("x-api-key")
     @GET("forum/semua_postingan")
-    fun getAllForum(): Call<AllForumResponse>
+    fun getAllForum(token: String?): AllForumResponse
+
+
 
 }

@@ -1,12 +1,18 @@
 package com.example.finalproject_chilicare.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class AllForumItem(
     val captions: String,
     val createdAt: String,
     val forumId: Int,
-    val id_user: Int,
+
+    @SerializedName ("id_user")
+    val idUser: Int,
     val image: List<String>,
     val jumlahKomentar: Int,
     val jumlahLike: Int,
-    val name_user: String
+
+    @SerializedName("name_user")
+    val nameUser: String
 )

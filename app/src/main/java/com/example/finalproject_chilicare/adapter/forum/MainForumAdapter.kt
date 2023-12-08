@@ -9,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.models.AllForumItem
+import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.squareup.picasso.Picasso
 
-class MainForumAdapter(private val listForum: List<AllForumItem>):
+class MainForumAdapter(private var listForum: List<AllForumItem>):
     RecyclerView.Adapter<MainForumAdapter.ForumViewHolder>() {
 
     inner class ForumViewHolder(private val itemview : View) : RecyclerView.ViewHolder(itemview){
@@ -27,7 +28,7 @@ class MainForumAdapter(private val listForum: List<AllForumItem>):
             val jumlahLikeForum = itemview.findViewById<TextView>(R.id.tvLike)
             val jumlahCommentForum = itemview.findViewById<TextView>(R.id.tvComment)
 
-            usernameForum.text = forum.name_user
+            usernameForum.text = forum.nameUser
             dateUploadForum.text = forum.createdAt
             descriptionForum.text = forum.captions
             jumlahLikeForum.text = forum.jumlahLike.toString()
@@ -53,6 +54,11 @@ class MainForumAdapter(private val listForum: List<AllForumItem>):
 
     override fun getItemCount(): Int {
         return listForum.size
+    }
+
+    fun updateData(newDataForum: List<AllForumItem>) {
+        listForum = newDataForum
+        notifyDataSetChanged()
     }
 
 
