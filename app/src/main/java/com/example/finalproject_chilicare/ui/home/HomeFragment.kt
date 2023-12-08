@@ -32,7 +32,6 @@ import com.example.finalproject_chilicare.data.response.article.CardArtikelRespo
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
-import com.example.finalproject_chilicare.ui.NotificationActivity
 import com.example.finalproject_chilicare.ui.home.aktivitas.AktivitasActivity
 import com.example.finalproject_chilicare.ui.home.article.ArticleActivity
 import com.example.finalproject_chilicare.ui.home.article.DetailArticleActivity
@@ -45,7 +44,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.roundToInt
-import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {

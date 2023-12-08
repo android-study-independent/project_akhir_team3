@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.ui.NotificationActivity
+import com.example.finalproject_chilicare.ui.home.NotificationActivity
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

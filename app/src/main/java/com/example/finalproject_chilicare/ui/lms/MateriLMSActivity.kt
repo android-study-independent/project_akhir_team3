@@ -15,13 +15,13 @@ class MateriLMSActivity : AppCompatActivity() {
 
         //Inisiasi ketika more dipencet kembali ke halaman beranda LmsActivity
         ivMore.setOnClickListener {
-            Intent(this, LmsActivity::class.java).also {
+            Intent(this, LmsFragment::class.java).also {
                 startActivity(it)
             }
         }
         //Inisiasi ketika back dipencet kembali ke halaman beranda LmsActivity
         ivBack.setOnClickListener {
-            Intent(this, LmsActivity::class.java).also {
+            Intent(this, LmsFragment::class.java).also {
                 startActivity(it)
             }
         }
