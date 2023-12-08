@@ -6,9 +6,7 @@ import retrofit2.Response
 
 data class AllForumResponse (
     val status : String,
-    val message: String,
-    val allForumResponse : List<AllForumItem>
-
-
+    val message : String,
+    val allForumItem : List<AllForumItem>
 
 )

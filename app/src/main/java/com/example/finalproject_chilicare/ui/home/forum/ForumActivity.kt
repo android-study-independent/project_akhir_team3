@@ -14,11 +14,14 @@ import com.example.finalproject_chilicare.adapter.forum.MainForumAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.models.AllForumItem
+import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
-import kotlinx.coroutines.launch
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -44,6 +47,10 @@ class ForumActivity : AppCompatActivity() {
     lateinit var ivShareList: Array<Int>
     lateinit var tvShareList: Array<String>
 
+//    companion object {
+//        lateinit var apiInterface : ApiInterface
+//            private set
+//    }
 
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
@@ -210,7 +217,6 @@ class ForumActivity : AppCompatActivity() {
 
         val prefHelper = PreferencesHelper.customPrefForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
-        Log.d("Token", "${getToken()}")
     }
 
 
