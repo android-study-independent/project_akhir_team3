@@ -97,26 +97,26 @@ class ForumActivity : AppCompatActivity() {
         Log.d("Error", "${getToken()}")
 
 
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val token = getToken()
-                Log.d("Token", "dapat token dari login -> $token")
-                val request = chain.request()
-                    .newBuilder()
-                    .addHeader("x-api-key", "$token")
-                    .build()
-                chain.proceed(request)
-
-            }
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val apiInterface = retrofit.create(ApiInterface::class.java)
+//        val okHttpClient = OkHttpClient.Builder()
+//            .addInterceptor { chain ->
+//                val token = getToken()
+//                Log.d("Token", "dapat token dari login -> $token")
+//                val request = chain.request()
+//                    .newBuilder()
+//                    .addHeader("x-api-key", "$token")
+//                    .build()
+//                chain.proceed(request)
+//
+//            }
+//            .build()
+//
+//        val retrofit = Retrofit.Builder()
+//            .client(okHttpClient)
+//            .baseUrl(baseUrl)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        val apiInterface = retrofit.create(ApiInterface::class.java)
 //
 //        apiInterface.getAllForum().enqueue(object : Callback<AllForumResponse>{
 //            override fun onResponse(
