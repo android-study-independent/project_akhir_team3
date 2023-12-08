@@ -12,7 +12,7 @@ import com.example.finalproject_chilicare.ui.home.HomeActivity
 
 class FavoriteFragment : Fragment() {
 
-    lateinit var buttonbackfav : ImageView
+    private lateinit var buttonbackfav : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +25,8 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonbackfav = view.findViewById(R.id.ivBackFav)
-
+        buttonbackfav = view.findViewById(R.id.ivBack)
         //button back ke home
-
         buttonbackfav.setOnClickListener { Intent(activity, HomeActivity::class.java).also {
             startActivity(it)
         } }
