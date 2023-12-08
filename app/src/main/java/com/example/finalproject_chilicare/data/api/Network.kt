@@ -30,19 +30,4 @@ class Network {
             .build()
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideOkhttpClient (headerInterceptor: HeaderInterceptor) : OkHttpClient{
-//        return OkHttpClient().newBuilder().addInterceptor(headerInterceptor).build()
-//    }
-//
-//    @Singleton
-//    @Provides
-//    fun provideForumAPI (retrofit: Retrofit.Builder, okHttpClient: OkHttpClient) : ApiInterface {
-//
-//        return retrofit.client(okHttpClient).build().create(ApiInterface::class.java)
-//    }
-
-
-
 }

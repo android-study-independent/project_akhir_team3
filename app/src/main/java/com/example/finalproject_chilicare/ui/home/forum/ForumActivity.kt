@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
@@ -14,23 +14,22 @@ import com.example.finalproject_chilicare.adapter.forum.MainForumAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.models.AllForumResponse
+import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
-import okhttp3.Interceptor
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 //@AndroidEntryPoint
 class ForumActivity : AppCompatActivity() {
-    lateinit var bindingForum : ActivityForumBinding
-    lateinit var adapter: MainForumAdapter
+    lateinit var adapterForum: MainForumAdapter
+    private lateinit var rvPostingan : RecyclerView
+    private var allItemResponse = mutableListOf<AllForumItem>()
 
-    private lateinit var recyclerView: RecyclerView
+
+    lateinit var bindingForum : ActivityForumBinding
     private lateinit var dataList: ArrayList<ForumResponse>
     lateinit var avatarList: Array<Int>
     lateinit var nicknameList: Array<String>
@@ -45,10 +44,10 @@ class ForumActivity : AppCompatActivity() {
     lateinit var ivShareList: Array<Int>
     lateinit var tvShareList: Array<String>
 
-    companion object {
-        lateinit var apiInterface : ApiInterface
-            private set
-    }
+//    companion object {
+//        lateinit var apiInterface : ApiInterface
+//            private set
+//    }
 
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
@@ -57,10 +56,11 @@ class ForumActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_forum)
+        setContentView(R.layout.activity_forum)
 
-        bindingForum = DataBindingUtil.setContentView(this, R.layout.activity_forum)
+        //bindingForum = DataBindingUtil.setContentView(this, R.layout.activity_forum)
         prefHelper = PreferencesHelper.customPrefForum(this@ForumActivity)
+
 
 
         // GO PAGES NEW POST
@@ -70,6 +70,30 @@ class ForumActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+
+        rvPostingan = findViewById(R.id.rvPostingan)
+        rvPostingan.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        adapterForum = MainForumAdapter(allItemResponse)
+        rvPostingan.adapter = adapterForum
+
+        lifecycleScope.launch {
+            val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum(
+                getToken()
+            )
+
+            result.allForumItem.map {
+                Log.d("debug", "hasilnya : $it")
+                allItemResponse.add(it)
+
+            }
+//            getToken()
+
+            adapterForum.notifyDataSetChanged()
+
+
+        }
+
+        Log.d("Error", "${getToken()}")
 
 
         val okHttpClient = OkHttpClient.Builder()
@@ -92,85 +116,137 @@ class ForumActivity : AppCompatActivity() {
             .build()
 
         val apiInterface = retrofit.create(ApiInterface::class.java)
-
-        apiInterface.getAllForum().enqueue(object : Callback<AllForumResponse>{
-            override fun onResponse(
-                call: Call<AllForumResponse>,
-                response: Response<AllForumResponse>
-            ) {
-                if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
-                    forumList()
-
-                }
-            }
-
-            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
-
-            }
-
-        })
+//
+//        apiInterface.getAllForum().enqueue(object : Callback<AllForumResponse>{
+//            override fun onResponse(
+//                call: Call<AllForumResponse>,
+//                response: Response<AllForumResponse>
+//            ) {
+//                if (response.isSuccessful) {
+//                    val result = response.body()
+//
+//                    result?.allForumItem?.let {
+//                        Log.d("debug", "hasilnya : $it")
+//                        allItemResponse.addAll(it)
+//                    }
+//
+//                    getToken()
+//                    adapterForum.notifyDataSetChanged()
+//
+//                    if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
+//                        // Additional logic for authenticated users
+//                    } else {
+//                        // Handle unsuccessful response
+//                        Log.e("Error", "Unsuccessful response: ${response.code()}")
+//                    }
+//
+//                }
+//
+//
+//                lifecycleScope.launch {
+//                    val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum()
+//
+//                    result.allForumItem.map {
+//                        Log.d("debug", "hasilnya : $it")
+//                        allItemResponse.add(it)
+//
+//                    }
+//                    getToken()
+//
+//                    adapterForum.notifyDataSetChanged()
+//
+//
+//                }
+//
+//
+//
+//                if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
+//                    lifecycleScope.launch {
+//                        val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum()
+//
+//                        result.allForumItem.map {
+//                            Log.d("debug", "hasilnya : $it")
+//                            allItemResponse.add(it)
+//
+//                        }
+//                        getToken()
+//
+//                        adapterForum.notifyDataSetChanged()
+//
+//
+//                    }
+//
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+//                Log.e("Error", "Retrofit call failed", t)
+//            }
+//
+//        })
 
     }
 
-    private  fun forumList () {
-
-        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
-        retro.getAllForum().enqueue(object : Callback<AllForumResponse>{
-            override fun onResponse(
-                call: Call<AllForumResponse>,
-                response: Response<AllForumResponse>
-            ) {
-                response.body()?.let {
-                    setAllForum(it)
-                }
-            }
-
-            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
-
-            }
-
-        })
-
-
-    }
+//    private  fun forumList () {
+//
+//        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+//        retro.getAllForum().enqueue(object : Callback<AllForumResponse>{
+//            override fun onResponse(
+//                call: Call<AllForumResponse>,
+//                response: Response<AllForumResponse>
+//            ) {
+//                response.body()?.let {
+//                    setAllForum(it)
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+//
+//            }
+//
+//        })
+//
+//
+//    }
 
 
     private fun getToken() : String? {
 
         val prefHelper = PreferencesHelper.customPrefForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
+        Log.d("Token", "${getToken()}")
     }
 
 
 
-    private fun setAllForum (body : AllForumResponse) {
-        Log.d("Debug", "Recyler view berhasil -> ${body.allForumResponse}")
-
-
-        bindingForum.apply {
-
-
-
-            adapter = MainForumAdapter(body.allForumResponse)
-
-            val rvForum = bindingForum.rvPostingan
-
-            rvForum.layoutManager = LinearLayoutManager(this@ForumActivity, RecyclerView.VERTICAL, false)
-
-            rvForum.setHasFixedSize(true)
-
-
-            rvForum.adapter = adapter
-
-
-            adapter.notifyDataSetChanged()
-            Log.d("Debug", "Recyler view berhasil -> ${body.allForumResponse}")
-
-
-        }
-
-
-
-    }
+//    private fun setAllForum (body : AllForumResponse) {
+//        Log.d("Debug", "Recyler view berhasil -> ${body.allForumResponse}")
+//
+//
+//        bindingForum.apply {
+//
+//
+//
+//            adapter = MainForumAdapter(body.allForumResponse)
+//
+//            val rvForum = bindingForum.rvPostingan
+//
+//            rvForum.layoutManager = LinearLayoutManager(this@ForumActivity, RecyclerView.VERTICAL, false)
+//
+//            rvForum.setHasFixedSize(true)
+//
+//
+//            rvForum.adapter = adapter
+//
+//
+//            adapter.notifyDataSetChanged()
+//            Log.d("Debug", "Recyler view berhasil -> ${body.allForumResponse}")
+//
+//
+//        }
+//
+//
+//
+//    }
 
 }

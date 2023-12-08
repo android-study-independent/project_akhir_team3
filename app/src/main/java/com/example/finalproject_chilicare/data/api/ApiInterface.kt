@@ -50,6 +50,6 @@ interface ApiInterface {
 
    // @Headers("x-api-key")
     @GET("forum/semua_postingan")
-    fun getAllForum(): Call<AllForumResponse>
+    fun getAllForum(token: String?): AllForumResponse
 
 }
