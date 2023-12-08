@@ -17,6 +17,7 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
+import kotlinx.coroutines.launch
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -74,17 +75,16 @@ class ForumActivity : AppCompatActivity() {
 
         rvPostingan = findViewById(R.id.rvPostingan)
         rvPostingan.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapterForum = MainForumAdapter(allItemResponse)
+      //  adapterForum = MainForumAdapter()
         rvPostingan.adapter = adapterForum
 
         lifecycleScope.launch {
-            val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum(
-//                getToken()
-            )
+            val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum(getToken())
+            //                getToken()
 
             result.allForumItem.map {
                 Log.d("debug", "hasilnya : $it")
-                allItemResponse.add(it)
+//                allItemResponse.add(it)
 
             }
 //            getToken()
