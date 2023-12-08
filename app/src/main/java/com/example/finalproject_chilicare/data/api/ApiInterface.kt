@@ -12,6 +12,7 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
@@ -52,7 +53,8 @@ interface ApiInterface {
 
    // @Headers("x-api-key")
     @GET("forum/semua_postingan")
-    fun getAllForum(token: String?): AllForumResponse
+    fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>
+    //fun getAllForum(token: String?): AllForumResponse
 
 
 
