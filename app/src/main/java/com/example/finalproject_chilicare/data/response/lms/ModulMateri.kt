@@ -2,7 +2,7 @@ package com.example.finalproject_chilicare.data.response.lms
 
 import com.google.gson.annotations.SerializedName
 
-data class CardLmsResponse(
+data class ModulMateri(
     @SerializedName("id")
     val id : Int ?,
     @SerializedName("judul")
@@ -17,10 +17,6 @@ data class CardLmsResponse(
     val learningTime : String?,
     @SerializedName("total materi")
     val totalMateri : Int?,
-
-    val covers : String?,
-
-    val listMateri : List<ListMateriLMS>
-
-
+    @SerializedName("covers")
+    val coverPath : String,
 )

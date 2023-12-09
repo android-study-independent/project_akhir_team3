@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.adapter.lms
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,15 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.ModulMateri
 import com.example.finalproject_chilicare.dataclass.ListModulArtikel
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import java.lang.Exception
 
-class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerView.Adapter<CardLmsModulAdapter.cardLmsViewHolder>() {
+class CardLmsModulAdapter(private var listLms:List<ModulMateri>) : RecyclerView.Adapter<CardLmsModulAdapter.cardLmsViewHolder>() {
 
-    var clicklmsModul : ((CardLmsResponse) -> Unit)? = null
+    var clicklmsModul : ((ModulMateri) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardLmsViewHolder {
        val view : View = LayoutInflater.from(parent.context)
@@ -35,7 +40,7 @@ class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerV
         }
 
     }
-    fun updateData(dataNew : List<CardLmsResponse>) {
+    fun updateData(dataNew : List<ModulMateri>) {
         listLms = dataNew
         notifyDataSetChanged()
     }
@@ -48,7 +53,7 @@ class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerV
           }
       }
 
-      fun bindView(lms : CardLmsResponse){
+      fun bindView(lms : ModulMateri){
           // inisiasi view modul
           val date = view.findViewById<TextView>(R.id.tv_Tanggal)
           val title = view.findViewById<TextView>(R.id.tv_JudulBesar)
@@ -58,7 +63,21 @@ class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerV
           date.text = lms.tanggal
           title.text = lms.judul
           descShort.text = lms.desc
-          cover.setImageResource(lms.cover)
+
+          val path = buildCoverPath(lms.coverPath)
+
+          Picasso.get().load(path).into(cover, object  : Callback{
+                  override fun onSuccess() {
+                      Log.d("LMS"," image successfuly load")
+                  }
+
+                  override fun onError(e: Exception?) {
+                      Log.e("LMS","eror load image  ${e?.message}")
+                  }
+              })
+      }
+      private  fun buildCoverPath(coverPath : String?): String {
+          return coverPath ?:""
       }
 
     }

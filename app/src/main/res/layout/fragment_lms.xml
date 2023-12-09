@@ -110,46 +110,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_tabLms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/btnProses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#BF2A63"
-                    android:background="@drawable/button_lms"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:text="Proses"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:layout_constraintTop_toBottomOf="@+id/tilCariArtikel"
-                    app:layout_constraintStart_toEndOf="@+id/btnSelesai"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-                <Button
-                    android:id="@+id/btnSelesai"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/button_lms"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:text="Selesai"
-                    android:textAllCaps="false"
-                    android:textColor="#8388B2"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toStartOf="@+id/tilCariLms"
-                    app:layout_constraintTop_toBottomOf="@+id/ivlms" />
-
-            </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tv_Lanjut"

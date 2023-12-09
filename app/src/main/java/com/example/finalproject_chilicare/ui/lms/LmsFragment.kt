@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
@@ -14,24 +15,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.lms.CardLmsModulAdapter
+import com.example.finalproject_chilicare.adapter.lms.TabLmsAdapter
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.response.article.TabResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.ModulMateri
+import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import com.example.finalproject_chilicare.dataclass.ListModulArtikel
 import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.utils.OnTabClickListener
 import kotlinx.coroutines.launch
 
-class LmsFragment : Fragment() {
+class LmsFragment : Fragment(), OnTabClickListener {
 
 
-    private lateinit var rvcardModul : RecyclerView
-    private lateinit var cardlmsadapter : CardLmsModulAdapter
-    lateinit var btnback : ImageView
-//    private lateinit var date : TextView
-//    private lateinit var title : TextView
-//    private lateinit var desc : TextView
-//    private lateinit var cover : ImageView
-    private var cardlistlms = mutableListOf<CardLmsResponse>()
+    private lateinit var rvcardModul: RecyclerView
+    private lateinit var rvTabLms: RecyclerView
+    private lateinit var cardlmsadapter: CardLmsModulAdapter
+    lateinit var btnback: ImageView
+    private var cardlistlms = mutableListOf<ModulMateri>()
+    private lateinit var tabResponse: ArrayList<ModulMateri>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,12 +53,24 @@ class LmsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // inisiasi  xml
         btnback = view.findViewById(R.id.ivBacklms)
 
         //button back home
-        btnback.setOnClickListener { Intent(activity,HomeActivity::class.java).also {
-            startActivity(it)
-        } }
+        btnback.setOnClickListener {
+            Intent(activity, HomeActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+
+        //Tab LMS
+        rvTabLms = view.findViewById(R.id.rv_tabLms)
+        rvTabLms.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        rvTabLms.setHasFixedSize(true)
+        tabResponse = ArrayList()
+        rvTabLms.adapter = TabLmsAdapter(tabResponse, this)
 
         //rv card lms
         rvcardModul = view.findViewById(R.id.rv_cardLms)
@@ -66,24 +82,35 @@ class LmsFragment : Fragment() {
         //Get data API LIFECYCLE
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
-                .create(ApiInterface::class.java).getAllLms()
+                .create(ApiInterface::class.java).getAllModul(
+                    status = "proses"
+                )
             result.data
                 .map {
-                    Log.d("Lms","hasi GET API -> ${it}")
+                    Log.d("Lms", "hasil GET API -> ${it}")
                     cardlistlms.add(it)
                 }
+
+            tabResponse.addAll(cardlistlms
+                .distinctBy { it.status }
+                .filter { it.status != null })
             //update data recylerview
             cardlmsadapter.notifyDataSetChanged()
         }
 
         // Uuntuk pindah halaman detail LMS
-        cardlmsadapter.clicklmsModul ={
-            Log.d("lms","klik hasil ${it}")
+        cardlmsadapter.clicklmsModul = {
+            Log.d("lms", "klik hasil ${it}")
             val intent = Intent(activity, DetailLMSActivity::class.java)
             startActivity(intent)
         }
     }
 
+    override fun onTabClick(status: String) {
+        val filterStatus = cardlistlms.filter { it.status == status }
+
+        cardlmsadapter.updateData(filterStatus)
+    }
 
 
 }
