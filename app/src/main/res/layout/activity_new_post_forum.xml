@@ -85,6 +85,7 @@
           app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintIsiTeks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -168,8 +169,81 @@
           </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
       </androidx.cardview.widget.CardView>
+      
+      <RelativeLayout
+          android:layout_width="350dp"
+          android:layout_height="90dp"
+        android:id="@+id/relativeUploadGambar"
+          android:layout_gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage1"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            app:cardCornerRadius="12dp"
+            tools:ignore="NotSibling">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_avatar_postingan"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage2"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            app:cardCornerRadius="12dp"
+            android:layout_toRightOf="@id/cardImage1"
+            android:layout_marginLeft="20dp">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_avatar_postingan"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage3"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            app:cardCornerRadius="12dp"
+            android:layout_toRightOf="@id/cardImage2"
+            android:layout_marginLeft="20dp">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_avatar_postingan"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardImage4"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            app:cardCornerRadius="12dp"
+            android:layout_toRightOf="@id/cardImage3"
+            android:layout_marginLeft="20dp">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_avatar_postingan"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+      </RelativeLayout>
+
+
+
 
     </LinearLayout>
+
+
 
   <!-- BUTTON -->
   <Button

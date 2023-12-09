@@ -16,7 +16,7 @@ data class AllForumItem(
     val idUser: Int,
 
     @SerializedName ("image")
-    val image: List<ImageForum>,
+    val image: List<String>,
 
     @SerializedName ("jumlahKomentar")
     val jumlahKomentar: Int,
@@ -27,10 +27,10 @@ data class AllForumItem(
     @SerializedName("name_user")
     val nameUser: String
 )
-{
-    data class ImageForum(
-        @SerializedName("image")
-        val image: String,
-    )
-}
+//{
+//    data class ImageForum(
+//        @SerializedName("image")
+//        val image: String,
+//    )
+//}
 
