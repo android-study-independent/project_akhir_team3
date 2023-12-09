@@ -27,6 +27,8 @@ class NewPostForumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_post_forum)
 
+        prefHelper = PreferencesHelper.customAddForum(this)
+
         // GO PAGES FORUM
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         ivBack.setOnClickListener {

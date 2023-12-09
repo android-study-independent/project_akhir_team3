@@ -17,9 +17,9 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
-class CardLmsModulAdapter(private var listLms:List<ModulMateri>) : RecyclerView.Adapter<CardLmsModulAdapter.cardLmsViewHolder>() {
+class CardLmsModulAdapter(private var listLms:List<CardLmsResponse>) : RecyclerView.Adapter<CardLmsModulAdapter.cardLmsViewHolder>() {
 
-    var clicklmsModul : ((ModulMateri) -> Unit)? = null
+    var clicklmsModul : ((CardLmsResponse) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): cardLmsViewHolder {
        val view : View = LayoutInflater.from(parent.context)
@@ -40,9 +40,14 @@ class CardLmsModulAdapter(private var listLms:List<ModulMateri>) : RecyclerView.
         }
 
     }
-    fun updateData(dataNew : List<ModulMateri>) {
+    fun updateData(dataNew : List<CardLmsResponse>) {
         listLms = dataNew
         notifyDataSetChanged()
+    }
+
+    fun searchModul (query :String) {
+        val filtered = listLms.filter { it.judul?.contains(query, ignoreCase = true) == true }
+        updateData(filtered)
     }
   inner  class cardLmsViewHolder(private val view : View) : RecyclerView.ViewHolder(view){
 
@@ -53,7 +58,7 @@ class CardLmsModulAdapter(private var listLms:List<ModulMateri>) : RecyclerView.
           }
       }
 
-      fun bindView(lms : ModulMateri){
+      fun bindView(lms : CardLmsResponse){
           // inisiasi view modul
           val date = view.findViewById<TextView>(R.id.tv_Tanggal)
           val title = view.findViewById<TextView>(R.id.tv_JudulBesar)
@@ -64,7 +69,7 @@ class CardLmsModulAdapter(private var listLms:List<ModulMateri>) : RecyclerView.
           title.text = lms.judul
           descShort.text = lms.desc
 
-          val path = buildCoverPath(lms.coverPath)
+          val path = buildCoverPath(lms.covers)
 
           Picasso.get().load(path).into(cover, object  : Callback{
                   override fun onSuccess() {

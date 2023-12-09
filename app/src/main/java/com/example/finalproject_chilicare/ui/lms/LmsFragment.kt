@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +24,7 @@ import com.example.finalproject_chilicare.data.response.article.TabResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.ModulMateri
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
+import com.example.finalproject_chilicare.data.response.lms.TabLmsResponse
 import com.example.finalproject_chilicare.dataclass.ListModulArtikel
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.utils.OnTabClickListener
@@ -34,8 +37,9 @@ class LmsFragment : Fragment(), OnTabClickListener {
     private lateinit var rvTabLms: RecyclerView
     private lateinit var cardlmsadapter: CardLmsModulAdapter
     lateinit var btnback: ImageView
-    private var cardlistlms = mutableListOf<ModulMateri>()
-    private lateinit var tabResponse: ArrayList<ModulMateri>
+    lateinit var searchModul : EditText
+    private var cardlistlms = mutableListOf<CardLmsResponse>()
+    private lateinit var tabResponse: ArrayList<TabLmsResponse>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +59,7 @@ class LmsFragment : Fragment(), OnTabClickListener {
 
         // inisiasi  xml
         btnback = view.findViewById(R.id.ivBacklms)
+        searchModul = view.findViewById(R.id.etCariMateriLms)
 
         //button back home
         btnback.setOnClickListener {
@@ -63,8 +68,19 @@ class LmsFragment : Fragment(), OnTabClickListener {
             }
         }
 
+        //Search Bar Materi LMS
+        searchModul.addTextChangedListener { text ->
+            val query = text.toString().trim()
 
-        //Tab LMS
+            if (query.isEmpty()) {
+                cardlmsadapter.updateData(cardlistlms)
+            } else {
+                cardlmsadapter.searchModul(query)
+            }
+        }
+
+
+        //Tainisiasi tab LMS adapter
         rvTabLms = view.findViewById(R.id.rv_tabLms)
         rvTabLms.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -72,30 +88,34 @@ class LmsFragment : Fragment(), OnTabClickListener {
         tabResponse = ArrayList()
         rvTabLms.adapter = TabLmsAdapter(tabResponse, this)
 
-        //rv card lms
-        rvcardModul = view.findViewById(R.id.rv_cardLms)
-        rvcardModul.layoutManager = LinearLayoutManager(requireContext())
+        //rv card lms adapter
+        rvcardModul = view.findViewById(R.id.rv_cardLmsModul)
         cardlmsadapter = CardLmsModulAdapter(cardlistlms)
-        rvcardModul.adapter = cardlmsadapter
 
 
         //Get data API LIFECYCLE
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
-                .create(ApiInterface::class.java).getAllModul(
-                    status = "proses"
+                .create(ApiInterface::class.java).getAllLms(
                 )
             result.data
                 .map {
                     Log.d("Lms", "hasil GET API -> ${it}")
                     cardlistlms.add(it)
+                    // RV Modul LMS
+                    rvcardModul.adapter = cardlmsadapter
+                    rvcardModul.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
                 }
 
+            // RV TAB LMS
             tabResponse.addAll(cardlistlms
+                .filter { it.status != null}
                 .distinctBy { it.status }
-                .filter { it.status != null })
-            //update data recylerview
+                .map { TabLmsResponse(it.status!!) })
+
+            //Update RecyclerView
             cardlmsadapter.notifyDataSetChanged()
+            rvTabLms.adapter?.notifyDataSetChanged()
         }
 
         // Uuntuk pindah halaman detail LMS
