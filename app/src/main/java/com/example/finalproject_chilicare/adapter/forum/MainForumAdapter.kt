@@ -34,9 +34,15 @@ class MainForumAdapter(private var listForum: List<AllForumItem>):
             jumlahLikeForum.text = forum.jumlahLike.toString()
             jumlahCommentForum.text = forum.jumlahKomentar.toString()
 
-            val path = buildImageForum(forum.image.toString())
-            Picasso.get().load(path).into(imageForum)
-            Log.d("Forum Image",path)
+            val imagePath = buildImageForum(forum.image, 0)
+
+            if (imagePath.isNotEmpty()) {
+                Picasso.get().load(imagePath).into(imageForum)
+                Log.d("Forum Image", imagePath)
+            } else {
+                Log.e("Forum Image", "Image not found at index 0")
+            }
+
 
 
         }
@@ -63,7 +69,7 @@ class MainForumAdapter(private var listForum: List<AllForumItem>):
 
 
 
-    private fun buildImageForum(imageForum: String?): String {
-        return imageForum ?: ""
+    private fun buildImageForum(imageForum: List<String>, index: Int): String {
+        return imageForum.getOrNull(index) ?: ""
     }
 }
