@@ -176,7 +176,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cardLms"
+        android:id="@+id/rv_cardLmsmateri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/rl_tanggalLms"
@@ -184,6 +184,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        tools:listitem="@layout/card_lms_materi"/>
+        android:layout_marginEnd="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

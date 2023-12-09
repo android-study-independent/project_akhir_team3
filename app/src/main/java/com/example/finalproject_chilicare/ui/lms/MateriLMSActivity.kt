@@ -38,7 +38,7 @@ class MateriLMSActivity : AppCompatActivity() {
 
 
         // card materi lms
-        rvMateriLms = findViewById(R.id.rv_cardLms)
+        rvMateriLms = findViewById(R.id.rv_cardLmsmateri)
         rvMateriLms.layoutManager = LinearLayoutManager(this)
         cdmateriadapter = CardLmsMateriAdapter(materilistlms)
         rvMateriLms.adapter = cdmateriadapter
@@ -54,5 +54,6 @@ class MateriLMSActivity : AppCompatActivity() {
         }
 
     }
+
 
 }

@@ -7,11 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.response.lms.ModulMateri
+import com.example.finalproject_chilicare.data.response.lms.TabLmsResponse
 import com.example.finalproject_chilicare.utils.OnTabClickListener
 
-class TabLmsAdapter(private  val statuslist:List<ModulMateri>, private val  listener : OnTabClickListener): RecyclerView.Adapter<TabLmsAdapter.TabViewHolder>()  {
+class TabLmsAdapter(private  val statuslist:ArrayList<TabLmsResponse>, private val  listener : OnTabClickListener): RecyclerView.Adapter<TabLmsAdapter.TabViewHolder>()  {
 
- var onItemClick : ((ModulMateri) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabViewHolder {
         val itemView = LayoutInflater.from(parent.context)
