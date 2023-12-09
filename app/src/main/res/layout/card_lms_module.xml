@@ -23,6 +23,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tv_Tanggal"
             android:background="@drawable/rounded_bg"
+            android:scaleX="1.5"
+            android:scaleType="centerCrop"
+
             />
 
         <TextView

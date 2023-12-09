@@ -8,6 +8,7 @@ import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
 import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -47,6 +48,11 @@ interface ApiInterface {
 
     @GET("lms/all_modul")
     suspend fun getAllLms() : CardAllLmsResponse
+
+    @GET("lms/modul_status")
+    suspend fun getAllModul(
+        @Query("status") status : String
+    ) : ModulStatusRespn
 
    // @Headers("x-api-key")
     @GET("forum/semua_postingan")
