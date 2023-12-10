@@ -1,9 +1,9 @@
 package com.example.finalproject_chilicare.data.api
 
-import com.example.finalproject_chilicare.data.models.AddPostForumRequest
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.AddNewForumResponse
+import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
@@ -62,19 +62,19 @@ interface ApiInterface {
         @Query("status") status : String
     ) : ModulStatusRespn
 
-   // @Headers("x-api-key")
+
     @GET("forum/semua_postingan")
     fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>
 
-//    @Multipart
-//    @POST("forum/buat_postingan")
-//    fun postPostinganForum(
-//        @Header("x-api-key") apiKey : String,
-//        @Part ("captions") Captions : RequestBody,
-//        @Part images: MultipartBody.Part,
-//        @Body req: AddPostForumRequest
-//    ) : Call<AddNewForumResponse>
+    @Multipart
+    @POST("forum/buat_postingan")
+    fun postPostinganForum(
+        @Header("x-api-key") apiKey: String,
+        @Part images: MultipartBody.Part,
+        @Part ("captions") Captions: RequestBody,
+    ) : Call<CreateForumResponse>
 
+    //abstract fun postPostinganForum(apiKey: MultipartBody.Part, Captions: RequestBody): Call<AddNewForumResponse>
 
 
 }

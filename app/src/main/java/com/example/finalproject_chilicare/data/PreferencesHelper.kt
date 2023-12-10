@@ -17,6 +17,7 @@ object PreferencesHelper {
     const val KEY_TOKEN_FILE = "prefs_token_file"
     const val KEY_LOGGED_IN = "onboarding_to_login"
     const val KEY_REGIST_IN = "onboarding_to_regist"
+    const val IMAGE_REQUEST = 102
 
 
     fun defaultPrefs(context: Context): SharedPreferences =
@@ -35,6 +36,12 @@ object PreferencesHelper {
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     fun customAddForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customEditForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customDeleteForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {
