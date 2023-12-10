@@ -56,6 +56,7 @@ class NewPostForumActivity : AppCompatActivity() {
 
         // GO PAGES FORUM
         val ivBack = findViewById<ImageView>(R.id.ivBack)
+
         ivBack.setOnClickListener {
             Intent(this, ForumActivity::class.java).also {
                 startActivity(it)
