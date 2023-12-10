@@ -74,29 +74,6 @@ class ForumActivity : AppCompatActivity() {
             }
         }
 
-//        rvPostingan = findViewById(R.id.rvPostingan)
-//        rvPostingan.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//      //  adapterForum = MainForumAdapter()
-//        rvPostingan.adapter = adapterForum
-//
-//        lifecycleScope.launch {
-//            val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum(getToken())
-//            //                getToken()
-//
-//            result.allForumItem.map {
-//                Log.d("debug", "hasilnya : $it")
-////                allItemResponse.add(it)
-//
-//            }
-////            getToken()
-//
-//            adapterForum.notifyDataSetChanged()
-//
-//
-//        }
-//
-//        Log.d("Error", "${getToken()}")
-
 
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor { chain ->
@@ -116,71 +93,17 @@ class ForumActivity : AppCompatActivity() {
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-//
+
         val apiInterface = retrofit.create(ApiInterface::class.java)
-//
+
         getToken()?.let {
             apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse>{
                 override fun onResponse(
                     call: Call<AllForumResponse>,
                     response: Response<AllForumResponse>
                 ) {
-
                     forumList()
-
-
-    //                if (response.isSuccessful) {
-    //                    val result = response.body()
-    //
-    //                    result?.allForumItem?.let {
-    //                        Log.d("debug", "hasilnya : $it")
-    //                        allItemResponse.addAll(it)
-    //                    }
-    //
-    //                    getToken()
-    //                    adapterForum.notifyDataSetChanged()
-    //
-    //                    if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
-    //                        // Additional logic for authenticated users
-    //                    } else {
-    //                        // Handle unsuccessful response
-    //                        Log.e("Error", "Unsuccessful response: ${response.code()}")
-    //                    }
-    //
-    //                }
-
-
-    //                lifecycleScope.launch {
-    //                    val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum()
-    //
-    //                    result.allForumItem.map {
-    //                        Log.d("debug", "hasilnya : $it")
-    //                        allItemResponse.add(it)
-    //
-    //                    }
-    //                    getToken()
-    //
-    //                    adapterForum.notifyDataSetChanged()
-    //
-    //
-    //                }
-
-
                     if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
-    //                    lifecycleScope.launch {
-    //                        val result = Network().getRetroClientInstance().create(ApiInterface::class.java).getAllForum()
-    //
-    //                        result.allForumItem.map {
-    //                            Log.d("debug", "hasilnya : $it")
-    //                            allItemResponse.add(it)
-    //
-    //                        }
-    //                        getToken()
-    //
-    //                        adapterForum.notifyDataSetChanged()
-    //
-    //
-    //                    }
 
                     }
                 }
@@ -191,7 +114,7 @@ class ForumActivity : AppCompatActivity() {
 
             })
         }
-//
+
     }
 
         fun forumList() {

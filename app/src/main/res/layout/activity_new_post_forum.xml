@@ -184,6 +184,7 @@
             tools:ignore="NotSibling">
 
           <ImageView
+              android:id="@+id/checkImageUpload1"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -199,6 +200,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload2"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -214,6 +216,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload3"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -229,6 +232,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload4"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -264,3 +268,4 @@
       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--</layout>-->
