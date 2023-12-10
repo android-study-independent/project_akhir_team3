@@ -52,6 +52,8 @@ class NewPostForumActivity : AppCompatActivity() {
 
        // bindingPostForum = DataBindingUtil.setContentView(this@NewPostForumActivity, R.layout.activity_new_post_forum)
 
+        prefHelper = PreferencesHelper.customAddForum(this)
+
         // GO PAGES FORUM
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         ivBack.setOnClickListener {
