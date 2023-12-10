@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -100,7 +101,7 @@
               app:layout_constraintTop_toTopOf="parent" />
 
           <EditText
-              android:id="@+id/etTextInput"
+              android:id="@+id/etTextInputUpload"
               android:layout_width="0dp"
               android:layout_height="wrap_content"
               android:layout_marginStart="10dp"
@@ -134,7 +135,7 @@
                 android:orientation="horizontal">
 
               <ImageView
-                  android:id="@+id/ivMedia"
+                  android:id="@+id/ivMediaFoto"
                   android:layout_width="27dp"
                   android:layout_height="27dp"
                   android:src="@drawable/ic_media" />
@@ -184,6 +185,7 @@
             tools:ignore="NotSibling">
 
           <ImageView
+              android:id="@+id/checkImageUpload1"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -199,6 +201,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload2"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -214,6 +217,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload3"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -229,6 +233,7 @@
             android:layout_marginLeft="20dp">
 
           <ImageView
+              android:id="@+id/checkImageUpload4"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:src="@drawable/ic_avatar_postingan"/>
@@ -247,7 +252,7 @@
 
   <!-- BUTTON -->
   <Button
-      android:id="@+id/btPostingForum"
+      android:id="@+id/btPostingForumUpload"
       android:layout_width="match_parent"
       android:layout_height="50dp"
       android:text="Posting"
@@ -264,3 +269,4 @@
       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

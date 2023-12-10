@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.data.models
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class AddNewForumResponse(
