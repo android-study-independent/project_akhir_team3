@@ -117,14 +117,21 @@ class NewPostForumActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 10 && resultCode == Activity.RESULT_OK) {
-            val uri: Uri? = data?.data
             val context: Context = this@NewPostForumActivity
-
-            uri?.let {
-                path = RealPathUtil.getRealPath(context, it).toString()
-                val bitmap: Bitmap? = BitmapFactory.decodeFile(path)
-                bitmap?.let {
-                    bindingPostForum.checkImageUpload1.setImageBitmap(it)
+            data?.let {
+                val uri: Uri? = it.data
+                uri?.let {
+                    val realPath: String? = RealPathUtil.getRealPath(context, it)
+                    if (!realPath.isNullOrBlank()) {
+                        path = realPath
+                        val bitmap: Bitmap? = BitmapFactory.decodeFile(path)
+                        bitmap?.let {
+                            bindingPostForum.checkImageUpload1.setImageBitmap(it)
+                        }
+                    } else {
+                        // Handle jika realPath null atau kosong
+                        Toast.makeText(this@NewPostForumActivity, "Failed to get real path", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
