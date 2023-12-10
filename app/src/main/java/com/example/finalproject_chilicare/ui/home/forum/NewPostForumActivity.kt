@@ -23,6 +23,7 @@ import com.example.finalproject_chilicare.databinding.ActivityNewPostForumBindin
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -208,6 +209,7 @@ class NewPostForumActivity : AppCompatActivity() {
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
         val file = File(path)
+
         val requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
 
         val images = MultipartBody.Part.createFormData("image", file.name, requestFile)
