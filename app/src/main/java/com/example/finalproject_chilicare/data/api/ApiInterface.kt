@@ -4,12 +4,15 @@ import com.example.finalproject_chilicare.data.models.AddPostForumRequest
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.AddNewForumResponse
+import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
-import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
+
+import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
+import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -72,9 +75,9 @@ interface ApiInterface {
     @Multipart
     @POST("forum/buat_postingan")
     fun postPostinganForum(
-        @Header("x-api-key") apiKey: String,
+        @Header("x-api-key") apiKey : String,
         @Part images: MultipartBody.Part,
-        @Part ("captions") Captions: RequestBody,
+        @Part ("captions") Captions : RequestBody,
     ) : Call<CreateForumResponse>
 
 
