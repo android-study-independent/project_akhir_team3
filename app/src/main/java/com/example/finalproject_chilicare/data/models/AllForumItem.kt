@@ -1,8 +1,10 @@
 package com.example.finalproject_chilicare.data.models
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class AllForumItem(
+
     @SerializedName ("captions")
     val captions: String,
 
@@ -26,11 +28,6 @@ data class AllForumItem(
 
     @SerializedName("name_user")
     val nameUser: String
-)
-//{
-//    data class ImageForum(
-//        @SerializedName("image")
-//        val image: String,
-//    )
-//}
+
+) : Serializable
 

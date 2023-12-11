@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.NewPostForumActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
@@ -18,7 +19,7 @@ object PreferencesHelper {
     const val KEY_LOGGED_IN = "onboarding_to_login"
     const val KEY_REGIST_IN = "onboarding_to_regist"
     const val IMAGE_REQUEST = 102
-
+    const val KEY_ID = 81
 
     fun defaultPrefs(context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
@@ -38,7 +39,7 @@ object PreferencesHelper {
     fun customAddForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
-    fun customEditForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
+    fun customDetailForum (context: DetailPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     fun customDeleteForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
