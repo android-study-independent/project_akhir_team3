@@ -10,5 +10,22 @@ data class CreateForumResponse(
     val forum: AddNewForumResponse,
 
     @SerializedName("message")
-    val message: String
+    val message: String,
+
+    @SerializedName("Balasan")
+    val balasan: List<itemKomentar>
+)
+
+data class itemKomentar(
+    @SerializedName("id_komentar")
+    val idKomentar: Int,
+
+    @SerializedName("id_user")
+    val idUser: Int,
+
+    @SerializedName("name")
+    val name: String,
+
+    @SerializedName("komentar")
+    val komentar: String
 )

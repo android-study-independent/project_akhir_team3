@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <RelativeLayout
+                android:id="@+id/rlHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivAvatarPostingan"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_avatar_postingan" />
+
+                <TextView
+                    android:id="@+id/tvNicknamePostingan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/ivAvatarPostingan"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/ivAvatarPostingan"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:text="Iyan"
+                    android:textColor="@color/PrimaryText"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvDatePostingan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ivAvatarPostingan"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@+id/ivAvatarPostingan"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:text="2 Desember"
+                    android:textColor="@color/SecondaryText"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tvDescPostingan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:justificationMode="inter_word"
+                android:text="Hallo teman teman online saya, disini saya akan sedikit melakukan sharing hasil dari panen cabai pertama saya, setelah saya belajar dari LMS"
+                android:textColor="@color/PrimaryText"
+                android:textSize="14sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlHeading" />
+
+
+            <LinearLayout
+                android:id="@+id/llLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescPostingan">
+
+                <ImageView
+                    android:id="@+id/ivLike"
+                    android:layout_width="27dp"
+                    android:layout_height="27dp"
+                    android:src="@drawable/ic_like" />
+
+                <TextView
+                    android:id="@+id/tvLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:text="1.000"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/llLike"
+                app:layout_constraintStart_toEndOf="@+id/llLike"
+                app:layout_constraintTop_toTopOf="@+id/llLike">
+
+                <ImageView
+                    android:id="@+id/ivComment"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_comment" />
+
+                <TextView
+                    android:id="@+id/tvComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:text="1.000"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</layout>
+

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
@@ -16,10 +15,7 @@ import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.AllForumResponse
-import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
-import kotlinx.coroutines.launch
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,31 +27,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ForumActivity : AppCompatActivity() {
     lateinit var adapterForum: MainForumAdapter
-    private lateinit var rvPostingan : RecyclerView
-//    private var allItemResponse = mutableListOf<AllForumItem>()
-    lateinit var bindingForum : ActivityForumBinding
-    private lateinit var dataList: ArrayList<ForumResponse>
-//    lateinit var avatarList: Array<Int>
-//    lateinit var nicknameList: Array<String>
-//    lateinit var dateList: Array<String>
-//    lateinit var moreList: Array<Int>
-//    lateinit var descList: Array<String>
-//    lateinit var imageList: Array<Int>
-//    lateinit var ivLikeList: Array<Int>
-//    lateinit var tvLikeList: Array<String>
-//    lateinit var ivCommentList: Array<Int>
-//    lateinit var tvCommentList: Array<String>
-//    lateinit var ivShareList: Array<Int>
-//    lateinit var tvShareList: Array<String>
-
-//    companion object {
-//        lateinit var apiInterface : ApiInterface
-//            private set
-//    }
+    lateinit var bindingForum: ActivityForumBinding
 
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,7 +72,7 @@ class ForumActivity : AppCompatActivity() {
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
         getToken()?.let {
-            apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse>{
+            apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
                 override fun onResponse(
                     call: Call<AllForumResponse>,
                     response: Response<AllForumResponse>
@@ -117,66 +92,66 @@ class ForumActivity : AppCompatActivity() {
 
     }
 
-        fun forumList() {
+    fun forumList() {
 
-            val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
-            getToken()?.let {
-                retro.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
-                    override fun onResponse(
-                        call: Call<AllForumResponse>,
-                        response: Response<AllForumResponse>
-                    ) {
-                        response.body()?.let {
-                            setAllForum(it)
-                        }
+        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        getToken()?.let {
+            retro.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
+                override fun onResponse(
+                    call: Call<AllForumResponse>,
+                    response: Response<AllForumResponse>
+                ) {
+                    response.body()?.let {
+                        setAllForum(it)
                     }
+                }
 
-                    override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+                override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
 
-                    }
+                }
 
-                })
-            }
-
-
+            })
         }
 
 
-        fun getToken(): String? {
-
-            val prefHelper = PreferencesHelper.customPrefForum(this)
-            return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
-        }
+    }
 
 
-        fun setAllForum(body: AllForumResponse) {
+    fun getToken(): String? {
+
+        val prefHelper = PreferencesHelper.customPrefForum(this)
+        return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
+    }
+
+
+    fun setAllForum(body: AllForumResponse) {
+        Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
+
+
+        bindingForum.apply {
+
+
+            adapterForum = MainForumAdapter(body.allForumItem)
+
+            val rvForum = bindingForum.rvPostingan
+
+            rvForum.layoutManager =
+                LinearLayoutManager(this@ForumActivity, RecyclerView.VERTICAL, false)
+
+            rvForum.setHasFixedSize(true)
+
+
+            rvForum.adapter = adapterForum
+
+
+            adapterForum.notifyDataSetChanged()
             Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
 
 
-            bindingForum.apply {
-
-
-                adapterForum = MainForumAdapter(body.allForumItem)
-
-                val rvForum = bindingForum.rvPostingan
-
-                rvForum.layoutManager =
-                    LinearLayoutManager(this@ForumActivity, RecyclerView.VERTICAL, false)
-
-                rvForum.setHasFixedSize(true)
-
-
-                rvForum.adapter = adapterForum
-
-
-                adapterForum.notifyDataSetChanged()
-                Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
-
-
-            }
-
-
         }
+
+
+    }
 
 
 }
