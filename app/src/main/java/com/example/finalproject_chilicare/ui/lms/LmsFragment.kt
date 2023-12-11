@@ -22,6 +22,7 @@ import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.response.article.TabResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
 import com.example.finalproject_chilicare.data.response.lms.ModulMateri
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import com.example.finalproject_chilicare.data.response.lms.TabLmsResponse
@@ -121,7 +122,9 @@ class LmsFragment : Fragment(), OnTabClickListener {
         // Uuntuk pindah halaman detail LMS
         cardlmsadapter.clicklmsModul = {
             Log.d("lms", "klik hasil ${it}")
-            val intent = Intent(activity, DetailLMSActivity::class.java)
+            val intent = Intent(activity, MateriLMSActivity::class.java)
+            intent.putParcelableArrayListExtra("modulLms",ArrayList(cardlistlms))
+
             startActivity(intent)
         }
     }

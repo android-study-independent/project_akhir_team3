@@ -2,7 +2,7 @@ package com.example.finalproject_chilicare.data.response.lms
 
 import com.google.gson.annotations.SerializedName
 
-data class CardAllLmsResponse(
+data class CardAllModulResponse(
     @SerializedName("status")
     val status : String?,
     @SerializedName("message")
