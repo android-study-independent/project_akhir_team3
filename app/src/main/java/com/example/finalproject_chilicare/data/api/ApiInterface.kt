@@ -68,7 +68,6 @@ interface ApiInterface {
         @Query("status") status : String
     ) : ModulStatusRespn
 
-
     @GET("forum/semua_postingan")
     fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>
 
@@ -79,7 +78,5 @@ interface ApiInterface {
         @Part images: MultipartBody.Part,
         @Part ("captions") Captions : RequestBody,
     ) : Call<CreateForumResponse>
-
-
 
 }
