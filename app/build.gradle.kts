@@ -111,6 +111,9 @@ dependencies {
     //youtube sdk
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
+    // glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
     implementation("androidx.exifinterface:exifinterface:1.3.6")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")

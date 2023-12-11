@@ -10,6 +10,7 @@ import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 
 import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
@@ -24,6 +25,7 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {
@@ -78,5 +80,11 @@ interface ApiInterface {
         @Part images: MultipartBody.Part,
         @Part ("captions") Captions : RequestBody,
     ) : Call<CreateForumResponse>
+
+    @GET("forum/postingan/{id}")
+    fun getKomentar(
+        @Header("x-api-key") apiKey: String?,
+        @Path("id") id: String?
+    ) : Call<ForumResponse>
 
 }
