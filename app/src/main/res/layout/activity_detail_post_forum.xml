@@ -1,347 +1,354 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/BackgroundHalaman"
     tools:context=".ui.home.forum.DetailPostForumActivity">
 
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/BackgroundHalaman">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <!-- WARN -->
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:background="@drawable/top_background"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- WARN -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:background="@drawable/top_background"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="181dp"
+                                android:layout_height="198.74dp"
+                                android:layout_marginTop="20dp"
+                                android:paddingLeft="60dp"
+                                android:src="@drawable/gradient"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/gl_Guideline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_constraintGuide_percent="0.90" />
+
+                            <ImageView
+                                android:id="@+id/ivBack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="25dp"
+                                android:layout_marginBottom="25dp"
+                                android:src="@drawable/ic_back"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvDetailPostingan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:text="Detail Postingan"
+                                android:textColor="@color/white"
+                                android:textSize="22sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivBack"
+                                app:layout_constraintEnd_toStartOf="@+id/gl_Guideline"
+                                app:layout_constraintStart_toEndOf="@+id/ivBack"
+                                app:layout_constraintTop_toTopOf="@+id/ivBack" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </FrameLayout>
+
+
+                <!--  CARD -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    app:cardElevation="8dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:layout_width="181dp"
-                            android:layout_height="198.74dp"
-                            android:layout_marginTop="20dp"
-                            android:paddingLeft="60dp"
-                            android:src="@drawable/gradient"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/gl_Guideline"
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:id="@+id/rlHeading"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.90" />
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/ivBack"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_marginBottom="25dp"
-                            android:src="@drawable/ic_back"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            <ImageView
+                                android:id="@+id/ivAvatarPostingan"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_alignParentStart="true"
+                                android:src="@drawable/ic_avatar_postingan" />
+
+                            <TextView
+                                android:id="@+id/tvNicknamePostingan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@+id/ivAvatarPostingan"
+                                android:layout_marginStart="15dp"
+                                android:layout_toRightOf="@+id/ivAvatarPostingan"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:text="Iyan"
+                                android:textColor="@color/PrimaryText"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvDatePostingan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/ivAvatarPostingan"
+                                android:layout_marginStart="15dp"
+                                android:layout_toRightOf="@+id/ivAvatarPostingan"
+                                android:fontFamily="@font/plusjakartasans_reguler_400"
+                                android:text="2 Desember"
+                                android:textColor="@color/SecondaryText"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:id="@+id/ivMore"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/more" />
+
+                        </RelativeLayout>
+
 
                         <TextView
-                            android:id="@+id/tvDetailPostingan"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tvDescPostingan"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:text="Detail Postingan"
-                            android:textColor="@color/white"
-                            android:textSize="22sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/ivBack"
-                            app:layout_constraintEnd_toStartOf="@+id/gl_Guideline"
-                            app:layout_constraintStart_toEndOf="@+id/ivBack"
-                            app:layout_constraintTop_toTopOf="@+id/ivBack" />
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:text="Hallo teman teman online saya, disini saya akan sedikit melakukan sharing hasil dari panen cabai pertama saya, setelah saya belajar dari LMS"
+                            android:textColor="@color/PrimaryText"
+                            android:textSize="14sp"
+                            android:justificationMode="inter_word"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rlHeading"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/GambarPostingan"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            app:cardCornerRadius="16dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvDescPostingan">
+
+                            <ImageView
+                                android:id="@+id/iv_Gambar"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:background="@drawable/rounded_bg" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:paddingBottom="16dp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/GambarPostingan">
+
+                            <LinearLayout
+                                android:id="@+id/llLeft"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivLike"
+                                    android:layout_width="27dp"
+                                    android:layout_height="27dp"
+                                    android:src="@drawable/ic_like"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tvLike"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.000"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/plusjakartasans_bold_700"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llCenter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_centerHorizontal="true">
+
+                                <ImageView
+                                    android:id="@+id/ivComment"
+                                    android:layout_width="27dp"
+                                    android:layout_height="27dp"
+                                    android:src="@drawable/ic_comment"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tvComment"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="4"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/plusjakartasans_bold_700"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llRight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_alignParentEnd="true">
+
+                                <ImageView
+                                    android:id="@+id/ivShare"
+                                    android:layout_width="27dp"
+                                    android:layout_height="27dp"
+                                    android:src="@drawable/ic_share"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/tvShare"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Berbagi"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/plusjakartasans_bold_700"
+                                    android:textColor="@color/black"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    />
+                            </LinearLayout>
+                        </RelativeLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </FrameLayout>
 
+                </androidx.cardview.widget.CardView>
 
-            <!--  CARD -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                app:cardElevation="8dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!--   KOMEN / ULASAN -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDetailPostinganKomentar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="16dp"
+                    />
 
-                    <RelativeLayout
-                        android:id="@+id/rlHeading"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+            </LinearLayout>
+        </ScrollView>
 
-                        <ImageView
-                            android:id="@+id/ivAvatarPostingan"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentStart="true"
-                            android:src="@drawable/ic_avatar_postingan" />
+        <!-- TEXT INPUT BALASAN -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/white"
+            android:padding="16dp">
 
-                        <TextView
-                            android:id="@+id/tvNicknamePostingan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignTop="@+id/ivAvatarPostingan"
-                            android:layout_marginStart="15dp"
-                            android:layout_toRightOf="@+id/ivAvatarPostingan"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:text="Iyan"
-                            android:textColor="@color/PrimaryText"
-                            android:textSize="14sp" />
+            <!-- Avatar -->
+            <ImageView
+                android:id="@+id/avatarImageView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_avatar_postingan"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="Avatar"/>
 
-                        <TextView
-                            android:id="@+id/tvDatePostingan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/ivAvatarPostingan"
-                            android:layout_marginStart="15dp"
-                            android:layout_toRightOf="@+id/ivAvatarPostingan"
-                            android:fontFamily="@font/plusjakartasans_reguler_400"
-                            android:text="2 Desember"
-                            android:textColor="@color/SecondaryText"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:id="@+id/ivMore"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginTop="15dp"
-                            android:src="@drawable/more" />
-
-                    </RelativeLayout>
-
-
-                    <TextView
-                        android:id="@+id/tvDescPostingan"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="20dp"
-                        android:fontFamily="@font/plusjakartasans_reguler_400"
-                        android:text="Hallo teman teman online saya, disini saya akan sedikit melakukan sharing hasil dari panen cabai pertama saya, setelah saya belajar dari LMS"
-                        android:textColor="@color/PrimaryText"
-                        android:textSize="14sp"
-                        android:justificationMode="inter_word"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rlHeading"
-                        />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/GambarPostingan"
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="20dp"
-                        app:cardCornerRadius="16dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvDescPostingan">
-
-                        <ImageView
-                            android:id="@+id/iv_Gambar"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/rounded_bg" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="20dp"
-                        android:paddingBottom="16dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/GambarPostingan">
-
-                        <LinearLayout
-                            android:id="@+id/llLeft"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:id="@+id/ivLike"
-                                android:layout_width="27dp"
-                                android:layout_height="27dp"
-                                android:src="@drawable/ic_like"
-                                />
-
-                            <TextView
-                                android:id="@+id/tvLike"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1.000"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/plusjakartasans_bold_700"
-                                android:textColor="@color/black"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/llCenter"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true">
-
-                            <ImageView
-                                android:id="@+id/ivComment"
-                                android:layout_width="27dp"
-                                android:layout_height="27dp"
-                                android:src="@drawable/ic_comment"
-                                />
-
-                            <TextView
-                                android:id="@+id/tvComment"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/plusjakartasans_bold_700"
-                                android:textColor="@color/black"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/llRight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_alignParentEnd="true">
-
-                            <ImageView
-                                android:id="@+id/ivShare"
-                                android:layout_width="27dp"
-                                android:layout_height="27dp"
-                                android:src="@drawable/ic_share"
-                                />
-
-                            <TextView
-                                android:id="@+id/tvShare"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Berbagi"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/plusjakartasans_bold_700"
-                                android:textColor="@color/black"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!--   KOMEN / ULASAN -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDetailPostingan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="16dp"
+            <!-- Edit Text -->
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="9dp"
+                android:hint="Posting balasan Anda"
+                android:textSize="12sp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                android:textColor="@color/SecondaryText"
+                android:background="@drawable/custom_ed_detail_forum"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:inputType="textMultiLine"
+                android:layout_gravity="center_vertical"
+                android:justificationMode="inter_word"
                 />
 
+            <!-- Button Balas -->
+            <Button
+                android:id="@+id/balasButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balas"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/button"
+                android:textColor="@color/white"/>
+
         </LinearLayout>
-    </ScrollView>
-
-    <!-- TEXT INPUT BALASAN -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/white"
-        android:padding="16dp">
-
-        <!-- Avatar -->
-        <ImageView
-            android:id="@+id/avatarImageView"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_avatar_postingan"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_vertical"
-            android:contentDescription="Avatar"/>
-
-        <!-- Edit Text -->
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="9dp"
-            android:hint="Posting balasan Anda"
-            android:textSize="12sp"
-            android:fontFamily="@font/plusjakartasans_reguler_400"
-            android:textColor="@color/SecondaryText"
-            android:background="@drawable/custom_ed_detail_forum"
-            android:padding="8dp"
-            android:gravity="center_vertical"
-            android:inputType="textMultiLine"
-            android:layout_gravity="center_vertical"
-            android:justificationMode="inter_word"
-            />
-
-        <!-- Button Balas -->
-        <Button
-            android:id="@+id/balasButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Balas"
-            android:textAllCaps="false"
-            android:textSize="12sp"
-            android:fontFamily="@font/plusjakartasans_bold_700"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/button"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

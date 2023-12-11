@@ -1,16 +1,26 @@
 package com.example.finalproject_chilicare.data.response.forum
 
 data class ForumResponse(
-    val avatar: Int?,
-    val nickname: String?,
-    val date: String?,
-    val more: Int?,
-    val desc: String?,
-    val image: Int?,
-    val ivLike: Int?,
-    val tvLike: String?,
-    val ivComment: Int?,
-    val tvComment: String?,
-    val ivShare: Int?,
-    val tvShare: String?
+    val forum: Forum?,
+    val komentars: List<Komentar>?,
+    val jumlahKomentar: Int?,
+    val jumlahLike: Int?,
+    val likes: List<Any>? // Ganti dengan tipe data yang sesuai jika tipe data likes diketahui
+)
+
+data class Forum(
+    val id_user: Int?,
+    val name: String?,
+    val captions: String?,
+    val image: List<String>?
+)
+
+data class Komentar(
+    val id_komentar: Int?,
+    val id_user: Int?,
+    val name: String?,
+    val komentar: String?,
+    val createdAt: String?,
+    val id_parent_comment: Int?,
+    val jumlahKomentar: Int?
 )

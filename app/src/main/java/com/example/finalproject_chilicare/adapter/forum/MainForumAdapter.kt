@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.adapter.forum
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +10,30 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.models.AllForumItem
-import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
-import com.example.finalproject_chilicare.data.response.forum.ForumResponse
+import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
 import com.squareup.picasso.Picasso
+import java.io.Serializable
 
 class MainForumAdapter(private var listForum: List<AllForumItem>):
     RecyclerView.Adapter<MainForumAdapter.ForumViewHolder>() {
 
     inner class ForumViewHolder(private val itemview : View) : RecyclerView.ViewHolder(itemview){
+
+        init {
+            itemview.setOnClickListener {
+                // Mendapatkan posisi item yang diklik
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    // Mendapatkan data forum sesuai posisi yang diklik
+                    val clickedForum = listForum[position]
+
+                    // Mengirim data forum ke halaman DetailPostForumActivity
+                    val intent = Intent(itemview.context, DetailPostForumActivity::class.java)
+                    intent.putExtra("forum_data", clickedForum as Serializable)
+                    itemview.context.startActivity(intent)
+                }
+            }
+        }
 
         fun bindView(forum : AllForumItem) {
 
@@ -46,6 +63,8 @@ class MainForumAdapter(private var listForum: List<AllForumItem>):
 
 
         }
+
+
 
     }
 
