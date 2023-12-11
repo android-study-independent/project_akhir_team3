@@ -10,7 +10,7 @@
     android:paddingVertical="16dp">
 
     <ImageView
-        android:id="@+id/iv_Kembali"
+        android:id="@+id/iv_KembaliDtlLms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back_detail_artikel"
@@ -28,28 +28,47 @@
         android:textColor="@color/PrimaryText"
         android:textSize="18sp"
         android:layout_marginLeft="31dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_Kembali"
-        app:layout_constraintStart_toEndOf="@+id/iv_Kembali"
-        app:layout_constraintTop_toTopOf="@+id/iv_Kembali"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_KembaliDtlLms"
+        app:layout_constraintStart_toEndOf="@+id/iv_KembaliDtlLms"
+        app:layout_constraintTop_toTopOf="@+id/iv_KembaliDtlLms"
         app:layout_constraintRight_toRightOf="parent"
         />
     <LinearLayout
         android:id="@+id/ll_video"
-        android:layout_width="350dp"
+        android:layout_width="370dp"
         android:layout_height="200dp"
         android:orientation="vertical"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_Kembali"
+        app:layout_constraintTop_toBottomOf="@+id/iv_KembaliDtlLms"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <VideoView
-            android:id="@+id/VideoView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/youtube_style">
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:videoId="qyhZln2NRDo"
+                app:autoPlay="false" />
+
+
+        </LinearLayout>
+
+<!--        <VideoView-->
+<!--            android:id="@+id/VideoView"-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="fill_parent" />-->
     </LinearLayout>
 
     <TextView
@@ -68,10 +87,10 @@
         />
 
     <TextView
-        android:id="@+id/tv_sinopsis"
+        android:id="@+id/tv_DescLms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cabai merah (Capsicum annuum) termasuk famili Solanaceae dan merupakan salah satu komoditas sayuran yang memiliki banyak manfaat, bernilai ekonomi tinggi dan mempunyai prospek pasar yang menarik. Buah cabai selain dapat dikonsumsi segar untuk campuran bumbu masak juga dapat diawetkan misalnya dalam bentuk acar, saus, tepung cabai dan buah kering."
+        tools:text="Setelah berumur 4 minggu, pindahkan benih cabe pada lahan yang telah disiapkan. Jangan lupa untuk menggemburkan tanah lahan dan memberikan pupuk. Berhati-hatilah saat melepaskan benih dari polybag agar akar tidak rusak. Jika Anda tetap menggunakan polybag, gunakanlah polybag dengan diameter minimal 30 cm. Bisa juga menggunakan ember bekas yang sudah dibersihkan. Gunakanlah perbandingan 3:2:1 dengan rincian tanah, pupuk, dan sekam mentah untuk tempat menanam.langsung Selanjutnya benih disebar pada media semai yang sudah dibuat secara merata kemudian ditutup dengan tanah tipis. Agar benih cepat tumbuh perlu dilakukan penyiraman"
         android:textSize="14sp"
         android:textColor="#8388B2"
         android:padding="16dp"
@@ -90,12 +109,12 @@
         android:layout_marginLeft="16dp"
         android:textColor="@color/PrimaryText"
         android:fontFamily="@font/plusjakartasans_bold_700"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sinopsis"
+        app:layout_constraintTop_toBottomOf="@+id/tv_DescLms"
         app:layout_constraintLeft_toLeftOf="parent"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cardArticle2"
+        android:id="@+id/rv_MateriLms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

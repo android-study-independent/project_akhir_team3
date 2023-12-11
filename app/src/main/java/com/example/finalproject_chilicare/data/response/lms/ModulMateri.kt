@@ -15,7 +15,7 @@ data class ModulMateri(
     val status : String?,
     @SerializedName("learning_time")
     val learningTime : String?,
-    @SerializedName("total materi")
+    @SerializedName("total_materi")
     val totalMateri : Int,
     @SerializedName("covers")
     val coverPath : String?,

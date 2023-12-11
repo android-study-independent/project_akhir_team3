@@ -145,7 +145,7 @@
                             android:id="@+id/txtweatherdesc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="5dp"
                             android:paddingLeft="40dp"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
                             tools:text="Hujan ringan"
@@ -397,6 +397,24 @@
                     android:layout_marginBottom="20dp"
                     android:paddingStart="0dp"
                     tools:listitem="@layout/forum_content"></androidx.recyclerview.widget.RecyclerView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="370dp"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="16dp"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_downHomepage"
+                        android:layout_width="370dp"
+                        android:layout_height="66dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/img_fav"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
         </LinearLayout>

@@ -8,11 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
-import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
-import com.example.finalproject_chilicare.data.response.lms.ModulMateri
-import com.example.finalproject_chilicare.dataclass.ListModulArtikel
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception

@@ -1,9 +1,9 @@
 package com.example.finalproject_chilicare.data.api
 
+import com.example.finalproject_chilicare.data.models.AddPostForumRequest
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.AddNewForumResponse
-import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
@@ -55,10 +55,13 @@ interface ApiInterface {
     suspend fun getAllArtikel(): CardAllArtikelResponse
 
     @GET("lms/all_modul")
-    suspend fun getAllLms() : CardAllLmsResponse
+    suspend fun getAllLms() : CardAllModulResponse
+
+    @GET("lms/all_modul")
+    suspend fun getMateriLms() : CardLmsResponse
 
     @GET("lms/modul_status")
-    suspend fun getAllModul(
+    suspend fun getModulLms(
         @Query("status") status : String
     ) : ModulStatusRespn
 
@@ -74,7 +77,6 @@ interface ApiInterface {
         @Part ("captions") Captions: RequestBody,
     ) : Call<CreateForumResponse>
 
-    //abstract fun postPostinganForum(apiKey: MultipartBody.Part, Captions: RequestBody): Call<AddNewForumResponse>
 
 
 }
