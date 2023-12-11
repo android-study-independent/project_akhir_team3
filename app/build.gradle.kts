@@ -108,4 +108,7 @@ dependencies {
     testImplementation ("com.google.dagger:hilt-android-testing:2.49")
     kaptTest ("com.google.dagger:hilt-compiler:2.49")
 
+    //youtube sdk
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
+
 }

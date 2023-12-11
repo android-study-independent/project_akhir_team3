@@ -1,26 +1,21 @@
 package com.example.finalproject_chilicare.data.api
 
-import com.example.finalproject_chilicare.data.models.AddPostForumRequest
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
-import com.example.finalproject_chilicare.data.models.AddNewForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
-import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
+import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Multipart
 import retrofit2.http.POST
-import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface ApiInterface {
@@ -55,10 +50,13 @@ interface ApiInterface {
     suspend fun getAllArtikel(): CardAllArtikelResponse
 
     @GET("lms/all_modul")
-    suspend fun getAllLms() : CardAllLmsResponse
+    suspend fun getAllLms() : CardAllModulResponse
+
+    @GET("lms/all_modul")
+    suspend fun getMateriLms() : CardLmsResponse
 
     @GET("lms/modul_status")
-    suspend fun getAllModul(
+    suspend fun getModulLms(
         @Query("status") status : String
     ) : ModulStatusRespn
 

@@ -44,6 +44,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.math.roundToInt
+import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
@@ -137,21 +138,21 @@ class HomeFragment : Fragment() {
         }
 
 //        // PENERAPAN UNTUK MENGAMBIL DATANYA
-//        if (articleList != null && articleList.isNotEmpty()) {
-//            val randomIndices = List(2) { Random.nextInt(articleList.size) }
-//            val randomArticles = randomIndices.map { articleList[it] }
-//
-//            cardAdapter.updateData(randomArticles)
-//
-//            cardAdapter.onItemClick = { selectedArticle ->
-//                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
-//                intent.putExtra("articles", selectedArticle)
-//                intent.putParcelableArrayListExtra("articleList", articleList)
-//                startActivity(intent)
-//            }
-//        } else {
-//            Log.d("MyTag", "articleList is empty or null")
-//        }
+        if (articleList != null && articleList.isNotEmpty()) {
+            val randomIndices = List(2) { Random.nextInt(articleList.size) }
+            val randomArticles = randomIndices.map { articleList[it] }
+
+            cardAdapter.updateData(randomArticles)
+
+            cardAdapter.onItemClick = { selectedArticle ->
+                val intent = Intent(requireContext(), DetailArticleActivity::class.java)
+                intent.putExtra("articles", selectedArticle)
+                intent.putParcelableArrayListExtra("articleList", articleList)
+                startActivity(intent)
+            }
+        } else {
+            Log.d("MyTag", "articleList is empty or null")
+        }
 
 
         cityname = view.findViewById<TextView>(R.id.txtcity)

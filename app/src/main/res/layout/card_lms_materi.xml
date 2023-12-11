@@ -21,10 +21,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/rounded_lms_card"
+            android:background="@drawable/materilms"
             />
         <CheckBox
-            android:id="@+id/checkb"
+            android:id="@+id/checkblms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/custom_checkbox"

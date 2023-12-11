@@ -427,6 +427,35 @@
         <item>@drawable/lmsartikel1</item>
     </integer-array>
 
+  <integer-array name="datacovermodul">
+      <item>@drawable/materilms</item>
+  </integer-array>
+
+    <string-array name="data_longdesc">
+        <item>apakah anda mengetahui jika benih membutuhkan perawatan yang extraawdawawkdlakwdawd\nwjdajwjdawawdakwkdlawd</item>
+        <item>apakah anda mengetahui jika benih membutuhkan perawatan yang extraawdawawkdlakwdawd\nwjdajwjdawawdakwkdlawd</item>
+        <item>apakah anda mengetahui jika benih membutuhkan perawatan yang extraawdawawkdlakwdawd\nwjdajwjdawawdakwkdlawd</item>
+        <item>apakah anda mengetahui jika benih membutuhkan perawatan yang extraawdawawkdlakwdawd\nwjdajwjdawawdakwkdlawd</item>
+        <item>apakah anda mengetahui jika benih membutuhkan perawatan yang extraawdawawkdlakwdawd\nwjdajwjdawawdakwkdlawd</item>
+    </string-array>
+
+    <string-array name="data_shortdesc" >
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+        <item>Merawat Benih Agar Tetap Sehatawdawdawd awdawda wdasdewad</item>
+    </string-array>
+
+    <string-array name="data_titlemodul">
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+        <item>Merawat Benih Agar Tetap Sehat </item>
+    </string-array>
+
 
 </resources>
 
