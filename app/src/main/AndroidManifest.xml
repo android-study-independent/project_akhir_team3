@@ -27,6 +27,13 @@
         <activity
             android:name=".ui.home.NotificationActivity"
             android:exported="false" />
+
+        <activity android:name=".ui.lms.DetailLMSActivity"
+            android:exported="false"/>
+
+        <activity android:name=".ui.lms.MateriLMSActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".ui.home.aktivitas.AktivitasActivity"
             android:exported="false" />

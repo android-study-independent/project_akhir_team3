@@ -12,7 +12,8 @@ import com.example.finalproject_chilicare.data.models.Hourlyweather
 import com.squareup.picasso.Picasso
 
 
-class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>) : RecyclerView.Adapter<HourlyWeatherAdapter.HourlyWeatherHolder> () {
+class HourlyWeatherAdapter (private val hourlyWeatherList : List<Hourlyweather>) :
+    RecyclerView.Adapter<HourlyWeatherAdapter.HourlyWeatherHolder> () {
 
 
     inner class HourlyWeatherHolder (private val view : View) : RecyclerView.ViewHolder(view){

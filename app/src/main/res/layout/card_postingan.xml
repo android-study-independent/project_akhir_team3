@@ -28,7 +28,7 @@
                 android:src="@drawable/ic_avatar_postingan" />
 
             <TextView
-                android:id="@+id/tvNicknamePostingan"
+                android:id="@+id/tvNicknamePostinganForum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/ivAvatarPostingan"
@@ -40,7 +40,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvDatePostingan"
+                android:id="@+id/tvDatePostinganForum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/ivAvatarPostingan"
@@ -52,7 +52,7 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/ivMore"
+                android:id="@+id/ivMoreForum"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
@@ -65,7 +65,7 @@
 
 
         <TextView
-            android:id="@+id/tvDescPostingan"
+            android:id="@+id/tvDescPostinganForum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -90,7 +90,7 @@
             android:layout_marginRight="20dp"
             app:cardCornerRadius="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescPostingan">
+            app:layout_constraintTop_toBottomOf="@+id/tvDescPostinganForum">
 
             <ImageView
                 android:id="@+id/ivGambarPostingan"
@@ -125,7 +125,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tvLike"
+                    android:id="@+id/tvLikeForum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1.000"
@@ -152,7 +152,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/tvComment"
+                    android:id="@+id/tvCommentForum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4"

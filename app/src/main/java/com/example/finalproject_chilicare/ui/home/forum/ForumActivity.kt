@@ -1,25 +1,26 @@
 package com.example.finalproject_chilicare.ui.home.forum
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.forum.MainForumAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.models.AllForumResponse
-import com.example.finalproject_chilicare.data.response.forum.ForumResponse
+import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
-import kotlinx.coroutines.launch
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,28 +31,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ForumActivity : AppCompatActivity() {
-    lateinit var adapterForum: MainForumAdapter
-    private lateinit var rvPostingan : RecyclerView
-//    private var allItemResponse = mutableListOf<AllForumItem>()
+//    lateinit var adapterForum = MainForumAdapter()
     lateinit var bindingForum : ActivityForumBinding
-    private lateinit var dataList: ArrayList<ForumResponse>
-//    lateinit var avatarList: Array<Int>
-//    lateinit var nicknameList: Array<String>
-//    lateinit var dateList: Array<String>
-//    lateinit var moreList: Array<Int>
-//    lateinit var descList: Array<String>
-//    lateinit var imageList: Array<Int>
-//    lateinit var ivLikeList: Array<Int>
-//    lateinit var tvLikeList: Array<String>
-//    lateinit var ivCommentList: Array<Int>
-//    lateinit var tvCommentList: Array<String>
-//    lateinit var ivShareList: Array<Int>
-//    lateinit var tvShareList: Array<String>
-
-//    companion object {
-//        lateinit var apiInterface : ApiInterface
-//            private set
-//    }
 
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
@@ -65,10 +46,12 @@ class ForumActivity : AppCompatActivity() {
         bindingForum = DataBindingUtil.setContentView(this, R.layout.activity_forum)
         prefHelper = PreferencesHelper.customPrefForum(this@ForumActivity)
 
+//        adapterForum.setOnItemClickCallback(this)
+
+
 
         // GO PAGES NEW POST
-        val ivPlus = findViewById<ImageView>(R.id.ivPlus)
-        ivPlus.setOnClickListener {
+        bindingForum.ivPlus.setOnClickListener {
             Intent(this, NewPostForumActivity::class.java).also {
                 startActivity(it)
             }
@@ -103,6 +86,7 @@ class ForumActivity : AppCompatActivity() {
                     response: Response<AllForumResponse>
                 ) {
                     forumList()
+
                     if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
 
                     }
@@ -133,12 +117,10 @@ class ForumActivity : AppCompatActivity() {
 
                     override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
 
-                    }
 
+                    }
                 })
             }
-
-
         }
 
 
@@ -151,32 +133,78 @@ class ForumActivity : AppCompatActivity() {
 
         fun setAllForum(body: AllForumResponse) {
             Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
+            val rvPostingan = bindingForum.rvPostingan
+            rvPostingan.setHasFixedSize(true)
+            rvPostingan.layoutManager = LinearLayoutManager(this)
 
+            val adapter = MainForumAdapter(this, body.allForumItem)
 
-            bindingForum.apply {
+            // Set the adapter to the RecyclerView
+            rvPostingan.adapter = adapter
+            adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+                override fun onMore(itemForum: AllForumItem, position: Int) {
+                    showCustomAlertDialog(this@ForumActivity)
+                }
 
-
-                adapterForum = MainForumAdapter(body.allForumItem)
-
-                val rvForum = bindingForum.rvPostingan
-
-                rvForum.layoutManager =
-                    LinearLayoutManager(this@ForumActivity, RecyclerView.VERTICAL, false)
-
-                rvForum.setHasFixedSize(true)
-
-
-                rvForum.adapter = adapterForum
-
-
-                adapterForum.notifyDataSetChanged()
-                Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
-
-
-            }
-
-
+            })
         }
+
+    private fun showCustomAlertDialog(context: Context) {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.card_dialog_forum)
+        dialog.setCancelable(true)
+
+        val editPost = dialog.findViewById<TextView>(R.id.textEditPost)
+        val deletePost = dialog.findViewById<TextView>(R.id.textDeletePost)
+        val cancelDialog = dialog.findViewById<ImageView>(R.id.iconCloseDialog)
+
+        editPost.setOnClickListener {
+            val intent = Intent(context, EditPostForumActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        deletePost.setOnClickListener {
+            deletePostingan(it)
+        }
+
+        cancelDialog.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+    }
+
+    fun deletePostingan (body: View) {
+        val idPostingan = "79"
+
+        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        getToken()?.let {
+            retro.deletePostingan(idPostingan, it).enqueue(object : Callback<DeleteForumResponse> {
+                override fun onResponse(
+                    call: Call<DeleteForumResponse>,
+                    response: Response<DeleteForumResponse>
+                ) {
+                    Log.d("Token", "Token -> ${getToken()}")
+
+                    if (response.isSuccessful) {
+
+                        val delResponse = response.body()
+                        Log.d("Delete", "Delete berhasil")
+                    }
+                }
+
+                override fun onFailure(call: Call<DeleteForumResponse>, t: Throwable) {
+
+                    Log.d("Delete", "Failed delete postingan")
+
+                }
+            })
+        }
+
+
+    }
+
 
 
 }

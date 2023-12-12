@@ -4,23 +4,27 @@ import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.AddNewForumResponse
 import com.example.finalproject_chilicare.data.models.CreateForumResponse
+import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
 import com.example.finalproject_chilicare.data.response.lms.CardAllLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {
@@ -55,6 +59,9 @@ interface ApiInterface {
     suspend fun getAllArtikel(): CardAllArtikelResponse
 
     @GET("lms/all_modul")
+    fun getListMateri() : Call<CardLmsResponse>
+
+    @GET("lms/all_modul")
     suspend fun getAllLms() : CardAllLmsResponse
 
     @GET("lms/modul_status")
@@ -74,7 +81,12 @@ interface ApiInterface {
         @Part ("captions") Captions: RequestBody,
     ) : Call<CreateForumResponse>
 
-    //abstract fun postPostinganForum(apiKey: MultipartBody.Part, Captions: RequestBody): Call<AddNewForumResponse>
+    @DELETE("forum/hapus_postingan/{id}")
+    fun deletePostingan(
+        @Path("id") id: String,
+        @Header("x-api-key") apiKey: String
+    ): Call<DeleteForumResponse>
+
 
 
 }

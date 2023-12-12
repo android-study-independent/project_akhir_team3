@@ -27,10 +27,5 @@ data class AllForumItem(
     @SerializedName("name_user")
     val nameUser: String
 )
-//{
-//    data class ImageForum(
-//        @SerializedName("image")
-//        val image: String,
-//    )
-//}
+
 

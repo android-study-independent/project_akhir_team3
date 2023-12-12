@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="#F6F6F6">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:id="@+id/frameDialogForum"
+        android:background="@drawable/border_dialog_forum"
+        android:backgroundTint="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:id="@+id/relativeDialogForum">
+            
+            <ImageView
+                android:id="@+id/iconCloseDialog"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/silang_merah"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="26dp"
+                android:layout_marginRight="30dp"
+                />
+
+
+
+            <ImageView
+                android:id="@+id/iconEditForum"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/editforum"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit post"
+                android:layout_toRightOf="@id/iconEditForum"
+                android:layout_marginTop="52dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:id="@+id/textEditPost"/>
+
+            <ImageView
+                android:id="@+id/iconDeleteForum"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/deleteforum"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/iconEditForum"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete post"
+                android:layout_toRightOf="@id/iconEditForum"
+                android:layout_below="@id/textEditPost"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:id="@+id/textDeletePost"/>
+
+
+            
+            
+        </RelativeLayout>
+
+
+    </FrameLayout>
+
+
+
+
+</RelativeLayout>
