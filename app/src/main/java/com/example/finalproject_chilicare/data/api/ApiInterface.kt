@@ -10,6 +10,7 @@ import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.data.response.RegisterRequest
 import com.example.finalproject_chilicare.data.response.RegisterResponse
+import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 
 import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
@@ -76,6 +77,12 @@ interface ApiInterface {
 
     @GET("forum/semua_postingan")
     fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>
+
+    @GET("forum/postingan/{id}")
+    fun getKomentar(
+        @Header("x-api-key") apiKey: String?,
+        @Path("id") id: String?
+    ) : Call<ForumResponse>
 
     @Multipart
     @POST("forum/buat_postingan")
