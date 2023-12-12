@@ -8,6 +8,7 @@ data class CardAllModulResponse(
     @SerializedName("message")
     val message : String?,
     @SerializedName("data")
+
     val data : List<CardLmsResponse>
 
 
