@@ -187,6 +187,7 @@ class ForumActivity : AppCompatActivity() {
                     call: Call<DeleteForumResponse>,
                     response: Response<DeleteForumResponse>
                 ) {
+
                     Log.d("Token", "Token -> ${getToken()}")
 
                     if (response.isSuccessful) {
