@@ -72,7 +72,3 @@ class MainForumAdapter(val context: Context, private var listForum: List<AllForu
 }
 
 
-
-    private fun buildImageForum(imageForum: List<String>, index: Int): String {
-        return imageForum.getOrNull(index) ?: ""
-    }

@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
+import com.example.finalproject_chilicare.ui.home.forum.EditPostForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.NewPostForumActivity
 import com.example.finalproject_chilicare.ui.lms.MateriLMSActivity
@@ -38,6 +39,9 @@ object PreferencesHelper {
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     fun customAddForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customEditForum (context: EditPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     fun customDetailForum (context: DetailPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
