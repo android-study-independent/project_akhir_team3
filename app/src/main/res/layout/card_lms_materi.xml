@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/iv_GambarMateriLms"
+            android:id="@+id/imgcardmateri"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginLeft="16dp"
@@ -30,13 +30,13 @@
             android:button="@drawable/custom_checkbox"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_GambarMateriLms"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_GambarMateriLms"
+            app:layout_constraintTop_toTopOf="@+id/imgcardmateri"
+            app:layout_constraintBottom_toBottomOf="@+id/imgcardmateri"
 
             />
 
         <TextView
-            android:id="@+id/tv_MateriLms"
+            android:id="@+id/tvtitlecdmateri"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Materi Bibit Cabai 1"
@@ -45,14 +45,14 @@
             android:layout_marginLeft="15dp"
             android:fontFamily="@font/plusjakartasans_bold_700"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/iv_GambarMateriLms"
-            app:layout_constraintTop_toTopOf="@+id/iv_GambarMateriLms"
-            app:layout_constraintBottom_toTopOf="@+id/tv_DecMateri"
+            app:layout_constraintStart_toEndOf="@+id/imgcardmateri"
+            app:layout_constraintTop_toTopOf="@+id/imgcardmateri"
+            app:layout_constraintBottom_toTopOf="@+id/tvshortDesccdmateri"
             app:layout_constraintEnd_toEndOf="parent"
             />
 
         <TextView
-            android:id="@+id/tv_DecMateri"
+            android:id="@+id/tvshortDesccdmateri"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -64,7 +64,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_MateriLms"
+            app:layout_constraintStart_toStartOf="@+id/tvtitlecdmateri"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

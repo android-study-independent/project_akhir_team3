@@ -5,6 +5,8 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class ModulMateri(
+    @SerializedName("id")
+    val id : Int?,
     @SerializedName("judul")
     val judul : String?,
     @SerializedName("desc")
@@ -16,12 +18,13 @@ data class ModulMateri(
     @SerializedName("learning_time")
     val learningTime : String?,
     @SerializedName("total_materi")
-    val totalMateri : Int,
+    val totalMateri : Int?,
     @SerializedName("covers")
     val coverPath : String?,
 
 ) :Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -37,12 +40,13 @@ data class ModulMateri(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(id)
         parcel.writeString(judul)
         parcel.writeString(desc)
         parcel.writeString(tanggal)
         parcel.writeString(status)
         parcel.writeString(learningTime)
-        parcel.writeInt(totalMateri)
+        parcel.writeValue(totalMateri)
         parcel.writeString(coverPath)
 
     }

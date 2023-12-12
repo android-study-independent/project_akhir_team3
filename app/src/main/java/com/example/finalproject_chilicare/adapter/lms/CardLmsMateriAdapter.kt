@@ -31,10 +31,10 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
     }
 
     override fun onBindViewHolder(holder: CardMateriHolder, position: Int) {
-//        holder.bindItemView(listMateriLms[position])
-        val result = listMateriLms[position]
-        holder.titlemateri.text = result.judulMateri
-        holder.descmateri.text = result.shortDesc
+        holder.bindItemView(listMateriLms[position])
+//        val result = listMateriLms[position]
+//        holder.titlemateri.text = result.judulMateri
+//        holder.descmateri.text = result.shortDesc
 
         holder.itemView.setOnClickListener {
             cardClick?.invoke(listMateriLms[position])
@@ -44,8 +44,8 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
 
     inner class CardMateriHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
-        val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
-        val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
+//        val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
+//        val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
         init {
             view.setOnClickListener {
                 cardClick?.invoke(listMateriLms[adapterPosition])
@@ -54,10 +54,8 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
         }
 
         fun bindItemView(cardmateri:ListMateriLMS ) {
-            val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
-            val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
-//            val covermateri = itemView.findViewById<ImageView>(R.id.iv_GambarMateriLms)
-//            val checkbox = itemView.findViewById<CheckBox>(R.id.checkblms)
+            val titlemateri = view.findViewById<TextView>(R.id.tvtitlecdmateri)
+            val descmateri = view.findViewById<TextView>(R.id.tvshortDesccdmateri)
 
             titlemateri.text= cardmateri.judulMateri
             descmateri.text = cardmateri.shortDesc

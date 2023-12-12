@@ -13,6 +13,7 @@ import com.example.finalproject_chilicare.data.response.RegisterResponse
 
 import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
+import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -67,6 +68,11 @@ interface ApiInterface {
     suspend fun getModulLms(
         @Query("status") status : String
     ) : ModulStatusRespn
+
+    @GET("lms/modul")
+    suspend fun getmodulById(
+        @Query("id") id : Int
+    ) : DataModulResponse
 
     @GET("forum/semua_postingan")
     fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>

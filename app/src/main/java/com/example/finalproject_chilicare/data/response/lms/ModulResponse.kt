@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-data class CardLmsResponse(
+data class ModulResponse(
     @SerializedName("id")
     val id : Int,
     @SerializedName("judul")
@@ -23,9 +23,8 @@ data class CardLmsResponse(
     val covers : String?,
     @SerializedName("listing_materi")
     val listMateri : List<ListMateriLMS>?
-
-): Parcelable  {
-    constructor(parcel : Parcel) : this (
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
@@ -54,12 +53,12 @@ data class CardLmsResponse(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<CardLmsResponse> {
-        override fun createFromParcel(parcel: Parcel): CardLmsResponse {
-            return CardLmsResponse(parcel)
+    companion object CREATOR : Parcelable.Creator<ModulResponse> {
+        override fun createFromParcel(parcel: Parcel): ModulResponse {
+            return ModulResponse(parcel)
         }
 
-        override fun newArray(size: Int): Array<CardLmsResponse?> {
+        override fun newArray(size: Int): Array<ModulResponse?> {
             return arrayOfNulls(size)
         }
     }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +14,11 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.lms.CardLmsMateriAdapter
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
+import com.example.finalproject_chilicare.databinding.ActivityMateriLmsactivityBinding
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -25,10 +28,10 @@ import kotlin.math.sign
 import kotlin.random.Random
 
 class MateriLMSActivity : AppCompatActivity() {
+    lateinit var binding : ActivityMateriLmsactivityBinding
     lateinit var ivBack: ImageView
     lateinit var ivMore: ImageView
     private val listModul = ArrayList<CardLmsResponse>()
-//    private val listmodullms = ArrayList<DataModulResponse>()
     lateinit var cdmateriadapter: CardLmsMateriAdapter
     lateinit var rvMateriLms: RecyclerView
     private var materilistlms = mutableListOf<ListMateriLMS>()
@@ -43,6 +46,7 @@ class MateriLMSActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_materi_lmsactivity)
+//        binding = DataBindingUtil.setContentView(this,R.layout.activity_materi_lmsactivity)
 
         //inisasi layout xml
         ivBack = findViewById(R.id.btnBackMateriLms)
@@ -124,6 +128,17 @@ class MateriLMSActivity : AppCompatActivity() {
         }
 
     }
+
+//    fun setDataMateriItem(body : CardAllModulResponse) {
+//        binding.apply {
+//            cdmateriadapter = CardLmsMateriAdapter(body.data)
+//            val rvMateriItem = binding.rvCardLmsmateri
+//            rvMateriItem.layoutManager = LinearLayoutManager(this@MateriLMSActivity,RecyclerView.VERTICAL,false)
+//            rvMateriItem.setHasFixedSize(true)
+//            rvMateriItem.adapter = cdmateriadapter
+//            cdmateriadapter.notifyDataSetChanged()
+//        }
+//    }
 
     fun setDataModul(body: CardLmsResponse?) {
         body?.let {
