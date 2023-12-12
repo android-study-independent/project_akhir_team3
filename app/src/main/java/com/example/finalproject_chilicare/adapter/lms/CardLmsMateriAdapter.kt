@@ -53,6 +53,7 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
             }
         }
 
+
         fun bindItemView(cardmateri:ListMateriLMS ) {
             val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
             val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
