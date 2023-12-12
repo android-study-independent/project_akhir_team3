@@ -180,6 +180,7 @@ class ForumActivity : AppCompatActivity() {
         val idPostingan = "79"
 
         val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+
         getToken()?.let {
             retro.deletePostingan(idPostingan, it).enqueue(object : Callback<DeleteForumResponse> {
                 override fun onResponse(
