@@ -71,6 +71,7 @@ class MateriLMSActivity : AppCompatActivity() {
         rvMateriLms.adapter = cdmateriadapter
         rvMateriLms.setHasFixedSize(true)
 
+
         //get API Lifecycle scope
         lifecycleScope.launch {
             val result = Network().getRetroClientInstance()
