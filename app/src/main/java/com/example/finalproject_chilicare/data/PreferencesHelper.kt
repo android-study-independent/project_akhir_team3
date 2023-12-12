@@ -7,6 +7,7 @@ import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.NewPostForumActivity
+import com.example.finalproject_chilicare.ui.lms.MateriLMSActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.example.finalproject_chilicare.ui.onboarding.OnboardingActivity
 
@@ -43,6 +44,9 @@ object PreferencesHelper {
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     fun customDeleteForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
+    fun customListMateri (context: MateriLMSActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
     private inline fun SharedPreferences.edit(operation: (SharedPreferences.Editor) -> Unit) {

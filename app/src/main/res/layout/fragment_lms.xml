@@ -135,6 +135,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/rv_tabArticle"
                 />
             <androidx.recyclerview.widget.RecyclerView
+                tools:listitem="@layout/card_lms_module"
                 android:id="@+id/rv_cardLmsModul"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
