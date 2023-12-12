@@ -94,22 +94,22 @@ class DetailPostForumActivity : AppCompatActivity() {
 
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
-        getToken()?.let { apiKey ->
-            apiInterface.getKomentar(apiKey, postinganId).enqueue(object : Callback<ForumResponse> {
-                override fun onResponse(call: Call<ForumResponse>, response: Response<ForumResponse>) {
-                    if (response.isSuccessful) {
-                        val forumResponse = response.body()
-                        forumResponse?.let { setAllForum(it) }
-                    } else {
-                        Log.e("Error", "Response not successful: ${response.message()}")
-                    }
-                }
-
-                override fun onFailure(call: Call<ForumResponse>, t: Throwable) {
-                    Log.e("Error", "Retrofit call failed", t)
-                }
-            })
-        }
+//        getToken()?.let { apiKey ->
+//            apiInterface.getKomentar(apiKey, postinganId).enqueue(object : Callback<ForumResponse> {
+//                override fun onResponse(call: Call<ForumResponse>, response: Response<ForumResponse>) {
+//                    if (response.isSuccessful) {
+//                        val forumResponse = response.body()
+//                        forumResponse?.let { setAllForum(it) }
+//                    } else {
+//                        Log.e("Error", "Response not successful: ${response.message()}")
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ForumResponse>, t: Throwable) {
+//                    Log.e("Error", "Retrofit call failed", t)
+//                }
+//            })
+//        }
     }
 
     private fun getToken(): String? {

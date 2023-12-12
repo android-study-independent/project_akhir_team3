@@ -10,10 +10,10 @@ data class DataItemLMS(
     @SerializedName("learning_time")
     val learningTime: String,
 
-    @SerializedName("listing_materi")
-    val listingMateri: List<ListingMateri>,
-    val status: String,
-    val tanggal: String,
+//    @SerializedName("listing_materi")
+//    val listingMateri: List<ListingMateri>,
+//    val status: String,
+//    val tanggal: String,
 
     @SerializedName("total_materi")
     val totalMateri: Int
