@@ -43,14 +43,9 @@ class ForumActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_forum)
 
         bindingForum = DataBindingUtil.setContentView(this, R.layout.activity_forum)
         prefHelper = PreferencesHelper.customPrefForum(this@ForumActivity)
-
-//        adapterForum.setOnItemClickCallback(this)
-
-
 
         // GO PAGES NEW POST
         bindingForum.ivPlus.setOnClickListener {
@@ -58,7 +53,6 @@ class ForumActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
-
 
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor { chain ->
@@ -177,7 +171,7 @@ class ForumActivity : AppCompatActivity() {
     }
 
     fun deletePostingan (body: View) {
-        val idPostingan = "79"
+        val idPostingan = "83"
 
         val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
 
