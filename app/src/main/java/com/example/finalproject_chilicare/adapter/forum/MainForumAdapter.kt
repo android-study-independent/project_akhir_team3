@@ -18,21 +18,42 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.databinding.CardPostinganBinding
+import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.EditPostForumActivity
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
+import java.io.Serializable
 
 class MainForumAdapter(val context: Context, private var listForum: List<AllForumItem>) :
-    RecyclerView.Adapter<MainForumAdapter.ViewHolder>() {
+    RecyclerView.Adapter<MainForumAdapter.ForumViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameUser = view.findViewById<TextView>(R.id.tvNicknamePostinganForum)
-        val dateUploadForum =view.findViewById<TextView>(R.id.tvDatePostinganForum)
-        val descriptionForum = view.findViewById<TextView>(R.id.tvDescPostinganForum)
-        val imageForum = view.findViewById<ImageView>(R.id.ivGambarPostingan)
-        val jumlahLikeForum = view.findViewById<TextView>(R.id.tvLikeForum)
-        val jumlahCommentForum = view.findViewById<TextView>(R.id.tvCommentForum)
-        val iconMode = view.findViewById<ImageView>(R.id.ivMoreForum)
+    inner class ForumViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        init {
+            itemView.setOnClickListener {
+                // Mendapatkan posisi item yang diklik
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    // Mendapatkan data forum sesuai posisi yang diklik
+                    val clickedForum = listForum[position]
+
+                    // Mengirim data forum ke halaman DetailPostForumActivity
+                    val intent = Intent(itemView.context, DetailPostForumActivity::class.java)
+                    intent.putExtra("forum_data", clickedForum as Serializable)
+                    itemView.context.startActivity(intent)
+                }
+            }
+        }
+
+
+
+        val nameUser = itemView.findViewById<TextView>(R.id.tvNicknamePostinganForum)
+        val dateUploadForum =itemView.findViewById<TextView>(R.id.tvDatePostinganForum)
+        val descriptionForum = itemView.findViewById<TextView>(R.id.tvDescPostinganForum)
+        val imageForum = itemView.findViewById<ImageView>(R.id.ivGambarPostingan)
+        val jumlahLikeForum = itemView.findViewById<TextView>(R.id.tvLikeForum)
+        val jumlahCommentForum = itemView.findViewById<TextView>(R.id.tvCommentForum)
+        val iconMode = itemView.findViewById<ImageView>(R.id.ivMoreForum)
     }
 
     private lateinit var onItemClickCallback: itemClicker
@@ -45,13 +66,13 @@ class MainForumAdapter(val context: Context, private var listForum: List<AllForu
         fun onMore (itemForum: AllForumItem, position: Int)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForumViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.card_postingan, parent, false)
-        return ViewHolder(view)
+        return ForumViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ForumViewHolder, position: Int) {
         val listDataItem = listForum[position]
 
         holder.nameUser.text = listDataItem.nameUser

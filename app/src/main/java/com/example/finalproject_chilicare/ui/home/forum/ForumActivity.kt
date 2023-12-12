@@ -33,12 +33,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ForumActivity : AppCompatActivity() {
-//    lateinit var adapterForum = MainForumAdapter()
-    lateinit var bindingForum : ActivityForumBinding
 
+    lateinit var adapterForum: MainForumAdapter
+    lateinit var bindingForum: ActivityForumBinding
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +75,7 @@ class ForumActivity : AppCompatActivity() {
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
         getToken()?.let {
-            apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse>{
+            apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
                 override fun onResponse(
                     call: Call<AllForumResponse>,
                     response: Response<AllForumResponse>
@@ -96,53 +95,53 @@ class ForumActivity : AppCompatActivity() {
 
     }
 
-        fun forumList() {
+    fun forumList() {
 
-            val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
-            getToken()?.let {
-                retro.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
-                    override fun onResponse(
-                        call: Call<AllForumResponse>,
-                        response: Response<AllForumResponse>
-                    ) {
-                        response.body()?.let {
-                            setAllForum(it)
-                        }
+        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        getToken()?.let {
+            retro.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
+                override fun onResponse(
+                    call: Call<AllForumResponse>,
+                    response: Response<AllForumResponse>
+                ) {
+                    response.body()?.let {
+                        setAllForum(it)
                     }
-
-                    override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
-
-
-                    }
-                })
-            }
-        }
-
-
-        fun getToken(): String? {
-
-            val prefHelper = PreferencesHelper.customPrefForum(this)
-            return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
-        }
-
-
-        fun setAllForum(body: AllForumResponse) {
-            Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
-            val rvPostingan = bindingForum.rvPostingan
-            rvPostingan.setHasFixedSize(true)
-            rvPostingan.layoutManager = LinearLayoutManager(this)
-
-            val adapter = MainForumAdapter(this, body.allForumItem)
-
-            // Set the adapter to the RecyclerView
-            rvPostingan.adapter = adapter
-            adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
-                override fun onMore(itemForum: AllForumItem, position: Int) {
-                    showCustomAlertDialog(this@ForumActivity)
                 }
 
+                override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+
+
+                }
             })
         }
+    }
+
+
+    fun getToken(): String? {
+
+        val prefHelper = PreferencesHelper.customPrefForum(this)
+        return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
+    }
+
+
+    fun setAllForum(body: AllForumResponse) {
+        Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
+        val rvPostingan = bindingForum.rvPostingan
+        rvPostingan.setHasFixedSize(true)
+        rvPostingan.layoutManager = LinearLayoutManager(this)
+
+        val adapter = MainForumAdapter(this, body.allForumItem)
+
+        // Set the adapter to the RecyclerView
+        rvPostingan.adapter = adapter
+        adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+            override fun onMore(itemForum: AllForumItem, position: Int) {
+                showCustomAlertDialog(this@ForumActivity)
+            }
+
+        })
+    }
 
     private fun showCustomAlertDialog(context: Context) {
         val dialog = Dialog(context)
@@ -170,7 +169,7 @@ class ForumActivity : AppCompatActivity() {
 
     }
 
-    fun deletePostingan (body: View) {
+    fun deletePostingan(body: View) {
         val idPostingan = "83"
 
         val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
@@ -201,7 +200,6 @@ class ForumActivity : AppCompatActivity() {
 
 
     }
-
 
 
 }
