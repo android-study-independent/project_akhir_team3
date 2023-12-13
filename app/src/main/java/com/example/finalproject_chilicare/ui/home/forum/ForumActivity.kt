@@ -91,10 +91,8 @@ class ForumActivity : AppCompatActivity() {
     fun setAllForum(body: AllForumResponse) {
         Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
         val rvPostingan = bindingForum.rvPostingan
-
         rvPostingan.setHasFixedSize(true)
         rvPostingan.layoutManager = LinearLayoutManager(this)
-
         val adapter = MainForumAdapter(this, body.allForumItem)
 
             // Set the adapter to the RecyclerView
