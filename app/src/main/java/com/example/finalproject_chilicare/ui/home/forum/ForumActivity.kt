@@ -4,12 +4,14 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,20 +24,19 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.DeleteForumResponse
+import com.example.finalproject_chilicare.data.models.EditForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
-import okhttp3.OkHttpClient
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 //import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ForumActivity : AppCompatActivity() {
-
-    lateinit var adapterForum: MainForumAdapter
-    lateinit var bindingForum: ActivityForumBinding
+//    lateinit var adapterForum = MainForumAdapter()
+    lateinit var bindingForum : ActivityForumBinding
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
 
@@ -53,45 +54,7 @@ class ForumActivity : AppCompatActivity() {
             }
         }
 
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val token = getToken()
-                Log.d("Token", "dapat token dari login -> $token")
-                val request = chain.request()
-                    .newBuilder()
-                    .addHeader("x-api-key", "$token")
-                    .build()
-                chain.proceed(request)
-
-            }
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val apiInterface = retrofit.create(ApiInterface::class.java)
-
-        getToken()?.let {
-            apiInterface.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
-                override fun onResponse(
-                    call: Call<AllForumResponse>,
-                    response: Response<AllForumResponse>
-                ) {
-                    forumList()
-                    if (prefHelper.getBoolean(PreferencesHelper.KEY_IS_LOGIN, false)) {
-
-                    }
-                }
-
-                override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
-                    Log.e("Error", "Retrofit call failed", t)
-                }
-
-            })
-        }
+        forumList()
 
     }
 
@@ -130,20 +93,19 @@ class ForumActivity : AppCompatActivity() {
         val rvPostingan = bindingForum.rvPostingan
         rvPostingan.setHasFixedSize(true)
         rvPostingan.layoutManager = LinearLayoutManager(this)
-
         val adapter = MainForumAdapter(this, body.allForumItem)
 
-        // Set the adapter to the RecyclerView
-        rvPostingan.adapter = adapter
-        adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
-            override fun onMore(itemForum: AllForumItem, position: Int) {
-                showCustomAlertDialog(this@ForumActivity)
-            }
+            // Set the adapter to the RecyclerView
+            rvPostingan.adapter = adapter
+            adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+                override fun onMore(itemForum: AllForumItem, position: Int) {
+                    showCustomAlertDialog(this@ForumActivity, itemForum)
+                }
 
         })
     }
 
-    private fun showCustomAlertDialog(context: Context) {
+    private fun showCustomAlertDialog(context: Context, data : AllForumItem) {
         val dialog = Dialog(context)
         dialog.setContentView(R.layout.card_dialog_forum)
         dialog.setCancelable(true)
@@ -153,12 +115,13 @@ class ForumActivity : AppCompatActivity() {
         val cancelDialog = dialog.findViewById<ImageView>(R.id.iconCloseDialog)
 
         editPost.setOnClickListener {
-            val intent = Intent(context, EditPostForumActivity::class.java)
-            context.startActivity(intent)
+            Intent(this, EditPostForumActivity::class.java).also {
+                startActivity(it)
+            }
         }
 
         deletePost.setOnClickListener {
-            deletePostingan(it)
+            deletePostingan(it, data.forumId.toString())
         }
 
         cancelDialog.setOnClickListener {
@@ -169,8 +132,8 @@ class ForumActivity : AppCompatActivity() {
 
     }
 
-    fun deletePostingan(body: View) {
-        val idPostingan = "83"
+    fun deletePostingan (body: View, data: String) {
+        val idPostingan = data
 
         val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
 
@@ -187,6 +150,9 @@ class ForumActivity : AppCompatActivity() {
 
                         val delResponse = response.body()
                         Log.d("Delete", "Delete berhasil")
+                        Toast.makeText(this@ForumActivity, "User berhasil menghapus postingan", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@ForumActivity, "User tidak memiliki akses delete postingan ini", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -197,9 +163,6 @@ class ForumActivity : AppCompatActivity() {
                 }
             })
         }
-
-
     }
-
 
 }
