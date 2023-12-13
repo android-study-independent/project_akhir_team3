@@ -91,6 +91,7 @@ class ForumActivity : AppCompatActivity() {
     fun setAllForum(body: AllForumResponse) {
         Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
         val rvPostingan = bindingForum.rvPostingan
+
         rvPostingan.setHasFixedSize(true)
         rvPostingan.layoutManager = LinearLayoutManager(this)
 
