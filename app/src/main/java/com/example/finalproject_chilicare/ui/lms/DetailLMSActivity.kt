@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.lms.CardLmsMateriAdapter
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import kotlin.random.Random
 
 class DetailLMSActivity : AppCompatActivity() {
