@@ -1,21 +1,25 @@
 package com.example.finalproject_chilicare.ui.lms
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.lms.CardLmsMateriAdapter
+import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
+import com.example.finalproject_chilicare.databinding.ActivityMateriLmsactivityBinding
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -25,10 +29,12 @@ import kotlin.math.sign
 import kotlin.random.Random
 
 class MateriLMSActivity : AppCompatActivity() {
+    lateinit var bindingMateri: ActivityMateriLmsactivityBinding
+    lateinit var prefHelper: SharedPreferences
+
     lateinit var ivBack: ImageView
     lateinit var ivMore: ImageView
-    private val listModul = ArrayList<CardLmsResponse>()
-//    private val listmodullms = ArrayList<DataModulResponse>()
+    private val listModul = ArrayList<ListMateriLMS>()
     lateinit var cdmateriadapter: CardLmsMateriAdapter
     lateinit var rvMateriLms: RecyclerView
     private var materilistlms = mutableListOf<ListMateriLMS>()
@@ -43,6 +49,9 @@ class MateriLMSActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_materi_lmsactivity)
+
+        bindingMateri = DataBindingUtil.setContentView(this, R.layout.activity_materi_lmsactivity)
+        prefHelper = PreferencesHelper.customMateriLms(this@MateriLMSActivity)
 
         //inisasi layout xml
         ivBack = findViewById(R.id.btnBackMateriLms)
@@ -77,6 +86,7 @@ class MateriLMSActivity : AppCompatActivity() {
             val result = Network().getRetroClientInstance()
                 .create(ApiInterface::class.java).getMateriLms()
             result.listMateri?.let { materiList ->
+                Log.d("LMS", "Tampilkan data ${materiList} ")
                 materilistlms.addAll(materiList.reversed())
                 cdmateriadapter.notifyDataSetChanged()
                 rvMateriLms.adapter = cdmateriadapter

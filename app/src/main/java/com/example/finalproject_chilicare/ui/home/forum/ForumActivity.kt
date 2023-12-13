@@ -60,9 +60,8 @@ class ForumActivity : AppCompatActivity() {
 
     fun forumList() {
 
-        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
-        getToken()?.let {
-            retro.getAllForum(it).enqueue(object : Callback<AllForumResponse> {
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
+            retro.getAllForum().enqueue(object : Callback<AllForumResponse> {
                 override fun onResponse(
                     call: Call<AllForumResponse>,
                     response: Response<AllForumResponse>
@@ -77,11 +76,10 @@ class ForumActivity : AppCompatActivity() {
 
                 }
             })
-        }
     }
 
 
-    fun getToken(): String? {
+    fun getToken(): String {
 
         val prefHelper = PreferencesHelper.customPrefForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
@@ -135,10 +133,10 @@ class ForumActivity : AppCompatActivity() {
     fun deletePostingan (body: View, data: String) {
         val idPostingan = data
 
-        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
 
         getToken()?.let {
-            retro.deletePostingan(idPostingan, it).enqueue(object : Callback<DeleteForumResponse> {
+            retro.deletePostingan(idPostingan).enqueue(object : Callback<DeleteForumResponse> {
                 override fun onResponse(
                     call: Call<DeleteForumResponse>,
                     response: Response<DeleteForumResponse>

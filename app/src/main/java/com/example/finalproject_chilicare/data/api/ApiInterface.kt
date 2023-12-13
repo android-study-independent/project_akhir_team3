@@ -76,18 +76,16 @@ interface ApiInterface {
 
 
     @GET("forum/semua_postingan")
-    fun getAllForum(@Header("x-api-key") apiKey : String) : Call<AllForumResponse>
+    fun getAllForum() : Call<AllForumResponse>
 
     @GET("forum/postingan/{id}")
     fun getKomentar(
-        @Header("x-api-key") apiKey: String?,
         @Path("id") id: String?
     ) : Call<ForumResponse>
 
     @Multipart
     @POST("forum/buat_postingan")
     fun postPostinganForum(
-        @Header("x-api-key") apiKey: String,
         @Part images: MultipartBody.Part,
         @Part ("captions") Captions: RequestBody,
     ) : Call<CreateForumResponse>
@@ -95,14 +93,12 @@ interface ApiInterface {
     @DELETE("forum/hapus_postingan/{id}")
     fun deletePostingan(
         @Path("id") id: String,
-        @Header("x-api-key") apiKey: String
     ): Call<DeleteForumResponse>
 
     @Multipart
     @PUT("forum/edit_captions/{id}")
     fun updateCaptions(
         @Path("id") id: String,
-        @Header("x-api-key") apiKey: String,
         @Part("captions") captions: RequestBody
     ): Call<EditForumResponse>
 }

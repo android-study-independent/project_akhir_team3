@@ -61,7 +61,7 @@ class EditPostForumActivity : AppCompatActivity() {
 
     }
 
-    fun getToken(): String? {
+    fun getToken(): String {
 
         val prefHelper = PreferencesHelper.customEditForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
@@ -71,14 +71,14 @@ class EditPostForumActivity : AppCompatActivity() {
 
         val idPostingan = data
 
-        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
         val editCaptions = bindingEditForum.etTextInputEditPostingan.text.toString()
 
         val captionsRequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), editCaptions)
 
 
         getToken()?.let {
-            retro.updateCaptions(idPostingan, it, captionsRequestBody).enqueue(object : Callback<EditForumResponse> {
+            retro.updateCaptions(idPostingan, captionsRequestBody).enqueue(object : Callback<EditForumResponse> {
                 override fun onResponse(
                     call: Call<EditForumResponse>,
                     response: Response<EditForumResponse>

@@ -47,6 +47,9 @@ object PreferencesHelper {
     fun customDetailForum (context: DetailPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
+    fun customMateriLms (context: MateriLMSActivity, name: String = PREF_NAME) : SharedPreferences =
+        context.getSharedPreferences(name, Context.MODE_PRIVATE)
+
     fun customDeleteForum (context: NewPostForumActivity, name: String = PREF_NAME) : SharedPreferences =
         context.getSharedPreferences(name, Context.MODE_PRIVATE)
 
