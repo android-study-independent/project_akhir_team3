@@ -2,6 +2,7 @@ package com.example.finalproject_chilicare.ui.home.forum
 
 import android.app.Activity
 import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -11,12 +12,14 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -24,6 +27,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityNewPostForumBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -36,8 +40,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 
 class NewPostForumActivity : AppCompatActivity() {
+
+
 
     private val baseUrl = "http://195.35.32.179:8003/"
     lateinit var prefHelper: SharedPreferences
@@ -50,7 +58,7 @@ class NewPostForumActivity : AppCompatActivity() {
     lateinit var checkImageUpload4 : ImageView
     lateinit var inputPostingan : EditText
     lateinit var btnUploadPostingan : Button
-    private var path: String = ""
+    private var imagePathUri: Uri? = null
     private val selectedImageUris = mutableListOf<Uri>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,9 +90,8 @@ class NewPostForumActivity : AppCompatActivity() {
         checkPermissions()
 
         btnUploadPostingan.setOnClickListener {
-            addCustomer(inputPostingan.text.toString())
+            addPostForum(inputPostingan.text.toString())
         }
-
 
         clickListeners()
     }
@@ -121,7 +128,7 @@ class NewPostForumActivity : AppCompatActivity() {
         }
 
         bindingPostForum.btPostingForumUpload.setOnClickListener {
-            addCustomer(
+            addPostForum(
                 bindingPostForum.etTextInputUpload.text.toString()
             )
         }
@@ -129,28 +136,6 @@ class NewPostForumActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 10 && resultCode == Activity.RESULT_OK) {
-            data?.data?.let { uri ->
-                val realPath: String? = getRealPathFromUri(uri)
-                if (!realPath.isNullOrBlank()) {
-                    path = realPath
-                    // Display the selected image using Glide or other image loading library
-                    loadImageFromPath(path)
-                } else {
-                    Toast.makeText(
-                        this@NewPostForumActivity,
-                        "Failed to get real path",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            } ?: run {
-                Toast.makeText(
-                    this@NewPostForumActivity,
-                    "Data or Uri is null",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
     }
 
     private fun loadImageFromPath(path: String) {
@@ -168,106 +153,47 @@ class NewPostForumActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRealPathFromUri(uri: Uri): String? {
-        // Log the URI information
-        Log.d("URI_INFO", "URI: $uri, Scheme: ${uri.scheme}")
-
-        var realPath: String? = null
-        try {
-            // Handle different URI schemes
-            when {
-                ContentResolver.SCHEME_CONTENT == uri.scheme -> {
-                    val cursor: Cursor? = contentResolver.query(uri, null, null, null, null)
-                    cursor?.use {
-                        if (it.moveToFirst()) {
-                            val documentId = it.getString(it.getColumnIndexOrThrow(MediaStore.Images.Media.DOCUMENT_ID))
-                            realPath = "content://media/external/images/media/$documentId"
-                            Log.d("REAL_PATH", "Real path from content: $realPath")
-                        }
-                    }
-                }
-                ContentResolver.SCHEME_FILE == uri.scheme -> {
-                    realPath = uri.path
-                    Log.d("REAL_PATH", "Real path from file: $realPath")
-                }
-                else -> {
-                    Log.e("REAL_PATH", "Unsupported scheme: ${uri.scheme}")
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Log.e("REAL_PATH", "Error getting real path: ${e.message}")
-        }
-        return realPath
-    }
 
 
 
-
-
-    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+    private val getContent = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
         uri?.let {
-            val realPath: String? = getRealPathFromUri(it)
-            if (!realPath.isNullOrBlank()) {
-                path = realPath
-                val bitmap: Bitmap? = BitmapFactory.decodeFile(path)
-                if (bitmap != null) {
-                    bindingPostForum.checkImageUpload1.setImageBitmap(bitmap)
-                } else {
-                    Toast.makeText(this@NewPostForumActivity, "Failed to decode bitmap", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this@NewPostForumActivity, "Failed to get real path", Toast.LENGTH_SHORT).show()
-            }
+            Log.d("get_image", ":uri = ${it}")
+            imagePathUri = it
+            uploadImage.setImageURI(imagePathUri)
+
         }
     }
 
     private fun selectImage() {
-        getContent.launch("image/*")
+        getContent.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }
 
 
-    fun getToken(): String? {
+    fun getToken(): String {
 
         val prefHelper = PreferencesHelper.customAddForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
     }
 
-    private fun addCustomer(name: String) {
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val token = getToken()
-                Log.d("Token", "dapat token dari login -> $token")
-                val request = chain.request()
-                    .newBuilder()
-                    .addHeader("x-api-key", "$token")
-                    .build()
-                chain.proceed(request)
-            }
-            .build()
+    private fun addPostForum(txtcaptions: String) {
+
+        val apiInterface = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
 
 
-        val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val apiInterface = retrofit.create(ApiInterface::class.java)
-
-
-        val file = File(path!!)
+        val file = uriToFile(imageUri = imagePathUri!!,this)
         val requestFile: RequestBody =
             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
 
-        val body: MultipartBody.Part =
-            MultipartBody.Part.createFormData("image", file.name, requestFile)
+        val image: MultipartBody.Part =
+            MultipartBody.Part.createFormData("images", file.name, requestFile)
 
-        val cusName: RequestBody =
-            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), name)
+        val captions: RequestBody =
+            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), txtcaptions)
 
         getToken()?.let { token ->
-            val call = apiInterface.postPostinganForum(token, body, cusName)
+            val call = apiInterface.postPostinganForum( image, captions)
             call.enqueue(object : Callback<CreateForumResponse?> {
                 override fun onResponse(
                     call: Call<CreateForumResponse?>,
@@ -275,7 +201,7 @@ class NewPostForumActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         if (response.body()?.toString() == "200") {
-                            Toast.makeText(applicationContext, "Customer Added", Toast.LENGTH_SHORT)
+                            Toast.makeText(applicationContext, "Post Berhaasil", Toast.LENGTH_SHORT)
                                 .show()
                         } else {
                             Toast.makeText(applicationContext, "Not Added", Toast.LENGTH_SHORT)
@@ -289,6 +215,23 @@ class NewPostForumActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun uriToFile(imageUri: Uri, context: Context): File {
+        val myFile = createCustomTempFile(context)
+        val inputStream = context.contentResolver.openInputStream(imageUri) as InputStream
+        val outputStream = FileOutputStream(myFile)
+        val buffer = ByteArray(1024)
+        var length: Int
+        while (inputStream.read(buffer).also { length = it } > 0) outputStream.write(buffer, 0, length)
+        outputStream.close()
+        inputStream.close()
+        return myFile
+    }
+
+    private fun createCustomTempFile(context: Context): File {
+        val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile("profil_user", ".jpg", storageDir)
     }
 
 }

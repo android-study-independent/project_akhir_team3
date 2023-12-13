@@ -15,6 +15,7 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.forum.KomentarAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
+import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityDetailPostForumBinding
@@ -75,27 +76,9 @@ class DetailPostForumActivity : AppCompatActivity() {
     }
 
     private fun fetchKomentar(postinganId: String) {
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor { bowleh ->
-                val token = getToken()
-                Log.d("Token", "dapat token dari login -> $token")
-                val request = bowleh.request()
-                    .newBuilder()
-                    .addHeader("id-key", "$token")
-                    .build()
-                bowleh.proceed(request)
-            }.build()
-
-        val retrofit = Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val apiInterface = retrofit.create(ApiInterface::class.java)
-
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
         getToken()?.let { apiKey ->
-            apiInterface.getKomentar(apiKey, postinganId).enqueue(object : Callback<ForumResponse> {
+            retro.getKomentar( postinganId).enqueue(object : Callback<ForumResponse> {
                 override fun onResponse(call: Call<ForumResponse>, response: Response<ForumResponse>) {
                     if (response.isSuccessful) {
                         val forumResponse = response.body()
@@ -113,7 +96,7 @@ class DetailPostForumActivity : AppCompatActivity() {
 
     }
 
-    private fun getToken(): String? {
+    private fun getToken(): String {
         val prefHelper = PreferencesHelper.customDetailForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
     }

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
+import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
 import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
 
