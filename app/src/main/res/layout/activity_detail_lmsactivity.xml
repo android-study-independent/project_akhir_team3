@@ -33,73 +33,99 @@
         app:layout_constraintTop_toTopOf="@+id/iv_Kembali"
         app:layout_constraintRight_toRightOf="parent"
         />
-    <LinearLayout
-        android:id="@+id/ll_video"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:orientation="vertical"
-        android:paddingLeft="2dp"
-        android:paddingRight="2dp"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_Kembali"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
 
-        <VideoView
-            android:id="@+id/VideoView"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_Decs_Materi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/plusjakartasans_bold_700"
-        android:text="Deskripsi"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_video"
-        />
-
-    <TextView
-        android:id="@+id/tv_sinopsis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cabai merah (Capsicum annuum) termasuk famili Solanaceae dan merupakan salah satu komoditas sayuran yang memiliki banyak manfaat, bernilai ekonomi tinggi dan mempunyai prospek pasar yang menarik. Buah cabai selain dapat dikonsumsi segar untuk campuran bumbu masak juga dapat diawetkan misalnya dalam bentuk acar, saus, tepung cabai dan buah kering."
-        android:textSize="14sp"
-        android:textColor="#8388B2"
-        android:padding="16dp"
-        android:fontFamily="@font/plusjakartasans_reguler_400"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Decs_Materi"
-        />
-    <TextView
-        android:id="@+id/tv_MateriSelanjutnya"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Materi Selanjutnya"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:textColor="@color/PrimaryText"
-        android:fontFamily="@font/plusjakartasans_bold_700"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sinopsis"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cardArticle2"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_MateriSelanjutnya"
-        />
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_Kembali"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_video"
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <VideoView
+                    android:id="@+id/VideoView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <ImageView
+                    android:id="@+id/placeholderImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_article"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_Decs_Materi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Deskripsi"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_sinopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cabai merah (Capsicum annuum) termasuk famili Solanaceae dan merupakan salah satu komoditas sayuran yang memiliki banyak manfaat, bernilai ekonomi tinggi dan mempunyai prospek pasar yang menarik. Buah cabai selain dapat dikonsumsi segar untuk campuran bumbu masak juga dapat diawetkan misalnya dalam bentuk acar, saus, tepung cabai dan buah kering."
+                android:textSize="14sp"
+                android:textColor="#8388B2"
+                android:padding="16dp"
+                android:fontFamily="@font/plusjakartasans_reguler_400"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_Decs_Materi"
+                />
+
+            <TextView
+                android:id="@+id/tv_MateriSelanjutnya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Materi Selanjutnya"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/PrimaryText"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sinopsis"
+                app:layout_constraintLeft_toLeftOf="parent"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cardLms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_MateriSelanjutnya"
+                tools:listitem="@layout/card_lms_materi" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
