@@ -65,15 +65,12 @@ interface ApiInterface {
     fun getListMateri() : Call<CardLmsResponse>
 
     @GET("lms/all_modul")
-    suspend fun getAllLms() : CardAllModulResponse
+    suspend fun getAllLms():  CardAllModulResponse
+    @GET("lms/modul/{id}")
+    fun getMateribyId(@Path ("id") id: String): Call<CardAllModulResponse>
 
     @GET("lms/all_modul")
-    suspend fun getMateriLms() : CardLmsResponse
-
-    @GET("lms/modul_status")
-    suspend fun getModulLms(
-        @Query("status") status : String
-    ) : ModulStatusRespn
+    suspend fun getMateriLms() : Call <CardAllModulResponse>
 
 
     @GET("forum/semua_postingan")

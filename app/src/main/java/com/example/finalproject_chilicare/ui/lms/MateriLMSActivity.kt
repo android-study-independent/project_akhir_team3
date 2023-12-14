@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.ui.lms
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,19 +18,17 @@ import com.example.finalproject_chilicare.adapter.lms.CardLmsMateriAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
-import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
+import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
 import com.example.finalproject_chilicare.databinding.ActivityMateriLmsactivityBinding
-import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Response
 import java.lang.Exception
-import kotlin.math.sign
-import kotlin.random.Random
 
-class MateriLMSActivity : AppCompatActivity() {
+class MateriLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickListener {
     lateinit var bindingMateri: ActivityMateriLmsactivityBinding
     lateinit var prefHelper: SharedPreferences
 
@@ -44,6 +44,7 @@ class MateriLMSActivity : AppCompatActivity() {
     lateinit var learningtime: TextView
     lateinit var datemateri: TextView
     lateinit var covermateri: ImageView
+    private var judulMateri = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,96 +76,101 @@ class MateriLMSActivity : AppCompatActivity() {
 
         // card materi lms
         rvMateriLms = findViewById(R.id.rv_cardLmsmateri)
-        Log.d("LMS","menampilkan recyclerview ${rvMateriLms} ")
-        cdmateriadapter = CardLmsMateriAdapter(materilistlms)
+        Log.d("LMS", "menampilkan recyclerview ${rvMateriLms} ")
+        cdmateriadapter = CardLmsMateriAdapter(materilistlms, this)
         rvMateriLms.adapter = cdmateriadapter
         rvMateriLms.setHasFixedSize(true)
 
 
         //get API Lifecycle scope
         lifecycleScope.launch {
-            val result = Network().getRetroClientInstance()
-                .create(ApiInterface::class.java).getMateriLms()
-            result.listMateri?.let { materiList ->
-                Log.d("LMS", "Tampilkan data ${materiList} ")
-                materilistlms.addAll(materiList.reversed())
-                cdmateriadapter.notifyDataSetChanged()
-                rvMateriLms.adapter = cdmateriadapter
-                rvMateriLms.layoutManager = LinearLayoutManager(this@MateriLMSActivity,RecyclerView.VERTICAL,false)
-                Log.d("LMS","hasil get API materi ${result}")
+            val id = intent.getStringExtra("id").toString()
+            Log.d("lms_id", "onCreate: $id ")
+            Network().getRetroClientInstance()
+                .create(ApiInterface::class.java).getMateribyId(id).enqueue(object :
+                    retrofit2.Callback<CardAllModulResponse> {
+                    override fun onResponse(
+                        call: Call<CardAllModulResponse>,
+                        response: Response<CardAllModulResponse>
+                    ) {
+                        Log.d(TAG, "onResponse: respose body ${response}")
+                        if (response.isSuccessful) {
+                            Log.d(TAG, "onResponse: materilist body ${response.body()}")
+                            val responses = response.body()
 
-            }
-            val hasil = Network().getRetroClientInstance()
-                .create(ApiInterface::class.java).getAllLms()
-            hasil.data.map {
-                Log.d("LMS", "hasil get API modul : ${it}")
-                setDataModul(it)
+                            titlemateri.text = responses!!.data[0].judul.toString()
+                            descmateri.text = responses.data[0].desc.toString()
+                            learningtime.text = responses.data[0].learningTime.toString()
+                            totalmateri.text = responses.data[0].totalMateri.toString()
+                            datemateri.text = responses.data[0].tanggal
+                            val path = buildIcobpath(responses.data[0].covers)
+                            Picasso.get().load(path).into(covermateri, object : Callback {
+                                override fun onSuccess() {
+                                    Log.d("LmsMateri", "image success load")
+                                }
 
-            }
+                                override fun onError(e: Exception?) {
+                                    Log.e("LmsMateri", "error load image ${e?.message}")
+                                }
+                            })
+
+                            //set recyclerView
+                            val rvMateri = bindingMateri.rvCardLmsmateri
+                            rvMateri.setHasFixedSize(true)
+                            rvMateri.layoutManager = LinearLayoutManager(this@MateriLMSActivity)
+
+//                            Log.d(TAG, "setMateri: data  ${body.data}")
+                            val adapterMateri = responses.data[0].listMateri?.let {
+                                CardLmsMateriAdapter(
+                                    it, this@MateriLMSActivity
+                                )
+                            }
+                            rvMateri.adapter = adapterMateri
+
+
+                        } else {
+                            Log.d(TAG, "onResponse: failed to get data ")
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<CardAllModulResponse>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+
+
+                })
+
 
             //Update recyclerview
             cdmateriadapter.notifyDataSetChanged()
 
         }
 
-        // mendapatkan data dengan key dari LMS
-        val modulList = intent.getParcelableArrayListExtra<ListMateriLMS>("modulLms")
-
-        //penereapan ambil data
-        if(modulList != null && modulList.size >=1) {
-            val randomIndicies = List(1) {Random.nextInt(modulList.size)}
-//            val randomModulLms = randomIndicies.map { modulList[it] }
-//
-//            cdmateriadapter.updateData(randomModulLms)
-
-            cdmateriadapter.cardClick= { selectedModul->
-                Log.d("LMS","click item ${cdmateriadapter}")
-                val intent = Intent(this,DetailLMSActivity::class.java)
-                intent.putParcelableArrayListExtra("modulLms",ArrayList(modulList))
-                startActivity(intent)
-            }
-        }
 
         // Klik item menuju Detail Lms activity
-        cdmateriadapter.cardClick ={
-            Log.d("LMS","klik materi Lms: ${it}")
-            val intent = Intent(this, DetailLMSActivity::class.java)
-            intent.putExtra("materiLms",it)
-            intent.putParcelableArrayListExtra("DetailMateri", ArrayList(materilistlms))
-            startActivity(intent)
-        }
+//        cdmateriadapter.cardClick =
+//            {
+//                Log.d("LMS", "klik materi Lms: ${it}")
+//                val intent = Intent(this, DetailLMSActivity::class.java)
+//                intent.putExtra("materiLms", it)
+//                intent.putParcelableArrayListExtra("DetailMateri", ArrayList(materilistlms))
+//                startActivity(intent)
+//            }
 
     }
-
-    fun setDataModul(body: CardLmsResponse?) {
-        body?.let {
-            titlemateri.text = it.judul
-            descmateri.text = it.desc
-            learningtime.text = it.learningTime
-            totalmateri.text = it.totalMateri.toString()
-            datemateri.text = it.tanggal
-
-            val path = buildIcobpath(it.covers)
-            Picasso.get().load(path).into(covermateri, object : Callback {
-                override fun onSuccess() {
-                    Log.d("LmsMateri", "image success load")
-                }
-
-                override fun onError(e: Exception?) {
-                    Log.e("LmsMateri", "error load image ${e?.message}")
-                }
-            })
-        } ?: run {
-            Log.e("LmsMateri", "setDataModul called with null body")
-        }
-
+    override fun onItemClick(position: Int) {
+        // Tangani klik di sini
+        val id = intent.getStringExtra("id").toString()
+        val intent = Intent(this, DetailLMSActivity::class.java)
+        intent.putExtra("position", position)
+        intent.putExtra("id", id)
+        startActivity(intent)
     }
 
     private fun buildIcobpath(icon: String?): String {
         return icon ?: ""
     }
-
-
 
 
 }

@@ -7,6 +7,6 @@ data class ModulStatusRespn(
     val status : String,
     @SerializedName("message")
     val message : String,
-
+    @SerializedName("data")
     val data : List<ModulMateri>
 )

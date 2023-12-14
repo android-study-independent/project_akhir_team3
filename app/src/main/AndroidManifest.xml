@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -49,12 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.home.NotificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.lms.DetailLMSActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.lms.MateriLMSActivity"
             android:exported="false" />
         <activity
             android:name=".ui.home.aktivitas.AktivitasActivity"
@@ -101,13 +96,7 @@
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="true"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
