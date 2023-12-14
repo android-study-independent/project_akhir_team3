@@ -25,6 +25,8 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
+    lateinit var loginContainer : TextInputLayout
+    lateinit var passwordContainer : TextInputLayout
     lateinit var loginEmail: EditText
     lateinit var loginPassword: EditText
     lateinit var tvLupaPassword: TextView
@@ -41,6 +43,8 @@ class LoginActivity : AppCompatActivity() {
         tvLupaPassword = findViewById(R.id.tvLupaPassword)
         btLogin = findViewById(R.id.btMasuk)
         tvDaftarDisini = findViewById(R.id.tvDaftarDisini)
+        loginContainer = findViewById(R.id.emailLoginContainer)
+        passwordContainer = findViewById(R.id.passwordLoginContainer)
 
 
         loginEmail.setText("Lita@gmail.com")
@@ -58,6 +62,10 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
+
+        loginContainer.helperText = null
+        passwordContainer.helperText = null
+
         checkEmail()
         checkPassword()
         initAction()

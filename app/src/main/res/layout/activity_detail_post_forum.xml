@@ -137,7 +137,7 @@
                                 android:textSize="12sp" />
 
                             <ImageView
-                                android:id="@+id/ivMore"
+                                android:id="@+id/ivMoreInDetail"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"

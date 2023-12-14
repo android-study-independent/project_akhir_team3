@@ -35,8 +35,8 @@ import retrofit2.Response
 
 
 class ForumActivity : AppCompatActivity() {
-//    lateinit var adapterForum = MainForumAdapter()
-    lateinit var bindingForum : ActivityForumBinding
+    //    lateinit var adapterForum = MainForumAdapter()
+    lateinit var bindingForum: ActivityForumBinding
     lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
 
@@ -61,21 +61,21 @@ class ForumActivity : AppCompatActivity() {
     fun forumList() {
 
         val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
-            retro.getAllForum().enqueue(object : Callback<AllForumResponse> {
-                override fun onResponse(
-                    call: Call<AllForumResponse>,
-                    response: Response<AllForumResponse>
-                ) {
-                    response.body()?.let {
-                        setAllForum(it)
-                    }
+        retro.getAllForum().enqueue(object : Callback<AllForumResponse> {
+            override fun onResponse(
+                call: Call<AllForumResponse>,
+                response: Response<AllForumResponse>
+            ) {
+                response.body()?.let {
+                    setAllForum(it)
                 }
+            }
 
-                override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
 
 
-                }
-            })
+            }
+        })
     }
 
 
@@ -87,23 +87,23 @@ class ForumActivity : AppCompatActivity() {
 
 
     fun setAllForum(body: AllForumResponse) {
-        Log.d("Debug", "Recyler view berhasil -> ${body.allForumItem}")
+        Log.d("Debugs", "Recyler view berhasil -> ${body.allForumItem}")
         val rvPostingan = bindingForum.rvPostingan
         rvPostingan.setHasFixedSize(true)
         rvPostingan.layoutManager = LinearLayoutManager(this)
         val adapter = MainForumAdapter(this, body.allForumItem)
 
-            // Set the adapter to the RecyclerView
-            rvPostingan.adapter = adapter
-            adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
-                override fun onMore(itemForum: AllForumItem, position: Int) {
-                    showCustomAlertDialog(this@ForumActivity, itemForum)
-                }
+        // Set the adapter to the RecyclerView
+        rvPostingan.adapter = adapter
+        adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+            override fun onMore(itemForum: AllForumItem, position: Int) {
+                showCustomAlertDialog(this@ForumActivity, itemForum)
+            }
 
         })
     }
 
-    private fun showCustomAlertDialog(context: Context, data : AllForumItem) {
+    private fun showCustomAlertDialog(context: Context, data: AllForumItem) {
         val dialog = Dialog(context)
         dialog.setContentView(R.layout.card_dialog_forum)
         dialog.setCancelable(true)
@@ -112,9 +112,15 @@ class ForumActivity : AppCompatActivity() {
         val deletePost = dialog.findViewById<TextView>(R.id.textDeletePost)
         val cancelDialog = dialog.findViewById<ImageView>(R.id.iconCloseDialog)
 
+
         editPost.setOnClickListener {
             Intent(this, EditPostForumActivity::class.java).also {
+                val intent = Intent(this, EditPostForumActivity::class.java)
+                intent.putExtra("forumId", data.forumId)
+                Log.d("forumId", "${data.forumId}")
                 startActivity(it)
+                startActivity(intent)
+                Log.d("forumId", "${data.forumId}")
             }
         }
 
@@ -130,7 +136,7 @@ class ForumActivity : AppCompatActivity() {
 
     }
 
-    fun deletePostingan (body: View, data: String) {
+    fun deletePostingan(body: View, data: String) {
         val idPostingan = data
 
         val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
@@ -148,9 +154,17 @@ class ForumActivity : AppCompatActivity() {
 
                         val delResponse = response.body()
                         Log.d("Delete", "Delete berhasil")
-                        Toast.makeText(this@ForumActivity, "User berhasil menghapus postingan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ForumActivity,
+                            "User berhasil menghapus postingan",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
-                        Toast.makeText(this@ForumActivity, "User tidak memiliki akses delete postingan ini", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ForumActivity,
+                            "User tidak memiliki akses delete postingan ini",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
