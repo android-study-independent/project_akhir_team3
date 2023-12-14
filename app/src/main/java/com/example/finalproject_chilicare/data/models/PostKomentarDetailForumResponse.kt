@@ -12,6 +12,6 @@ data class PostKomentarDetailForumResponse(
     val message: String,
 
     @SerializedName("Balasan")
-    val balasan: itemKomentar
+    val balasan: IsiComentarItem
 
 )
