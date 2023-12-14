@@ -11,8 +11,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -49,6 +51,7 @@ class WeatherActivity : AppCompatActivity() {
     lateinit var iconSuhuWeather : ImageView
     lateinit var btnback : ImageView
 
+    lateinit var progressBar: ProgressBar
     private var listHourlyWeather = mutableListOf<Hourlyweather>()
     private lateinit var adapter : HourlyWeatherAdapter
     private lateinit var rvHourlyWeather: RecyclerView
@@ -64,6 +67,8 @@ class WeatherActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_weather)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
+
+        progressBar = findViewById(R.id.progressBarWeather)
         btnAdd = findViewById(R.id.btnAddCityUtama)
         btnBack = findViewById(R.id.btnBackInWeatherUtama)
 
@@ -75,10 +80,6 @@ class WeatherActivity : AppCompatActivity() {
         btnback.setOnClickListener { Intent(this,HomeActivity::class.java).also {
             startActivity(it)
         } }
-
-
-
-
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -212,7 +213,7 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     private fun getCityWeather(city : String) {
-
+        progressBar.visibility = View.VISIBLE
         NetworkWeather.getApiInterface()?.getCityWeatherData(city, api_key)?.enqueue(
             object : Callback<CurrentWeather> {
                 override fun onResponse(
@@ -239,6 +240,7 @@ class WeatherActivity : AppCompatActivity() {
 
             }
         )
+        progressBar.visibility = View.GONE
 
     }
 

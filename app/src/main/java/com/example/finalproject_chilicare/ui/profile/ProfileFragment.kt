@@ -9,11 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
+import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.ui.home.NotificationActivity
 import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.example.finalproject_chilicare.ui.onboarding.OnboardingActivity
@@ -25,12 +27,21 @@ class ProfileFragment : Fragment() {
     private lateinit var btnLogout: Button
     private lateinit var cardNotifikasi1: CardView
     private lateinit var prefHelper: SharedPreferences
+    private lateinit var btnback : ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        btnback = view.findViewById(R.id.ivBackProfile)
+        //button back home
+        btnback.setOnClickListener {
+            val intent = Intent(activity, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
         // Inisialisasi view yang tidak nullable
         cardNotifikasi1 = view.findViewById(R.id.CardNotifikasi)

@@ -32,7 +32,7 @@
                 />
 
             <ImageView
-                android:id="@+id/ivBack"
+                android:id="@+id/ivBackProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -51,9 +51,9 @@
                 android:textSize="18sp"
                 android:layout_marginLeft="134dp"
                 android:layout_marginRight="143dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivBack"
-                app:layout_constraintStart_toEndOf="@+id/ivBack"
-                app:layout_constraintTop_toTopOf="@+id/ivBack"
+                app:layout_constraintBottom_toBottomOf="@+id/ivBackProfile"
+                app:layout_constraintStart_toEndOf="@+id/ivBackProfile"
+                app:layout_constraintTop_toTopOf="@+id/ivBackProfile"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

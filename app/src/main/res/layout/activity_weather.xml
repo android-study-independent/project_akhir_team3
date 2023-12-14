@@ -185,7 +185,6 @@
             </RelativeLayout>
         </FrameLayout>
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHourlyWeatherUtama"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -199,6 +198,19 @@
             app:layout_constraintTop_toBottomOf="@id/frameKondisiCuacaUtama"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/card_hourly_weather" />
+
+        <ProgressBar
+            android:id="@+id/progressBarWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_marginHorizontal="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rvHourlyWeatherUtama"
+            app:layout_constraintEnd_toEndOf="@+id/frameKondisiCuacaUtama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ProgressBar>
 
         <FrameLayout
             android:id="@+id/frameKecepatanAnginUtama"

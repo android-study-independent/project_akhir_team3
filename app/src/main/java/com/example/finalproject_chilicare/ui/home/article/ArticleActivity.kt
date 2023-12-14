@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +33,7 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
     private lateinit var rvCardArticle: RecyclerView
     private lateinit var tabResponses: ArrayList<TabResponse>
     private var cardArtikelResponse =  mutableListOf<CardArtikelResponse>()
+    private lateinit var progressBar : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +42,7 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
         // INISIASI DARI XML
         etCariArtikel = findViewById(R.id.etCariArtikel)
         ivBack = findViewById(R.id.ivBack)
+        progressBar = findViewById(R.id.progressBarArtikel)
 
         // NAVIGATE BACK TKE HOME
         ivBack.setOnClickListener {
@@ -74,11 +78,13 @@ class ArticleActivity : AppCompatActivity(), OnTabClickListener {
 
         // LIFECYCLE SCOPE
         lifecycleScope.launch {
+            progressBar.visibility = View.VISIBLE
             val result = Network().getRetroClientInstance()
                 .create(ApiInterface::class.java).getAllArtikel()
             result.data.map {
                 Log.d("debug", "hasilnya : $it")
                 cardArtikelResponse.add(it)
+                progressBar.visibility = View.GONE
             }
 
             // RECYCLERVIEW TAB

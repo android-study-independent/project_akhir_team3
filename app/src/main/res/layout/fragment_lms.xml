@@ -134,6 +134,15 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/rv_tabArticle"
                 />
+            <ProgressBar
+                android:id="@+id/progressBarLms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="150dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"></ProgressBar>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_cardLmsModul"
                 android:layout_width="match_parent"

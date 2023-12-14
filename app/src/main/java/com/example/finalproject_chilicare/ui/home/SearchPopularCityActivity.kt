@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.PopularCityAdapter
 import com.example.finalproject_chilicare.data.response.PopularCityResponse
+import com.example.finalproject_chilicare.ui.home.weather.WeatherJakartaActivity
 
-class SearchPopularCityActivity : AppCompatActivity() {
+class SearchPopularCityActivity : AppCompatActivity(),PopularCityAdapter.OnItemClickListener {
 
     private lateinit var rv_CariKota: RecyclerView
     private lateinit var btnBack : ImageView
@@ -58,6 +59,15 @@ class SearchPopularCityActivity : AppCompatActivity() {
 
         dataKota = ArrayList()
         getData()
+
+        rv_CariKota.adapter = PopularCityAdapter(dataKota,this)
+    }
+
+    override fun onItemClick(city: String) {
+        // Handle item click event, for example, start a new activity with the selected city
+        val intent = Intent(this, WeatherJakartaActivity::class.java)
+        intent.putExtra("Jakarta", city)
+        startActivity(intent)
     }
 
     private fun getData() {
@@ -65,6 +75,8 @@ class SearchPopularCityActivity : AppCompatActivity() {
             val data = PopularCityResponse(titleList[i])
             dataKota.add(data)
         }
-        rv_CariKota.adapter = PopularCityAdapter(dataKota)
+
     }
+
+
 }
