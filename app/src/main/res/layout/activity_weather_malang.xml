@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.WeatherActivity">
+    tools:context=".ui.home.weather.WeatherMalangActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="35°"
+                    android:text="20°"
                     android:fontFamily="@font/plusjakartasans_bold_700"
                     android:textStyle="bold"
                     android:textColor="@color/PrimaryBrand"
@@ -88,7 +88,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@+id/textSuhu"
                     android:layout_marginLeft="16dp"
-                    android:src="@drawable/sun"
+                    android:src="@drawable/berawan"
                     android:layout_marginBottom="8dp"
                     />
 
@@ -102,7 +102,7 @@
                     android:layout_toRightOf="@id/iconSuhu"
                     android:fontFamily="@font/plusjakartasans_bold_700"
                     android:gravity="center"
-                    android:text="Cerah"
+                    android:text="Berawan"
                     android:textAlignment="center"
                     android:textColor="#303344"
                     android:textSize="16sp"
@@ -185,7 +185,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="6dp"
-                    android:text="85 %"
+                    android:text="35 %"
                     android:textColor="@color/PrimaryBrand"
                     android:textSize="47sp" />
 
@@ -264,7 +264,7 @@
                             android:layout_below="@+id/iconCardSuhu1"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="3dp"
-                            android:text="35°"
+                            android:text="20°"
                             android:fontFamily="@font/plusjakartasans_reguler_400"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
@@ -592,129 +592,165 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/sun"
+                    android:src="@drawable/berawan"
                     android:id="@+id/iconCuaca1"
                     android:layout_below="@+id/textRamalan"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"/>
 
                 <TextView
+                    android:id="@+id/textHariCuaca1"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hari ini"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textRamalan"
                     android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca1"/>
+                    />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca1"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari ini"
+                    android:text="Berawan"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
                     android:layout_below="@+id/textRamalan"
                     android:layout_toRightOf="@id/textHariCuaca1"
-                    android:id="@+id/textKondisiCuaca1"/>
+                    />
 
 
                 <TextView
+                    android:id="@+id/textSuhu1"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu1"
-                    android:text="20°"
+                    android:text="20°/20°"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_below="@+id/textRamalan"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    />
 
 
 
                 <ImageView
+                    android:id="@+id/iconCuaca2"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/berawan"
-                    android:id="@+id/iconCuaca2"
+                    android:src="@drawable/hujan"
                     android:layout_below="@+id/iconCuaca1"
                     android:layout_marginTop="14dp"
                     android:layout_marginLeft="16dp"/>
 
                 <TextView
+                    android:id="@+id/textHariCuaca2"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Besok"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textHariCuaca1"
                     android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca2"/>
+                    />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca2"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari ini"
+                    android:text="Hujan"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
                     android:layout_below="@+id/textKondisiCuaca1"
                     android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca2"/>
+                    />
 
                 <TextView
+                    android:id="@+id/textSuhu2"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu2"
-                    android:text="16°"
+                    android:text="20°/20°"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_below="@+id/textSuhu1"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    />
 
 
 
                 <ImageView
+                    android:id="@+id/iconCuaca3"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/berawan"
-                    android:id="@+id/iconCuaca3"
+                    android:src="@drawable/sun"
                     android:layout_below="@+id/iconCuaca2"
                     android:layout_marginTop="14dp"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginLeft="16dp"
+                    />
 
                 <TextView
+                    android:id="@+id/textHariCuaca3"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Besok"
+                    android:text="Sabtu"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textHariCuaca2"
                     android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca3"/>
+                   />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca3"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari ini"
+                    android:text="Cerah"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
                     android:layout_below="@+id/textKondisiCuaca2"
                     android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca3"/>
+                    />
 
                 <TextView
+
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu3"
-                    android:text="16°"
+                    android:text="20°/39°"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="#303344"
                     android:layout_below="@+id/textSuhu2"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
