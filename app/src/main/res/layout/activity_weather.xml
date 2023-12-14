@@ -10,7 +10,7 @@
         android:background="#F6F6F6">
 
         <ImageView
-            android:id="@+id/btnBackInWeather"
+            android:id="@+id/btnBackInWeatherUtama"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="16dp"
@@ -20,14 +20,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textLocation"
+            android:id="@+id/textLocationUtama"
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginLeft="120dp"
             android:layout_marginTop="16dp"
             android:text="Jakarta"
             android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/btnBackInWeather"
+            app:layout_constraintLeft_toRightOf="@id/btnBackInWeatherUtama"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -36,12 +36,12 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/baseline_keyboard_arrow_down_24"
             app:layout_constraintHorizontal_bias="0.008"
-            app:layout_constraintLeft_toRightOf="@id/textLocation"
-            app:layout_constraintRight_toLeftOf="@id/btnAddCity"
+            app:layout_constraintLeft_toRightOf="@id/textLocationUtama"
+            app:layout_constraintRight_toLeftOf="@id/btnAddCityUtama"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/btnAddCity"
+            android:id="@+id/btnAddCityUtama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
-            android:id="@+id/frameKondisiCuaca"
+            android:id="@+id/frameKondisiCuacaUtama"
             android:layout_width="328dp"
             android:layout_height="138dp"
             android:layout_marginLeft="40dp"
@@ -59,15 +59,15 @@
             android:background="@drawable/border_weather"
             android:backgroundTint="#FFFFFF"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textLocation">
+            app:layout_constraintTop_toBottomOf="@id/textLocationUtama">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/relativeSuhu">
+                android:id="@+id/relativeSuhuUtama">
 
                 <TextView
-                    android:id="@+id/textSuhu"
+                    android:id="@+id/textSuhuUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
@@ -78,17 +78,17 @@
                     android:textSize="38sp" />
 
                 <ImageView
-                    android:id="@+id/iconSuhu"
+                    android:id="@+id/iconSuhuUtama"
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/sun"
                     android:layout_marginTop="6dp"
-                    android:layout_below="@+id/textSuhu"
+                    android:layout_below="@+id/textSuhuUtama"
                     android:layout_marginLeft="4dp"/>
 
                 <TextView
-                    android:id="@+id/kondisiSuhu"
+                    android:id="@+id/kondisiSuhuUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cerah"
@@ -97,18 +97,18 @@
                     android:layout_marginTop="14dp"
                     android:textAlignment="center"
                     android:gravity="center"
-                    android:layout_below="@id/textSuhu"
-                    android:layout_toRightOf="@id/iconSuhu"
+                    android:layout_below="@id/textSuhuUtama"
+                    android:layout_toRightOf="@id/iconSuhuUtama"
                     android:layout_marginLeft="2dp"/>
 
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/textSuhu"
+                    android:layout_toRightOf="@id/textSuhuUtama"
                     android:layout_marginLeft="60dp"
                     android:orientation="vertical">
                     <TextView
-                        android:id="@+id/ringkasanHarian"
+                        android:id="@+id/ringkasanHarianUtama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -120,10 +120,10 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/descStatusCuaca"
+                        android:id="@+id/descStatusCuacaUtama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ringkasanHarian"
+                        android:layout_below="@+id/wrap_content"
                         android:layout_marginHorizontal="8dp"
                         android:layout_marginTop="10dp"
                         android:textAlignment="center"
@@ -136,7 +136,7 @@
 
 
         <FrameLayout
-            android:id="@+id/frameKelembapan"
+            android:id="@+id/frameKelembapanUtama"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="22dp"
@@ -144,7 +144,7 @@
             android:backgroundTint="#FFFFFF"
             android:layout_marginTop="130dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuacaUtama">
 
             <RelativeLayout
                 android:id="@+id/relativeKelembapan"
@@ -152,7 +152,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textKelembapan"
+                    android:id="@+id/textKelembapanUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -163,10 +163,10 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/nilaiKelembapan"
+                    android:id="@+id/nilaiKelembapanUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textKelembapan"
+                    android:layout_below="@id/textKelembapanUtama"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     android:text="85 %"
@@ -174,10 +174,10 @@
                     android:textSize="40sp" />
 
                 <TextView
-                    android:id="@+id/textTitikEmbun"
+                    android:id="@+id/textTitikEmbunUtama"
                     android:layout_width="95dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nilaiKelembapan"
+                    android:layout_below="@id/nilaiKelembapanUtama"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:text="Titik embun saat ini 17°C"
@@ -185,231 +185,23 @@
             </RelativeLayout>
         </FrameLayout>
 
-        <!--        <FrameLayout-->
-<!--            android:id="@+id/frameCuacaPerJam"-->
-<!--            android:layout_width="324dp"-->
-<!--            android:layout_height="93dp"-->
-<!--            app:layout_constraintBottom_toTopOf="@id/frameKelembapan"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
-<!--            app:layout_constraintRight_toRightOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.513"-->
-<!--            tools:layout_editor_absoluteX="58dp">-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="16dp"-->
-<!--                android:id="@+id/relativeWaktuCuacaPerJam">-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/textWaktuSekarang"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Sekarang"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:textColor="@color/PrimaryBrand"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:layout_marginLeft="6dp"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/textWaktuKedua"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="11:00"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:layout_toRightOf="@id/textWaktuSekarang"-->
-<!--                    android:layout_marginLeft="55dp"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/textWaktuKetiga"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="12:00"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:layout_toRightOf="@id/textWaktuKedua"-->
-<!--                    android:layout_marginLeft="55dp"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/textWaktuKeempat"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="13:00"-->
-<!--                    android:textSize="12sp"-->
-<!--                    android:layout_toRightOf="@id/textWaktuKetiga"-->
-<!--                    android:layout_marginLeft="55dp"/>-->
-
-<!--            </RelativeLayout>-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="70dp"-->
-<!--                android:layout_marginTop="22dp"-->
-<!--                android:id="@+id/relativeSuhuPerJam">-->
-
-<!--                <FrameLayout-->
-<!--                    android:id="@+id/frameSuhuSekarang"-->
-<!--                    android:layout_width="42dp"-->
-<!--                    android:layout_height="67dp"-->
-<!--                    android:layout_below="@+id/textWaktuSekarang"-->
-<!--                    android:layout_marginLeft="8dp"-->
-<!--                    android:background="@drawable/border_cuaca"-->
-<!--                    android:backgroundTint="@color/PrimaryBrand"-->
-<!--                    tools:ignore="NotSibling" >-->
-
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:id="@+id/relativeSuhuSekarang">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:src="@drawable/berawan"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:id="@+id/iconSuhuSekarang"/>-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/textSuhuSekarang"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="35°"-->
-<!--                            android:layout_below="@+id/iconSuhuSekarang"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:layout_marginTop="3dp"/>-->
-<!--                    </RelativeLayout>-->
-<!--                </FrameLayout>-->
-
-<!--                <FrameLayout-->
-<!--                    android:id="@+id/frameSuhuJam11"-->
-<!--                    android:layout_width="42dp"-->
-<!--                    android:layout_height="67dp"-->
-<!--                    android:layout_below="@+id/textWaktuSekarang"-->
-<!--                    android:layout_marginLeft="57dp"-->
-<!--                    android:background="@drawable/border_cuaca"-->
-<!--                    android:backgroundTint="#FFFFFF"-->
-<!--                    android:layout_toRightOf="@id/frameSuhuSekarang"-->
-<!--                    tools:ignore="NotSibling" >-->
-
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:id="@+id/relativeSuhuJam11">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:src="@drawable/berawan"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:id="@+id/iconSuhuJam11"/>-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/textSuhuKedua"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="35°"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:layout_below="@+id/iconSuhuJam11"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="3dp"/>-->
-<!--                    </RelativeLayout>-->
-<!--                </FrameLayout>-->
-
-<!--                <FrameLayout-->
-<!--                    android:id="@+id/frameSuhuJam12"-->
-<!--                    android:layout_width="42dp"-->
-<!--                    android:layout_height="67dp"-->
-<!--                    android:layout_below="@+id/textWaktuSekarang"-->
-<!--                    android:layout_marginLeft="46dp"-->
-<!--                    android:background="@drawable/border_cuaca"-->
-<!--                    android:backgroundTint="#FFFFFF"-->
-<!--                    android:layout_toRightOf="@id/frameSuhuJam11"-->
-<!--                    tools:ignore="NotSibling" >-->
-
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:id="@+id/relativeSuhuJam12">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:src="@drawable/berawan"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:id="@+id/iconSuhuJam12"/>-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/textSuhuKetiga"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="35°"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:layout_below="@+id/iconSuhuJam12"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="3dp"/>-->
-<!--                    </RelativeLayout>-->
-<!--                </FrameLayout>-->
-
-<!--                <FrameLayout-->
-<!--                    android:id="@+id/frameSuhuJam13"-->
-<!--                    android:layout_width="42dp"-->
-<!--                    android:layout_height="67dp"-->
-<!--                    android:layout_below="@+id/textWaktuSekarang"-->
-<!--                    android:layout_marginLeft="43dp"-->
-<!--                    android:background="@drawable/border_cuaca"-->
-<!--                    android:backgroundTint="#FFFFFF"-->
-<!--                    android:layout_toRightOf="@id/frameSuhuJam12"-->
-<!--                    tools:ignore="NotSibling" >-->
-
-<!--                    <RelativeLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:id="@+id/relativeSuhuJam13">-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:src="@drawable/berawan"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="4dp"-->
-<!--                            android:id="@+id/iconSuhuJam13"/>-->
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/textSuhuKeempat"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:text="35°"-->
-<!--                            android:textStyle="bold"-->
-<!--                            android:layout_below="@+id/iconSuhuJam13"-->
-<!--                            android:layout_centerHorizontal="true"-->
-<!--                            android:layout_marginTop="3dp"/>-->
-<!--                    </RelativeLayout>-->
-<!--                </FrameLayout>-->
-
-<!--            </RelativeLayout>-->
-
-
-<!--        </FrameLayout>-->
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvHourlyWeather"
+            android:id="@+id/rvHourlyWeatherUtama"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="360dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="14dp"
             android:clipToPadding="false"
-            app:layout_constraintBottom_toTopOf="@id/frameKelembapan"
+            app:layout_constraintBottom_toTopOf="@id/frameKelembapanUtama"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuacaUtama"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/card_hourly_weather" />
 
         <FrameLayout
-            android:id="@+id/frameKecepatanAngin"
+            android:id="@+id/frameKecepatanAnginUtama"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginRight="22dp"
@@ -417,7 +209,7 @@
             android:backgroundTint="#FFFFFF"
             android:layout_marginTop="130dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuacaUtama">
 
             <RelativeLayout
                 android:id="@+id/relativeKecepatanAngin"
@@ -425,7 +217,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textKecepatanAngin"
+                    android:id="@+id/textKecepatanAnginUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -436,10 +228,10 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/nilaiKecepatanAngin"
+                    android:id="@+id/nilaiKecepatanAnginUtama"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textKecepatanAngin"
+                    android:layout_below="@id/textKecepatanAnginUtama"
                     android:layout_marginTop="16dp"
                     android:layout_marginLeft="8dp"
                     android:text="2.1\nm/s"
@@ -448,10 +240,10 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:id="@+id/textArahAngin"
+                    android:id="@+id/textArahAnginUtama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nilaiKecepatanAngin"
+                    android:layout_below="@id/nilaiKecepatanAnginUtama"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
                     android:layout_marginLeft="10dp"
@@ -462,7 +254,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/frameRamalanCuaca"
+            android:id="@+id/frameRamalanCuacaUtama"
             android:layout_width="328dp"
             android:layout_height="241dp"
             android:layout_marginTop="40dp"
@@ -470,7 +262,7 @@
             android:backgroundTint="#FFFFFF"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameKelembapan">
+            app:layout_constraintTop_toBottomOf="@id/frameKelembapanUtama">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -488,15 +280,16 @@
 
 
                 <ImageView
+                    android:id="@+id/iconCuaca1Utama"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:src="@drawable/sun"
-                    android:id="@+id/iconCuaca1"
                     android:layout_below="@+id/textRamalan"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="12dp"/>
 
                 <TextView
+                    android:id="@+id/textHariCuaca1Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -504,10 +297,11 @@
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
                     android:layout_below="@+id/textRamalan"
-                    android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca1"/>
+                    android:layout_toRightOf="@id/iconCuaca1Utama"
+                    />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca1Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -515,15 +309,15 @@
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
                     android:layout_below="@+id/textRamalan"
-                    android:layout_toRightOf="@id/textHariCuaca1"
-                    android:id="@+id/textKondisiCuaca1"/>
+                    android:layout_toRightOf="@id/textHariCuaca1Utama"
+                    />
 
 
                 <TextView
+                    android:id="@+id/textSuhu1Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu1"
                     android:text="20°"
                     android:layout_below="@+id/textRamalan"
                     android:layout_marginTop="28dp"
@@ -533,43 +327,45 @@
 
 
                 <ImageView
+                    android:id="@+id/iconCuaca2Utama"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:src="@drawable/berawan"
-                    android:id="@+id/iconCuaca2"
-                    android:layout_below="@+id/iconCuaca1"
+                    android:layout_below="@+id/iconCuaca1Utama"
                     android:layout_marginTop="14dp"
                     android:layout_marginLeft="12dp"/>
 
                 <TextView
+                    android:id="@+id/textHariCuaca2Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Besok"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/textHariCuaca1"
-                    android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca2"/>
+                    android:layout_below="@+id/textHariCuaca1Utama"
+                    android:layout_toRightOf="@id/iconCuaca1Utama"
+                    />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca2Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hari ini"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
-                    android:layout_below="@+id/textKondisiCuaca1"
-                    android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca2"/>
+                    android:layout_below="@+id/textKondisiCuaca1Utama"
+                    android:layout_toRightOf="@id/textHariCuaca2Utama"
+                    />
 
                 <TextView
+                    android:id="@+id/textSuhu2Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu2"
                     android:text="16°"
-                    android:layout_below="@+id/textSuhu1"
+                    android:layout_below="@+id/textSuhu1Utama"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
                     android:layout_alignParentRight="true"/>
@@ -577,43 +373,45 @@
 
 
                 <ImageView
+                    android:id="@+id/iconCuaca3Utama"
                     android:layout_width="40dp"
                     android:layout_height="30dp"
                     android:src="@drawable/berawan"
-                    android:id="@+id/iconCuaca3"
-                    android:layout_below="@+id/iconCuaca2"
+                    android:layout_below="@+id/iconCuaca2Utama"
                     android:layout_marginTop="14dp"
                     android:layout_marginLeft="12dp"/>
 
                 <TextView
+                    android:id="@+id/textHariCuaca3Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Besok"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_below="@+id/textHariCuaca2"
-                    android:layout_toRightOf="@id/iconCuaca1"
-                    android:id="@+id/textHariCuaca3"/>
+                    android:layout_below="@+id/textHariCuaca2Utama"
+                    android:layout_toRightOf="@id/iconCuaca1Utama"
+                    />
 
                 <TextView
+                    android:id="@+id/textKondisiCuaca3Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hari ini"
                     android:layout_marginTop="28dp"
                     android:layout_marginLeft="6dp"
-                    android:layout_below="@+id/textKondisiCuaca2"
-                    android:layout_toRightOf="@id/textHariCuaca2"
-                    android:id="@+id/textKondisiCuaca3"/>
+                    android:layout_below="@+id/textKondisiCuaca2Utama"
+                    android:layout_toRightOf="@id/textHariCuaca2Utama"
+                    />
 
                 <TextView
+                    android:id="@+id/textSuhu3Utama"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textSuhu3"
                     android:text="16°"
-                    android:layout_below="@+id/textSuhu2"
+                    android:layout_below="@+id/textSuhu2Utama"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="36dp"
                     android:layout_alignParentRight="true"/>
@@ -629,17 +427,12 @@
                     android:textColor="@color/NeutralText"
                     android:textAllCaps="false"
                     android:background="@drawable/buttonloginreg"
-                    android:layout_below="@+id/textHariCuaca3"
+                    android:layout_below="@+id/textHariCuaca3Utama"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="22dp"
                     />
-
-
             </RelativeLayout>
         </FrameLayout>
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

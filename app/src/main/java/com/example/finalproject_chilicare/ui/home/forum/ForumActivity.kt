@@ -26,6 +26,7 @@ import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.data.models.EditForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityForumBinding
+import com.example.finalproject_chilicare.ui.home.HomeActivity
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -50,6 +51,12 @@ class ForumActivity : AppCompatActivity() {
         // GO PAGES NEW POST
         bindingForum.ivPlus.setOnClickListener {
             Intent(this, NewPostForumActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+        bindingForum.ivBackToHome.setOnClickListener {
+            Intent(this, HomeActivity::class.java).also {
                 startActivity(it)
             }
         }
