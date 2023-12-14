@@ -7,6 +7,8 @@ import com.google.gson.annotations.SerializedName
 data class CardLmsResponse(
     @SerializedName("judul")
     val judul : String?,
+    @SerializedName("id")
+    val id : String?,
     @SerializedName("desc")
     val desc : String?,
     @SerializedName("tanggal")
@@ -29,6 +31,7 @@ data class CardLmsResponse(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
         parcel.readInt(),
         parcel.readString(),
         parcel.createTypedArrayList(ListMateriLMS.CREATOR)
@@ -37,6 +40,7 @@ data class CardLmsResponse(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(judul)
+        parcel.writeString(id)
         parcel.writeString(desc)
         parcel.writeString(tanggal)
         parcel.writeString(status)

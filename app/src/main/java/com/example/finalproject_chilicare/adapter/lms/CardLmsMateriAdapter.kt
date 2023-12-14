@@ -3,16 +3,13 @@ package com.example.finalproject_chilicare.adapter.lms
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
-import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
-import com.example.finalproject_chilicare.data.response.lms.DataModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
+import com.example.finalproject_chilicare.ui.lms.MateriLMSActivity
 
-class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : RecyclerView.Adapter<CardLmsMateriAdapter.CardMateriHolder>() {
+class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, private val clickListener: ItemClickListener) : RecyclerView.Adapter<CardLmsMateriAdapter.CardMateriHolder>() {
 
 
     var cardClick : ((ListMateriLMS) -> Unit)? = null
@@ -32,15 +29,12 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
     }
 
     override fun onBindViewHolder(holder: CardMateriHolder, position: Int) {
-//        holder.bindItemView(listMateriLms[position])
+        holder.bindItemView(listMateriLms[position])
         val result = listMateriLms[position]
         holder.titlemateri.text = result.judulMateri
         holder.descmateri.text = result.shortDesc
 
-        holder.itemView.setOnClickListener {
-            cardClick?.invoke(listMateriLms[position])
-        }
-
+        holder.itemView.tag = position
     }
 
     inner class CardMateriHolder(private val view: View) : RecyclerView.ViewHolder(view){
@@ -48,9 +42,10 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
         val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
         val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
         init {
-            view.setOnClickListener {
-                cardClick?.invoke(listMateriLms[adapterPosition])
+            itemView.setOnClickListener{
 
+
+                clickListener.onItemClick(adapterPosition)
             }
         }
 
@@ -68,4 +63,9 @@ class CardLmsMateriAdapter( private var listMateriLms : List<ListMateriLMS>) : R
 
 
     }
+
+    interface ItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }
+
