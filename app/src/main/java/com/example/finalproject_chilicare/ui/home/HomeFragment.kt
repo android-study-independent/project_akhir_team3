@@ -24,9 +24,13 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.adapter.article.CardAdapter
 import com.example.finalproject_chilicare.adapter.article.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
+import com.example.finalproject_chilicare.adapter.forum.MainForumAdapter
+import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.api.NetworkWeather
+import com.example.finalproject_chilicare.data.models.AllForumItem
+import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
@@ -52,6 +56,7 @@ class HomeFragment : Fragment() {
     private val listartikel = ArrayList<HomeArtikel>()
     private lateinit var recylerView: RecyclerView
     private lateinit var rvartikelrecylerview : RecyclerView
+    private lateinit var rvPostinganForum : RecyclerView
     private lateinit var forumadapter: ForumAdapter
     private lateinit var artikeladapter: CardHomeArtikelAdapter
     private lateinit var cityname: TextView
@@ -64,7 +69,8 @@ class HomeFragment : Fragment() {
 
 //    private lateinit var binding: FragmentHomeBinding
 
-    lateinit var cardAdapter: CardAdapter // aslinya kaya gini
+    lateinit var cardAdapter: CardAdapter // adapter artikel
+    lateinit var cardForumAdapter :MainForumAdapter // addapter forum
 //    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
     private var cardArtikelResponse = (mutableListOf<CardArtikelResponse>()) // ini buat datanya
 
@@ -102,18 +108,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //rv card forum
-        recylerView = view.findViewById(R.id.rv_Forum)
-        recylerView.setHasFixedSize(true)
-        forumadapter = ForumAdapter(listforum)
-        recylerView.adapter = forumadapter
-        listforum.addAll(getListForum())
-        recylerView.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-
-
         // Inisialisasi adapter terlebih dahulu
+        //adapter card Artikel
         cardAdapter = CardAdapter(cardArtikelResponse)
+
+        //adapter card forum
+
 
         // MENDAPATKAN DATA MENGGUNAKAN KATA KUNCI ARTICLELIST DARI HALAMAN ARTIKEL ACTIVITY
         val articleList = requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList")
@@ -153,6 +153,8 @@ class HomeFragment : Fragment() {
         } else {
             Log.d("MyTag", "articleList is empty or null")
         }
+
+        // Setting adapter untuk Forum
 
 
         cityname = view.findViewById<TextView>(R.id.txtcity)
@@ -226,6 +228,10 @@ class HomeFragment : Fragment() {
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
         getCurrentLocation()
+
+
+        // menampilkan RecylerView Forum Get API
+        forumlist()
 
     }
 
@@ -378,40 +384,41 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun getListForum(): ArrayList<ForumData> {
-        val dataavatar = resources.obtainTypedArray(R.array.data_avatar)
-        val dataName = resources.getStringArray(R.array.data_name)
-        val datadesc = resources.getStringArray(R.array.data_desc)
-        val datadatetime = resources.getStringArray(R.array.data_datetime)
-        val dataimage = resources.obtainTypedArray(R.array.data_image)
-        val listforum = ArrayList<ForumData>()
-        for (i in dataName.indices) {
-            val user = ForumData(
-                dataavatar.getResourceId(i, -1), dataName[i],
-                datadatetime[i], datadesc[i], dataimage.getResourceId(i, -1)
-            )
-            listforum.add(user)
-        }
+    fun forumlist() {
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
+        retro.getAllForum().enqueue(object : Callback<AllForumResponse> {
+            override fun onResponse(
+                call: Call<AllForumResponse>,
+                response: Response<AllForumResponse>
+            ) {
+                response.body()?.let {
+                    getItemForum(it)
+                }
+            }
 
-        return listforum
-
+            override fun onFailure(call: Call<AllForumResponse>, t: Throwable) {
+            }
+        })
     }
 
-    private fun getListArtikel():ArrayList<HomeArtikel>{
-        val category = resources.getStringArray(R.array.category)
-        val title = resources.getStringArray(R.array.title)
-        val desc = resources.getStringArray(R.array.descartikel)
-        val readtime = resources.getStringArray(R.array.lastsen)
-        val cover = resources.obtainTypedArray(R.array.cover)
-        val listartikel = ArrayList<HomeArtikel>()
-        for (i in category.indices) {
-            val tani = HomeArtikel(
-                category[i],title[i],desc[i],readtime[i],
-                cover.getResourceId(i,-1)
-            )
-            listartikel.add(tani)
-        }
-        return listartikel
+    fun getToken() :String{
+        val prefHelper = PreferencesHelper.customForumHome(requireContext())
+        return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
+    }
+
+     fun getItemForum(body :AllForumResponse) {
+         Log.d("HOME", "recyclerview berhasil ${body.allForumItem} ")
+        val rvPostingan = binding.rvForum
+         rvPostingan.setHasFixedSize(true)
+         rvPostingan.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+         val adapter = MainForumAdapter(requireContext(), body.allForumItem)
+
+         // set adapter to recylcerviewnya
+         rvPostingan.adapter = adapter
+         adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker{
+             override fun onMore(itemForum: AllForumItem, position: Int) {
+             }
+         })
     }
 
 

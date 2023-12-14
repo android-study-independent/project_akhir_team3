@@ -20,13 +20,8 @@ import com.example.finalproject_chilicare.adapter.lms.CardLmsModulAdapter
 import com.example.finalproject_chilicare.adapter.lms.TabLmsAdapter
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.response.article.TabResponse
 import com.example.finalproject_chilicare.data.response.lms.CardLmsResponse
-import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
-import com.example.finalproject_chilicare.data.response.lms.ModulMateri
-import com.example.finalproject_chilicare.data.response.lms.ModulStatusRespn
 import com.example.finalproject_chilicare.data.response.lms.TabLmsResponse
-import com.example.finalproject_chilicare.dataclass.ListModulArtikel
 import com.example.finalproject_chilicare.ui.home.HomeActivity
 import com.example.finalproject_chilicare.utils.OnTabClickListener
 import kotlinx.coroutines.launch
@@ -119,11 +114,14 @@ class LmsFragment : Fragment(), OnTabClickListener {
             rvTabLms.adapter?.notifyDataSetChanged()
         }
 
-        // Uuntuk pindah halaman detail LMS
+        // Uuntuk pindah halaman materi LMS
         cardlmsadapter.clicklmsModul = {
             Log.d("lms", "klik hasil ${it}")
             val intent = Intent(activity, MateriLMSActivity::class.java)
-            intent.putParcelableArrayListExtra("modulLms",ArrayList(cardlistlms))
+//            intent.putParcelableArrayListExtra("modulLms",ArrayList(cardlistlms))
+            intent.putExtra("id", it.id)
+            val id = it.id
+            Log.d("lms_id", "onViewCreated: $id ")
 
             startActivity(intent)
         }
