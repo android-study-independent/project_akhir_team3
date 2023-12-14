@@ -30,6 +30,8 @@ import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityNewPostForumBinding
+import com.example.finalproject_chilicare.ui.home.HomeActivity
+import com.example.finalproject_chilicare.ui.home.HomeFragment
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -131,29 +133,10 @@ class NewPostForumActivity : AppCompatActivity() {
             addPostForum(
                 bindingPostForum.etTextInputUpload.text.toString()
             )
+            bindingPostForum.etTextInputUpload.text = null
+            startActivity(Intent(this@NewPostForumActivity, HomeActivity::class.java))
         }
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    private fun loadImageFromPath(path: String) {
-        // Log the file path and existence
-        Log.d("FILE_PATH", "Path: $path, File exists: ${File(path).exists()}")
-
-        // Load the image using BitmapFactory
-        try {
-            val bitmap: Bitmap = BitmapFactory.decodeFile(path)
-            // Set the bitmap to the ImageView
-            bindingPostForum.checkImageUpload1.setImageBitmap(bitmap)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.makeText(this@NewPostForumActivity, "Failed to load image", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
 
 
     private val getContent = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
@@ -180,8 +163,6 @@ class NewPostForumActivity : AppCompatActivity() {
 
         val apiInterface = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
 
-
-
         val file = uriToFile(imageUri = imagePathUri!!,this)
         val requestFile: RequestBody =
             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
@@ -203,6 +184,8 @@ class NewPostForumActivity : AppCompatActivity() {
                         if (response.body()?.toString() == "200") {
                             Toast.makeText(applicationContext, "Post Berhaasil", Toast.LENGTH_SHORT)
                                 .show()
+                            val intent = Intent(this@NewPostForumActivity, ForumActivity::class.java)
+                            startActivity(intent)
                         } else {
                             Toast.makeText(applicationContext, "Not Added", Toast.LENGTH_SHORT)
                                 .show()
@@ -233,5 +216,6 @@ class NewPostForumActivity : AppCompatActivity() {
         val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile("profil_user", ".jpg", storageDir)
     }
+
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.example.finalproject_chilicare.data.response.PopularCityResponse
 class SearchPopularCityActivity : AppCompatActivity() {
 
     private lateinit var rv_CariKota: RecyclerView
+    private lateinit var btnBack : ImageView
 
     private lateinit var dataKota : ArrayList<PopularCityResponse>
 
@@ -25,7 +27,13 @@ class SearchPopularCityActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_popular_city)
 
-        btnLocation = findViewById(R.id.btnLocation)
+        btnBack = findViewById(R.id.iconBackInSearchPopular)
+
+        btnBack.setOnClickListener {
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
+
         titleList = arrayOf(
             "Semarang",
             "Surabaya",
@@ -47,12 +55,6 @@ class SearchPopularCityActivity : AppCompatActivity() {
         rv_CariKota.layoutManager = GridLayoutManager(this, 4)
         rv_CariKota.setHasFixedSize(true)
 
-        btnLocation.setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("selectedCity", "Jakarta")
-            setResult(Activity.RESULT_OK, intent)
-            finish()
-        }
 
         dataKota = ArrayList()
         getData()

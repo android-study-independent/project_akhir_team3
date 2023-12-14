@@ -64,11 +64,11 @@ class WeatherActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_weather)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_weather)
-        btnAdd = findViewById(R.id.btnAddCity)
-        btnBack = findViewById(R.id.btnBackInWeather)
+        btnAdd = findViewById(R.id.btnAddCityUtama)
+        btnBack = findViewById(R.id.btnBackInWeatherUtama)
 
-        iconSuhuWeather = findViewById(R.id.iconSuhu)
-        btnback = findViewById(R.id.btnBackInWeather)
+        iconSuhuWeather = findViewById(R.id.iconSuhuUtama)
+        btnback = findViewById(R.id.btnBackInWeatherUtama)
 
 
         // button back to home
@@ -273,18 +273,18 @@ class WeatherActivity : AppCompatActivity() {
             val currentDate = SimpleDateFormat("dd/MM/yyyy hh:mm").format(Date())
 
 
-            textLocation.text = body.currentWeather.city
-            textSuhu.text = body.currentWeather.temperature.toString() + "°"
-            kondisiSuhu.text = body.currentWeather.weatherDescription
-            descStatusCuaca.text = body.currentWeather.status
-            nilaiKelembapan.text = body.currentWeather.humidity.toString() + "%"
-            textTitikEmbun.text = "Titik embun saat ini " +body.currentWeather.dewPoint
-            nilaiKecepatanAngin.text = body.currentWeather.windSpeed
-            textArahAngin.text = body.currentWeather.windDirection
+            textLocationUtama.text = body.currentWeather.city
+            textSuhuUtama.text = body.currentWeather.temperature.toString() + "°"
+            kondisiSuhuUtama.text = body.currentWeather.weatherDescription
+            descStatusCuacaUtama.text = body.currentWeather.status
+            nilaiKelembapanUtama.text = body.currentWeather.humidity.toString() + "%"
+            textTitikEmbunUtama.text = "Titik embun saat ini " +body.currentWeather.dewPoint
+            nilaiKecepatanAnginUtama.text = body.currentWeather.windSpeed
+            textArahAnginUtama.text = body.currentWeather.windDirection
 
 
             adapter = HourlyWeatherAdapter(body.hourlyweather)
-            val rvHourlyWeather = binding.rvHourlyWeather
+            val rvHourlyWeather = binding.rvHourlyWeatherUtama
             rvHourlyWeather.layoutManager = LinearLayoutManager(this@WeatherActivity, RecyclerView.HORIZONTAL, false)
             rvHourlyWeather.setHasFixedSize(true)
 
@@ -299,27 +299,27 @@ class WeatherActivity : AppCompatActivity() {
 
 
 
-            textHariCuaca1.text = (body.forecast[1].date)
-            textHariCuaca2.text = (body.forecast[2].date)
-            textHariCuaca3.text = (body.forecast[3].date)
-            textKondisiCuaca1.text = (body.forecast[1].weatherDescription)
-            textKondisiCuaca2.text = (body.forecast[2].weatherDescription)
-            textKondisiCuaca3.text = (body.forecast[3].weatherDescription)
-            textSuhu1.text = (body.forecast[1].temperature.toString())+ "°"
-            textSuhu2.text = (body.forecast[2].temperature.toString())+ "°"
-            textSuhu3.text = (body.forecast[3].temperature.toString())+ "°"
+            textHariCuaca1Utama.text = (body.forecast[1].date)
+            textHariCuaca2Utama.text = (body.forecast[2].date)
+            textHariCuaca3Utama.text = (body.forecast[3].date)
+            textKondisiCuaca1Utama.text = (body.forecast[1].weatherDescription)
+            textKondisiCuaca2Utama.text = (body.forecast[2].weatherDescription)
+            textKondisiCuaca3Utama.text = (body.forecast[3].weatherDescription)
+            textSuhu1Utama.text = (body.forecast[1].temperature.toString())+ "°"
+            textSuhu2Utama.text = (body.forecast[2].temperature.toString())+ "°"
+            textSuhu3Utama.text = (body.forecast[3].temperature.toString())+ "°"
 
             val path = buildIconPath(body.currentWeather.icon)
-            Picasso.get().load(path).into(iconSuhu)
+            Picasso.get().load(path).into(iconSuhuUtama)
             Log.d("iconweather",path)
 
             val cuaca1 = buildIconPath(body.forecast[1].icon)
             val cuaca2 = buildIconPath(body.forecast[2].icon)
             val cuaca3 = buildIconPath(body.forecast[3].icon)
 
-            Picasso.get().load(cuaca1).into(iconCuaca1)
-            Picasso.get().load(cuaca2).into(iconCuaca2)
-            Picasso.get().load(cuaca3).into(iconCuaca3)
+            Picasso.get().load(cuaca1).into(iconCuaca1Utama)
+            Picasso.get().load(cuaca2).into(iconCuaca2Utama)
+            Picasso.get().load(cuaca3).into(iconCuaca3Utama)
 
 
         }
