@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.weather.WeatherChooseCityActivity"
+    >
+
+    <ImageView
+        android:id="@+id/TombolKembali"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textKelolaKota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kelola Kota"
+        app:layout_constraintLeft_toRightOf="@+id/TombolKembali"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/plusjakartasans_bold_700"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilKelolaKota"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="28dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textKelolaKota"
+        app:hintEnabled="false"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/etKelolaKota"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:background="@drawable/custominputregistlogin"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/plusjakartasans_reguler_400"
+            android:hint="Masukkan Lokasi"
+            android:paddingLeft="8dp"
+            android:textColor="@color/SecondaryText"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Vertical LinearLayout with CardViews -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tilKelolaKota">
+
+        <!-- First CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:id="@+id/rvCity1"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:background="@color/PrimaryBrand"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textCity"
+                        android:text="Jakarta"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="12dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/baseline_location_on_24"
+                        android:layout_toRightOf="@id/textCity"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="12dp"
+                        android:id="@+id/imageLocation"
+                        />
+
+                    <TextView
+                        android:layout_below="@id/textCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textSuhu1"
+                        android:text="20°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="24dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/garisMiringLine1"
+                        android:text="/"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/textCity"
+                        android:layout_toRightOf="@id/textSuhu1"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textSuhu2"
+                        android:text="35°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/textCity"
+                        android:layout_toRightOf="@id/garisMiringLine1"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="35°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="18dp"/>
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView kedua -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:id="@+id/rvCity2"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:background="#C5C5C5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtCity1"
+                        android:text="Surabaya"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="12dp"/>
+
+                    <TextView
+                        android:id="@+id/txtSuhu1"
+                        android:layout_below="@id/txtCity1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:id="@+id/Line1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/txtCity1"
+                        android:layout_toRightOf="@id/txtSuhu1"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txtSuhu2"
+                        android:text="25°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/txtCity1"
+                        android:layout_toRightOf="@id/Line1"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="40°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="18dp"/>
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--        CardView Ketiga-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:id="@+id/rvCity3"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:background="#C5C5C5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <TextView
+                        android:id="@+id/txtCity3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Malang"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="12dp"/>
+
+                    <TextView
+                        android:id="@+id/txtSuhu3"
+                        android:layout_below="@id/txtCity3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:id="@+id/Line3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/txtCity3"
+                        android:layout_toRightOf="@id/txtSuhu3"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:id="@+id/txtSuhu4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25°"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:layout_below="@id/txtCity3"
+                        android:layout_toRightOf="@id/Line3"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginLeft="2dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20°"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="18dp"/>
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
