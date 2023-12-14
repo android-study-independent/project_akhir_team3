@@ -13,7 +13,6 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
-import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.models.EditForumResponse
 import com.example.finalproject_chilicare.databinding.ActivityEditPostForumBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -26,20 +25,27 @@ class EditPostForumActivity : AppCompatActivity() {
 
     lateinit var bindingEditForum : ActivityEditPostForumBinding
     lateinit var prefHelper: SharedPreferences
-    lateinit var forumItem: AllForumItem
     private lateinit var context: Context
-    private val baseUrl = "http://195.35.32.179:8003/"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_post_forum)
+
+
+
         Log.d("Activity", "Berhasil pindah ke Edit Postingan")
 
         bindingEditForum = DataBindingUtil.setContentView(this, R.layout.activity_edit_post_forum)
         prefHelper = PreferencesHelper.customEditForum(this@EditPostForumActivity)
 
-        context = this
+        val intent = intent.getIntExtra("forumId", 0)
+        Log.d("forumdId", "$intent")
+
+
+
+        //val forumList = AllForumItem(listForum.forumId.toString())
+
         // GO PAGES FORUM FOR TESTING
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         ivBack.setOnClickListener {
@@ -48,28 +54,22 @@ class EditPostForumActivity : AppCompatActivity() {
             }
         }
 
-      //  forumItem = AllForumItem()
-//        btnUpdatePostingan(context, forumItem)
-       // Log.d("Debug", "Id Forum saat ini -> ${forumItem.forumId}")
 
         bindingEditForum.btnEditPostingForum.setOnClickListener {
-            updatePostinganForum(it, forumItem.forumId.toString())
+            updatePostinganForum(it)
         }
     }
 
-    private fun btnUpdatePostingan (context: Context, data: String) {
-
-    }
-
     fun getToken(): String {
-
         val prefHelper = PreferencesHelper.customEditForum(this)
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
     }
 
-    fun updatePostinganForum (body : View, data : String) {
+    fun updatePostinganForum (data: View) {
 
-        val idPostingan = data
+        val idPostingan = intent.getIntExtra("forumId", 0)
+        Log.d("forumdId", "$idPostingan")
+
 
         val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
         val editCaptions = bindingEditForum.etTextInputEditPostingan.text.toString()
@@ -78,7 +78,7 @@ class EditPostForumActivity : AppCompatActivity() {
 
 
         getToken()?.let {
-            retro.updateCaptions(idPostingan, captionsRequestBody).enqueue(object : Callback<EditForumResponse> {
+            retro.updateCaptions(idPostingan.toString(), captionsRequestBody).enqueue(object : Callback<EditForumResponse> {
                 override fun onResponse(
                     call: Call<EditForumResponse>,
                     response: Response<EditForumResponse>
