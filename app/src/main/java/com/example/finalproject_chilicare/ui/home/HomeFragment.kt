@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -55,8 +56,8 @@ class HomeFragment : Fragment() {
     private val listforum = ArrayList<ForumData>()
     private val listartikel = ArrayList<HomeArtikel>()
     private lateinit var recylerView: RecyclerView
-    private lateinit var rvartikelrecylerview : RecyclerView
-    private lateinit var rvPostinganForum : RecyclerView
+    private lateinit var rvartikelrecylerview: RecyclerView
+    private lateinit var rvPostinganForum: RecyclerView
     private lateinit var forumadapter: ForumAdapter
     private lateinit var artikeladapter: CardHomeArtikelAdapter
     private lateinit var cityname: TextView
@@ -65,13 +66,15 @@ class HomeFragment : Fragment() {
     private lateinit var weatherdesc: TextView
     private lateinit var date: TextView
     private lateinit var image: ImageView
+    private lateinit var progressBar: ProgressBar
 
 
 //    private lateinit var binding: FragmentHomeBinding
 
     lateinit var cardAdapter: CardAdapter // adapter artikel
-    lateinit var cardForumAdapter :MainForumAdapter // addapter forum
-//    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
+    lateinit var cardForumAdapter: MainForumAdapter // addapter forum
+
+    //    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
     private var cardArtikelResponse = (mutableListOf<CardArtikelResponse>()) // ini buat datanya
 
 
@@ -114,26 +117,34 @@ class HomeFragment : Fragment() {
 
         //adapter card forum
 
+        //progress bar
+        progressBar = view.findViewById(R.id.progressBarHome)
+
 
         // MENDAPATKAN DATA MENGGUNAKAN KATA KUNCI ARTICLELIST DARI HALAMAN ARTIKEL ACTIVITY
-        val articleList = requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList")
+        val articleList =
+            requireActivity().intent.getParcelableArrayListExtra<CardArtikelResponse>("articleList")
 
         // Log untuk memeriksa apakah artikelList tidak null dan berisi data
         Log.d("MyTag", "articleList: $articleList")
 
 //        // Mengatur adapter untuk RecyclerView
-       rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
+        rvartikelrecylerview = view.findViewById(R.id.rv_cardhomeartikel)
         rvartikelrecylerview.adapter = cardAdapter
 
         lifecycleScope.launch {
+            progressBar.visibility = View.VISIBLE
             val result = Network().getRetroClientInstance()
                 .create(ApiInterface::class.java).getAllArtikel()
             result.data.map {
-                Log.d("Home","hasil data ${it}")
+                Log.d("Home", "hasil data ${it}")
                 cardArtikelResponse.add(it)
-                binding.rvCardhomeartikel.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                binding.rvCardhomeartikel.layoutManager =
+                    LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
                 binding.rvCardhomeartikel.adapter = cardAdapter
+                progressBar.visibility = View.GONE
             }
+
 
         }
 
@@ -211,9 +222,9 @@ class HomeFragment : Fragment() {
 
         // button card artikel
         cardAdapter.onItemClick = {
-            Log.d("Homefragment" ,"klik item  ${it}")
+            Log.d("Homefragment", "klik item  ${it}")
             val intent = Intent(activity, DetailArticleActivity::class.java)
-            intent.putExtra("articles",it)
+            intent.putExtra("articles", it)
             intent.putParcelableArrayListExtra("articleList", ArrayList(cardArtikelResponse))
             startActivity(intent)
         }
@@ -372,7 +383,7 @@ class HomeFragment : Fragment() {
 
             val path = buildIconPath(body.currentWeather.icon)
             Picasso.get().load(path).into(image)
-            Log.d("iconweather",path)
+            Log.d("iconweather", path)
 
             /* <<<<< CARD FROM ARTIKEL >>>>> */
         }
@@ -380,7 +391,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun buildIconPath(icon: String?): String {
-        return icon?:""
+        return icon ?: ""
     }
 
 
@@ -401,24 +412,25 @@ class HomeFragment : Fragment() {
         })
     }
 
-    fun getToken() :String{
+    fun getToken(): String {
         val prefHelper = PreferencesHelper.customForumHome(requireContext())
         return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
     }
 
-     fun getItemForum(body :AllForumResponse) {
-         Log.d("HOME", "recyclerview berhasil ${body.allForumItem} ")
+    fun getItemForum(body: AllForumResponse) {
+        Log.d("HOME", "recyclerview berhasil ${body.allForumItem} ")
         val rvPostingan = binding.rvForum
-         rvPostingan.setHasFixedSize(true)
-         rvPostingan.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
-         val adapter = MainForumAdapter(requireContext(), body.allForumItem)
+        rvPostingan.setHasFixedSize(true)
+        rvPostingan.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        val adapter = MainForumAdapter(requireContext(), body.allForumItem)
 
-         // set adapter to recylcerviewnya
-         rvPostingan.adapter = adapter
-         adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker{
-             override fun onMore(itemForum: AllForumItem, position: Int) {
-             }
-         })
+        // set adapter to recylcerviewnya
+        rvPostingan.adapter = adapter
+        adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+            override fun onMore(itemForum: AllForumItem, position: Int) {
+            }
+        })
     }
 
 

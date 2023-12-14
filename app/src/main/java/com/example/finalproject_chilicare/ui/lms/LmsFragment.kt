@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.lifecycleScope
@@ -36,6 +37,7 @@ class LmsFragment : Fragment(), OnTabClickListener {
     lateinit var searchModul : EditText
     private var cardlistlms = mutableListOf<CardLmsResponse>()
     private lateinit var tabResponse: ArrayList<TabLmsResponse>
+    private lateinit var progressBar: ProgressBar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +58,8 @@ class LmsFragment : Fragment(), OnTabClickListener {
         // inisiasi  xml
         btnback = view.findViewById(R.id.ivBacklms)
         searchModul = view.findViewById(R.id.etCariMateriLms)
+
+        progressBar = view.findViewById(R.id.progressBarLms)
 
         //button back home
         btnback.setOnClickListener {
@@ -91,6 +95,7 @@ class LmsFragment : Fragment(), OnTabClickListener {
 
         //Get data API LIFECYCLE
         lifecycleScope.launch {
+            progressBar.visibility = View.VISIBLE
             val result = Network().getRetroClientInstance()
                 .create(ApiInterface::class.java).getAllLms(
                 )
@@ -101,6 +106,7 @@ class LmsFragment : Fragment(), OnTabClickListener {
                     // RV Modul LMS
                     rvcardModul.adapter = cardlmsadapter
                     rvcardModul.layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
+                    progressBar.visibility = View.GONE
                 }
 
             // RV TAB LMS

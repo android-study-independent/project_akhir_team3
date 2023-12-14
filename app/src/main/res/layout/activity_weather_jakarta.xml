@@ -753,7 +753,7 @@
 
 
                 <Button
-                    android:id="@+id/buttonLihatSelengkapnya"
+                    android:id="@+id/btnselengkapnyajkt"
                     android:layout_width="296dp"
                     android:layout_height="44dp"
                     android:text="Lihat Selengkapnya"

@@ -7,416 +7,431 @@
     android:background="@color/backgourndPage"
     tools:context=".ui.home.HomeFragment">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@drawable/top_background"
-                    android:orientation="vertical">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:layout_width="181dp"
-                            android:layout_height="198.74dp"
-                            android:layout_marginTop="20dp"
-                            android:paddingLeft="60dp"
-                            android:src="@drawable/gradient"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></ImageView>
-
-                        <ImageView
-                            android:id="@+id/imgavatar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="16dp"
-                            android:src="@drawable/avatar"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></ImageView>
-
-                        <TextView
-                            android:id="@+id/txthalo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:paddingLeft="20sp"
-                            android:text="Halo"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintLeft_toRightOf="@+id/imgavatar"
-                            app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
-
-                        <TextView
-                            android:id="@+id/txtavatarname"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:layout_marginLeft="5dp"
-                            android:text="Richard 👋🏻"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintLeft_toRightOf="@+id/txthalo"
-                            app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
-
-                        <TextView
-                            android:id="@+id/txtwelcomepage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/plusjakartasans_reguler_400"
-                            android:paddingLeft="20sp"
-                            android:text="Selamat Belajar di Chilicare"
-                            android:textColor="@color/white"
-                            android:textSize="12sp"
-                            app:layout_constraintLeft_toLeftOf="@id/txthalo"
-                            app:layout_constraintTop_toBottomOf="@+id/txtavatarname"></TextView>
-
-                        <ImageView
-                            android:id="@+id/imgnotification"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/icn_notif"
-                            app:layout_constraintBottom_toBottomOf="@+id/txtavatarname"
-                            app:layout_constraintLeft_toRightOf="@id/txtavatarname"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/imgavatar"></ImageView>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btnCardWeather"
-                    android:layout_width="370dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="150dp"
-                    android:background="@color/grey"
-                    app:cardCornerRadius="12dp">
-
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/txtdatetime"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="30dp"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            tools:text="12/1/2023"
-                            android:textColor="@color/PrimaryText"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></TextView>
-
-                        <ImageView
-                            android:id="@+id/imgweather"
-                            android:layout_width="55dp"
-                            android:layout_height="55dp"
-                            android:layout_marginLeft="40dp"
-                            android:layout_marginTop="45dp"
-                            tools:src="@drawable/icn_cloudy"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"></ImageView>
-
-                        <TextView
-                            android:id="@+id/txtweatherdesc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:paddingLeft="40dp"
-                            android:fontFamily="@font/plusjakartasans_reguler_400"
-                            tools:text="Hujan ringan"
-                            android:textColor="@color/PrimaryText"
-                            app:layout_constraintEnd_toEndOf="@id/txtdatetime"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/imgweather"></TextView>
-
-                        <TextView
-                            android:id="@+id/txtcity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="35dp"
-                            android:layout_marginEnd="50dp"
-                            android:fontFamily="@font/plusjakartasans_semibold_600"
-                            android:textColor="@color/PrimaryText"
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="Bandung"></TextView>
-
-                        <TextView
-                            android:id="@+id/txttemperature"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/plusjakartasans_bold_700"
-                            android:textColor="@color/BrandDark"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            app:layout_constraintLeft_toLeftOf="@+id/txtcity"
-                            app:layout_constraintRight_toRightOf="@+id/txtcity"
-                            app:layout_constraintTop_toBottomOf="@+id/txtcity"
-                            tools:text="25°C"></TextView>
-
-<!--                        <TextView-->
-<!--                            android:id="@+id/txtkelembapan"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="12dp"-->
-<!--                            android:fontFamily="@font/plusjakartasans_reguler_400"-->
-<!--                            android:textColor="@color/PrimaryText"-->
-<!--                            app:layout_constraintRight_toLeftOf="@+id/txthumidity"-->
-<!--                            android:layout_marginEnd="5dp"-->
-<!--                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"-->
-<!--                            android:text="Kelembapan"></TextView>-->
-
-                        <TextView
-                            android:id="@+id/txthumidity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:fontFamily="@font/plusjakartasans_reguler_400"
-                            android:textColor="@color/PrimaryText"
-
-                            app:layout_constraintLeft_toLeftOf="@id/txtcity"
-                            app:layout_constraintRight_toRightOf="@id/txtcity"
-                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"
-                            tools:text="Kelembapan 80%"></TextView>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btnCuaca"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="40dp">
-
-                        <ImageView
-                            android:id="@+id/imgCuaca"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/icn_weather"></ImageView>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/txtcuaca"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/plusjakartasans_semibold_600"
-                        android:text="Cuaca"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"></TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btnArtikel"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="40dp">
-
-                        <ImageView
-                            android:id="@+id/imgArtikel"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/icn_news"></ImageView>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/txtArtikel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/plusjakartasans_semibold_600"
-                        android:text="Artikel"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"></TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btnForum"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="40dp">
-
-                        <ImageView
-                            android:id="@+id/imgForum"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/icn_forum"></ImageView>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/txtForum"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/plusjakartasans_semibold_600"
-                        android:text="Forum"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"></TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.3"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/btnAktivitas"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="40dp">
-
-                        <ImageView
-                            android:id="@+id/imgAktivitas"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:src="@drawable/icn_activity"></ImageView>
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/txtAktivitas"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/plusjakartasans_semibold_600"
-                        android:text="Aktivitas"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"></TextView>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_cardhomeartikel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"></androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
-                <TextView
+
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:text="Forum Hari ini"
-                    android:textColor="@color/PrimaryText"
-                    android:textSize="20sp"
-                    android:textStyle="bold"></TextView>
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@drawable/top_background"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="181dp"
+                                android:layout_height="198.74dp"
+                                android:layout_marginTop="20dp"
+                                android:paddingLeft="60dp"
+                                android:src="@drawable/gradient"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                            <ImageView
+                                android:id="@+id/imgavatar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="16dp"
+                                android:src="@drawable/avatar"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txthalo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:paddingLeft="20sp"
+                                android:text="Halo"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
+                                app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
+
+                            <TextView
+                                android:id="@+id/txtavatarname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:text="Richard 👋🏻"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="@+id/txthalo"
+                                app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
+
+                            <TextView
+                                android:id="@+id/txtwelcomepage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/plusjakartasans_reguler_400"
+                                android:paddingLeft="20sp"
+                                android:text="Selamat Belajar di Chilicare"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                app:layout_constraintLeft_toLeftOf="@id/txthalo"
+                                app:layout_constraintTop_toBottomOf="@+id/txtavatarname"></TextView>
+
+                            <ImageView
+                                android:id="@+id/imgnotification"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/icn_notif"
+                                app:layout_constraintBottom_toBottomOf="@+id/txtavatarname"
+                                app:layout_constraintLeft_toRightOf="@id/txtavatarname"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/imgavatar"></ImageView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btnCardWeather"
+                        android:layout_width="370dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="150dp"
+                        android:background="@color/grey"
+                        app:cardCornerRadius="12dp">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ProgressBar
+                                android:id="@+id/progressBarHome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                android:visibility="gone"></ProgressBar>
+
+                            <TextView
+                                android:id="@+id/txtdatetime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:paddingLeft="30dp"
+                                android:textColor="@color/PrimaryText"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="12/1/2023"></TextView>
+
+                            <ImageView
+                                android:id="@+id/imgweather"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginTop="45dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@drawable/icn_cloudy"></ImageView>
+
+                            <TextView
+                                android:id="@+id/txtweatherdesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:fontFamily="@font/plusjakartasans_reguler_400"
+                                android:paddingLeft="40dp"
+                                android:textColor="@color/PrimaryText"
+                                app:layout_constraintEnd_toEndOf="@id/txtdatetime"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/imgweather"
+                                tools:text="Hujan ringan"></TextView>
+
+                            <TextView
+                                android:id="@+id/txtcity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="35dp"
+                                android:layout_marginEnd="50dp"
+                                android:fontFamily="@font/plusjakartasans_semibold_600"
+                                android:textColor="@color/PrimaryText"
+                                android:textSize="18sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="Bandung"></TextView>
+
+                            <TextView
+                                android:id="@+id/txttemperature"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:textColor="@color/BrandDark"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toLeftOf="@+id/txtcity"
+                                app:layout_constraintRight_toRightOf="@+id/txtcity"
+                                app:layout_constraintTop_toBottomOf="@+id/txtcity"
+                                tools:text="25°C"></TextView>
+
+                            <!--                        <TextView-->
+                            <!--                            android:id="@+id/txtkelembapan"-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="wrap_content"-->
+                            <!--                            android:layout_marginTop="12dp"-->
+                            <!--                            android:fontFamily="@font/plusjakartasans_reguler_400"-->
+                            <!--                            android:textColor="@color/PrimaryText"-->
+                            <!--                            app:layout_constraintRight_toLeftOf="@+id/txthumidity"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            app:layout_constraintTop_toBottomOf="@+id/txttemperature"-->
+                            <!--                            android:text="Kelembapan"></TextView>-->
+
+                            <TextView
+                                android:id="@+id/txthumidity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:fontFamily="@font/plusjakartasans_reguler_400"
+                                android:textColor="@color/PrimaryText"
+
+                                app:layout_constraintLeft_toLeftOf="@id/txtcity"
+                                app:layout_constraintRight_toRightOf="@id/txtcity"
+                                app:layout_constraintTop_toBottomOf="@+id/txttemperature"
+                                tools:text="Kelembapan 80%"></TextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </FrameLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/plusjakartasans_reguler_400"
-                    android:text="Yuk bincang-bincang di komunitas!!"
-                    android:textColor="@color/SecondaryText"
-                    android:textSize="15sp"></TextView>
+                    android:layout_height="80dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnCuaca"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="40dp">
+
+                            <ImageView
+                                android:id="@+id/imgCuaca"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/icn_weather"></ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txtcuaca"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
+                            android:text="Cuaca"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"></TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnArtikel"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="40dp">
+
+                            <ImageView
+                                android:id="@+id/imgArtikel"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/icn_news"></ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txtArtikel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
+                            android:text="Artikel"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnForum"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="40dp">
+
+                            <ImageView
+                                android:id="@+id/imgForum"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/icn_forum"></ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txtForum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
+                            android:text="Forum"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/btnAktivitas"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            app:cardCornerRadius="40dp">
+
+                            <ImageView
+                                android:id="@+id/imgAktivitas"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="5dp"
+                                android:src="@drawable/icn_activity"></ImageView>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txtAktivitas"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/plusjakartasans_semibold_600"
+                            android:text="Aktivitas"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"></TextView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_Forum"
+                    android:id="@+id/rv_cardhomeartikel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"></androidx.recyclerview.widget.RecyclerView>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:paddingStart="0dp"></androidx.recyclerview.widget.RecyclerView>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="370dp"
-                    android:layout_height="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp"
-                    >
-                    <ImageView
-                        android:id="@+id/iv_downHomepage"
-                        android:layout_width="370dp"
-                        android:layout_height="66dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/img_fav"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plusjakartasans_bold_700"
+                        android:text="Forum Hari ini"
+                        android:textColor="@color/PrimaryText"
+                        android:textSize="20sp"
+                        android:textStyle="bold"></TextView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plusjakartasans_reguler_400"
+                        android:text="Yuk bincang-bincang di komunitas!!"
+                        android:textColor="@color/SecondaryText"
+                        android:textSize="15sp"></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_Forum"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:paddingStart="0dp"></androidx.recyclerview.widget.RecyclerView>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="370dp"
+                        android:layout_height="15dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="16dp">
+
+                        <ImageView
+                            android:id="@+id/iv_downHomepage"
+                            android:layout_width="370dp"
+                            android:layout_height="66dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/img_fav"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+            </LinearLayout>
 
     </ScrollView>
 
