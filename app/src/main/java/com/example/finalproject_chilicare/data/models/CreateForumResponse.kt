@@ -28,4 +28,5 @@ data class itemKomentar(
 
     @SerializedName("komentar")
     val komentar: String
+
 )

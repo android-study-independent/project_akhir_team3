@@ -17,7 +17,7 @@ class KomentarAdapter(
 
     inner class KomentarViewHolder(private val itemview : View) : RecyclerView.ViewHolder(itemview){
 
-        fun bindView(komen : Komentar, forumResponse: ForumResponse) {
+        fun bindView(komen : Komentar) {
 
             val usernameForum= itemview.findViewById<TextView>(R.id.tvNicknamePostingan)
             val dateUploadForum = itemview.findViewById<TextView>(R.id.tvDatePostingan)
@@ -53,11 +53,15 @@ class KomentarAdapter(
     }
 
     override fun onBindViewHolder(holder: KomentarViewHolder, position: Int) {
-        holder.bindView(listKomentar[position], forumResponse)
+        holder.bindView(listKomentar[position])
     }
 
     override fun getItemCount(): Int {
         return listKomentar.size
+    }
+
+    fun updateKomentarList(newList: List<Komentar>) {
+        listKomentar = newList
     }
 
 }

@@ -5,6 +5,7 @@ import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.data.models.EditForumResponse
+import com.example.finalproject_chilicare.data.models.PostKomentarDetailForumResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
@@ -101,6 +102,14 @@ interface ApiInterface {
         @Path("id") id: String,
         @Part("captions") captions: RequestBody
     ): Call<EditForumResponse>
+
+
+    @POST("forum/komentar/{id}")
+    fun postKomentar(
+        @Path("id") id: String,
+        @Body requestBody: RequestBody
+    ): Call<PostKomentarDetailForumResponse>
+
 }
 
 
