@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.WeatherActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6F6F6">
+
+        <ImageView
+            android:id="@+id/btnBackInWeather"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="16dp"
+            android:text="Malang"
+            android:textSize="16sp"
+            android:fontFamily="@font/plusjakartasans_semibold_600"
+            android:textColor="#303344"
+            app:layout_constraintLeft_toRightOf="@id/btnBackInWeather"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/baseline_keyboard_arrow_down_24"
+            app:layout_constraintHorizontal_bias="0.008"
+            app:layout_constraintLeft_toRightOf="@id/textLocation"
+            app:layout_constraintRight_toLeftOf="@id/btnAddCity"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnAddCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="24dp"
+            android:src="@drawable/add_weather"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/frameKondisiCuaca"
+            android:layout_width="370dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="24dp"
+            android:background="@drawable/border_weather"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textLocation">
+
+            <RelativeLayout
+                android:layout_width="370dp"
+                android:layout_height="match_parent"
+                android:id="@+id/relativeSuhu">
+
+                <TextView
+                    android:id="@+id/textSuhu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="35°"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textStyle="bold"
+                    android:textColor="@color/PrimaryBrand"
+                    android:textSize="45sp" />
+
+                <ImageView
+                    android:id="@+id/iconSuhu"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/textSuhu"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/sun"
+                    android:layout_marginBottom="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/kondisiSuhu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textSuhu"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/iconSuhu"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:gravity="center"
+                    android:text="Cerah"
+                    android:textAlignment="center"
+                    android:textColor="#303344"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/textSuhu"
+                    android:layout_marginLeft="65dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/ringkasanHarian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="22dp"
+                        android:text="Ringkasan Harian"
+                        android:textColor="#303344"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/plusjakartasans_semibold_600"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/descStatusCuaca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/ringkasanHarian"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/plusjakartasans_reguler_400"
+                        android:textColor="#8388B2"
+                        android:visibility="visible"
+                        android:text="Hari ini cerah, Yuk berikan pupuk dan vitamin serta pantau kelembaban tanaman Anda!" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/frameKelembapan"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="18dp"
+            android:background="@drawable/border_weather"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginTop="130dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
+
+            <RelativeLayout
+                android:id="@+id/relativeKelembapan"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                >
+
+                <TextView
+                    android:id="@+id/textKelembapan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:drawableStart="@drawable/embun"
+                    android:drawablePadding="4dp"
+                    android:text="Kelembapan"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/nilaiKelembapan"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textKelembapan"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="6dp"
+                    android:text="85 %"
+                    android:textColor="@color/PrimaryBrand"
+                    android:textSize="47sp" />
+
+                <TextView
+                    android:id="@+id/textTitikEmbun"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nilaiKelembapan"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="Titik embun saat ini 17°C"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="14dp"
+            android:clipToPadding="false"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/frameKelembapan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:id="@+id/textHourlyWeather1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="Sekarang"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+
+                <FrameLayout
+                    android:id="@+id/frameSuhuSekarang1"
+                    android:layout_width="42dp"
+                    android:layout_height="67dp"
+                    android:layout_below="@id/textHourlyWeather1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_cuaca"
+                    android:backgroundTint="@color/PrimaryBrand"
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconCardSuhu1"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/berawan" />
+
+                        <TextView
+                            android:id="@+id/textCardSuhu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iconCardSuhu1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="35°"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:id="@+id/textHourlyWeather2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="11:00"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    />
+
+
+                <FrameLayout
+                    android:id="@+id/frameSuhuSekarang2"
+                    android:layout_width="42dp"
+                    android:layout_height="67dp"
+                    android:layout_below="@id/textHourlyWeather2"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_cuaca"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconCardSuhu2"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/berawan" />
+
+                        <TextView
+                            android:id="@+id/textCardSuhu2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iconCardSuhu2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="22°"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="#8388B2"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:id="@+id/textHourlyWeather3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="12.00"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    />
+
+
+                <FrameLayout
+                    android:id="@+id/frameSuhuSekarang3"
+                    android:layout_width="42dp"
+                    android:layout_height="67dp"
+                    android:layout_below="@id/textHourlyWeather3"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_cuaca"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconCardSuhu3"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/hujan" />
+
+                        <TextView
+                            android:id="@+id/textCardSuhu3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iconCardSuhu3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="24°"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="#8388B2"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:id="@+id/textHourlyWeather4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="13.00"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/frameSuhuSekarang4"
+                    android:layout_width="42dp"
+                    android:layout_height="67dp"
+                    android:layout_below="@id/textHourlyWeather4"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_cuaca"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconCardSuhu4"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/hujan" />
+
+                        <TextView
+                            android:id="@+id/textCardSuhu4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iconCardSuhu4"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="26°"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="#8388B2"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp">
+
+                <TextView
+                    android:id="@+id/textHourlyWeather5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="14.00"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:gravity="center"/>
+
+
+                <FrameLayout
+                    android:id="@+id/frameSuhuSekarang5"
+                    android:layout_width="42dp"
+                    android:layout_height="67dp"
+                    android:layout_below="@id/textHourlyWeather5"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_cuaca"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="NotSibling">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSuhuSekarang5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/iconCardSuhu5"
+                            android:layout_width="35dp"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/berawan" />
+
+                        <TextView
+                            android:id="@+id/textCardSuhu5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iconCardSuhu5"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:text="33°"
+                            android:fontFamily="@font/plusjakartasans_reguler_400"
+                            android:textColor="#8388B2"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/frameKecepatanAngin"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="28dp"
+            android:background="@drawable/border_weather"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginTop="130dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameKondisiCuaca">
+
+            <RelativeLayout
+                android:id="@+id/relativeKecepatanAngin"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                >
+
+                <TextView
+                    android:id="@+id/textKecepatanAngin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:drawableStart="@drawable/angin"
+                    android:drawablePadding="4dp"
+                    android:text="Angin"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/nilaiKecepatanAngin"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textKecepatanAngin"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="2.1\nm/s"
+                    android:textStyle="bold"
+                    android:textColor="@color/PrimaryBrand"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/textArahAngin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nilaiKecepatanAngin"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Barat"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameRamalanCuaca"
+            android:layout_width="365dp"
+            android:layout_height="245dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/border_weather"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameKelembapan">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/relativeRamalanCuaca">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ramalan 3 hari kedepan"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="12sp"
+                    android:id="@+id/textRamalan"/>
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/sun"
+                    android:id="@+id/iconCuaca1"
+                    android:layout_below="@+id/textRamalan"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/textRamalan"
+                    android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca1"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textRamalan"
+                    android:layout_toRightOf="@id/textHariCuaca1"
+                    android:id="@+id/textKondisiCuaca1"/>
+
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textSuhu1"
+                    android:text="20°"
+                    android:layout_below="@+id/textRamalan"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
+
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/berawan"
+                    android:id="@+id/iconCuaca2"
+                    android:layout_below="@+id/iconCuaca1"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Besok"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/textHariCuaca1"
+                    android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca2"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textKondisiCuaca1"
+                    android:layout_toRightOf="@id/textHariCuaca2"
+                    android:id="@+id/textKondisiCuaca2"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textSuhu2"
+                    android:text="16°"
+                    android:layout_below="@+id/textSuhu1"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
+
+
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/berawan"
+                    android:id="@+id/iconCuaca3"
+                    android:layout_below="@+id/iconCuaca2"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginLeft="16dp"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Besok"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/textHariCuaca2"
+                    android:layout_toRightOf="@id/iconCuaca1"
+                    android:id="@+id/textHariCuaca3"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hari ini"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@+id/textKondisiCuaca2"
+                    android:layout_toRightOf="@id/textHariCuaca2"
+                    android:id="@+id/textKondisiCuaca3"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textSuhu3"
+                    android:text="16°"
+                    android:layout_below="@+id/textSuhu2"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginRight="36dp"
+                    android:layout_alignParentRight="true"/>
+
+
+                <Button
+                    android:id="@+id/buttonLihatSelengkapnya"
+                    android:layout_width="296dp"
+                    android:layout_height="44dp"
+                    android:text="Lihat Selengkapnya"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/plusjakartasans_bold_700"
+                    android:textColor="@color/NeutralText"
+                    android:textAllCaps="false"
+                    android:background="@drawable/buttonloginreg"
+                    android:layout_below="@+id/textHariCuaca3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="22dp"
+                    />
+            </RelativeLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
