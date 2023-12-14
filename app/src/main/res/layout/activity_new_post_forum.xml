@@ -107,7 +107,7 @@
               android:layout_marginStart="10dp"
               android:layout_marginEnd="16dp"
               android:fontFamily="@font/plusjakartasans_reguler_400"
-              android:hint="Apa yang sedang Anda pikirkan? Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley"
+              android:hint="Apa yang sedang Anda pikirkan? "
               android:justificationMode="inter_word"
               android:maxLines="10"
               android:textColor="@color/SecondaryText"

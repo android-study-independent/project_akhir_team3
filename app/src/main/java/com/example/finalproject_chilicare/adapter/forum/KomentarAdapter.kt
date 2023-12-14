@@ -19,11 +19,11 @@ class KomentarAdapter(
 
         fun bindView(komen : Komentar) {
 
-            val usernameForum= itemview.findViewById<TextView>(R.id.tvNicknamePostingan)
-            val dateUploadForum = itemview.findViewById<TextView>(R.id.tvDatePostingan)
-            val descriptionForum = itemview.findViewById<TextView>(R.id.tvDescPostingan)
-            val jumlahLikeForum = itemview.findViewById<TextView>(R.id.tvLike)
-            val jumlahCommentForum = itemview.findViewById<TextView>(R.id.tvComment)
+            val usernameForum= itemview.findViewById<TextView>(R.id.tvNicknamePostinganKomentar)
+            val dateUploadForum = itemview.findViewById<TextView>(R.id.tvDatePostinganKomentar)
+            val descriptionForum = itemview.findViewById<TextView>(R.id.tvDescPostinganKomentar)
+            val jumlahLikeForum = itemview.findViewById<TextView>(R.id.tvLikeKomentar)
+            val jumlahCommentForum = itemview.findViewById<TextView>(R.id.tvCommentKomentar)
 
             val forum = forumResponse.forum
             if (forum != null) {
