@@ -274,6 +274,7 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
+
     private fun setData(body: CurrentWeather) {
 
         binding.apply {
