@@ -77,7 +77,7 @@ class DetailLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickLis
                             Log.d("detail_lms_id", "onResponse: materidetail body ${response} ")
                             val responses = response.body()
                             bindingDetailLms.tvJudulMateri.text = responses!!.data[0].listMateri!![position].judulMateri
-                            bindingDetailLms.tvDecsMateri.text= responses!!.data[0].listMateri!![position].longDesc
+                            bindingDetailLms.tvDescLms.text= responses!!.data[0].listMateri!![position].longDesc
 
                             //set recylerview
                             val rvMateri = bindingDetailLms.rvMateriDetailLms

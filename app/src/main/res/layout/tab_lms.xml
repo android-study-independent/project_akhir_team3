@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_marginEnd="10dp"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             android:text="Proses"
             android:padding="10dp"
             android:textStyle="bold"
-            android:textColor="@color/PrimaryText"
+            android:textColor="@color/grey"
             android:fontFamily="@font/plusjakartasans_reguler_400"
             android:textSize="18sp"></TextView>
     </LinearLayout>
