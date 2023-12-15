@@ -8,15 +8,17 @@ import android.widget.ImageView
 import com.example.finalproject_chilicare.R
 
 class WeatherJakartaActivity : AppCompatActivity() {
+
+    lateinit var btnSeeMoreWeather : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_jakarta)
 
-        val btnSeeMoreWeather : Button = findViewById(R.id.btnselengkapnyajkt)
+        btnSeeMoreWeather = findViewById(R.id.btnSelengkapnyaJkt)
 
-        val btnBackInWeather: ImageView = findViewById(R.id.btnBackInWeather)
+        val btnBackInWeather: ImageView = findViewById(R.id.btnBackInWeatherDetailJakarta)
         btnBackInWeather.setOnClickListener {
-            finish()
+            startActivity(Intent(this, WeatherChooseCityActivity::class.java))
         }
 
         btnSeeMoreWeather.setOnClickListener { Intent(this,WeatherJakartaContentActivity::class.java).also {

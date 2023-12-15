@@ -32,6 +32,7 @@ import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.Hourlyweather
 import com.example.finalproject_chilicare.databinding.ActivityWeatherBinding
 import com.example.finalproject_chilicare.ui.home.forum.NewPostForumActivity
+import com.example.finalproject_chilicare.ui.home.weather.WeatherChooseCityActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
@@ -103,6 +104,10 @@ class WeatherActivity : AppCompatActivity() {
             Intent(this, HomeActivity::class.java).also {
                 startActivity(it)
             }
+        }
+
+        binding.iconChooseCity.setOnClickListener {
+            startActivity(Intent(this, WeatherChooseCityActivity::class.java))
         }
 
 
