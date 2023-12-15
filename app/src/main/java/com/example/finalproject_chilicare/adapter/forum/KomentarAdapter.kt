@@ -25,13 +25,13 @@ class KomentarAdapter(
             val jumlahLikeForum = itemview.findViewById<TextView>(R.id.tvLikeKomentar)
             val jumlahCommentForum = itemview.findViewById<TextView>(R.id.tvCommentKomentar)
 
-            val forum = forumResponse.forum
+            val forum = forumResponse.komentars
             if (forum != null) {
                 // Jika objek ForumResponse tidak null, gunakan propertinya
-                usernameForum.text = forum.name
-                descriptionForum.text = forum.captions
+                usernameForum.text = komen.name
+                descriptionForum.text = komen.komentar
                 // Menggunakan data dari ForumResponse
-                jumlahLikeForum.text = forumResponse.jumlahLike?.toString() ?: "0"
+                jumlahLikeForum.text = komen.jumlahKomentar.toString()
                 jumlahCommentForum.text = forumResponse.jumlahKomentar?.toString() ?: "0"
             } else {
                 // Jika objek ForumResponse null, gunakan data dari Komentar
