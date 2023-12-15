@@ -57,6 +57,8 @@ class EditPostForumActivity : AppCompatActivity() {
 
         bindingEditForum.btnEditPostingForum.setOnClickListener {
             updatePostinganForum(it)
+            val intent = Intent(this@EditPostForumActivity, ForumActivity::class.java)
+            startActivity(intent)
         }
     }
 

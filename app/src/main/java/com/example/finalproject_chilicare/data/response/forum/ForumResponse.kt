@@ -1,5 +1,7 @@
 package com.example.finalproject_chilicare.data.response.forum
 
+import com.google.gson.annotations.SerializedName
+
 data class ForumResponse(
     val forum: Forum?,
     val komentars: List<Komentar>?,
@@ -16,11 +18,24 @@ data class Forum(
 )
 
 data class Komentar(
-    val id_komentar: Int?,
+    @SerializedName("id_komentar")
+    val idKomentar: Int?,
+
+    @SerializedName("id_user")
     val id_user: Int?,
+
+    @SerializedName("name")
     val name: String?,
+
+    @SerializedName("komentar")
     val komentar: String?,
+
+    @SerializedName("createdAt")
     val createdAt: String?,
-    val id_parent_comment: Int?,
+
+    @SerializedName("id_parent_comment")
+    val idParentComment: Int?,
+
+    @SerializedName("jumlahKomentar")
     val jumlahKomentar: Int?
 )
