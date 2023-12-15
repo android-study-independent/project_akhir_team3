@@ -26,6 +26,7 @@ import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.data.models.PostKomentarDetailForumResponse
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
+import com.example.finalproject_chilicare.data.response.forum.Komentar
 import com.example.finalproject_chilicare.databinding.ActivityDetailPostForumBinding
 import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -42,6 +43,8 @@ class DetailPostForumActivity : AppCompatActivity() {
     private lateinit var prefHelper: SharedPreferences
     private val baseUrl = "http://195.35.32.179:8003/"
 
+    // PENERAPAN KOMENTAR
+    private var komentarCallback: KomentarCallback? = null
     lateinit var currentForumItem: AllForumItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +61,7 @@ class DetailPostForumActivity : AppCompatActivity() {
             }
         }
 
-        // PENERAPAN POST KOMENTAR
+        // PENERAPAN KOMENTAR
         val balasButton = findViewById<Button>(R.id.balasButton)
         val editText = findViewById<TextView>(R.id.editTextPostKomentar)
 
@@ -70,6 +73,7 @@ class DetailPostForumActivity : AppCompatActivity() {
                 // Handle jika komentar kosong
             }
         }
+
 
         val forumData = intent.getSerializableExtra("forum_data") as? AllForumItem
         forumData?.let {
@@ -96,40 +100,72 @@ class DetailPostForumActivity : AppCompatActivity() {
         bindingDetailForum.ivMoreInDetail.setOnClickListener {
             showCustomAlertDialog(this@DetailPostForumActivity, currentForumItem)
         }
+
+        // PENERAPAN KOMENTAR
+        fetchKomentar(currentForumItem.forumId.toString())
+
     }
 
+    // PENERAPAN KOMENTAR
+    private fun getToken(): String {
+        val prefHelper = PreferencesHelper.customDetailForum(this)
+        return prefHelper.getString(PreferencesHelper.KEY_TOKEN, "").orEmpty()
+    }
+
+    // PENERAPAN KOMENTAR
     private fun fetchKomentar(postinganId: String) {
-        val retro = Network().getRetroClientInstance().create(ApiInterface::class.java)
-        retro.getKomentar(postinganId).enqueue(object : Callback<ForumResponse> {
-            override fun onResponse(
-                call: Call<ForumResponse>,
-                response: Response<ForumResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val forumResponse = response.body()
-                    forumResponse?.let {
-                        // Log respons untuk memeriksa data yang diterima
-                        Log.d("Debug", "Fetch Komentar Response: $it")
-                        setAllForum(it)
+        val retro = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
+        getToken()?.let { apiKey ->
+            retro.getKomentar(postinganId).enqueue(object : Callback<ForumResponse> {
+                override fun onResponse(
+                    call: Call<ForumResponse>,
+                    response: Response<ForumResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val forumResponse = response.body()
+                        forumResponse?.let {
+                            // Log respons untuk memeriksa data yang diterima
+                            Log.d("Debug", "Fetch Komentar Response: $it")
+                            setAllForum(it)
 
-                        // Perbarui dataset di adapter
-                        adapterKomentarForum.updateKomentarList(it.komentars ?: emptyList())
-                        // Beri tahu adapter bahwa dataset telah berubah
-                        adapterKomentarForum.notifyDataSetChanged()
+                            // Perbarui tampilan komentar di adapter
+                            val komentars = it.komentars ?: emptyList()
+                            adapterKomentarForum.updateKomentarList(komentars.map { komentar ->
+                                val isiKomentar = komentar.komentar
+                                Log.d("Debug", "isiKomentar: $isiKomentar")
+                                // Mengembalikan objek Komentar yang sudah dimodifikasi
+                                komentar
+                            })
+
+                            // Panggil callback jika ada komentar baru
+                            komentarCallback?.onKomentarAdded(komentars)
+                        }
+                    } else {
+                        Log.e("Error", "Response not successful: ${response.message()}")
                     }
-                } else {
-                    Log.e("Error", "Response not successful: ${response.message()}")
                 }
-            }
 
-            override fun onFailure(call: Call<ForumResponse>, t: Throwable) {
-                Log.e("Error", "Retrofit call failed", t)
-            }
-        })
+                override fun onFailure(call: Call<ForumResponse>, t: Throwable) {
+                    Log.e("Error", "Retrofit call failed", t)
+                }
+            })
+        }
+    }
 
+    // PENERAPAN KOMENTAR
+    interface KomentarCallback {
+        fun onKomentarAdded(komentars: List<Komentar>) {
+            // Handle komentar baru yang ditambahkan ke data class Komentar
+            for (komentar in komentars) {
+                val isiKomentar = komentar.komentar
+                // Lakukan sesuatu dengan komentar baru
+                Log.d("Debug", "Komentar baru: $isiKomentar")
+            }
+        }
     }
 
 
+    // PENERAPAN KOMENTAR
     private fun setAllForum(body: ForumResponse) {
         Log.d("Debug", "Set All Forum: $body")
         bindingDetailForum.apply {
@@ -141,10 +177,12 @@ class DetailPostForumActivity : AppCompatActivity() {
 
             rvForumDetailPost.setHasFixedSize(true)
             rvForumDetailPost.adapter = adapterKomentarForum
+
             adapterKomentarForum.notifyDataSetChanged()
 
         }
     }
+
 
 
     private fun showCustomAlertDialog(context: Context, data: AllForumItem) {
@@ -218,42 +256,48 @@ class DetailPostForumActivity : AppCompatActivity() {
         })
     }
 
-    // PENERAPAN POST KOMENTAR
+
+    // PENERAPAN KOMENTAR
     private fun postKomentar(forumId: String, komentarText: String) {
         Log.d("Debug", "komentarText: $komentarText")
-        val retrofit = Network().getRetroClientInstance().create(ApiInterface::class.java)
-        val komentarRequestBody = RequestBody.create(
-            "application/json".toMediaTypeOrNull(),
-            "{\"komentar\":\"$komentarText\"}"
-        )
-        retrofit.postKomentar(forumId, komentarRequestBody)
-            .enqueue(object : Callback<PostKomentarDetailForumResponse> {
-                override fun onResponse(
-                    call: Call<PostKomentarDetailForumResponse>,
-                    response: Response<PostKomentarDetailForumResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val postKomentarResponse = response.body()
-                        postKomentarResponse?.let {
-                            // Handle response setelah mengirim komentar
-                            // Log respons untuk memeriksa data yang diterima
-                            Log.d("Debug", "Fetch Komentar Response: $it")
-                            // Refresh komentar setelah berhasil menambahkan komentar
-                            fetchKomentar(forumId)
+        val retrofit = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
+        getToken()?.let { apiKey ->
+            val komentarRequestBody = RequestBody.create(
+                "application/json".toMediaTypeOrNull(),
+                "{\"komentar\":\"$komentarText\"}"
+            )
+            retrofit.postKomentar(forumId, komentarRequestBody)
+                .enqueue(object : Callback<PostKomentarDetailForumResponse> {
+                    override fun onResponse(
+                        call: Call<PostKomentarDetailForumResponse>,
+                        response: Response<PostKomentarDetailForumResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val postKomentarResponse = response.body()
+                            postKomentarResponse?.let {
+                                // Handle response setelah mengirim komentar
+                                // Tampilkan komentar baru di tampilan
+                                fetchKomentar(forumId)
+                                Toast.makeText(
+                                    this@DetailPostForumActivity,
+                                    "Komentar berhasil ditambahkan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else {
+                            Log.e("Error", "Response not successful: ${response.message()}")
                         }
-                    } else {
-                        Log.e("Error", "Response not successful: ${response.message()}")
                     }
-                }
 
-                override fun onFailure(
-                    call: Call<PostKomentarDetailForumResponse>,
-                    t: Throwable
-                ) {
-                    Log.e("Error", "Retrofit call failed", t)
-                }
-            })
-
+                    override fun onFailure(
+                        call: Call<PostKomentarDetailForumResponse>,
+                        t: Throwable
+                    ) {
+                        Log.e("Error", "Retrofit call failed", t)
+                    }
+                })
+        }
     }
+
 
 }
