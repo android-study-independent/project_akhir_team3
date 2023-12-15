@@ -44,6 +44,7 @@ import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.util.Date
+import kotlin.math.roundToInt
 
 class WeatherActivity : AppCompatActivity() {
     lateinit var binding: ActivityWeatherBinding
@@ -273,6 +274,7 @@ class WeatherActivity : AppCompatActivity() {
 
     }
 
+
     private fun setData(body: CurrentWeather) {
 
         binding.apply {
@@ -281,7 +283,7 @@ class WeatherActivity : AppCompatActivity() {
 
 
             textLocationUtama.text = body.currentWeather.city
-            textSuhuUtama.text = body.currentWeather.temperature.toString() + "°"
+            textSuhuUtama.text = body.currentWeather.temperature.roundToInt().toString() + "°"
             kondisiSuhuUtama.text = body.currentWeather.weatherDescription
             descStatusCuacaUtama.text = body.currentWeather.status
             nilaiKelembapanUtama.text = body.currentWeather.humidity.toString() + "%"
