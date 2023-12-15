@@ -24,5 +24,7 @@ class WeatherJakartaActivity : AppCompatActivity() {
         btnSeeMoreWeather.setOnClickListener { Intent(this,WeatherJakartaContentActivity::class.java).also {
             startActivity(it)
         } }
+
+
     }
 }
