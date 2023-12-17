@@ -31,7 +31,7 @@ class KomentarAdapter(
                 usernameForum.text = komen.name
                 descriptionForum.text = komen.komentar
                 // Menggunakan data dari ForumResponse
-                jumlahLikeForum.text = komen.jumlahKomentar.toString()
+                jumlahLikeForum.text = komen.jumlahKomentar?.toString() ?: "0"
                 jumlahCommentForum.text = forumResponse.jumlahKomentar?.toString() ?: "0"
             } else {
                 // Jika objek ForumResponse null, gunakan data dari Komentar

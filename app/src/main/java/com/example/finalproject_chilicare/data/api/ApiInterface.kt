@@ -5,7 +5,9 @@ import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.CreateForumResponse
 import com.example.finalproject_chilicare.data.models.DeleteForumResponse
 import com.example.finalproject_chilicare.data.models.EditForumResponse
+import com.example.finalproject_chilicare.data.models.LikeForumResponse
 import com.example.finalproject_chilicare.data.models.PostKomentarDetailForumResponse
+import com.example.finalproject_chilicare.data.models.UnlikeResponse
 import com.example.finalproject_chilicare.data.response.article.CardAllArtikelResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
@@ -107,6 +109,15 @@ interface ApiInterface {
         @Body requestBody: RequestBody
     ): Call<PostKomentarDetailForumResponse>
 
+    @PUT("forum/like/{id}")
+    fun likePostingan(
+        @Path("id") id: String,
+    ): Call<LikeForumResponse>
+
+    @PUT("forum/unlike/{id}")
+    fun unlikePostingan(
+        @Path("id") id: String,
+    ): Call<UnlikeResponse>
 }
 
 
