@@ -33,6 +33,7 @@ import com.example.finalproject_chilicare.data.api.NetworkWeather
 import com.example.finalproject_chilicare.data.models.AllForumItem
 import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
+import com.example.finalproject_chilicare.data.models.LikeItem
 import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
@@ -421,17 +422,22 @@ class HomeFragment : Fragment() {
         Log.d("HOME", "recyclerview berhasil ${body.allForumItem} ")
         val rvPostingan = binding.rvForum
         rvPostingan.setHasFixedSize(true)
-        rvPostingan.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        val adapter = MainForumAdapter(requireContext(), body.allForumItem)
+        rvPostingan.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 
-        // set adapter to recylcerviewnya
-        rvPostingan.adapter = adapter
-        adapter.setOnItemClickCallback(object : MainForumAdapter.itemClicker {
+        val adapter = MainForumAdapter(requireContext(), body.allForumItem, object : MainForumAdapter.ItemClickCallback {
             override fun onMore(itemForum: AllForumItem, position: Int) {
+                // Handle onMore click here
+            }
+        }, object : MainForumAdapter.LikeClickCallback {
+            override fun onLike(itemLike: LikeItem, position: Int) {
+                // Handle onLike click here
             }
         })
+
+        // set adapter to recyclerview
+        rvPostingan.adapter = adapter
     }
+
 
 
 }
