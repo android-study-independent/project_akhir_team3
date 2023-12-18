@@ -75,11 +75,25 @@
                                 android:layout_marginLeft="5dp"
                                 android:fontFamily="@font/plusjakartasans_bold_700"
                                 android:layout_marginTop="5dp"
-                                android:text="Lita 👋🏻"
+                                tools:text="Lita"
                                 android:textColor="@color/white"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 app:layout_constraintLeft_toRightOf="@+id/txthalo"
+                                app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
+
+                            <TextView
+                                android:id="@+id/iconHalo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:fontFamily="@font/plusjakartasans_bold_700"
+                                android:layout_marginTop="5dp"
+                                android:text="👋🏻"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintLeft_toRightOf="@+id/txtavatarname"
                                 app:layout_constraintTop_toTopOf="@id/imgavatar"></TextView>
 
                             <TextView

@@ -84,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun createNewUser() {
         val registerReq = RegisterRequest()
-        registerReq.fullname = inputEmailRegister.text.toString()
+        registerReq.fullname = inputUsernameRegister.text.toString()
         registerReq.email = inputEmailRegister.text.toString()
         registerReq.password = inputPasswordRegister.text.toString()
 

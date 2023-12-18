@@ -40,6 +40,9 @@ interface ApiInterface {
     @POST("auth/login")
     fun userLogin(@Body req: LoginRequest): Call<LoginResponse>
 
+    @POST("auth/login")
+    fun getFullnameLogin (): Call<LoginResponse>
+
     @GET("weather")
     fun getWeather(
         @Query("lat") lat: String,
