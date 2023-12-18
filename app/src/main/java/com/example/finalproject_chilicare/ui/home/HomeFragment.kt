@@ -36,6 +36,7 @@ import com.example.finalproject_chilicare.data.models.AllForumResponse
 import com.example.finalproject_chilicare.data.models.CurrentWeather
 import com.example.finalproject_chilicare.data.models.LikeItem
 import com.example.finalproject_chilicare.data.response.article.CardArtikelResponse
+import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.databinding.FragmentHomeBinding
 import com.example.finalproject_chilicare.dataclass.ForumData
 import com.example.finalproject_chilicare.dataclass.HomeArtikel
@@ -69,6 +70,7 @@ class HomeFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
 
 
+
     lateinit var cardAdapter: BerandaArtikelAdapter // adapter artikel
     lateinit var cardForumAdapter: MainForumAdapter // addapter forum
 
@@ -85,6 +87,8 @@ class HomeFragment : Fragment() {
     lateinit var buttonForum: CardView
     lateinit var buttonAktivitas: CardView
     lateinit var cardbutton: CardView
+    lateinit var textFullname : TextView
+
 
     lateinit var buttonNotification: ImageView
 
@@ -105,6 +109,7 @@ class HomeFragment : Fragment() {
         val view = binding.root
         return view
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -172,6 +177,7 @@ class HomeFragment : Fragment() {
         weatherdesc = view.findViewById<TextView>(R.id.txtweatherdesc)
         date = view.findViewById(R.id.txtdatetime)
         image = view.findViewById(R.id.imgweather)
+        textFullname = view.findViewById(R.id.txtavatarname)
 
 
         buttonCuaca = view.findViewById(R.id.btnCuaca)
@@ -238,9 +244,26 @@ class HomeFragment : Fragment() {
             LocationServices.getFusedLocationProviderClient(requireActivity())
         getCurrentLocation()
 
+//        val fullnameLogin : LoginResponse
+//
+//        textFullname.text = fullnameLogin.fullname
+//
+//        Log.d("Username", "${Log.fullname}")
+
+
+
+
+
+//        getFullname()
 
         // menampilkan RecylerView Forum Get API
         forumlist()
+
+    }
+
+    private fun getFullname (fullnameLogin : LoginResponse) {
+
+        textFullname.text = fullnameLogin.fullname
 
     }
 

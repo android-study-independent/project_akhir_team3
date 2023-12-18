@@ -48,25 +48,27 @@ import java.io.InputStream
 class NewPostForumActivity : AppCompatActivity() {
 
 
-
     private val baseUrl = "http://195.35.32.179:8003/"
     lateinit var prefHelper: SharedPreferences
 
-    lateinit var bindingPostForum : ActivityNewPostForumBinding
-    lateinit var uploadImage : ImageView
-    lateinit var checkImageUpload1 : ImageView
-    lateinit var checkImageUpload2 : ImageView
-    lateinit var checkImageUpload3 : ImageView
-    lateinit var checkImageUpload4 : ImageView
-    lateinit var inputPostingan : EditText
-    lateinit var btnUploadPostingan : Button
+    lateinit var bindingPostForum: ActivityNewPostForumBinding
+    lateinit var uploadImage: ImageView
+    lateinit var checkImageUpload1: ImageView
+    lateinit var checkImageUpload2: ImageView
+    lateinit var checkImageUpload3: ImageView
+    lateinit var checkImageUpload4: ImageView
+    lateinit var inputPostingan: EditText
+    lateinit var btnUploadPostingan: Button
     private var imagePathUri: Uri? = null
     private val selectedImageUris = mutableListOf<Uri>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_new_post_forum)
 
-        bindingPostForum = DataBindingUtil.setContentView(this@NewPostForumActivity, R.layout.activity_new_post_forum)
+        bindingPostForum = DataBindingUtil.setContentView(
+            this@NewPostForumActivity,
+            R.layout.activity_new_post_forum
+        )
 
         prefHelper = PreferencesHelper.customAddForum(this)
 
@@ -139,14 +141,15 @@ class NewPostForumActivity : AppCompatActivity() {
     }
 
 
-    private val getContent = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
-        uri?.let {
-            Log.d("get_image", ":uri = ${it}")
-            imagePathUri = it
-            uploadImage.setImageURI(imagePathUri)
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
+            uri?.let {
+                Log.d("get_image", ":uri = ${it}")
+                imagePathUri = it
+                uploadImage.setImageURI(imagePathUri)
 
+            }
         }
-    }
 
     private fun selectImage() {
         getContent.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -161,9 +164,10 @@ class NewPostForumActivity : AppCompatActivity() {
 
     private fun addPostForum(txtcaptions: String) {
 
-        val apiInterface = Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
+        val apiInterface =
+            Network().getRetroClientInstance(getToken()).create(ApiInterface::class.java)
 
-        val file = uriToFile(imageUri = imagePathUri!!,this)
+        val file = uriToFile(imageUri = imagePathUri!!, this)
         val requestFile: RequestBody =
             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
 
@@ -174,22 +178,19 @@ class NewPostForumActivity : AppCompatActivity() {
             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), txtcaptions)
 
         getToken()?.let { token ->
-            val call = apiInterface.postPostinganForum( image, captions)
+            val call = apiInterface.postPostinganForum(image, captions)
             call.enqueue(object : Callback<CreateForumResponse?> {
                 override fun onResponse(
                     call: Call<CreateForumResponse?>,
                     response: Response<CreateForumResponse?>
                 ) {
                     if (response.isSuccessful) {
-                        if (response.body()?.toString() == "200") {
-                            Toast.makeText(applicationContext, "Post Berhaasil", Toast.LENGTH_SHORT)
-                                .show()
-                            val intent = Intent(this@NewPostForumActivity, ForumActivity::class.java)
-                            startActivity(intent)
-                        } else {
-                            Toast.makeText(applicationContext, "Not Added", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+
+                        Toast.makeText(applicationContext, "Post Berhasil", Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = Intent(this@NewPostForumActivity, ForumActivity::class.java)
+                        startActivity(intent)
+
                     }
                 }
 
@@ -206,7 +207,11 @@ class NewPostForumActivity : AppCompatActivity() {
         val outputStream = FileOutputStream(myFile)
         val buffer = ByteArray(1024)
         var length: Int
-        while (inputStream.read(buffer).also { length = it } > 0) outputStream.write(buffer, 0, length)
+        while (inputStream.read(buffer).also { length = it } > 0) outputStream.write(
+            buffer,
+            0,
+            length
+        )
         outputStream.close()
         inputStream.close()
         return myFile

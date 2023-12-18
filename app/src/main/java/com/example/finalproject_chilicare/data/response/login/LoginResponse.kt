@@ -8,6 +8,13 @@ class LoginResponse(
     @SerializedName("message")
     @Expose
     var message: String?,
+
+    @SerializedName("fullName")
+    var fullname : String? = null,
+
+    @SerializedName("email")
+    var emailRegister :String? = null,
+    
     @SerializedName("data")
     @Expose
     var data: TokenData?

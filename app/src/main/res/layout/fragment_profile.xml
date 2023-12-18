@@ -86,7 +86,7 @@
                 />
 
             <TextView
-                android:id="@+id/tvAvatar"
+                android:id="@+id/tvAvatarProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plusjakartasans_semibold_600"
@@ -105,7 +105,7 @@
                 android:layout_height="24dp"
                 android:src="@drawable/img_edit"
                 android:layout_marginLeft="170dp"
-                app:layout_constraintLeft_toRightOf="@+id/tvAvatar"
+                app:layout_constraintLeft_toRightOf="@+id/tvAvatarProfile"
                 app:layout_constraintTop_toTopOf="@id/imgavatar"
                 />
 

@@ -14,6 +14,7 @@ import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
+import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.data.response.login.LoginRequest
 import com.example.finalproject_chilicare.data.response.login.LoginResponse
 import com.example.finalproject_chilicare.ui.home.HomeActivity
@@ -151,6 +152,9 @@ class LoginActivity : AppCompatActivity() {
                             if (token.isNotEmpty()) {
                                 saveLoginData(token)
                                 Log.d("Token", "Token -> $token")
+                                Log.d("Fullname", "${response.body()!!.fullname}")
+                                val intent = intent.putExtra("fullname", "${response.body()!!.fullname}")
+                                startActivity(intent)
                                 navigateToHome()
                             }
                         }
