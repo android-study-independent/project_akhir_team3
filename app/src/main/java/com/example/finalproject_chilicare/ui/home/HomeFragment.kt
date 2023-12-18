@@ -26,6 +26,7 @@ import com.example.finalproject_chilicare.adapter.article.CardAdapter
 import com.example.finalproject_chilicare.adapter.article.CardHomeArtikelAdapter
 import com.example.finalproject_chilicare.adapter.ForumAdapter
 import com.example.finalproject_chilicare.adapter.forum.MainForumAdapter
+import com.example.finalproject_chilicare.adapter.home.BerandaArtikelAdapter
 import com.example.finalproject_chilicare.data.PreferencesHelper
 import com.example.finalproject_chilicare.data.api.ApiInterface
 import com.example.finalproject_chilicare.data.api.Network
@@ -53,8 +54,6 @@ import kotlin.random.Random
 
 
 class HomeFragment : Fragment() {
-    private val listforum = ArrayList<ForumData>()
-    private val listartikel = ArrayList<HomeArtikel>()
     private lateinit var recylerView: RecyclerView
     private lateinit var rvartikelrecylerview: RecyclerView
     private lateinit var rvPostinganForum: RecyclerView
@@ -69,9 +68,7 @@ class HomeFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
 
 
-//    private lateinit var binding: FragmentHomeBinding
-
-    lateinit var cardAdapter: CardAdapter // adapter artikel
+    lateinit var cardAdapter: BerandaArtikelAdapter // adapter artikel
     lateinit var cardForumAdapter: MainForumAdapter // addapter forum
 
     //    var cardAdapter: CardAdapter? = null // aku rubah jadi kaya gini
@@ -113,7 +110,7 @@ class HomeFragment : Fragment() {
 
         // Inisialisasi adapter terlebih dahulu
         //adapter card Artikel
-        cardAdapter = CardAdapter(cardArtikelResponse)
+        cardAdapter = BerandaArtikelAdapter(cardArtikelResponse)
 
         //adapter card forum
 
