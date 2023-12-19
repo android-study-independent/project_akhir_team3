@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
 import com.example.finalproject_chilicare.ui.lms.MateriLMSActivity
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, private val clickListener: ItemClickListener) : RecyclerView.Adapter<CardLmsMateriAdapter.CardMateriHolder>() {
 
@@ -41,6 +44,7 @@ class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, priva
 
         val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
         val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
+//        val youtubeLink = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
         init {
             itemView.setOnClickListener{
 
@@ -53,11 +57,17 @@ class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, priva
         fun bindItemView(cardmateri:ListMateriLMS ) {
             val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
             val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
-//            val covermateri = itemView.findViewById<ImageView>(R.id.iv_GambarMateriLms)
-//            val checkbox = itemView.findViewById<CheckBox>(R.id.checkblms)
+//            val link = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
+//
 
             titlemateri.text= cardmateri.judulMateri
             descmateri.text = cardmateri.shortDesc
+//            link.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+//                override fun onReady(youTubePlayer: YouTubePlayer) {
+//                    super.onReady(youTubePlayer)
+//                }
+//            })
+
 
         }
 

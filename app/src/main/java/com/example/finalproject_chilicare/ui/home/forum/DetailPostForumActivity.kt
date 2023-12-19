@@ -42,6 +42,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class DetailPostForumActivity : AppCompatActivity() {
 
@@ -110,9 +112,15 @@ class DetailPostForumActivity : AppCompatActivity() {
             jumlahLikeForum = findViewById(R.id.tvLikePostinganDetail)
             jumlahCommentForum = findViewById(R.id.tvCommentPostinganDetail)
 
+            //format date
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            val date : Date = inputFormat.parse(it.createdAt)
+            val outputFormat = SimpleDateFormat ("yyyy-MM-dd")
+            val formatDate = outputFormat.format(date)
+
             // Rest of your code remains the same
             usernameForum.text = it.nameUser
-            dateUploadForum.text = it.createdAt
+            dateUploadForum.text = formatDate
             descriptionForum.text = it.captions
             Picasso.get().load(it.image.firstOrNull()).into(imageForum)
             jumlahLikeForum.text = it.jumlahLike.toString()
