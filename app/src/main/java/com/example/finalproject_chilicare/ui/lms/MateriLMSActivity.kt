@@ -101,7 +101,7 @@ class MateriLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickLis
                             titlemateri.text = responses!!.data[0].judul.toString()
                             descmateri.text = responses.data[0].desc.toString()
                             learningtime.text = responses.data[0].learningTime.toString()
-                            totalmateri.text = responses.data[0].totalMateri.toString()
+                            totalmateri.text = responses.data[0].totalMateri.toString()+" Materi"
                             datemateri.text = responses.data[0].tanggal
                             val path = buildIcobpath(responses.data[0].covers)
                             Picasso.get().load(path).into(covermateri, object : Callback {
