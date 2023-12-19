@@ -18,6 +18,8 @@ object PreferencesHelper {
 
     const val KEY_IS_LOGIN = "is_login"
     const val KEY_TOKEN = "token"
+    const val KEY_FULLNAME = "fullname"
+    const val KEY_EMAIL = "email"
     const val KEY_TOKEN_FILE = "prefs_token_file"
     const val KEY_LOGGED_IN = "onboarding_to_login"
     const val KEY_REGIST_IN = "onboarding_to_regist"
