@@ -11,6 +11,7 @@ import com.example.finalproject_chilicare.ui.lms.MateriLMSActivity
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.regex.Pattern
 
 class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, private val clickListener: ItemClickListener) : RecyclerView.Adapter<CardLmsMateriAdapter.CardMateriHolder>() {
 
@@ -34,16 +35,16 @@ class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, priva
     override fun onBindViewHolder(holder: CardMateriHolder, position: Int) {
         holder.bindItemView(listMateriLms[position])
         val result = listMateriLms[position]
-        holder.titlemateri.text = result.judulMateri
-        holder.descmateri.text = result.shortDesc
+//        holder.titlemateri.text = result.judulMateri
+//        holder.descmateri.text = result.shortDesc
 
         holder.itemView.tag = position
     }
 
     inner class CardMateriHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
-        val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
-        val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
+//        val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
+//        val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
 //        val youtubeLink = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
         init {
             itemView.setOnClickListener{
@@ -57,20 +58,33 @@ class CardLmsMateriAdapter(private var listMateriLms: List<ListMateriLMS>, priva
         fun bindItemView(cardmateri:ListMateriLMS ) {
             val titlemateri = view.findViewById<TextView>(R.id.tv_MateriLms)
             val descmateri = view.findViewById<TextView>(R.id.tv_DecMateri)
-//            val link = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
-//
+            val link = view.findViewById<YouTubePlayerView>(R.id.youtube_player_view)
 
-            titlemateri.text= cardmateri.judulMateri
-            descmateri.text = cardmateri.shortDesc
-//            link.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-//                override fun onReady(youTubePlayer: YouTubePlayer) {
-//                    super.onReady(youTubePlayer)
-//                }
-//            })
+
+            if (link != null) {
+                link.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                        val videoLink = cardmateri.youtube?.let { extractVideoId(it) }
+                        youTubePlayer.loadVideo(videoLink!!, 0f)
+                    }
+                })
+            }
 
 
         }
+        fun extractVideoId(text: String): String {
+            val parts = text.split("/")
 
+            if (text.contains("https://youtu.be/")) {
+                return parts[parts.size - 1]
+            }
+
+            if (text.contains("https://www.youtube.com/") && text.contains("watch?v=")) {
+                return parts[parts.size - 1].replace("watch?v=", "")
+            }
+
+            return ""
+        }
 
     }
 
