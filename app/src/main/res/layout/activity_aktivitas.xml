@@ -43,15 +43,31 @@
                 android:id="@+id/tvhalo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="35dp"
                 android:fontFamily="@font/plusjakartasans_bold_700"
-                android:text="Halo Lita 👋🏻"
+                android:text="Halo"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@+id/ivBackaktivitas"
-                app:layout_constraintTop_toTopOf="@id/ivBackground" />
+                app:layout_constraintTop_toTopOf="@id/ivBackground"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="35dp"
+                />
+
+            <TextView
+                android:id="@+id/kenapagabisa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:text="Cita!👋"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tvhalo"
+                app:layout_constraintTop_toTopOf="@+id/tvhalo"
+                app:layout_constraintBottom_toBottomOf="@+id/tvhalo"
+                android:layout_marginStart="5dp"
+                />
 
             <TextView
                 android:id="@+id/tvTunggu"
