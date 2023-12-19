@@ -22,6 +22,8 @@ import com.example.finalproject_chilicare.data.api.Network
 import com.example.finalproject_chilicare.data.response.lms.CardAllModulResponse
 import com.example.finalproject_chilicare.data.response.lms.ListMateriLMS
 import com.example.finalproject_chilicare.databinding.ActivityDetailLmsactivityBinding
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
@@ -34,7 +36,7 @@ class DetailLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickLis
     lateinit var cardMateriAdapter : CardLmsMateriAdapter
     private lateinit var rvCardMateri: RecyclerView
     private var cardMateriResponse = mutableListOf<ListMateriLMS>()
-    private lateinit var tvVideo : VideoView
+    private lateinit var tvVideo : YouTubePlayerView
     private lateinit var tvLongDesc : TextView
     private    lateinit var ytView : TextView
 
@@ -52,6 +54,7 @@ class DetailLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickLis
 
         //INISIASI LAYOUT XML
         iv_Kembali = findViewById(R.id.iv_KembaliDtlLms)
+        tvVideo = findViewById(R.id.youtube_player_view)
 
         //Tombol untuk kembali
         iv_Kembali.setOnClickListener {
@@ -76,6 +79,18 @@ class DetailLMSActivity : AppCompatActivity(), CardLmsMateriAdapter.ItemClickLis
                         if (response.isSuccessful) {
                             Log.d("detail_lms_id", "onResponse: materidetail body ${response} ")
                             val responses = response.body()
+//                            if (responses != null && !responses.data.isNullOrEmpty()) {
+//                                val listMateriitem = responses.data[0].listMateri
+//                                if (listMateriitem !=null && listMateriitem.isNotEmpty() && position <listMateriitem.size) {
+//                                    bindingDetailLms.tvJudulMateri.text = listMateriitem[position].judulMateri
+//                                    bindingDetailLms.tvDescLms.text = listMateriitem[position].longDesc
+//                                } else{
+//                                    Log.e("detail_lms", "eror load data ", )
+//                                }
+//                            } else {
+//                                Log.e("detail_lms", "onResponse: ", )
+//                            }
+
                             bindingDetailLms.tvJudulMateri.text = responses!!.data[0].listMateri!![position].judulMateri
                             bindingDetailLms.tvDescLms.text= responses!!.data[0].listMateri!![position].longDesc
 

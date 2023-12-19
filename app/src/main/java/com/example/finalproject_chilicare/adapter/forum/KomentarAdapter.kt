@@ -1,5 +1,6 @@
 package com.example.finalproject_chilicare.adapter.forum
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject_chilicare.R
 import com.example.finalproject_chilicare.data.response.forum.ForumResponse
 import com.example.finalproject_chilicare.data.response.forum.Komentar
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class KomentarAdapter(
     private var listKomentar: List<Komentar>,
@@ -25,11 +28,19 @@ class KomentarAdapter(
             val jumlahLikeForum = itemview.findViewById<TextView>(R.id.tvLikeKomentar)
             val jumlahCommentForum = itemview.findViewById<TextView>(R.id.tvCommentKomentar)
 
+
+            //format date
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            val date : Date = inputFormat.parse(komen.createdAt)
+            val outputFormat = SimpleDateFormat ("yyyy-MM-dd")
+            val formatDate = outputFormat.format(date)
+
             val forum = forumResponse.komentars
             if (forum != null) {
                 // Jika objek ForumResponse tidak null, gunakan propertinya
                 usernameForum.text = komen.name
                 descriptionForum.text = komen.komentar
+                dateUploadForum.text = formatDate
                 // Menggunakan data dari ForumResponse
                 jumlahLikeForum.text = komen.jumlahKomentar?.toString() ?: "0"
                 jumlahCommentForum.text = forumResponse.jumlahKomentar?.toString() ?: "0"
@@ -37,6 +48,7 @@ class KomentarAdapter(
                 // Jika objek ForumResponse null, gunakan data dari Komentar
                 usernameForum.text = komen.name
                 dateUploadForum.text = komen.createdAt
+                Log.d("komentar", "tanggal muncul:${dateUploadForum} ")
                 descriptionForum.text = komen.komentar
                 // Menggunakan data dari Komentar
                 jumlahCommentForum.text = komen.jumlahKomentar.toString()

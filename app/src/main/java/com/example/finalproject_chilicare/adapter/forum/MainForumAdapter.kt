@@ -17,6 +17,8 @@ import com.example.finalproject_chilicare.ui.home.forum.DetailPostForumActivity
 import com.example.finalproject_chilicare.ui.home.forum.EditPostForumActivity
 import com.squareup.picasso.Picasso
 import java.io.Serializable
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MainForumAdapter(
     val context: Context,
@@ -89,8 +91,15 @@ class MainForumAdapter(
     override fun onBindViewHolder(holder: ForumViewHolder, position: Int) {
         val listDataItem = listForum[position]
 
+        //format date
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val date : Date = inputFormat.parse(listDataItem.createdAt)
+        val outputFormat = SimpleDateFormat ("yyyy-MM-dd")
+        val formatDate = outputFormat.format(date)
+
+
         holder.nameUser.text = listDataItem.nameUser
-        holder.dateUploadForum.text = listDataItem.createdAt
+        holder.dateUploadForum.text =  formatDate
         holder.descriptionForum.text = listDataItem.captions
         holder.jumlahLikeForum.text = listDataItem.jumlahLike.toString()
         holder.jumlahCommentForum.text = listDataItem.jumlahKomentar.toString()
