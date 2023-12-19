@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
@@ -36,12 +37,13 @@ class ProfileFragment : Fragment() {
     private lateinit var prefHelper: SharedPreferences
     private lateinit var btnback : ImageView
     lateinit var fullnameProfile : TextView
+    lateinit var tvSureName : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       // return inflater.inflate(R.layout.fragment_profile, container, false)
+        // return inflater.inflate(R.layout.fragment_profile, container, false)
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         btnback = view.findViewById(R.id.ivBackProfile)
@@ -58,6 +60,10 @@ class ProfileFragment : Fragment() {
         btnLogout = view.findViewById(R.id.btnKeluar)
         prefHelper = requireActivity().getSharedPreferences("chilicare_preference", Context.MODE_PRIVATE)
         fullnameProfile = view.findViewById(R.id.tvAvatarProfile)
+        tvSureName = view.findViewById(R.id.tvSureName)
+
+        fullnameProfile.text = "${LoginActivity.userFullname}"
+        tvSureName.text = "${LoginActivity.userEmail}"
 
         // Card ke activity Notification
         cardNotifikasi1.setOnClickListener {
@@ -120,19 +126,25 @@ class ProfileFragment : Fragment() {
 //    }
 
     private fun doLogout() {
-        Log.d("ProfileActivity", "Profileactivity: Logout berhasil")
+        val fullname = prefHelper.getString(PreferencesHelper.KEY_FULLNAME, "")
+
         prefHelper.edit {
             remove(PreferencesHelper.KEY_TOKEN)
+            remove(PreferencesHelper.KEY_FULLNAME)
             putBoolean(PreferencesHelper.KEY_IS_LOGIN, false)
         }
 
-        // Redirect ke LoginActivity setelah logout
-        Log.d("ProfileFragment", "Logging out...")
-        Log.d("ProfileFragment", "Redirecting to LoginActivity")
+        showToast(requireContext(), "Selamat tinggal, $fullname! 👋", Toast.LENGTH_LONG)
+
         val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         requireActivity().finishAffinity()
+    }
+
+    private fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
+        val toast = Toast.makeText(context, message, duration)
+        toast.show()
     }
 
     companion object {

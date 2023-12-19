@@ -44,6 +44,7 @@ import com.example.finalproject_chilicare.ui.home.aktivitas.AktivitasActivity
 import com.example.finalproject_chilicare.ui.home.article.ArticleActivity
 import com.example.finalproject_chilicare.ui.home.article.DetailArticleActivity
 import com.example.finalproject_chilicare.ui.home.forum.ForumActivity
+import com.example.finalproject_chilicare.ui.login.LoginActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.squareup.picasso.Picasso
@@ -179,6 +180,8 @@ class HomeFragment : Fragment() {
         image = view.findViewById(R.id.imgweather)
         textFullname = view.findViewById(R.id.txtavatarname)
 
+        // dapet dari login
+        textFullname.text = "${LoginActivity.userFullname} 👋"
 
         buttonCuaca = view.findViewById(R.id.btnCuaca)
         buttonArtikel = view.findViewById(R.id.btnArtikel)

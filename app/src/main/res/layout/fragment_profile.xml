@@ -72,71 +72,83 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgavatar"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/icn_profile"
+            <RelativeLayout
+                android:id="@+id/rlHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/tvAvatarProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plusjakartasans_semibold_600"
-                android:layout_marginLeft="8dp"
-                android:text="Lita"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
-                app:layout_constraintTop_toTopOf="@id/imgavatar"
-                />
+                <ImageView
+                    android:id="@+id/imgavatar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/icn_profile" />
 
-            <ImageView
-                android:id="@+id/ivEdit"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/img_edit"
-                android:layout_marginLeft="170dp"
-                app:layout_constraintLeft_toRightOf="@+id/tvAvatarProfile"
-                app:layout_constraintTop_toTopOf="@id/imgavatar"
-                />
+                <TextView
+                    android:id="@+id/tvAvatarProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plusjakartasans_semibold_600"
+                    android:layout_marginLeft="5dp"
+                    android:text="Lita"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_toRightOf="@+id/imgavatar"
+                    android:layout_alignTop="@+id/imgavatar" />
 
-            <TextView
-                android:id="@+id/tvSureName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="8dp"
-                android:fontFamily="@font/plusjakartasans_reguler_400"
-                android:text="Lita Imoet"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
-                app:layout_constraintTop_toTopOf="@id/imgavatar"
-                />
+                <TextView
+                    android:id="@+id/tvSureName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:text="Lita Imoet"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_below="@+id/tvAvatarProfile"
+                    android:layout_toRightOf="@+id/imgavatar" />
 
-            <TextView
-                android:id="@+id/tvJoin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="8dp"
-                android:fontFamily="@font/plusjakartasans_reguler_400"
-                android:text="bergabung sejak 1 November 2023"
-                android:textColor="#8388B2"
-                android:textSize="12sp"
-                app:layout_constraintLeft_toRightOf="@+id/imgavatar"
-                app:layout_constraintTop_toTopOf="@id/imgavatar"
-                />
+                <TextView
+                    android:id="@+id/tvJoin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/plusjakartasans_reguler_400"
+                    android:text="bergabung sejak 1 November 2023"
+                    android:textColor="#8388B2"
+                    android:textSize="12sp"
+                    android:layout_below="@+id/tvSureName"
+                    android:layout_toRightOf="@+id/imgavatar" />
+
+                <ImageView
+                    android:id="@+id/ivEdit"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/img_edit"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -200,45 +212,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:padding="8dp"
-                >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:padding="8dp"
+            >
 
-                <ImageView
-                    android:id="@+id/ivNotif"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/img_notif_profile"
-                    />
+            <ImageView
+                android:id="@+id/ivNotif"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/img_notif_profile"
+                />
 
-                <ImageView
-                    android:id="@+id/ivPinkBack2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@id/ivNotif"
-                    android:layout_marginLeft="270dp"
-                    android:src="@drawable/img_pink_back"
-                    />
+            <ImageView
+                android:id="@+id/ivPinkBack2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/ivNotif"
+                android:layout_marginLeft="270dp"
+                android:src="@drawable/img_pink_back"
+                />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/ivNotif"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="16dp"
-                    android:text="Notifikasi"
-                    android:textSize="14sp"
-                    android:textColor="#303344"
-                    />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ivNotif"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:text="Notifikasi"
+                android:textSize="14sp"
+                android:textColor="#303344"
+                />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -251,45 +263,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:padding="8dp"
-                >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:padding="8dp"
+            >
 
-                <ImageView
-                    android:id="@+id/ivPengaturan"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/img_shield"
-                    />
+            <ImageView
+                android:id="@+id/ivPengaturan"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/img_shield"
+                />
 
-                <ImageView
-                    android:id="@+id/ivPinkBack3"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@id/ivPengaturan"
-                    android:layout_marginLeft="270dp"
-                    android:src="@drawable/img_pink_back"
-                    />
+            <ImageView
+                android:id="@+id/ivPinkBack3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/ivPengaturan"
+                android:layout_marginLeft="270dp"
+                android:src="@drawable/img_pink_back"
+                />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/ivPengaturan"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="16dp"
-                    android:text="Pengaturan Keamanan"
-                    android:textSize="14sp"
-                    android:textColor="#303344"
-                    />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ivPengaturan"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:text="Pengaturan Keamanan"
+                android:textSize="14sp"
+                android:textColor="#303344"
+                />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -302,45 +314,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:padding="8dp"
-                >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:padding="8dp"
+            >
 
-                <ImageView
-                    android:id="@+id/ivBantuan"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/img_help"
-                    />
+            <ImageView
+                android:id="@+id/ivBantuan"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/img_help"
+                />
 
-                <ImageView
-                    android:id="@+id/ivPinkBack4"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@id/ivBantuan"
-                    android:layout_marginLeft="270dp"
-                    android:src="@drawable/img_pink_back"
-                    />
+            <ImageView
+                android:id="@+id/ivPinkBack4"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/ivBantuan"
+                android:layout_marginLeft="270dp"
+                android:src="@drawable/img_pink_back"
+                />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/ivBantuan"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/plusjakartasans_bold_700"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="16dp"
-                    android:text="Bantuan"
-                    android:textSize="14sp"
-                    android:textColor="#303344"
-                    />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/ivBantuan"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plusjakartasans_bold_700"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp"
+                android:text="Bantuan"
+                android:textSize="14sp"
+                android:textColor="#303344"
+                />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
